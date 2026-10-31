@@ -67,43 +67,48 @@ updateAUTimes();
 </div>
 <!-- This is a comment ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-  <!-- TECHNICAL SUPPORT - EDITABLE, hindi na gagalawin codes -->
-<div id="rns-tech-box" style="position:absolute; left:380px; top:80px; width:calc(100% - 400px); z-index:10;">
-<div style="background:rgba(255,255,255,0.08); border:2px solid rgba(255,0,0,0.5); border-radius:12px; padding:15px; min-height:420px; position:relative;">
-  
-  <div id="tech-title" contenteditable="true" style="font-family:cursive; font-size:32px; color:#00ff66; text-align:center; font-weight:900; outline:none;">Technical Support</div>
-  
-  <div id="tech-main-text" contenteditable="true" style="margin:20px auto; width:70%; min-height:150px; border:2px solid red; display:flex; align-items:center; justify-content:center; color:white; font-size:48px; font-weight:900; outline:none; text-align:center;">TEXT</div>
+<!-- TECHNICAL SUPPORT - EXACT SA DRAWING MO -->
+<div id="tech-support-main" style="position:absolute; left:250px; top:60px; width:calc(100% - 270px); min-height:620px; border:1px solid rgba(255,0,0,0.4); border-radius:12px; background:rgba(255,255,255,0.02); padding:20px; z-index:10;">
 
-  <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap; margin-top:15px;">
-    <div class="tech-small" contenteditable="true" style="background:orange; border-radius:20px; padding:6px 14px; color:black; font-weight:800; min-width:60px; text-align:center; outline:none;">text</div>
-    <div class="tech-small" contenteditable="true" style="background:orange; border-radius:20px; padding:6px 14px; color:black; font-weight:800; min-width:60px; text-align:center; outline:none;">text</div>
-    <div class="tech-small" contenteditable="true" style="background:orange; border-radius:20px; padding:6px 14px; color:black; font-weight:800; min-width:60px; text-align:center; outline:none;">text</div>
-    <div class="tech-small" contenteditable="true" style="background:orange; border-radius:20px; padding:6px 14px; color:black; font-weight:800; min-width:60px; text-align:center; outline:none;">text</div>
-    <div class="tech-small" contenteditable="true" style="background:orange; border-radius:20px; padding:6px 14px; color:black; font-weight:800; min-width:60px; text-align:center; outline:none;">text</div>
+  <!-- Technical Support Title - nasa gitna taas, may red box -->
+  <div style="display:flex; justify-content:center; margin-bottom:20px;">
+    <div id="tech-title" contenteditable="true" style="border:2px solid red; border-radius:8px; padding:8px 30px; color:#00ff66; font-size:28px; font-weight:900; font-family:Arial; outline:none; text-align:center;">Technical Support</div>
   </div>
 
-  <div style="position:absolute; right:15px; top:15px; width:160px;">
-    <div id="hari-birthday" contenteditable="true" style="border:2px solid red; color:red; font-weight:900; padding:8px; text-align:center; background:rgba(255,255,255,0.1); border-radius:8px; outline:none;">Hari Birthday</div>
-    <div id="pic-box" style="margin-top:10px; border:2px solid red; min-height:80px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.05); border-radius:8px; cursor:pointer; color:white;" onclick="document.getElementById('pic-input').click()">
-      <span id="pic-text">Picture</span><img id="pic-preview" style="display:none; width:100%; height:80px; object-fit:cover; border-radius:6px;">
-    </div>
-    <input type="file" id="pic-input" accept="image/*" style="display:none;">
+  <!-- Hari Birthday - kanan taas -->
+  <div id="hari-box" contenteditable="true" style="position:absolute; right:20px; top:20px; border:2px solid red; border-radius:8px; padding:6px 14px; color:red; font-weight:900; font-size:13px; background:rgba(255,255,255,0.05); outline:none; text-align:center; min-width:120px;">Hari Birthday</div>
+
+  <!-- Picture - kanan baba ng birthday -->
+  <div id="pic-container" style="position:absolute; right:20px; top:70px; width:140px; height:90px; border:2px solid red; border-radius:8px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.05); cursor:pointer; overflow:hidden;" onclick="document.getElementById('pic-input2').click()">
+    <span id="pic-label" style="color:white; font-size:14px;">Picture</span>
+    <img id="pic-preview2" style="display:none; width:100%; height:100%; object-fit:cover;">
+  </div>
+  <input type="file" id="pic-input2" accept="image/*" style="display:none;">
+
+  <!-- TEXT - gitna malaki -->
+  <div id="tech-big-text" contenteditable="true" style="margin:50px auto 20px auto; width:60%; min-height:160px; border:2px solid red; display:flex; align-items:center; justify-content:center; color:white; font-size:52px; font-weight:900; font-family:serif; outline:none; text-align:center; background:rgba(0,60,255,0.3);">TEXT</div>
+
+  <!-- 5 text pills - baba ng TEXT -->
+  <div style="display:flex; gap:10px; justify-content:center; margin-top:25px; flex-wrap:wrap;">
+    <div class="small-pill" contenteditable="true" style="background:#ffaa00; color:black; padding:8px 18px; border-radius:20px; font-weight:800; font-size:12px; min-width:60px; text-align:center; outline:none;">text</div>
+    <div class="small-pill" contenteditable="true" style="background:#ffaa00; color:black; padding:8px 18px; border-radius:20px; font-weight:800; font-size:12px; min-width:60px; text-align:center; outline:none;">text</div>
+    <div class="small-pill" contenteditable="true" style="background:#ffaa00; color:black; padding:8px 18px; border-radius:20px; font-weight:800; font-size:12px; min-width:60px; text-align:center; outline:none;">text</div>
+    <div class="small-pill" contenteditable="true" style="background:#ffaa00; color:black; padding:8px 18px; border-radius:20px; font-weight:800; font-size:12px; min-width:60px; text-align:center; outline:none;">text</div>
+    <div class="small-pill" contenteditable="true" style="background:#ffaa00; color:black; padding:8px 18px; border-radius:20px; font-weight:800; font-size:12px; min-width:60px; text-align:center; outline:none;">text</div>
   </div>
 
-</div>
 </div>
 
 <script>
 (function(){
-  var KEY='rns_tech_support_v1';
+  var KEY='rns_tech_support_layout_v2';
   function save(){
     var data={
       title:document.getElementById('tech-title').innerHTML,
-      main:document.getElementById('tech-main-text').innerHTML,
-      smalls:[...document.querySelectorAll('.tech-small')].map(e=>e.innerHTML),
-      birthday:document.getElementById('hari-birthday').innerHTML,
-      pic:document.getElementById('pic-preview').src
+      big:document.getElementById('tech-big-text').innerHTML,
+      smalls:[...document.querySelectorAll('.small-pill')].map(e=>e.innerHTML),
+      birthday:document.getElementById('hari-box').innerHTML,
+      pic:document.getElementById('pic-preview2').src
     };
     localStorage.setItem(KEY, JSON.stringify(data));
   }
@@ -111,21 +116,20 @@ updateAUTimes();
     try{
       var d=JSON.parse(localStorage.getItem(KEY)); if(!d) return;
       if(d.title) document.getElementById('tech-title').innerHTML=d.title;
-      if(d.main) document.getElementById('tech-main-text').innerHTML=d.main;
-      if(d.smalls){ document.querySelectorAll('.tech-small').forEach((el,i)=>{ if(d.smalls[i]) el.innerHTML=d.smalls[i]; }); }
-      if(d.birthday) document.getElementById('hari-birthday').innerHTML=d.birthday;
-      if(d.pic && d.pic.startsWith('data:')){ document.getElementById('pic-preview').src=d.pic; document.getElementById('pic-preview').style.display='block'; document.getElementById('pic-text').style.display='none'; }
+      if(d.big) document.getElementById('tech-big-text').innerHTML=d.big;
+      if(d.smalls){ document.querySelectorAll('.small-pill').forEach((el,i)=>{ if(d.smalls[i]) el.innerHTML=d.smalls[i]; }); }
+      if(d.birthday) document.getElementById('hari-box').innerHTML=d.birthday;
+      if(d.pic && d.pic.startsWith('data:')){ document.getElementById('pic-preview2').src=d.pic; document.getElementById('pic-preview2').style.display='block'; document.getElementById('pic-label').style.display='none'; }
     }catch(e){}
   }
   document.addEventListener('input', save);
-  document.getElementById('pic-input').addEventListener('change', function(e){
-    var file=e.target.files[0]; if(!file) return;
-    var r=new FileReader(); r.onload=function(ev){ document.getElementById('pic-preview').src=ev.target.result; document.getElementById('pic-preview').style.display='block'; document.getElementById('pic-text').style.display='none'; save(); }; r.readAsDataURL(file);
+  document.getElementById('pic-input2').addEventListener('change', function(e){
+    var f=e.target.files[0]; if(!f) return;
+    var r=new FileReader(); r.onload=function(ev){ document.getElementById('pic-preview2').src=ev.target.result; document.getElementById('pic-preview2').style.display='block'; document.getElementById('pic-label').style.display='none'; save(); }; r.readAsDataURL(f);
   });
   load();
 })();
 </script>
-
   <!-- This is a comment ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 </body>
