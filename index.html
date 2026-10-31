@@ -11,77 +11,74 @@
 </style>
 
 <!-- This is a comment ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-
-<!-- START: STATIC MENUBAR - HINDI GUMAGALAW -->
+<!-- START: STATIC MENUBAR - MALINIS & SAME BILOG -->
 <style>
 #static-menubar{
   position:fixed;
   top:0;
   left:0;
   right:0;
-  height:48px;
-  background:rgba(0,0,0,0.85);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(255,255,255,0.15);
+  height:56px;
+  background:#0a0a0a;
+  border-bottom:1px solid rgba(255,255,255,0.12);
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 20px;
+  padding:0 16px;
   z-index:999999;
-  box-shadow:0 4px 20px rgba(0,0,0,0.3);
+  box-shadow:0 4px 20px rgba(0,0,0,0.4);
 }
-#static-menubar .logo{color:#facc15;font-weight:900;font-size:14px;letter-spacing:1px}
-#static-menubar .menu-links{display:flex;gap:8px;align-items:center}
-#static-menubar .menu-links a{
-  color:white;
-  text-decoration:none;
-  padding:8px 14px;
+#static-menubar .left-phones{display:flex;gap:10px;align-items:center}
+#static-menubar .right-menu{display:flex;gap:8px;align-items:center}
+#static-menubar .pill{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:8px 16px;
   border-radius:99px;
+  font-weight:800;
   font-size:12px;
-  font-weight:700;
-  background:rgba(255,255,255,0.1);
-  border:1px solid rgba(255,255,255,0.1);
+  text-decoration:none;
+  line-height:1;
+  border:1px solid transparent;
   transition:.2s;
+  white-space:nowrap;
 }
-#static-menubar .menu-links a:hover{background:#ff7f11;color:#000;border-color:#ff7f11}
-#static-menubar .menu-links a.active{background:#ff7f11;color:#000}
-body{padding-top:48px !important}
-@media(max-width:700px){
-  #static-menubar .menu-links a{padding:6px 10px;font-size:10px}
-  #static-menubar .logo{font-size:11px}
+#static-menubar .pill img{width:18px;height:18px;border-radius:50%;object-fit:cover}
+#static-menubar .pill-phone1{background:#FF8A26;color:white;border-color:#FF8A26}
+#static-menubar .pill-phone2{background:#FFF176;color:#111;border-color:#FFF176}
+#static-menubar .pill-menu{background:rgba(255,255,255,0.12);color:white;border-color:rgba(255,255,255,0.15)}
+#static-menubar .pill-menu:hover{background:#ff7f11;color:#000;border-color:#ff7f11}
+#static-menubar .pill-menu.active{background:#ff7f11;color:#000;border-color:#ff7f11}
+#static-menubar .pill-time{background:#2563eb;color:white;border-color:#2563eb}
+body{padding-top:56px !important}
+@media(max-width:800px){
+  #static-menubar{height:auto;flex-wrap:wrap;padding:8px 12px;gap:8px}
+  #static-menubar .pill{padding:6px 12px;font-size:11px}
+  body{padding-top:88px !important}
 }
 </style>
 
 <nav id="static-menubar">
-
-  <div style="display:flex; gap:20px; padding:5px; margin-bottom:5px;">
-  <a href="https://www.tangerine.com.au/" style="text-decoration:none;">
-    <div style="display:flex; align-items:center; gap:2px; background:#FF8A26; color:white; padding:8px 14px; border-radius:99px; font-weight:bold; font-size:12px;">
-      <img src="peely-speedy-max.png" style="width:20px; height:20px;">
-      1800 211 112
-    </div>
-  </a>
-  <a href="https://more.com.au/" style="text-decoration:none;">
-    <div style="display:flex; align-items:center; gap:2px; background:#FFF176; color:#111; padding:8px 14px; border-radius:99px; font-weight:bold; font-size:12px;">
-      <img src="download.webp" style="width:20px; height:20px;">
-      1800 733 368
-    </div>
-  </a>
+  <div class="left-phones">
+    <a href="https://www.tangerine.com.au/" class="pill pill-phone1">
+      <img src="peely-speedy-max.png"> 1800 211 112
+    </a>
+    <a href="https://more.com.au/" class="pill pill-phone2">
+      <img src="download.webp"> 1800 733 368
+    </a>
+  </div>
   
-</div>
-
-  
-  <div class="menu-links">
-    <a href="#" class="active" onclick="setCat('lahat',this);return false;">NBN</a>
-    <a href="#" onclick="setCat('wifi',this);return false;">VoIP</a>
-    <a href="#" onclick="setCat('computer',this);return false;">Mobile</a>
-    <a href="#" onclick="setCat('printer',this);return false;">Printer</a>
-    <a href="#" onclick="setCat('pera',this);return false;">Pera/App</a>
-    <a href="#aus-time" style="background:#2563eb;border-color:#2563eb">🕐 Time</a>
+  <div class="right-menu">
+    <a href="#" class="pill pill-menu active" onclick="setCat('lahat',this);return false;">NBN</a>
+    <a href="#" class="pill pill-menu" onclick="setCat('wifi',this);return false;">VoIP</a>
+    <a href="#" class="pill pill-menu" onclick="setCat('computer',this);return false;">Mobile</a>
+    <a href="#" class="pill pill-menu" onclick="setCat('printer',this);return false;">Printer</a>
+    <a href="#" class="pill pill-menu" onclick="setCat('pera',this);return false;">Pera/App</a>
+    <a href="#aus-time" class="pill pill-time">🕐 Time</a>
   </div>
 </nav>
 <!-- END: STATIC MENUBAR -->
-
   <!-- This is a comment ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
   
