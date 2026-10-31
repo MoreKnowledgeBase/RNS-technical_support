@@ -23,15 +23,12 @@
 
 box.innerHTML='<div style="width:calc(100% - 280px);margin:15px 20px 15px 250px;min-height:180px;...'>
   +'<div style="font-size:13px;letter-spacing:3px;...">📢 LATEST UPDATE</div>'
-  +'<div style="font-size:28px;...">'+data.icon+' '+data.title+' 🎉</div>'
+  +'<div style="font-size:28px;...">'+data.icon+' 📢'+data.title+' 🎉</div>'
   +'<div style="font-size:18px;...">'+data.message+'</div></div>';
 
 
 
-    
-      +'<div style="font-size:11px;letter-spacing:2px;font-weight:800;opacity:.7;">📢 LATEST UPDATE</div>'
-      +'<div style="font-size:18px;font-weight:800;margin-top:6px;">'+data.icon+' '+data.title+' 🎉</div>'
-      +'<div style="font-size:14px;opacity:.9;margin-top:4px;">'+data.message+'</div></div>';
+
   }
   window.updateRNSBanner=function(t,m,i){
     var d=getData(); if(t)d.title=t; if(m)d.message=m; if(i)d.icon=i;
