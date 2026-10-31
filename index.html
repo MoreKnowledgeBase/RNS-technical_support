@@ -1,68 +1,46 @@
 <!DOCTYPE html>
-<html lang="tl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RNS Technical Support - Knowledge Base</title>
+<header style="position:relative">
+<div id="latest-update-box"></div>
+<script>
+(function(){
+  var box=document.getElementById('latest-update-box');
+  if(!box) return;
+  var KEY='rns_banner_name_only_final';
+  var name="RANDOLF SEGUBAN", message="Dito mo ilalagay yung bday greetings mo.", personPic="", title="Happy Birthday!";
+  try{ var s=localStorage.getItem(KEY); if(s){ var d=JSON.parse(s); name=d.name||name; message=d.message||message; personPic=d.personPic||""; title=d.title||title; } }catch(e){}
+  function render(){
+    box.innerHTML = `
+      <div style="position:relative;width:calc(100% - 300px);margin:40px 20px 25px 260px;min-height:130px;background:rgba(255,255,255,0.12);border:2px dashed rgba(255,255,255,0.5);border-radius:20px;padding:35px 25px 25px;display:flex;justify-content:center;align-items:center;">
+        <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#1e293b;padding:5px 18px;border-radius:99px;font-size:12px;letter-spacing:3px;font-weight:800;border:1px solid rgba(255,255,255,0.3);">📢 LATEST UPDATE</div>
+        <div style="flex:1;text-align:center;">
+          <div style="font-size:48px;font-weight:900;color:white;letter-spacing:2px;text-transform:uppercase;">${name}</div>
+          <div style="font-size:14px;opacity:.7;margin-top:4px;">${message}</div>
+        </div>
+        <div style="text-align:center;margin-left:20px;display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div style="font-size:18px;font-weight:800;color:white;">${title}</div>
+          <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;border:3px solid white;box-shadow:0 4px 15px rgba(0,0,0,0.4);background:rgba(255,255,255,0.2);">
+            ${personPic ? `<img src="${personPic}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<div style=\\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:36px;\\'>🎂</div>'">` : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:36px;">🎂</div>`}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+  if(location.search.includes('admin=rns123')){
+    var btn=document.createElement('button'); btn.textContent='✏ EDIT BIRTHDAY'; btn.style='position:fixed;bottom:20px;right:20px;z-index:99999;padding:14px 20px;border-radius:99px;border:none;background:#2563eb;color:white;font-weight:700;cursor:pointer;';
+    btn.onclick=function(){ 
+      var n=prompt('NAME (gitna, malaki):',name); if(n===null)return; 
+      var t=prompt('Title sa taas ng picture (ex: Happy Birthday!):',title); if(t===null)return;
+      var m=prompt('Greeting sa baba ng NAME:',message); if(m===null)return; 
+      var p=prompt('Picture link - i-paste mo yung buong https:// link ng picture:',personPic); if(p===null)return; 
+      localStorage.setItem(KEY, JSON.stringify({name:n,title:t,message:m,personPic:p})); location.reload(); 
+    }; document.body.appendChild(btn);
+  }
+  render();
+})();
+</script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#f0f4ff;color:#222}
-header{background:linear-gradient(135deg,#0f172a,#2563eb);color:#fff;text-align:center;padding:48px 16px 60px;position:relative}
-header h1{font-size:38px;line-height:1.1}
-header h1 span{color:#facc15}
-header p{opacity:.9;max-width:600px;margin:14px auto 22px;font-size:16px}
-.search{max-width:620px;margin:0 auto;background:#fff;border-radius:999px;display:flex;padding:6px 6px 6px 20px}
-.search input{flex:1;border:none;outline:none;font-size:16px}
-.search button{background:#2563eb;color:#fff;border:none;padding:12px 22px;border-radius:999px;font-weight:700;cursor:pointer}
-.wrap{max-width:1000px;margin:-28px auto 0;padding:0 16px 40px}
-.cats{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:14px 0 20px}
-.cat{background:#000 !important;color:#fff !important;border:1px solid #444 !important;padding:9px 16px;border-radius:999px;cursor:pointer;font-weight:600;font-size:14px}
-.cat.active{background:#ff7f11 !important;color:#000 !important;font-weight:900 !important;border-color:#ff7f11 !important}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.07);cursor:pointer}
-.card img{width:100%;height:150px;object-fit:cover}
-.body{padding:16px}
-.badge{display:inline-block;font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;margin-bottom:8px}
-.b1{background:#dbeafe;color:#1d4ed8}.b2{background:#dcfce7;color:#166534}.b3{background:#fef9c3;color:#854d0e}.b4{background:#ffe4e6;color:#be123c}
-.card h3{font-size:16px;line-height:1.3;margin-bottom:6px}
-.card p{font-size:13.5px;color:#666;line-height:1.5}
-.foot{display:flex;justify-content:space-between;margin-top:12px;font-size:12px;color:#999}
-.section{background:#fff;border-radius:20px;padding:24px;margin-top:20px;box-shadow:0 4px 18px rgba(0,0,0,.06)}
-.section h2{margin-bottom:12px}
-video{width:100%;border-radius:14px;background:#000}
-.faq{border-bottom:1px solid #eee;padding:14px 0;cursor:pointer}
-.faq p{display:none;color:#555;margin-top:8px;line-height:1.6;font-size:14px}
-.faq.open p{display:block}
-footer{text-align:center;padding:24px;color:#888;font-size:13px}
-#noResult{display:none;text-align:center;padding:20px;color:#888}
-.team-row{position:relative;cursor:pointer}
-.team-members-tooltip{display:none;position:absolute;left:105%;top:0;background:#111827;border:1px solid #374151;border-radius:10px;padding:10px 14px;min-width:160px;z-index:9999}
-.team-row:hover .team-members-tooltip{display:block}
+.team-row{position:relative;cursor:pointer;}
+.team-members-tooltip{display:none;position:absolute;left:105%;top:0;background:#111827;border:1px solid #374151;border-radius:10px;padding:10px 14px;min-width:160px;z-index:9999;}
+.team-row:hover .team-members-tooltip{display:block;}
 </style>
-</head>
-<body>
-
-<div style="position:absolute;top:16px;left:20px;display:flex;gap:14px;font-size:14px;font-weight:700;z-index:50">
-<a href="https://www.tangerine.com.au/" style="color:white;text-decoration:none;background:rgba(255,255,255,0.15);padding:8px 14px;border-radius:999px;display:inline-flex;align-items:center;gap:6px"><img src="peely-speedy-max.png" style="width:22px;height:22px;border-radius:50%;object-fit:cover"> 1800 211 112</a>
-<a href="https://www.more.com.au/" style="color:white;text-decoration:none;background:rgba(255,255,255,0.15);padding:8px 14px;border-radius:999px;display:inline-flex;align-items:center;gap:6px"><img src="download.webp" style="width:22px;height:22px;border-radius:50%;object-fit:cover"> 1800 733 368</a>
-</div>
-
-<div id="aus-time" style="position:absolute;top:75px;left:15px;background:rgba(0,0,0,0.45);backdrop-filter:blur(6px);color:white;padding:12px 14px;border-radius:14px;font-size:12.5px;line-height:1.7;min-width:210px;border:1px solid rgba(255,255,255,0.2);z-index:40">
-<div style="font-weight:800;font-size:13px;margin-bottom:4px">🇦🇺 AUSTRALIA TIME - LIVE 🟢</div>
-<div>Sydney: <b id="clock-sydney">--:--:--</b></div>
-<div>Melbourne: <b id="clock-melbourne">--:--:--</b></div>
-<div>Canberra: <b id="clock-canberra">--:--:--</b></div>
-<div>Brisbane: <b id="clock-brisbane">--:--:--</b></div>
-<div>Adelaide: <b id="clock-adelaide">--:--:--</b></div>
-<div>Darwin: <b id="clock-darwin">--:--:--</b></div>
-<div>Perth: <b id="clock-perth">--:--:--</b></div>
-<div>Hobart: <b id="clock-hobart">--:--:--</b></div>
-<div style="font-size:11px;opacity:.7;margin-top:4px" id="aus-date">--</div>
-</div>
-
-<div id="team-leaders-box" style="position:absolute;left:15px;top:380px;width:240px;z-index:20">
-<div style="background:rgba(0,0,0,0.55);border:1px solid rgba(255,255,255,0.25);border-radius:14px;padding:12px">
-<div style="font-size:12px;letter-spacing:2px;font-weight:900;text-align:center;margin-bottom:10px;color:#facc15">TEAM LEADERS</div>
-<table style="width:100%;border-collapse:collapse;font-size:11px;color:white">
-<thead><tr style="background:#2563eb"><th style="padding:6px 3px;text-align:left">Leader</th><th>Shift</th><th>Team</th><th>Cnt</th><th>Ext</th></tr></thead>
-<tbody id="team-table-body"></
+<div id="team-leaders-box" style="position:absolute;left:15px;top:380px;width:240px;z-index:20;"><div style="background:rgba(0,0,0,0.55);border:1px solid rgba(255,255,255,0.25);border-radius:14px;padding:12px;"><div style="font-size:12px;letter-spacing:2px;font-weight:900;text-align:center;margin-bottom:10px;color:#facc15;">TEAM LEADERS</div><table style="width:100%;border-collapse:collapse;font-size:11px;color:white;"><thead><tr style="background:#2563eb;"><th style="padding:6px 3px;text-align:left;">Leader</th><th>Shift</th><th>Team</th><th>Cnt</th><th>
