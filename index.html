@@ -67,7 +67,88 @@
 .team-members-tooltip{display:none;position:absolute;left:105%;top:0;background:#111827;border:1px solid #374151;border-radius:10px;padding:10px 14px;min-width:160px;z-index:9999;}
 .team-row:hover .team-members-tooltip{display:block;}
 </style>
-<div id="team-leaders-box" style="position:absolute;left:15px;top:380px;width:240px;z-index:20;"><div style="background:rgba(0,0,0,0.55);border:1px solid rgba(255,255,255,0.25);border-radius:14px;padding:12px;"><div style="font-size:12px;letter-spacing:2px;font-weight:900;text-align:center;margin-bottom:10px;color:#facc15;">TEAM LEADERS</div><table style="width:100%;border-collapse:collapse;font-size:11px;color:white;"><thead><tr style="background:#2563eb;"><th style="padding:6px 3px;text-align:left;">Leader</th><th>Shift</th><th>Team</th><th>Cnt</th><th>Ext</th></tr></thead><tbody id="team-table-body"></tbody></table><div style="font-size:8px;opacity:.5;text-align:center;margin-top:6px;">Hover sa leader para makita members</div></div></div>
+
+  
+<!-- TEAM TOM - 20 Rows Editable -->
+<div id="team-tom-box" style="position:absolute;left:15px;top:380px;width:340px;z-index:30;">
+<div style="background:rgba(0,0,0,0.75);border:1px solid rgba(255,255,255,0.3);border-radius:14px;padding:14px;max-height:520px;overflow:auto;box-shadow:0 8px 20px rgba(0,0,0,0.4);">
+<div style="font-size:13px;letter-spacing:2px;font-weight:900;text-align:center;margin-bottom:12px;color:#facc15;">TEAM TOM</div>
+<table style="width:100%;border-collapse:collapse;font-size:10px;color:white;">
+<thead><tr style="background:#2563eb;"><th style="padding:6px 3px;text-align:left;">Name</th><th>In</th><th>Out</th><th>Status</th><th>Sched</th><th>Leave</th></tr></thead>
+<tbody id="team-tom-body"></tbody>
+</table>
+<div style="font-size:7px;opacity:.5;text-align:center;margin-top:8px;line-height:1.3;">Auto: logout pag lampas Out • Gray pag naka-leave<br>Edit via ?admin=rns123</div>
+</div>
+</div>
+
+<script>
+(function(){
+  var KEY_TOM='rns_team_tom_v2';
+  function blankWeek(){ return {Mon:"Present",Tue:"Present",Wed:"Present",Thu:"Present",Fri:"Present",Sat:"Restday",Sun:"Restday"}; }
+  var defaultTom=[]; for(var i=0;i<20;i++){ defaultTom.push({name:"",inTime:"",outTime:"",schedule:blankWeek(),leave:""}); }
+  var teams=defaultTom;
+  try{ var s=localStorage.getItem(KEY_TOM); if(s){ var parsed=JSON.parse(s); if(Array.isArray(parsed) && parsed.length===20){ teams=parsed; teams.forEach(t=>{ if(!t.schedule) t.schedule=blankWeek(); }); } } }catch(e){}
+  function parseTimeToMinutes(str){ if(!str) return null; var s=str.trim().toLowerCase(); var m=s.match(/(\d{1,2}):?(\d{2})?\s*(am|pm)?/); if(!m) return null; var h=parseInt(m[1],10), mm=m[2]?parseInt(m[2],10):0; var ap=m[3]; if(ap==="pm" && h<12) h+=12; if(ap==="am" && h===12) h=0; if(h>23) return null; return h*60+mm; }
+  function getTodayName(){ var days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]; return days[new Date().getDay()]; }
+  function calcStatus(t){ if(!t.name || t.name.trim()==="") return {text:"-", gray:false}; if(t.leave && t.leave.trim()!=="") return {text:t.leave, gray:true}; var today=getTodayName(); var todaySched=t.schedule && t.schedule[today] ? t.schedule[today] : "Present"; if(todaySched==="Restday") return {text:"Restday", gray:false}; var outMin=parseTimeToMinutes(t.outTime); if(outMin===null) return {text:"-", gray:false}; var now=new Date(); var nowMin=now.getHours()*60+now.getMinutes(); if(nowMin>outMin) return {text:"logout", gray:false}; return {text:"naka work mode", gray:false}; }
+  function isGrayed(t){ return t.leave && t.leave.trim()!==""; }
+  function render(){
+    var tbody=document.getElementById('team-tom-body'); if(!tbody) return;
+    var today=getTodayName();
+    tbody.innerHTML = teams.map((t,i)=>{
+      var st=calcStatus(t); var gray=isGrayed(t); var schedToday=t.schedule ? t.schedule[today] : "Present";
+      var rowStyle=gray ? "opacity:0.35;background:rgba(255,255,255,0.12);" : "";
+      var statusColor=st.text==="logout"?"#fb7185": st.text==="naka work mode"?"#4ade80" : st.text==="Restday"?"#94a3b8" : "#facc15"; if(gray) statusColor="#94a3b8";
+      var schedColor=schedToday==="Present"?"#4ade80":"#94a3b8";
+      return `<tr style="border-bottom:1px solid rgba(255,255,255,0.08);${rowStyle}">
+        <td style="padding:5px 3px;font-weight:600;white-space:nowrap;overflow:hidden;max-width:70px;text-overflow:ellipsis;">${t.name||"-"}</td>
+        <td style="padding:5px 1px;text-align:center;">${t.inTime||"-"}</td>
+        <td style="padding:5px 1px;text-align:center;">${t.outTime||"-"}</td>
+        <td style="padding:5px 1px;text-align:center;color:${statusColor};font-weight:800;font-size:9px;">${st.text}</td>
+        <td style="padding:5px 1px;text-align:center;color:${schedColor};cursor:pointer;text-decoration:underline;" onclick="window.openTomSchedule(${i})">${schedToday.substring(0,4)}</td>
+        <td style="padding:5px 1px;text-align:center;color:#fbbf24;font-weight:700;">${t.leave||"-"}</td>
+      </tr>`;
+    }).join('');
+  }
+  window.openTomSchedule=function(idx){
+    var t=teams[idx]; var week=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+    var html=week.map(d=>`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><span style="color:white;font-size:12px;">${d}</span><select id="sched-${d}" style="padding:4px;border-radius:6px;background:#0f172a;color:white;border:1px solid #475569;"><option value="Present" ${t.schedule[d]==="Present"?"selected":""}>Present</option><option value="Restday" ${t.schedule[d]==="Restday"?"selected":""}>Restday</option></select></div>`).join('');
+    var overlay=document.createElement('div'); overlay.style='position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999999;display:flex;justify-content:center;align-items:center;padding:20px;';
+    var box=document.createElement('div'); box.style='background:#1e293b;border:1px solid #334155;border-radius:16px;padding:20px;width:90%;max-width:350px;';
+    box.innerHTML=`<h4 style="color:white;margin-bottom:12px;">Schedule ni ${t.name||"Staff "+(idx+1)} - Mon to Sun</h4>${html}<button id="save-sched" style="width:100%;padding:10px;background:#22c55e;color:black;font-weight:800;border:none;border-radius:8px;margin-top:12px;cursor:pointer;">Save Schedule</button><button id="close-sched" style="width:100%;padding:8px;background:#374151;color:white;border:none;border-radius:8px;margin-top:6px;cursor:pointer;">Close</button>`;
+    overlay.appendChild(box); document.body.appendChild(overlay);
+    document.getElementById('close-sched').onclick=()=>overlay.remove();
+    document.getElementById('save-sched').onclick=()=>{ week.forEach(d=>{ t.schedule[d]=document.getElementById(`sched-${d}`).value; }); localStorage.setItem(KEY_TOM, JSON.stringify(teams)); overlay.remove(); render(); };
+  };
+  function openEditor(){
+    var overlay=document.createElement('div'); overlay.style='position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:999999;display:flex;justify-content:center;align-items:center;padding:20px;overflow:auto;';
+    var box=document.createElement('div'); box.style='background:#1e293b;border:1px solid #334155;border-radius:16px;padding:20px;width:98%;max-width:1100px;max-height:92vh;overflow:auto;';
+    var header=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;position:sticky;top:0;background:#1e293b;padding-bottom:10px;z-index:1;"><h3 style="margin:0;color:white;">📋 TEAM TOM - 20 Staff Editor</h3><button id="close-tom" style="background:#ef4444;color:white;border:none;padding:6px 12px;border-radius:8px;cursor:pointer;">X</button></div>
+    <div style="display:grid;grid-template-columns:1.2fr 80px 80px 100px 120px 120px;gap:6px;margin-bottom:8px;padding:8px;background:#0f172a;border-radius:6px;font-size:10px;color:#facc15;font-weight:800;"><div>Name</div><div>In</div><div>Out</div><div>Status (auto)</div><div>Schedule (Mon-Sun)</div><div>Leave</div></div>`;
+    var rows=""; teams.forEach((t,idx)=>{ rows+=`<div style="display:grid;grid-template-columns:1.2fr 80px 80px 100px 120px 120px;gap:6px;margin-bottom:6px;align-items:center;">
+        <input id="tom-name-${idx}" value="${t.name}" placeholder="Name ${idx+1}" style="padding:6px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;font-size:11px;">
+        <input id="tom-in-${idx}" value="${t.inTime}" placeholder="9:00 AM" style="padding:6px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;font-size:11px;">
+        <input id="tom-out-${idx}" value="${t.outTime}" placeholder="4:00 PM" style="padding:6px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;font-size:11px;">
+        <div style="font-size:10px;color:#94a3b8;text-align:center;">auto</div>
+        <button onclick="window.openTomSchedule(${idx})" style="padding:6px;border-radius:6px;border:1px solid #475569;background:#1e293b;color:#facc15;font-size:10px;cursor:pointer;">Edit Mon-Sun</button>
+        <select id="tom-leave-${idx}" style="padding:6px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;font-size:11px;">
+          <option value="" ${t.leave===""?"selected":""}>- None -</option><option value="SL" ${t.leave==="SL"?"selected":""}>SL</option><option value="AWOL" ${t.leave==="AWOL"?"selected":""}>AWOL</option><option value="LOA" ${t.leave==="LOA"?"selected":""}>LOA</option><option value="EL" ${t.leave==="EL"?"selected":""}>EL</option><option value="BL" ${t.leave==="BL"?"selected":""}>BL</option><option value="OFFICIAL LEAVE" ${t.leave==="OFFICIAL LEAVE"?"selected":""}>OFFICIAL LEAVE</option>
+        </select>
+      </div>`; });
+    box.innerHTML=header+rows+`<button id="save-tom" style="width:100%;padding:14px;background:#22c55e;color:black;font-weight:800;border:none;border-radius:10px;cursor:pointer;margin-top:12px;position:sticky;bottom:0;">💾 SAVE TEAM TOM (20)</button>`;
+    overlay.appendChild(box); document.body.appendChild(overlay);
+    document.getElementById('close-tom').onclick=()=>overlay.remove();
+    document.getElementById('save-tom').onclick=()=>{ teams.forEach((t,idx)=>{ t.name=document.getElementById(`tom-name-${idx}`).value; t.inTime=document.getElementById(`tom-in-${idx}`).value; t.outTime=document.getElementById(`tom-out-${idx}`).value; t.leave=document.getElementById(`tom-leave-${idx}`).value; }); localStorage.setItem(KEY_TOM, JSON.stringify(teams)); overlay.remove(); render(); alert('Saved TEAM TOM 20 staff!'); };
+  }
+  if(location.search.includes('admin=rns123')){ var btn=document.createElement('button'); btn.textContent='📋 EDIT TEAM TOM'; btn.style='position:fixed;bottom:20px;right:340px;z-index:99999;padding:14px 20px;border-radius:99px;border:none;background:#22c55e;color:black;font-weight:700;cursor:pointer;'; btn.onclick=openEditor; document.body.appendChild(btn); }
+  render(); setInterval(render, 60000);
+})();
+</script>
+
+
+
+
+  
 <script>
 (function(){
   var KEY_TEAM='rns_team_v2';
