@@ -9,6 +9,65 @@
     padding: 10px;
   }
 </style>
+
+<!-- This is a comment ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<!-- START: STATIC MENUBAR - HINDI GUMAGALAW -->
+<style>
+#static-menubar{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:48px;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,0.15);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px;
+  z-index:999999;
+  box-shadow:0 4px 20px rgba(0,0,0,0.3);
+}
+#static-menubar .logo{color:#facc15;font-weight:900;font-size:14px;letter-spacing:1px}
+#static-menubar .menu-links{display:flex;gap:8px;align-items:center}
+#static-menubar .menu-links a{
+  color:white;
+  text-decoration:none;
+  padding:8px 14px;
+  border-radius:99px;
+  font-size:12px;
+  font-weight:700;
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.1);
+  transition:.2s;
+}
+#static-menubar .menu-links a:hover{background:#ff7f11;color:#000;border-color:#ff7f11}
+#static-menubar .menu-links a.active{background:#ff7f11;color:#000}
+body{padding-top:48px !important}
+@media(max-width:700px){
+  #static-menubar .menu-links a{padding:6px 10px;font-size:10px}
+  #static-menubar .logo{font-size:11px}
+}
+</style>
+
+<nav id="static-menubar">
+  <div class="logo">RNS • KNOWLEDGE BASE</div>
+  <div class="menu-links">
+    <a href="#" class="active" onclick="setCat('lahat',this);return false;">NBN</a>
+    <a href="#" onclick="setCat('wifi',this);return false;">VoIP</a>
+    <a href="#" onclick="setCat('computer',this);return false;">Mobile</a>
+    <a href="#" onclick="setCat('printer',this);return false;">Printer</a>
+    <a href="#" onclick="setCat('pera',this);return false;">Pera/App</a>
+    <a href="#aus-time" style="background:#2563eb;border-color:#2563eb">🕐 Time</a>
+  </div>
+</nav>
+<!-- END: STATIC MENUBAR -->
+
+  <!-- This is a comment ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+  
 </head>
 <body>
 <!-- This is a comment ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
