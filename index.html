@@ -66,70 +66,69 @@ updateAUTimes();
 </script>
 </div>
 <!-- This is a comment ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-
-<!-- TECHNICAL SUPPORT - EXACT SA DRAWING MO -->
-<div id="tech-support-main" style="position:absolute; left:250px; top:60px; width:calc(100% - 270px); min-height:620px; border:1px solid rgba(255,0,0,0.4); border-radius:12px; background:rgba(255,255,255,0.02); padding:20px; z-index:10;">
-
-  <!-- Technical Support Title - nasa gitna taas, may red box -->
-  <div style="display:flex; justify-content:center; margin-bottom:20px;">
-    <div id="tech-title" contenteditable="true" style="border:2px solid red; border-radius:8px; padding:8px 30px; color:#00ff66; font-size:28px; font-weight:900; font-family:Arial; outline:none; text-align:center;">Technical Support</div>
-  </div>
-
-  <!-- Hari Birthday - kanan taas -->
-  <div id="hari-box" contenteditable="true" style="position:absolute; right:20px; top:20px; border:2px solid red; border-radius:8px; padding:6px 14px; color:red; font-weight:900; font-size:13px; background:rgba(255,255,255,0.05); outline:none; text-align:center; min-width:120px;">Hari Birthday</div>
-
-  <!-- Picture - kanan baba ng birthday -->
-  <div id="pic-container" style="position:absolute; right:20px; top:70px; width:140px; height:90px; border:2px solid red; border-radius:8px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.05); cursor:pointer; overflow:hidden;" onclick="document.getElementById('pic-input2').click()">
-    <span id="pic-label" style="color:white; font-size:14px;">Picture</span>
-    <img id="pic-preview2" style="display:none; width:100%; height:100%; object-fit:cover;">
-  </div>
-  <input type="file" id="pic-input2" accept="image/*" style="display:none;">
-
-  <!-- TEXT - gitna malaki -->
-  <div id="tech-big-text" contenteditable="true" style="margin:50px auto 20px auto; width:60%; min-height:160px; border:2px solid red; display:flex; align-items:center; justify-content:center; color:white; font-size:52px; font-weight:900; font-family:serif; outline:none; text-align:center; background:rgba(0,60,255,0.3);">TEXT</div>
-
-  <!-- 5 text pills - baba ng TEXT -->
-  <div style="display:flex; gap:10px; justify-content:center; margin-top:25px; flex-wrap:wrap;">
-    <div class="small-pill" contenteditable="true" style="background:#ffaa00; color:black; padding:8px 18px; border-radius:20px; font-weight:800; font-size:12px; min-width:60px; text-align:center; outline:none;">text</div>
-    <div class="small-pill" contenteditable="true" style="background:#ffaa00; color:black; padding:8px 18px; border-radius:20px; font-weight:800; font-size:12px; min-width:60px; text-align:center; outline:none;">text</div>
-    <div class="small-pill" contenteditable="true" style="background:#ffaa00; color:black; padding:8px 18px; border-radius:20px; font-weight:800; font-size:12px; min-width:60px; text-align:center; outline:none;">text</div>
-    <div class="small-pill" contenteditable="true" style="background:#ffaa00; color:black; padding:8px 18px; border-radius:20px; font-weight:800; font-size:12px; min-width:60px; text-align:center; outline:none;">text</div>
-    <div class="small-pill" contenteditable="true" style="background:#ffaa00; color:black; padding:8px 18px; border-radius:20px; font-weight:800; font-size:12px; min-width:60px; text-align:center; outline:none;">text</div>
-  </div>
-
-</div>
+<!-- START: LATEST UPDATE BANNER - EDITABLE NO CODE -->
+<div id="latest-update-box"></div>
 
 <script>
 (function(){
-  var KEY='rns_tech_support_layout_v2';
-  function save(){
-    var data={
-      title:document.getElementById('tech-title').innerHTML,
-      big:document.getElementById('tech-big-text').innerHTML,
-      smalls:[...document.querySelectorAll('.small-pill')].map(e=>e.innerHTML),
-      birthday:document.getElementById('hari-box').innerHTML,
-      pic:document.getElementById('pic-preview2').src
+  var box=document.getElementById('latest-update-box');
+  if(!box) return;
+  var KEY='rns_banner_red_circle_final';
+  // DEFAULT NA NASA PICTURE MO
+  var data={
+    name:"MALAPIT NA ANG 13TH MONTH!!!",
+    small:"MALIGAYANG KAARAWAN",
+    title:"Happy Birthday!",
+    pic:"" // pag wala, heart lang
+  };
+  try{
+    var s=localStorage.getItem(KEY);
+    if(s){ var d=JSON.parse(s); data.name=d.name||data.name; data.small=d.small||data.small; data.title=d.title||data.title; data.pic=d.pic||data.pic; }
+  }catch(e){}
+
+  function render(){
+    box.innerHTML=`
+      <div style="position:relative;width:calc(100% - 300px);margin:40px 20px 25px 260px;min-height:130px;background:rgba(255,255,255,0.08);border:1.5px dashed rgba(255,255,255,0.5);border-radius:20px;padding:30px 20px 22px;display:flex;justify-content:center;align-items:center;backdrop-filter:blur(4px);">
+        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#0f172a;padding:5px 18px;border-radius:99px;font-size:11px;letter-spacing:2px;font-weight:800;border:1px solid rgba(255,255,255,0.3);color:white;white-space:nowrap">📢 LATEST UPDATE</div>
+        <div style="flex:1;text-align:center;">
+          <div style="font-size:42px;font-weight:900;color:white;letter-spacing:1px;text-transform:uppercase;line-height:1.1;text-shadow:0 2px 10px rgba(0,0,0,0.3)">${data.name}</div>
+          <div style="font-size:14px;opacity:.7;margin-top:8px;color:#cbd5e1;letter-spacing:.5px">${data.small}</div>
+        </div>
+        <div style="text-align:center;margin-left:25px;display:flex;flex-direction:column;align-items:center;gap:10px;min-width:120px">
+          <div style="font-size:15px;font-weight:800;color:white;">${data.title}</div>
+          <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;border:3px solid white;box-shadow:0 4px 20px rgba(0,0,0,0.4);background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center">
+            ${data.pic ? `<img src="${data.pic}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<div style=\\'font-size:40px\\'>🧡</div>'">` : `<div style="font-size:42px">🧡</div>`}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // EDIT BUTTON - lalabas lang pag may ?admin=rns123
+  if(location.search.includes('admin=rns123')){
+    var btn=document.createElement('button');
+    btn.textContent='✏️ EDIT BANNER (Red Circle)';
+    btn.style='position:fixed;bottom:20px;right:20px;z-index:999999;padding:14px 22px;border-radius:99px;border:none;background:#ff7f11;color:#000;font-weight:900;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.4);font-size:14px';
+    btn.onclick=function(){
+      var n=prompt('1. MALAKING TEXT SA GITNA:\n(ex: MALAPIT NA ANG 13TH MONTH!!!)',data.name);
+      if(n===null) return;
+      var sm=prompt('2. MALIIT NA TEXT SA BABA:\n(ex: MALIGAYANG KAARAWAN)',data.small);
+      if(sm===null) return;
+      var t=prompt('3. TITLE SA KANAN TAAS:\n(ex: Happy Birthday!)',data.title);
+      if(t===null) return;
+      var p=prompt('4. PICTURE LINK (https://):\nI-paste mo buong link ng picture.\nPag wala, blank lang = heart lalabas',data.pic);
+      if(p===null) return;
+      localStorage.setItem(KEY,JSON.stringify({name:n,small:sm,title:t,pic:p}));
+      location.reload();
     };
-    localStorage.setItem(KEY, JSON.stringify(data));
+    document.body.appendChild(btn);
   }
-  function load(){
-    try{
-      var d=JSON.parse(localStorage.getItem(KEY)); if(!d) return;
-      if(d.title) document.getElementById('tech-title').innerHTML=d.title;
-      if(d.big) document.getElementById('tech-big-text').innerHTML=d.big;
-      if(d.smalls){ document.querySelectorAll('.small-pill').forEach((el,i)=>{ if(d.smalls[i]) el.innerHTML=d.smalls[i]; }); }
-      if(d.birthday) document.getElementById('hari-box').innerHTML=d.birthday;
-      if(d.pic && d.pic.startsWith('data:')){ document.getElementById('pic-preview2').src=d.pic; document.getElementById('pic-preview2').style.display='block'; document.getElementById('pic-label').style.display='none'; }
-    }catch(e){}
-  }
-  document.addEventListener('input', save);
-  document.getElementById('pic-input2').addEventListener('change', function(e){
-    var f=e.target.files[0]; if(!f) return;
-    var r=new FileReader(); r.onload=function(ev){ document.getElementById('pic-preview2').src=ev.target.result; document.getElementById('pic-preview2').style.display='block'; document.getElementById('pic-label').style.display='none'; save(); }; r.readAsDataURL(f);
-  });
-  load();
+
+  render();
 })();
 </script>
+<!-- END: LATEST UPDATE BANNER -->
+
   <!-- This is a comment ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 </body>
