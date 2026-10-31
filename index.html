@@ -54,6 +54,114 @@
   
 
 
+
+
+
+
+
+
+
+
+
+  <style>
+.team-row{position:relative;cursor:pointer;}
+.team-members-tooltip{
+  display:none;position:absolute;left:105%;top:0;
+  background:#111827;border:1px solid #374151;border-radius:10px;
+  padding:10px 14px;min-width:160px;z-index:9999;
+  box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+.team-row:hover .team-members-tooltip{display:block;}
+</style>
+
+<div id="team-leaders-box" style="position:absolute;left:15px;top:380px;width:240px;z-index:10;">
+  <div style="background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.2);border-radius:14px;padding:12px;backdrop-filter:blur(6px);">
+    <div style="font-size:12px;letter-spacing:2px;font-weight:900;text-align:center;margin-bottom:10px;color:#facc15;">TEAM LEADERS</div>
+    <table style="width:100%;border-collapse:collapse;font-size:11px;color:white;">
+      <thead>
+        <tr style="background:#2563eb;">
+          <th style="padding:6px 3px;text-align:left;">Leader</th>
+          <th style="padding:6px 2px;">Shift</th>
+          <th style="padding:6px 2px;">Team</th>
+          <th style="padding:6px 2px;">Cnt</th>
+          <th style="padding:6px 2px;">Ext</th>
+        </tr>
+      </thead>
+      <tbody id="team-table-body"></tbody>
+    </table>
+    <div style="font-size:8px;opacity:.5;text-align:center;margin-top:6px;">Hover sa leader para makita members</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var KEY_TEAM='rns_team_v2';
+  var defaultTeams=[
+    {leader:"Juan Dela Cruz",shift:"AM",team:"A",count:"8",ext:"101",members:["Ana - 101","Mark - 102","Liza - 103","Carlo - 104","Joy - 105","Ben - 106","Mia - 107","Sam - 108"]},
+    {leader:"Maria Santos",shift:"PM",team:"B",count:"6",ext:"102",members:["Pedro - 201","Nina - 202","Alex - 203","Kim - 204","Leo - 205","Tina - 206"]},
+    {leader:"Pedro Reyes",shift:"AM",team:"C",count:"7",ext:"103",members:["Jen - 301","Paul - 302","Rose - 303","Mike - 304","Ella - 305","Josh - 306","Kate - 307"]},
+    {leader:"Ana Lopez",shift:"GY",team:"A",count:"5",ext:"104",members:["Ryan - 401","Sara - 402","Tom - 403","Ivy - 404","Zed - 405"]},
+    {leader:"Jose Garcia",shift:"PM",team:"B",count:"9",ext:"105",members:["Luis - 501","Dana - 502","Omar - 503","Faye - 504","Glen - 505","Hope - 506","Iris - 507","Jack - 508","Kurt - 509"]}
+  ];
+  var teams=defaultTeams;
+  try{ var s=localStorage.getItem(KEY_TEAM); if(s) teams=JSON.parse(s); }catch(e){}
+
+  function render(){
+    var tbody=document.getElementById('team-table-body');
+    if(!tbody) return;
+    tbody.innerHTML = teams.map(t=>`
+      <tr class="team-row" style="border-bottom:1px solid rgba(255,255,255,0.08);">
+        <td style="padding:7px 3px;font-weight:700;color:#93c5fd;">${t.leader.split(' ')[0]}</td>
+        <td style="padding:7px 2px;text-align:center;">${t.shift}</td>
+        <td style="padding:7px 2px;text-align:center;">${t.team}</td>
+        <td style="padding:7px 2px;text-align:center;">${t.count}</td>
+        <td style="padding:7px 2px;text-align:center;">${t.ext}</td>
+        <td class="team-members-tooltip">
+          <div style="font-weight:800;font-size:12px;margin-bottom:6px;color:#facc15;">${t.leader}</div>
+          <div style="font-size:10px;line-height:1.6;">
+            ${t.members.map(m=>`• ${m}`).join('<br>')}
+          </div>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  if(location.search.includes('admin=rns123')){
+    var btn=document.createElement('button');
+    btn.textContent='👥 EDIT TEAM';
+    btn.style='position:fixed;bottom:20px;right:180px;z-index:99999;padding:14px 20px;border-radius:99px;border:none;background:#f59e0b;color:black;font-weight:700;cursor:pointer;';
+    btn.onclick=function(){
+      var txt = prompt('Edit TEAM - Format JSON, or iwan blank para default.\nPara madali, type mo lang leader names na comma separated:\nEx: Juan,Maria,Pedro,Ana,Jose','');
+      if(txt===null) return;
+      // Simple quick edit - palitan leaders lang
+      if(txt.includes(',')){
+        var names = txt.split(',').map(s=>s.trim());
+        teams.forEach((t,i)=>{ if(names[i]) t.leader=names[i]; });
+        localStorage.setItem(KEY_TEAM, JSON.stringify(teams));
+        location.reload();
+      }
+    };
+    document.body.appendChild(btn);
+  }
+  render();
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
   
   <!-- TAPOS NA YUNG LATEST UPDATE AREA - NASA BABA NA YUNG DATI MONG HEADER -->
 
