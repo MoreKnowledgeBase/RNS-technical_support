@@ -96,6 +96,44 @@
 })();
 </script>
 
+
+
+
+    <div id="sub-cat-box" style="display:none;text-align:center;margin:20px 0 10px;gap:10px;justify-content:center;flex-wrap:wrap;"></div>
+<div id="sub-result-box" style="display:none;text-align:center;margin:20px auto;max-width:800px;background:white;border-radius:16px;padding:20px;"></div>
+<script>
+setTimeout(function(){
+  var nbnData = {
+    "FTTP": { title:"FTTP - Fiber to the Premises", desc:"Direct fiber hanggang bahay. Pinaka mabilis!", img:"https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600" },
+    "FTTC": { title:"FTTC - Fiber to the Curb", desc:"Fiber hanggang curb, copper papuntang bahay.", img:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600" },
+    "HFC": { title:"HFC - Hybrid Fiber Coaxial", desc:"Gamit dating Foxtel cable.", img:"https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600" },
+    "FX": { title:"FX - Fixed Wireless", desc:"Wireless gamit antenna sa bubong.", img:"https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600" },
+    "FTTN/B": { title:"FTTN/B - Fiber to Node/Building", desc:"Fiber hanggang node, copper papuntang bahay.", img:"https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600" }
+  };
+  var realSetCat = window.setCat;
+  window.setCat = function(c, el){
+    if(realSetCat) realSetCat(c,el);
+    var box=document.getElementById('sub-cat-box');
+    var res=document.getElementById('sub-result-box');
+    if(c.toLowerCase().indexOf('nbn')>-1){
+      box.style.display='flex';
+      box.innerHTML = Object.keys(nbnData).map(w=>`<button onclick="showNBN('${w}')" style="padding:10px 20px;border-radius:99px;border:2px solid #ff7f11;background:#000;color:#fff;font-weight:800;cursor:pointer;margin:4px;">${w}</button>`).join('');
+      res.style.display='none';
+    } else { box.style.display='none'; res.style.display='none'; }
+  };
+  window.showNBN = function(key){
+    var d=nbnData[key];
+    var res=document.getElementById('sub-result-box');
+    document.querySelectorAll('#sub-cat-box button').forEach(b=>{ b.style.background='#000'; b.style.color='#fff'; if(b.textContent===key){ b.style.background='#ff7f11'; b.style.color='#000'; } });
+    res.style.display='block';
+    res.innerHTML=`<h2 style="color:#ff7f11;">${d.title}</h2><p style="color:#333;">${d.desc}</p><img src="${d.img}" style="width:100%;max-height:300px;object-fit:cover;border-radius:12px;">`;
+    res.scrollIntoView({behavior:'smooth'});
+  };
+}, 800);
+</script>
+
+
+  
     <!-- PARA MAPALITA YUNG KULAY NG 4 BUBBLES-->
 
 
@@ -195,38 +233,7 @@ setInterval(updateAusClocks, 1000);
 
 
 
-  <div id="sub-cat-box" style="display:none;text-align:center;margin:20px 0 10px;gap:10px;justify-content:center;flex-wrap:wrap;"></div>
-<div id="sub-result-box" style="display:none;text-align:center;margin:20px auto;max-width:800px;background:white;border-radius:16px;padding:20px;"></div>
-<script>
-setTimeout(function(){
-  var nbnData = {
-    "FTTP": { title:"FTTP - Fiber to the Premises", desc:"Direct fiber hanggang bahay. Pinaka mabilis!", img:"https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600" },
-    "FTTC": { title:"FTTC - Fiber to the Curb", desc:"Fiber hanggang curb, copper papuntang bahay.", img:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600" },
-    "HFC": { title:"HFC - Hybrid Fiber Coaxial", desc:"Gamit dating Foxtel cable.", img:"https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600" },
-    "FX": { title:"FX - Fixed Wireless", desc:"Wireless gamit antenna sa bubong.", img:"https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600" },
-    "FTTN/B": { title:"FTTN/B - Fiber to Node/Building", desc:"Fiber hanggang node, copper papuntang bahay.", img:"https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600" }
-  };
-  var realSetCat = window.setCat;
-  window.setCat = function(c, el){
-    if(realSetCat) realSetCat(c,el);
-    var box=document.getElementById('sub-cat-box');
-    var res=document.getElementById('sub-result-box');
-    if(c.toLowerCase().indexOf('nbn')>-1){
-      box.style.display='flex';
-      box.innerHTML = Object.keys(nbnData).map(w=>`<button onclick="showNBN('${w}')" style="padding:10px 20px;border-radius:99px;border:2px solid #ff7f11;background:#000;color:#fff;font-weight:800;cursor:pointer;margin:4px;">${w}</button>`).join('');
-      res.style.display='none';
-    } else { box.style.display='none'; res.style.display='none'; }
-  };
-  window.showNBN = function(key){
-    var d=nbnData[key];
-    var res=document.getElementById('sub-result-box');
-    document.querySelectorAll('#sub-cat-box button').forEach(b=>{ b.style.background='#000'; b.style.color='#fff'; if(b.textContent===key){ b.style.background='#ff7f11'; b.style.color='#000'; } });
-    res.style.display='block';
-    res.innerHTML=`<h2 style="color:#ff7f11;">${d.title}</h2><p style="color:#333;">${d.desc}</p><img src="${d.img}" style="width:100%;max-height:300px;object-fit:cover;border-radius:12px;">`;
-    res.scrollIntoView({behavior:'smooth'});
-  };
-}, 800);
-</script>
+
 
 
 
