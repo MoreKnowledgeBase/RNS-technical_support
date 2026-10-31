@@ -44,6 +44,7 @@
   border:1px solid transparent;
   transition:.2s;
   white-space:nowrap;
+  cursor:pointer;
 }
 #static-menubar .pill img{width:18px;height:18px;border-radius:50%;object-fit:cover}
 #static-menubar .pill-phone1{background:#FF8A26;color:white;border-color:#FF8A26}
@@ -53,21 +54,27 @@
 #static-menubar .pill-menu.active{background:#ff7f11;color:#000;border-color:#ff7f11}
 #static-menubar .pill-time{background:#2563eb;color:white;border-color:#2563eb}
 body{padding-top:42px !important}
-.wrap{max-width:1100px;margin:260px auto 0;padding:20px 16px 40px}
+#main-content-area{
+  width:calc(100% - 40px);
+  max-width:1100px;
+  margin:240px auto 20px;
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 40px rgba(0,0,0,0.4);
+  min-height:450px;
+}
+#main-content-area img{width:100%;max-height:500px;object-fit:cover;display:block;}
+.wrap{max-width:1100px;margin:20px auto 0;padding:20px 16px 40px}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
 .card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.2);cursor:pointer}
 .card img{width:100%;height:150px;object-fit:cover}
 .card .body{padding:16px}
-.badge{display:inline-block;font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;margin-bottom:8px}
-.b1{background:#dbeafe;color:#1d4ed8}.b2{background:#dcfce7;color:#166534}.b3{background:#fef9c3;color:#854d0e}.b4{background:#ffe4e6;color:#be123c}
-.card h3{font-size:16px;margin-bottom:6px}
-.card p{font-size:13px;color:#666;line-height:1.4}
-.foot{display:flex;justify-content:space-between;margin-top:12px;font-size:12px;color:#999}
 @media(max-width:800px){
   #static-menubar{height:auto;flex-wrap:wrap;padding:8px 12px;gap:8px}
   #static-menubar .pill{padding:6px 12px;font-size:11px;height:28px}
   body{padding-top:88px !important}
-  .wrap{margin-top:320px}
+  #main-content-area{margin-top:320px}
   .grid{grid-template-columns:1fr}
 }
 </style>
@@ -83,48 +90,16 @@ body{padding-top:42px !important}
       <img src="download.webp"> 1800 733 368
     </a>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- This is a note inside the HTML code -->
   <div class="right-menu">
-    <a href= "#" class="pill pill-menu" onclick="setCat('NBN',this);return false;">NBN</a>
+    <a href="#" class="pill pill-menu active" onclick="setCat('NBN',this);return false;">NBN</a>
     <a href="#" class="pill pill-menu" onclick="setCat('VoIP',this);return false;">VoIP</a>
     <a href="#" class="pill pill-menu" onclick="setCat('Mobile',this);return false;">Mobile</a>
     <a href="#" class="pill pill-menu" onclick="setCat('Modem',this);return false;">Modem</a>
     <a href="#" class="pill pill-menu" onclick="setCat('Provisioning',this);return false;">Provisioning</a>
-  
-
+  </div>
 </nav>
 
-  <script>
-var contentData = {
-  'NBN': { title: 'NBN', pic: 'peely-speedy-max.png' },
-  'VoIP': { title: 'VoIP', pic: 'https://images.unsplash.com/photo-1588502945133-7d4e242d5d6b?w=1200' },
-  'Mobile': { title: 'Mobile', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200' },
-  'Modem': { title: 'Modem', pic: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200' },
-  'Provisioning': { title: 'Provisioning', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200' }
-
-  <!-- This is a note inside the HTML code -->
-</script>
-
-  <div style="background:#0f1f3a; color:white; padding:15px; border-radius:15px; width:260px; font-family:Arial; font-size:13px; border:1px solid #333; position:absolute; top:80px; left:15px; z-index:10;">
+<div style="background:#0f1f3a; color:white; padding:15px; border-radius:15px; width:260px; font-family:Arial; font-size:13px; border:1px solid #333; position:absolute; top:80px; left:15px; z-index:10;">
   <div style="font-weight:bold; text-align:center; margin-bottom:10px;">
     AU AUSTRALIA TIME - LIVE <span style="width:10px; height:10px; background:#00ff88; border-radius:50%; display:inline-block; margin-left:5px;"></span>
   </div>
@@ -176,7 +151,7 @@ updateAUTimes();
         <div style="text-align:center;margin-left:25px;display:flex;flex-direction:column;align-items:center;gap:10px;min-width:120px">
           <div style="font-size:15px;font-weight:800;color:white;">${data.title}</div>
           <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;border:3px solid white;box-shadow:0 4px 20px rgba(0,0,0,0.4);background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center">
-            ${data.pic ? `<img src="${data.pic}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<div style=\\'font-size:40px\\'>🧡</div>'">` : `<div style="font-size:42px">🧡</div>`}
+            ${data.pic ? `<img src="${data.pic}" style="width:100%;height:100%;object-fit:cover;">` : `<div style="font-size:42px">🧡</div>`}
           </div>
         </div>
       </div>
@@ -199,13 +174,39 @@ updateAUTimes();
 })();
 </script>
 
-<!-- BIG PICTURE BOX - ITO YUNG PULA NA PICTURE -->
+<!-- PULA NA BOX - DITO LALABAS PICTURE PAG CLICK NBN, VOIP, MOBILE -->
+<div id="main-content-area">
+  <img id="main-pic" src="peely-speedy-max.png" style="width:100%;max-height:500px;object-fit:cover;display:block;">
+  <div style="padding:25px;text-align:center;background:white;">
+    <h2 id="main-title" style="color:#0f172a;font-size:28px;font-weight:900;margin:0;">NBN - NATIONAL BROADBAND NETWORK</h2>
+    <p id="main-desc" style="color:#666;margin-top:10px;font-size:14px;">Click mo yung NBN, VoIP, Mobile, Modem, Provisioning sa taas — iba-ibang picture lalabas dito!</p>
+  </div>
+</div>
+
+<script>
+var contentData = {
+  'NBN': { title: 'NBN - NATIONAL BROADBAND NETWORK', desc: 'NBN guides, troubleshooting, at setup. Dito lalabas NBN picture!', pic: 'peely-speedy-max.png' },
+  'VoIP': { title: 'VoIP - VOICE OVER IP', desc: 'VoIP phone setup, walang dial tone, at call quality issues.', pic: 'https://images.unsplash.com/photo-1588502945133-7d4e242d5d6b?w=1200&q=80' },
+  'Mobile': { title: 'MOBILE SERVICES', desc: 'Mobile data, SIM setup, at mobile internet troubleshooting.', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200&q=80' },
+  'Modem': { title: 'MODEM SETUP GUIDE', desc: 'Modem setup, wifi password, at modem troubleshooting.', pic: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200&q=80' },
+  'Provisioning': { title: 'PROVISIONING GUIDE', desc: 'Provisioning ng NBN, activation, at order tracking.', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&q=80' }
+};
+
+function setCat(c,el){
+  document.querySelectorAll('.pill-menu').forEach(x=>x.classList.remove('active'));
+  if(el) el.classList.add('active');
+  var d = contentData[c];
+  if(!d) return;
+  document.getElementById('main-pic').src = d.pic;
+  document.getElementById('main-title').textContent = d.title;
+  document.getElementById('main-desc').textContent = d.desc;
+  document.getElementById('main-content-area').scrollIntoView({behavior:'smooth'});
+}
+</script>
 
 <div class="wrap">
   <div class="grid" id="grid"></div>
 </div>
-
-
 
 </body>
 </html>
