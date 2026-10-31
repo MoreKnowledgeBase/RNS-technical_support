@@ -149,33 +149,6 @@
 
 
   
-<script>
-(function(){
-  var KEY_TEAM='rns_team_v2';
-  var defaultTeams=[
-    {leader:"Tom",shift:"AM",team:"A",ext:"101",members:["Ana - 101","Mark - 102","Liza - 103"]},
-    {leader:"Dolf",shift:"PM",team:"B",ext:"102",members:["Pedro - 201","Nina - 202"]},
-    {leader:"Ruffy",shift:"AM",team:"C",ext:"103",members:["Jen - 301","Paul - 302"]},
-    {leader:"Marvin",shift:"GY",team:"A",ext:"104",members:["Ryan - 401","Sara - 402"]},
-    {leader:"Rosel",shift:"PM",team:"B",ext:"105",members:["Luis - 501","Dana - 502"]}
-  ];
-  var teams=defaultTeams;
-  try{ var s=localStorage.getItem(KEY_TEAM); if(s) teams=JSON.parse(s); }catch(e){}
-  function render(){ var tbody=document.getElementById('team-table-body'); if(!tbody) return; tbody.innerHTML = teams.map(t=>`<tr class="team-row" style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:7px 3px;font-weight:700;color:#93c5fd;">${t.leader}</td><td style="padding:7px 2px;text-align:center;">${t.shift}</td><td style="padding:7px 2px;text-align:center;">${t.team}</td><td style="padding:7px 2px;text-align:center;">${t.members.length}</td><td style="padding:7px 2px;text-align:center;">${t.ext}</td><td class="team-members-tooltip"><div style="font-weight:800;font-size:12px;margin-bottom:6px;color:#facc15;">${t.leader}</div><div style="font-size:10px;line-height:1.7;">${t.members.map(m=>`• ${m}`).join('<br>')}</div></td></tr>`).join(''); }
-  function openEditor(){
-    var overlay=document.createElement('div'); overlay.style='position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999999;display:flex;justify-content:center;align-items:center;padding:20px;overflow:auto;';
-    var box=document.createElement('div'); box.style='background:#1e293b;border:1px solid #334155;border-radius:16px;padding:20px;width:95%;max-width:800px;max-height:90vh;overflow:auto;';
-    var html=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;"><h3 style="margin:0;color:white;">👥 Edit Team Leaders & Members</h3><button id="close-team-modal" style="background:#ef4444;color:white;border:none;padding:6px 12px;border-radius:8px;cursor:pointer;">X</button></div>`;
-    teams.forEach((t,idx)=>{ html+=`<div style="background:rgba(0,0,0,0.3);border-radius:10px;padding:12px;margin-bottom:12px;"><div style="display:grid;grid-template-columns:1fr 60px 60px 60px;gap:6px;margin-bottom:8px;"><input id="leader-${idx}" value="${t.leader}" style="padding:8px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;"><input id="shift-${idx}" value="${t.shift}" style="padding:8px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;"><input id="team-${idx}" value="${t.team}" style="padding:8px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;"><input id="ext-${idx}" value="${t.ext}" style="padding:8px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;"></div><label style="font-size:11px;color:#94a3b8;">Members (isang name per line):</label><textarea id="members-${idx}" rows="4" style="width:100%;padding:8px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;margin-top:4px;font-size:11px;">${t.members.join('\n')}</textarea></div>`; });
-    html+=`<button id="save-team" style="width:100%;padding:14px;background:#22c55e;color:black;font-weight:800;border:none;border-radius:10px;cursor:pointer;margin-top:10px;">💾 SAVE ALL TEAMS</button>`;
-    box.innerHTML=html; overlay.appendChild(box); document.body.appendChild(overlay);
-    document.getElementById('close-team-modal').onclick=()=>overlay.remove();
-    document.getElementById('save-team').onclick=()=>{ teams.forEach((t,idx)=>{ t.leader=document.getElementById(`leader-${idx}`).value; t.shift=document.getElementById(`shift-${idx}`).value; t.team=document.getElementById(`team-${idx}`).value; t.ext=document.getElementById(`ext-${idx}`).value; t.members=document.getElementById(`members-${idx}`).value.split('\n').filter(x=>x.trim()); }); localStorage.setItem(KEY_TEAM, JSON.stringify(teams)); overlay.remove(); render(); alert('Saved!'); };
-  }
-  if(location.search.includes('admin=rns123')){ var btn=document.createElement('button'); btn.textContent='👥 EDIT TEAM'; btn.style='position:fixed;bottom:20px;right:180px;z-index:99999;padding:14px 20px;border-radius:99px;border:none;background:#f59e0b;color:black;font-weight:700;cursor:pointer;'; btn.onclick=openEditor; document.body.appendChild(btn); }
-  render();
-})();
-</script>
 
     <!-- PARA MAPALITA YUNG KULAY NG 4 BUBBLES-->
 
