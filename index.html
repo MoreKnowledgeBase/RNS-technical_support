@@ -66,7 +66,7 @@ updateAUTimes();
 </script>
 </div>
 <!-- This is a comment ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-<!-- START: LATEST UPDATE BANNER - EDITABLE NO CODE -->
+<!-- START: LATEST UPDATE BANNER - MATAAS NA -->
 <div id="latest-update-box"></div>
 
 <script>
@@ -74,25 +74,16 @@ updateAUTimes();
   var box=document.getElementById('latest-update-box');
   if(!box) return;
   var KEY='rns_banner_red_circle_final';
-  // DEFAULT NA NASA PICTURE MO
-  var data={
-    name:"MALAPIT NA ANG 13TH MONTH!!!",
-    small:"MALIGAYANG KAARAWAN",
-    title:"Happy Birthday!",
-    pic:"" // pag wala, heart lang
-  };
-  try{
-    var s=localStorage.getItem(KEY);
-    if(s){ var d=JSON.parse(s); data.name=d.name||data.name; data.small=d.small||data.small; data.title=d.title||data.title; data.pic=d.pic||data.pic; }
-  }catch(e){}
+  var data={name:"MALAPIT NA ANG 13TH MONTH!!!",small:"MALIGAYANG KAARAWAN",title:"Happy Birthday!",pic:""};
+  try{var s=localStorage.getItem(KEY);if(s){var d=JSON.parse(s);data.name=d.name||data.name;data.small=d.small||data.small;data.title=d.title||data.title;data.pic=d.pic||data.pic;}}catch(e){}
 
   function render(){
     box.innerHTML=`
-      <div style="position:relative;width:calc(100% - 300px);margin:40px 20px 25px 260px;min-height:130px;background:rgba(255,255,255,0.08);border:1.5px dashed rgba(255,255,255,0.5);border-radius:20px;padding:30px 20px 22px;display:flex;justify-content:center;align-items:center;backdrop-filter:blur(4px);">
+      <div style="position:absolute;top:20px;left:270px;right:20px;min-height:130px;background:rgba(255,255,255,0.08);border:1.5px dashed rgba(255,255,255,0.5);border-radius:20px;padding:30px 20px 22px;display:flex;justify-content:center;align-items:center;z-index:15;">
         <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#0f172a;padding:5px 18px;border-radius:99px;font-size:11px;letter-spacing:2px;font-weight:800;border:1px solid rgba(255,255,255,0.3);color:white;white-space:nowrap">📢 LATEST UPDATE</div>
         <div style="flex:1;text-align:center;">
-          <div style="font-size:42px;font-weight:900;color:white;letter-spacing:1px;text-transform:uppercase;line-height:1.1;text-shadow:0 2px 10px rgba(0,0,0,0.3)">${data.name}</div>
-          <div style="font-size:14px;opacity:.7;margin-top:8px;color:#cbd5e1;letter-spacing:.5px">${data.small}</div>
+          <div style="font-size:42px;font-weight:900;color:white;letter-spacing:1px;text-transform:uppercase;line-height:1.1;">${data.name}</div>
+          <div style="font-size:14px;opacity:.7;margin-top:8px;color:#cbd5e1;">${data.small}</div>
         </div>
         <div style="text-align:center;margin-left:25px;display:flex;flex-direction:column;align-items:center;gap:10px;min-width:120px">
           <div style="font-size:15px;font-weight:800;color:white;">${data.title}</div>
@@ -104,31 +95,23 @@ updateAUTimes();
     `;
   }
 
-  // EDIT BUTTON - lalabas lang pag may ?admin=rns123
   if(location.search.includes('admin=rns123')){
     var btn=document.createElement('button');
     btn.textContent='✏️ EDIT BANNER (Red Circle)';
-    btn.style='position:fixed;bottom:20px;right:20px;z-index:999999;padding:14px 22px;border-radius:99px;border:none;background:#ff7f11;color:#000;font-weight:900;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.4);font-size:14px';
+    btn.style='position:fixed;bottom:20px;right:20px;z-index:999999;padding:14px 22px;border-radius:99px;border:none;background:#ff7f11;color:#000;font-weight:900;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.4);';
     btn.onclick=function(){
-      var n=prompt('1. MALAKING TEXT SA GITNA:\n(ex: MALAPIT NA ANG 13TH MONTH!!!)',data.name);
-      if(n===null) return;
-      var sm=prompt('2. MALIIT NA TEXT SA BABA:\n(ex: MALIGAYANG KAARAWAN)',data.small);
-      if(sm===null) return;
-      var t=prompt('3. TITLE SA KANAN TAAS:\n(ex: Happy Birthday!)',data.title);
-      if(t===null) return;
-      var p=prompt('4. PICTURE LINK (https://):\nI-paste mo buong link ng picture.\nPag wala, blank lang = heart lalabas',data.pic);
-      if(p===null) return;
-      localStorage.setItem(KEY,JSON.stringify({name:n,small:sm,title:t,pic:p}));
-      location.reload();
+      var n=prompt('1. MALAKING TEXT SA GITNA:',data.name);if(n===null)return;
+      var sm=prompt('2. MALIIT NA TEXT SA BABA:',data.small);if(sm===null)return;
+      var t=prompt('3. TITLE SA KANAN:',data.title);if(t===null)return;
+      var p=prompt('4. PICTURE LINK https://:',data.pic);if(p===null)return;
+      localStorage.setItem(KEY,JSON.stringify({name:n,small:sm,title:t,pic:p}));location.reload();
     };
     document.body.appendChild(btn);
   }
-
   render();
 })();
 </script>
-<!-- END: LATEST UPDATE BANNER -->
-
+<!-- END: LATEST UPDATE BANNER MATAAS -->
   <!-- This is a comment ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 </body>
