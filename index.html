@@ -91,108 +91,30 @@ updateAUTimes();
 </div>
 </div>
 
-<script>
-(function(){
-  var KEY_TOM='rns_team_tom_v3';
-  function blankWeek(){ return {Mon:"Present",Tue:"Present",Wed:"Present",Thu:"Present",Fri:"Present",Sat:"Restday",Sun:"Restday"}; }
-  function genTimeOptions(){
-    var opts=['']; for(var h=0;h<24;h++){ for(var m=0;m<60;m+=30){ var hh=h%12; if(hh===0) hh=12; var ampm=h<12?'AM':'PM'; var mm=m===0?'00':m; opts.push(hh+':'+mm+' '+ampm); } } return opts;
-  }
-  var TIME_OPTS=genTimeOptions();
-  var defaultTom=[]; for(var i=0;i<20;i++){ defaultTom.push({name:"",inTime:"9:00 AM",outTime:"6:00 PM",schedule:blankWeek(),leave:"",manualStatus:""}); }
-  var teams=defaultTom;
-  try{ var s=localStorage.getItem(KEY_TOM); if(s){ var p=JSON.parse(s); if(Array.isArray(p)&&p.length===20){ teams=p; teams.forEach(t=>{ if(!t.schedule) t.schedule=blankWeek(); if(!t.manualStatus) t.manualStatus=""; }); } } }catch(e){}
+<!-- WRAPPER - left column, no overlap -->
+<div style="position:absolute; left:15px; top:80px; display:flex; flex-direction:column; gap:15px; z-index:10;">
+
+<!-- AU TIME -->
+<div style="background:rgba(15,31,58,0.95); color:white; padding:15px; border-radius:14px; width:260px; font-family:Arial; font-size:13px; border:1px solid #333;">
+  <div style="font-weight:bold; text-align:center; margin-bottom:10px;">AU AUSTRALIA TIME - LIVE <span style="width:10px; height:10px; background:#00ff88; border-radius:50%; display:inline-block; margin-left:5px;"></span></div>
+  <div id="au-time"></div>
+  <div style="margin-top:10px; font-size:11px; color:#aaa; text-align:center;" id="au-date"></div>
+</div>
+
+<!-- TEAM TOM - NO ABSOLUTE, nasa baba lang ng AU TIME -->
+<div id="team-tom-box" style="width:340px;">
+<div style="background:rgba(0,0,0,0.82); border:1px solid rgba(255,255,255,0.3); border-radius:14px; padding:14px; max-height:520px; overflow:auto;">
+<div style="font-size:13px; letter-spacing:2px; font-weight:900; text-align:center; margin-bottom:12px; color:#facc15;">TEAM TOM</div>
+<table style="width:100%; border-collapse:collapse; font-size:10px; color:white;">
+<thead><tr style="background:#2563eb;"><th style="padding:6px 3px;text-align:left;">Name</th><th>In</th><th>Out</th><th>Status</th><th>Sched</th><th>Leave</th></tr></thead>
+<tbody id="team-tom-body"></tbody>
+</table>
+</div>
+</div>
+
+</div>
+
   
-  function parseTimeToMinutes(str){ if(!str) return null; var s=str.trim().toLowerCase(); var m=s.match(/(\d{1,2}):?(\d{2})?\s*(am|pm)?/); if(!m) return null; var h=parseInt(m[1],10), mm=m[2]?parseInt(m[2],10):0; var ap=m[3]; if(ap==="pm" && h<12) h+=12; if(ap==="am" && h===12) h=0; return h*60+mm; }
-  function getTodayName(){ return ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][new Date().getDay()]; }
-
-  function calcStatus(t){
-    if(!t.name || t.name.trim()==="") return {text:"-", gray:false, color:"#666"};
-    if(t.leave && t.leave.trim()!=="") return {text:t.leave, gray:true, color:"#fbbf24", isLeave:true};
-    var today=getTodayName(); var todaySched=t.schedule && t.schedule[today] ? t.schedule[today] : "Present";
-    if(todaySched==="Restday") return {text:"Restday", gray:true, color:"#94a3b8", isRest:true};
-    var outMin=parseTimeToMinutes(t.outTime); if(outMin===null) return {text:t.manualStatus||"currently working", gray:false, color:"#4ade80"};
-    var now=new Date(); var nowMin=now.getHours()*60+now.getMinutes();
-    if(nowMin >= outMin+1) return {text:"log out", gray:false, color:"#fb7185"};
-    return {text:t.manualStatus||"currently working", gray:false, color:"#4ade80"};
-  }
-
-  function render(){
-    var tbody=document.getElementById('team-tom-body'); if(!tbody) return;
-    var today=getTodayName();
-    tbody.innerHTML = teams.map((t,i)=>{
-      var st=calcStatus(t);
-      var schedToday=t.schedule ? t.schedule[today] : "Present";
-      var isGray = st.gray; // Leave or Restday
-      var rowStyle = isGray ? "opacity:0.35;background:rgba(255,255,255,0.15);" : "";
-      var statusStyle = isGray && !st.isLeave ? "color:#94a3b8;" : `color:${st.color};`;
-      if(st.isLeave){ statusStyle = `color:${st.color};font-weight:900;`; rowStyle = "opacity:0.4;background:rgba(255,255,255,0.1);"; }
-      return `<tr style="border-bottom:1px solid rgba(255,255,255,0.08);${rowStyle}">
-        <td style="padding:5px 3px;font-weight:600;max-width:70px;overflow:hidden;text-overflow:ellipsis;">${t.name||"-"}</td>
-        <td style="padding:5px 1px;text-align:center;${isGray?'color:#94a3b8':''}">${t.inTime||"-"}</td>
-        <td style="padding:5px 1px;text-align:center;${isGray?'color:#94a3b8':''}">${t.outTime||"-"}</td>
-        <td style="padding:5px 1px;text-align:center;font-weight:800;font-size:9px;${st.isLeave ? 'background:rgba(251,191,36,0.2);border-radius:6px;' : ''} ${statusStyle}">${st.text}</td>
-        <td style="padding:5px 1px;text-align:center;color:${schedToday==='Present'?'#4ade80':'#94a3b8'};cursor:pointer;text-decoration:underline;" onclick="window.openTomSchedule(${i})">${schedToday.substring(0,4)}</td>
-        <td style="padding:5px 1px;text-align:center;${st.isLeave ? `color:${st.color};background:rgba(251,191,36,0.25);border-radius:6px;font-weight:900;opacity:1;` : 'color:#fbbf24;'}">${t.leave||"-"}</td>
-      </tr>`;
-    }).join('');
-  }
-
-  window.openTomSchedule=function(idx){
-    var t=teams[idx]; var week=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
-    var html=week.map(d=>`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><span style="color:white;font-size:12px;">${d}</span><select id="sched-${d}" style="padding:5px;border-radius:6px;background:#0f172a;color:white;border:1px solid #475569;"><option value="Present" ${t.schedule[d]==="Present"?"selected":""}>Present</option><option value="Restday" ${t.schedule[d]==="Restday"?"selected":""}>Restday</option></select></div>`).join('');
-    var overlay=document.createElement('div'); overlay.style='position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999999;display:flex;justify-content:center;align-items:center;';
-    var box=document.createElement('div'); box.style='background:#1e293b;border:1px solid #334155;border-radius:16px;padding:20px;width:90%;max-width:360px;';
-    box.innerHTML=`<h4 style="color:white;margin-bottom:12px;">Sched ni ${t.name||"Staff "+(idx+1)}</h4>${html}<button id="save-sched" style="width:100%;padding:10px;background:#22c55e;color:black;font-weight:800;border:none;border-radius:8px;margin-top:12px;cursor:pointer;">Save</button><button id="close-sched" style="width:100%;padding:8px;background:#374151;color:white;border:none;border-radius:8px;margin-top:6px;">Close</button>`;
-    overlay.appendChild(box); document.body.appendChild(overlay);
-    document.getElementById('close-sched').onclick=()=>overlay.remove();
-    document.getElementById('save-sched').onclick=()=>{ week.forEach(d=>{ t.schedule[d]=document.getElementById(`sched-${d}`).value; }); localStorage.setItem(KEY_TOM, JSON.stringify(teams)); overlay.remove(); render(); };
-  };
-
-  function openEditor(){
-    var overlay=document.createElement('div'); overlay.style='position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:999999;display:flex;justify-content:center;align-items:center;padding:15px;overflow:auto;';
-    var box=document.createElement('div'); box.style='background:#1e293b;border:1px solid #334155;border-radius:16px;padding:18px;width:98%;max-width:1250px;max-height:92vh;overflow:auto;';
-    var timeOptsHtml = TIME_OPTS.map(v=>`<option value="${v}">${v||"- Select -"}</option>`).join('');
-    var header=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;position:sticky;top:0;background:#1e293b;z-index:1;padding-bottom:10px;"><h3 style="margin:0;color:white;">📋 TEAM TOM - 20 Editor (New)</h3><button id="close-tom" style="background:#ef4444;color:white;border:none;padding:6px 12px;border-radius:8px;cursor:pointer;">X</button></div>
-    <div style="display:grid;grid-template-columns:1.2fr 110px 110px 130px 120px 120px;gap:6px;margin-bottom:8px;padding:8px;background:#0f172a;border-radius:6px;font-size:10px;color:#facc15;font-weight:800;"><div>Name</div><div>In (dropdown)</div><div>Out (dropdown)</div><div>Status (auto/manual)</div><div>Schedule</div><div>Leave (dropdown)</div></div>`;
-    var rows=""; teams.forEach((t,idx)=>{
-      var inOpts = TIME_OPTS.map(v=>`<option value="${v}" ${t.inTime===v?"selected":""}>${v||"-"}</option>`).join('');
-      var outOpts = TIME_OPTS.map(v=>`<option value="${v}" ${t.outTime===v?"selected":""}>${v||"-"}</option>`).join('');
-      rows+=`<div style="display:grid;grid-template-columns:1.2fr 110px 110px 130px 120px 120px;gap:6px;margin-bottom:6px;align-items:center;">
-        <input id="tom-name-${idx}" value="${t.name}" placeholder="Name ${idx+1}" style="padding:6px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;font-size:11px;">
-        <select id="tom-in-${idx}" style="padding:6px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;font-size:11px;">${inOpts}</select>
-        <select id="tom-out-${idx}" style="padding:6px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;font-size:11px;">${outOpts}</select>
-        <select id="tom-status-${idx}" style="padding:6px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;font-size:11px;">
-          <option value="currently working" ${t.manualStatus==="currently working"||!t.manualStatus?"selected":""}>currently working</option>
-          <option value="log out" ${t.manualStatus==="log out"?"selected":""}>log out</option>
-        </select>
-        <button onclick="window.openTomSchedule(${idx})" style="padding:6px;border-radius:6px;border:1px solid #475569;background:#1e293b;color:#facc15;font-size:10px;cursor:pointer;">Edit Mon-Sun</button>
-        <select id="tom-leave-${idx}" style="padding:6px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;font-size:11px;">
-          <option value="" ${t.leave===""?"selected":""}>- None -</option>
-          <option value="SL" ${t.leave==="SL"?"selected":""}>SL</option><option value="VL" ${t.leave==="VL"?"selected":""}>VL</option><option value="EL" ${t.leave==="EL"?"selected":""}>EL</option><option value="ML" ${t.leave==="ML"?"selected":""}>ML</option><option value="PL" ${t.leave==="PL"?"selected":""}>PL</option><option value="SPL" ${t.leave==="SPL"?"selected":""}>SPL</option><option value="BL" ${t.leave==="BL"?"selected":""}>BL</option><option value="LOA" ${t.leave==="LOA"?"selected":""}>LOA</option><option value="AWOL" ${t.leave==="AWOL"?"selected":""}>AWOL</option>
-        </select>
-      </div>`;
-    });
-    box.innerHTML=header+rows+`<button id="save-tom" style="width:100%;padding:14px;background:#22c55e;color:black;font-weight:800;border:none;border-radius:10px;cursor:pointer;margin-top:12px;position:sticky;bottom:0;">💾 SAVE TEAM TOM (20)</button>`;
-    overlay.appendChild(box); document.body.appendChild(overlay);
-    document.getElementById('close-tom').onclick=()=>overlay.remove();
-    document.getElementById('save-tom').onclick=()=>{
-      teams.forEach((t,idx)=>{
-        t.name=document.getElementById(`tom-name-${idx}`).value;
-        t.inTime=document.getElementById(`tom-in-${idx}`).value;
-        t.outTime=document.getElementById(`tom-out-${idx}`).value;
-        t.manualStatus=document.getElementById(`tom-status-${idx}`).value;
-        t.leave=document.getElementById(`tom-leave-${idx}`).value;
-      });
-      localStorage.setItem(KEY_TOM, JSON.stringify(teams)); overlay.remove(); render(); alert('Saved!');
-    };
-  }
-
-  if(location.search.includes('admin=rns123')){
-    var btn=document.createElement('button'); btn.textContent='📋 EDIT TEAM TOM'; btn.style='position:fixed;bottom:20px;right:340px;z-index:99999;padding:14px 20px;border-radius:99px;border:none;background:#22c55e;color:black;font-weight:700;cursor:pointer;'; btn.onclick=openEditor; document.body.appendChild(btn);
-  }
-  render(); setInterval(render, 30000);
-})();
 </script>
 </body>
 </html>
