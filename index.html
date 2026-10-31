@@ -1,5 +1,13 @@
 <!DOCTYPE html>
+
 <header style="position:relative">
+
+
+
+  <!-- LATEST UPDATE AREA - BLANKO NA BLUE - DITO KA MAGPO-POST -->
+ 
+
+
 <div id="latest-update-box"></div>
 <script>
 (function(){
@@ -12,10 +20,14 @@
     box.innerHTML = `
       <div style="position:relative;width:calc(100% - 300px);margin:40px 20px 25px 260px;min-height:130px;background:rgba(255,255,255,0.12);border:2px dashed rgba(255,255,255,0.5);border-radius:20px;padding:35px 25px 25px;display:flex;justify-content:center;align-items:center;">
         <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#1e293b;padding:5px 18px;border-radius:99px;font-size:12px;letter-spacing:3px;font-weight:800;border:1px solid rgba(255,255,255,0.3);">📢 LATEST UPDATE</div>
+        
+        <!-- Gitna: NAME malaki -->
         <div style="flex:1;text-align:center;">
           <div style="font-size:48px;font-weight:900;color:white;letter-spacing:2px;text-transform:uppercase;">${name}</div>
           <div style="font-size:14px;opacity:.7;margin-top:4px;">${message}</div>
         </div>
+
+        <!-- Kanan: Happy Birthday + Picture -->
         <div style="text-align:center;margin-left:20px;display:flex;flex-direction:column;align-items:center;gap:8px;">
           <div style="font-size:18px;font-weight:800;color:white;">${title}</div>
           <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;border:3px solid white;box-shadow:0 4px 15px rgba(0,0,0,0.4);background:rgba(255,255,255,0.2);">
@@ -26,7 +38,7 @@
     `;
   }
   if(location.search.includes('admin=rns123')){
-    var btn=document.createElement('button'); btn.textContent='✏ EDIT BIRTHDAY'; btn.style='position:fixed;bottom:20px;right:20px;z-index:99999;padding:14px 20px;border-radius:99px;border:none;background:#2563eb;color:white;font-weight:700;cursor:pointer;';
+    var btn=document.createElement('button'); btn.textContent='✏️ EDIT BIRTHDAY'; btn.style='position:fixed;bottom:20px;right:20px;z-index:99999;padding:14px 20px;border-radius:99px;border:none;background:#2563eb;color:white;font-weight:700;cursor:pointer;';
     btn.onclick=function(){ 
       var n=prompt('NAME (gitna, malaki):',name); if(n===null)return; 
       var t=prompt('Title sa taas ng picture (ex: Happy Birthday!):',title); if(t===null)return;
@@ -38,12 +50,24 @@
   render();
 })();
 </script>
+
+  
+
+
+
+
+
+
+
+
+
+
 <style>
 .team-row{position:relative;cursor:pointer;}
 .team-members-tooltip{display:none;position:absolute;left:105%;top:0;background:#111827;border:1px solid #374151;border-radius:10px;padding:10px 14px;min-width:160px;z-index:9999;}
 .team-row:hover .team-members-tooltip{display:block;}
 </style>
-<div id="team-leaders-box" style="position:absolute;left:15px;top:380px;width:240px;z-index:20;display:none;"><div style="background:rgba(0,0,0,0.55);border:1px solid rgba(255,255,255,0.25);border-radius:14px;padding:12px;"><div style="font-size:12px;letter-spacing:2px;font-weight:900;text-align:center;margin-bottom:10px;color:#facc15;">TEAM LEADERS</div><table style="width:100%;border-collapse:collapse;font-size:11px;color:white;"><thead><tr style="background:#2563eb;"><th style="padding:6px 3px;text-align:left;">Staff</th><th>Start</th><th>Out</th><th>Status</th><th>Ext</th></tr></thead><tbody id="team-table-body"></tbody></table><div style="font-size:8px;opacity:.5;text-align:center;margin-top:6px;">Hover sa leader para makita members</div></div></div>
+<div id="team-leaders-box" style="position:absolute;left:15px;top:380px;width:240px;z-index:20;"><div style="background:rgba(0,0,0,0.55);border:1px solid rgba(255,255,255,0.25);border-radius:14px;padding:12px;"><div style="font-size:12px;letter-spacing:2px;font-weight:900;text-align:center;margin-bottom:10px;color:#facc15;">TEAM LEADERS</div><table style="width:100%;border-collapse:collapse;font-size:11px;color:white;"><thead><tr style="background:#2563eb;"><th style="padding:6px 3px;text-align:left;">Leader</th><th>Shift</th><th>Team</th><th>Cnt</th><th>Ext</th></tr></thead><tbody id="team-table-body"></tbody></table><div style="font-size:8px;opacity:.5;text-align:center;margin-top:6px;">Hover sa leader para makita members</div></div></div>
 <script>
 (function(){
   var KEY_TEAM='rns_team_v2';
@@ -56,4 +80,157 @@
   ];
   var teams=defaultTeams;
   try{ var s=localStorage.getItem(KEY_TEAM); if(s) teams=JSON.parse(s); }catch(e){}
-  function render(){ var tbody=document.getElementById('team-table-body'); if(!tbody) return; tbody.innerHTML = teams.map(t=>`<tr class="team-row" style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:7px 3px;font-weight:700;color:#93c5fd;">${t.leader}</td><td style="padding:7px 2px;text-align
+  function render(){ var tbody=document.getElementById('team-table-body'); if(!tbody) return; tbody.innerHTML = teams.map(t=>`<tr class="team-row" style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:7px 3px;font-weight:700;color:#93c5fd;">${t.leader}</td><td style="padding:7px 2px;text-align:center;">${t.shift}</td><td style="padding:7px 2px;text-align:center;">${t.team}</td><td style="padding:7px 2px;text-align:center;">${t.members.length}</td><td style="padding:7px 2px;text-align:center;">${t.ext}</td><td class="team-members-tooltip"><div style="font-weight:800;font-size:12px;margin-bottom:6px;color:#facc15;">${t.leader}</div><div style="font-size:10px;line-height:1.7;">${t.members.map(m=>`• ${m}`).join('<br>')}</div></td></tr>`).join(''); }
+  function openEditor(){
+    var overlay=document.createElement('div'); overlay.style='position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999999;display:flex;justify-content:center;align-items:center;padding:20px;overflow:auto;';
+    var box=document.createElement('div'); box.style='background:#1e293b;border:1px solid #334155;border-radius:16px;padding:20px;width:95%;max-width:800px;max-height:90vh;overflow:auto;';
+    var html=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;"><h3 style="margin:0;color:white;">👥 Edit Team Leaders & Members</h3><button id="close-team-modal" style="background:#ef4444;color:white;border:none;padding:6px 12px;border-radius:8px;cursor:pointer;">X</button></div>`;
+    teams.forEach((t,idx)=>{ html+=`<div style="background:rgba(0,0,0,0.3);border-radius:10px;padding:12px;margin-bottom:12px;"><div style="display:grid;grid-template-columns:1fr 60px 60px 60px;gap:6px;margin-bottom:8px;"><input id="leader-${idx}" value="${t.leader}" style="padding:8px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;"><input id="shift-${idx}" value="${t.shift}" style="padding:8px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;"><input id="team-${idx}" value="${t.team}" style="padding:8px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;"><input id="ext-${idx}" value="${t.ext}" style="padding:8px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;"></div><label style="font-size:11px;color:#94a3b8;">Members (isang name per line):</label><textarea id="members-${idx}" rows="4" style="width:100%;padding:8px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;margin-top:4px;font-size:11px;">${t.members.join('\n')}</textarea></div>`; });
+    html+=`<button id="save-team" style="width:100%;padding:14px;background:#22c55e;color:black;font-weight:800;border:none;border-radius:10px;cursor:pointer;margin-top:10px;">💾 SAVE ALL TEAMS</button>`;
+    box.innerHTML=html; overlay.appendChild(box); document.body.appendChild(overlay);
+    document.getElementById('close-team-modal').onclick=()=>overlay.remove();
+    document.getElementById('save-team').onclick=()=>{ teams.forEach((t,idx)=>{ t.leader=document.getElementById(`leader-${idx}`).value; t.shift=document.getElementById(`shift-${idx}`).value; t.team=document.getElementById(`team-${idx}`).value; t.ext=document.getElementById(`ext-${idx}`).value; t.members=document.getElementById(`members-${idx}`).value.split('\n').filter(x=>x.trim()); }); localStorage.setItem(KEY_TEAM, JSON.stringify(teams)); overlay.remove(); render(); alert('Saved!'); };
+  }
+  if(location.search.includes('admin=rns123')){ var btn=document.createElement('button'); btn.textContent='👥 EDIT TEAM'; btn.style='position:fixed;bottom:20px;right:180px;z-index:99999;padding:14px 20px;border-radius:99px;border:none;background:#f59e0b;color:black;font-weight:700;cursor:pointer;'; btn.onclick=openEditor; document.body.appendChild(btn); }
+  render();
+})();
+</script>
+
+    <!-- PARA MAPALITA YUNG KULAY NG 4 BUBBLES-->
+
+
+<style>
+/* Filter na puti gawing black, selected gawing tangerine */
+.cat{
+  background:#000 !important;
+  color:#fff !important;
+  border:1px solid #444 !important;
+}
+.cat.active{
+  background:#ff7f11 !important;
+  color:#000 !important;
+  font-weight:900 !important;
+  border-color:#ff7f11 !important;
+}
+</style>
+
+
+
+  
+
+ 
+
+
+
+
+  
+
+  
+  <!-- TAPOS NA YUNG LATEST UPDATE AREA - NASA BABA NA YUNG DATI MONG HEADER -->
+
+
+  
+  <!-- KALIWA TAAS NA KANTO - CONTACT -->
+ 
+  <div style="position:absolute;top:16px;left:20px;display:flex;gap:14px;font-size:14px;font-weight:700">
+    
+<a href="https://www.tangerine.com.au/" style="color:white;text-decoration:none;background:rgba(255,255,255,0.15);padding:8px 14px;border-radius:999px;display:inline-flex;align-items:center;gap:6px"><img src="peely-speedy-max.png" style="width:22px;height:22px;border-radius:50%;object-fit:cover"> 1800 211 112
+</a>
+
+    <a href="https://www.more.com.au/" style="color:white;text-decoration:none;background:rgba(255,255,255,0.15);padding:8px 14px;border-radius:999px;display:inline-flex;align-items:center;gap:6px"><img src="download.webp" style="width:22px;height:22px;border-radius:50%;object-fit:cover"> 1800 733 368</a>
+
+    
+  </div>
+
+
+    <!-- AUSTRALIA TIMEZONES - REALTIME - SA BABA NG 1800 BUTTON -->
+  <div id="aus-time" style="position:absolute;top:75px;left:15px;background:rgba(0,0,0,0.45);backdrop-filter:blur(6px);color:white;padding:12px 14px;border-radius:14px;font-size:12.5px;line-height:1.7;min-width:210px;border:1px solid rgba(255,255,255,0.2)">
+    <div style="font-weight:800;font-size:13px;margin-bottom:4px">🇦🇺 AUSTRALIA TIME - LIVE 🟢</div>
+    <div>Sydney: <b id="clock-sydney">--:--:--</b></div>
+    <div>Melbourne: <b id="clock-melbourne">--:--:--</b></div>
+    <div>Canberra: <b id="clock-canberra">--:--:--</b></div>
+    <div>Brisbane: <b id="clock-brisbane">--:--:--</b></div>
+    <div>Adelaide: <b id="clock-adelaide">--:--:--</b></div>
+    <div>Darwin: <b id="clock-darwin">--:--:--</b></div>
+    <div>Perth: <b id="clock-perth">--:--:--</b></div>
+    <div>Hobart: <b id="clock-hobart">--:--:--</b></div>
+    <div style="font-size:11px;opacity:.7;margin-top:4px" id="aus-date">--</div>
+  </div>
+
+
+  
+
+<html lang="tl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>RNS Technical Support - Knowledge Base</title><style>*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}body{background:#f0f4ff;color:#222}header{background:linear-gradient(135deg,#0f172a,#2563eb);color:#fff;text-align:center;padding:48px 16px 60px}header h1{font-size:38px;line-height:1.1}header h1 span{color:#facc15}header p{opacity:.9;max-width:600px;margin:14px auto 22px;font-size:16px}.search{max-width:620px;margin:0 auto;background:#fff;border-radius:999px;display:flex;padding:6px 6px 6px 20px}.search input{flex:1;border:none;outline:none;font-size:16px}.search button{background:#2563eb;color:#fff;border:none;padding:12px 22px;border-radius:999px;font-weight:700;cursor:pointer}.wrap{max-width:1000px;margin:-28px auto 0;padding:0 16px 40px}.cats{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:14px 0 20px}.cat{background:#fff;border:1px solid #e5e7eb;padding:9px 16px;border-radius:999px;cursor:pointer;font-weight:600;font-size:14px}.cat.active,.cat:hover{background:#0f172a;color:#fff}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.07);cursor:pointer}.card img{width:100%;height:150px;object-fit:cover}.body{padding:16px}.badge{display:inline-block;font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;margin-bottom:8px}.b1{background:#dbeafe;color:#1d4ed8}.b2{background:#dcfce7;color:#166534}.b3{background:#fef9c3;color:#854d0e}.b4{background:#ffe4e6;color:#be123c}.card h3{font-size:16px;line-height:1.3;margin-bottom:6px}.card p{font-size:13.5px;color:#666;line-height:1.5}.foot{display:flex;justify-content:space-between;margin-top:12px;font-size:12px;color:#999}.section{background:#fff;border-radius:20px;padding:24px;margin-top:20px;box-shadow:0 4px 18px rgba(0,0,0,.06)}.section h2{margin-bottom:12px}video{width:100%;border-radius:14px;background:#000}.faq{border-bottom:1px solid #eee;padding:14px 0;cursor:pointer}.faq p{display:none;color:#555;margin-top:8px;line-height:1.6;font-size:14px}.faq.open p{display:block}.btn{background:#2563eb;color:#fff;border:none;padding:12px 24px;border-radius:999px;font-weight:700;cursor:pointer}footer{text-align:center;padding:24px;color:#888;font-size:13px}#noResult{display:none;text-align:center;padding:20px;color:#888}</style></head><body><header><div style="font-size:12px;letter-spacing:2px;font-weight:800;opacity:.8">✦ By: Randolf Seguban ✦
+
+
+
+</div><h1>MORE KNOWLEDGE BASE <br>
+<span>UNDER CONSTRUCTIONS?</span>
+</h1><p>Knowledge Base ng RNS Technical Support. I-search mo lang yung problema mo — wifi, printer, computer, 【entity-GCash¦canonical_name=GCash】 — nandito na yung solusyon.</p><div class="search"><input id="q" placeholder="Mag-search... hal. wifi, printer, mabagal..." oninput="render()"><button onclick="render()"> Search</button></div></header>
+<div class="wrap"><div class="cats" id="cats"><div class="cat active" onclick="setCat('lahat',this)">NBN</div><div class="cat" onclick="setCat('wifi',this)"> VoIP</div><div class="cat" onclick="setCat('computer',this)"> Mobile</div><div class="cat" onclick="setCat('printer',this)"> Printer</div><div class="cat" onclick="setCat('pera',this)"> Pera / App</div></div><div class="grid" id="grid"></div><div id="noResult">Walang nakita Try mo ibang keyword.</div>
+<div class="section"><h2> Picture: Setup ng Technical Support</h2><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1000&q=80" style="width:100%;border-radius:14px"><p style="color:#666;font-size:14px;margin-top:10px">Ito yung typical setup — computer, router, printer. Kapag may problema, i-check mo muna yung cables at ilaw ng router.</p></div>
+
+  
+<div class="section"><h2> Video: Paano Mag-Ayos ng Mabagal na Wifi</h2><video controls poster="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1000&q=80"><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"></video><h2 style="margin-top:20px"> Video Galing sa YouTube</h2><div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:14px"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div></div>
+<div class="section"><h2> Madalas Itanong (FAQ)</h2><div class="faq" onclick="this.classList.toggle('open')"><b>Bakit mabagal ang wifi ko? <span style="float:right">+</span></b><p>Pinaka-common: maraming naka-connect, malayo ka sa router, o kailangan lang i-restart.</p></div><div class="faq" onclick="this.classList.toggle('open')"><b>Ayaw mag-print ng printer, ano gagawin? <span style="float:right">+</span></b><p>I-check mo: May papel ba? May ink ba? Naka-on ba? I-restart mo yung printer at computer.</p></div><div class="faq" onclick="this.classList.toggle('open')"><b>Paano magpa-ayos sa RNS Technical Support? <span style="float:right">+</span></b><p>Message mo lang kami dito sa page. Sabihin mo yung problema, anong device, at picturan mo yung error.</p></div></div></div><footer>RNS Technical Support • Knowledge Base • Gawa sa Isang Notepad Lang • © 2026</footer><script>const data=[{cat:'wifi',badge:'WIFI / INTERNET',b:'b1',img:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80',title:'Bakit Mabagal ang Wifi? 7 Mabilis na Ayos',desc:'Restart router, ilapit ang device, i-check kung ilan ang naka-connect.',time:'4 min',views:'9.1k'},{cat:'computer',badge:'COMPUTER',b:'b2',img:'https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80',title:'Mabagal ang Computer? Gawin Mo Ito',desc:'Tanggalin ang hindi ginagamit na apps, i-restart, at i-check ang storage.',time:'5 min',views:'7.8k'},{cat:'printer',badge:'PRINTER',b:'b3',img:'https://images.unsplash.com/photo-1588502945133-7d4e242d5d6b?w=800&q=80',title:'Ayaw Mag-Print? 5 Checks Bago Tumawag',desc:'May papel ba? May ink ba? Naka-on ba? Naka-connect ba?',time:'3 min',views:'6.2k'},{cat:'wifi',badge:'WIFI / INTERNET',b:'b1',img:'https://images.unsplash.com/photo-1606904825846-647eb07f5be2?w=800&q=80',title:'Walang Internet Pero May Wifi Signal?',desc:'I-restart mo router at modem ng sabay.',time:'4 min',views:'11.3k'},{cat:'pera',badge:'PERA / APP',b:'b4',img:'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80',title:'Paano Gamitin ang GCash ng Safe',desc:'Huwag i-share ang OTP kahit kanino.',time:'6 min',views:'18.2k'},{cat:'computer',badge:'COMPUTER',b:'b2',img:'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80',title:'Paano Gumawa ng Webpage sa Notepad Lang',desc:'Buksan ang Notepad, i-paste ang HTML, i-save as index.html.',time:'5 min',views:'12.4k'},];let cur='lahat';function render(){const q=document.getElementById('q').value.toLowerCase();const g=document.getElementById('grid');g.innerHTML='';let f=0;data.forEach(d=>{if((cur==='lahat'||d.cat===cur)&&(d.title.toLowerCase().includes(q)||d.desc.toLowerCase().includes(q))){f++;g.innerHTML+=`<div class="card" onclick="alert(' ${d.title}\\n\\n${d.desc}')"><img src="${d.img}"><div class="body"><span class="badge ${d.b}">${d.badge}</span><h3>${d.title}</h3><p>${d.desc}</p><div class="foot"><span> ${d.time}</span><span> ${d.views}</span></div></div></div>`;}});document.getElementById('noResult').style.display=f===0?'block':'none';}function setCat(c,el){cur=c;document.querySelectorAll('.cat').forEach(x=>x.classList.remove('active'));el.classList.add('active');render();}function quick(w){document.getElementById('q').value=w;render();}render();</script>
+
+  <script>
+function ausTime(tz){
+  return new Date().toLocaleTimeString('en-AU',{timeZone:tz,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true});
+}
+function updateAusClocks(){
+  document.getElementById('clock-sydney').textContent = ausTime('Australia/Sydney');
+  document.getElementById('clock-melbourne').textContent = ausTime('Australia/Melbourne');
+  document.getElementById('clock-canberra').textContent = ausTime('Australia/Sydney');
+  document.getElementById('clock-brisbane').textContent = ausTime('Australia/Brisbane');
+  document.getElementById('clock-adelaide').textContent = ausTime('Australia/Adelaide');
+  document.getElementById('clock-darwin').textContent = ausTime('Australia/Darwin');
+  document.getElementById('clock-perth').textContent = ausTime('Australia/Perth');
+  document.getElementById('clock-hobart').textContent = ausTime('Australia/Hobart');
+  document.getElementById('aus-date').textContent = new Date().toLocaleDateString('en-AU',{timeZone:'Australia/Sydney',weekday:'long',day:'numeric',month:'long',year:'numeric'});
+}
+updateAusClocks();
+setInterval(updateAusClocks, 1000);
+</script>
+
+
+
+  <div id="sub-cat-box" style="display:none;text-align:center;margin:20px 0 10px;gap:10px;justify-content:center;flex-wrap:wrap;"></div>
+<div id="sub-result-box" style="display:none;text-align:center;margin:20px auto;max-width:800px;background:white;border-radius:16px;padding:20px;"></div>
+<script>
+setTimeout(function(){
+  var nbnData = {
+    "FTTP": { title:"FTTP - Fiber to the Premises", desc:"Direct fiber hanggang bahay. Pinaka mabilis!", img:"https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600" },
+    "FTTC": { title:"FTTC - Fiber to the Curb", desc:"Fiber hanggang curb, copper papuntang bahay.", img:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600" },
+    "HFC": { title:"HFC - Hybrid Fiber Coaxial", desc:"Gamit dating Foxtel cable.", img:"https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600" },
+    "FX": { title:"FX - Fixed Wireless", desc:"Wireless gamit antenna sa bubong.", img:"https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600" },
+    "FTTN/B": { title:"FTTN/B - Fiber to Node/Building", desc:"Fiber hanggang node, copper papuntang bahay.", img:"https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600" }
+  };
+  var realSetCat = window.setCat;
+  window.setCat = function(c, el){
+    if(realSetCat) realSetCat(c,el);
+    var box=document.getElementById('sub-cat-box');
+    var res=document.getElementById('sub-result-box');
+    if(c.toLowerCase().indexOf('nbn')>-1){
+      box.style.display='flex';
+      box.innerHTML = Object.keys(nbnData).map(w=>`<button onclick="showNBN('${w}')" style="padding:10px 20px;border-radius:99px;border:2px solid #ff7f11;background:#000;color:#fff;font-weight:800;cursor:pointer;margin:4px;">${w}</button>`).join('');
+      res.style.display='none';
+    } else { box.style.display='none'; res.style.display='none'; }
+  };
+  window.showNBN = function(key){
+    var d=nbnData[key];
+    var res=document.getElementById('sub-result-box');
+    document.querySelectorAll('#sub-cat-box button').forEach(b=>{ b.style.background='#000'; b.style.color='#fff'; if(b.textContent===key){ b.style.background='#ff7f11'; b.style.color='#000'; } });
+    res.style.display='block';
+    res.innerHTML=`<h2 style="color:#ff7f11;">${d.title}</h2><p style="color:#333;">${d.desc}</p><img src="${d.img}" style="width:100%;max-height:300px;object-fit:cover;border-radius:12px;">`;
+    res.scrollIntoView({behavior:'smooth'});
+  };
+}, 800);
+</script>
+
+
+
+
+
+  
+</body></html>
