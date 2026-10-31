@@ -1,162 +1,31 @@
 <!DOCTYPE html>
-<html lang="tl">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RNS Technical Support - Knowledge Base</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#0f172a;color:#222}
-header{background:linear-gradient(135deg,#0f172a,#1e40af,#2563eb);color:#fff;padding:20px 16px 30px;position:relative;min-height:380px}
-.top-contacts{position:absolute;top:16px;left:20px;display:flex;gap:12px;z-index:10}
-.top-contacts a{color:white;text-decoration:none;background:rgba(255,255,255,0.15);padding:8px 14px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;border:1px solid rgba(255,255,255,0.15)}
-.top-contacts img{width:22px;height:22px;border-radius:50%;object-fit:cover}
-#aus-time{position:absolute;top:75px;left:15px;background:rgba(0,0,0,0.45);backdrop-filter:blur(6px);color:white;padding:14px 16px;border-radius:14px;font-size:12.5px;line-height:1.8;min-width:215px;border:1px solid rgba(255,255,255,0.2);z-index:10}
-#aus-time b{color:#facc15}
-.main-header-content{text-align:center;padding-top:85px}
-.main-header-content .by{font-size:12px;letter-spacing:2px;font-weight:800;opacity:.8}
-.main-header-content h1{font-size:42px;line-height:1.1;margin-top:6px}
-.main-header-content h1 span{color:#facc15}
-.main-header-content p{opacity:.9;max-width:650px;margin:14px auto 22px;font-size:15px;line-height:1.5}
-.search{max-width:620px;margin:0 auto;background:#fff;border-radius:999px;display:flex;padding:6px 6px 6px 20px}
-.search input{flex:1;border:none;outline:none;font-size:16px}
-.search button{background:#2563eb;color:#fff;border:none;padding:12px 22px;border-radius:999px;font-weight:700;cursor:pointer}
-.wrap{max-width:1050px;margin:0 auto;padding:28px 16px 40px}
-.cats{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:14px 0 20px}
-.cat{background:#000 !important;color:#fff !important;border:1px solid #444 !important;padding:10px 18px;border-radius:999px;cursor:pointer;font-weight:700;font-size:14px;transition:.2s}
-.cat.active{background:#ff7f11 !important;color:#000 !important;font-weight:900 !important;border-color:#ff7f11 !important}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.15);cursor:pointer}
-.card img{width:100%;height:150px;object-fit:cover}
-.body{padding:16px}
-.badge{display:inline-block;font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;margin-bottom:8px}
-.b1{background:#dbeafe;color:#1d4ed8}.b2{background:#dcfce7;color:#166534}.b3{background:#fef9c3;color:#854d0e}.b4{background:#ffe4e6;color:#be123c}
-.card h3{font-size:16px;line-height:1.3;margin-bottom:6px}
-.card p{font-size:13.5px;color:#666;line-height:1.5}
-.foot{display:flex;justify-content:space-between;margin-top:12px;font-size:12px;color:#999}
-.section{background:#fff;border-radius:20px;padding:24px;margin-top:20px;box-shadow:0 4px 18px rgba(0,0,0,.08)}
-.section h2{margin-bottom:12px}
-#noResult{display:none;text-align:center;padding:20px;color:#888;background:white;border-radius:12px;margin-top:15px}
-footer{text-align:center;padding:24px;color:#888;font-size:13px}
+  body {
+    background: linear-gradient(to right, #0A1931, #2E5BFF);
+    margin: 0;
+    min-height: 100vh;
+    padding: 10px;
+  }
 </style>
 </head>
 <body>
 
-  
-
-<header>
-  <div class="top-contacts">
-    <a href="tel:1800211112"><img src="peely-speedy-max.png"> 1800 211 112</a>
-    <a href="tel:1800733368"><img src="download.webp"> 1800 733 368</a>
-  </div>
-
-  <div id="aus-time">
-    <div style="font-weight:900;font-size:13px;margin-bottom:6px">AU AUSTRALIA TIME - LIVE 🟢</div>
-    <div>Sydney: <b id="clock-sydney">--:--:--</b></div>
-    <div>Melbourne: <b id="clock-melbourne">--:--:--</b></div>
-    <div>Canberra: <b id="clock-canberra">--:--:--</b></div>
-    <div>Brisbane: <b id="clock-brisbane">--:--:--</b></div>
-    <div>Adelaide: <b id="clock-adelaide">--:--:--</b></div>
-    <div>Darwin: <b id="clock-darwin">--:--:--</b></div>
-    <div>Perth: <b id="clock-perth">--:--:--</b></div>
-    <div>Hobart: <b id="clock-hobart">--:--:--</b></div>
-    <div style="font-size:11px;opacity:.7;margin-top:6px;border-top:1px solid rgba(255,255,255,0.15);padding-top:6px" id="aus-date">--</div>
-  </div>
-
-  
-
-  <div id="latest-update-box"></div>
-
-
-<div class="wrap">
-  <div class="cats" id="cats">
-    <div class="cat active" onclick="setCat('lahat',this)">NBN</div>
-    <div class="cat" onclick="setCat('wifi',this)">VoIP</div>
-    <div class="cat" onclick="setCat('computer',this)">Mobile</div>
-    <div class="cat" onclick="setCat('printer',this)">Printer</div>
-    <div class="cat" onclick="setCat('pera',this)">Pera / App</div>
-  </div>
-
-  <div id="sub-cat-box" style="display:none;text-align:center;margin:20px 0 10px;gap:10px;justify-content:center;flex-wrap:wrap;"></div>
-  <div id="sub-result-box" style="display:none;text-align:center;margin:20px auto;max-width:800px;background:white;border-radius:16px;padding:20px;"></div>
-
-  <div class="grid" id="grid"></div>
-  <div id="noResult">Walang nakita. Try mo ibang keyword.</div>
-
-  <div class="section"><h2>📸 Setup ng Technical Support</h2><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1000&q=80" style="width:100%;border-radius:14px;margin-top:10px"><p style="color:#666;font-size:14px;margin-top:10px">Typical setup — computer, router, printer. I-check muna cables at ilaw ng router.</p></div>
+<div style="display:flex; gap:10px;">
+  <a href="tel:1800211112" style="text-decoration:none;">
+    <div style="display:flex; align-items:center; gap:6px; background:#111a33; color:white; padding:8px 16px; border-radius:20px; font-weight:bold; font-size:14px;">
+      <img src="logo1.png" style="width:20px; height:20px;">
+      1800 211 112
+    </div>
+  </a>
+  <a href="tel:1800733368" style="text-decoration:none;">
+    <div style="display:flex; align-items:center; gap:6px; background:#111a33; color:white; padding:8px 16px; border-radius:20px; font-weight:bold; font-size:14px;">
+      <img src="logo2.png" style="width:20px; height:20px;">
+      1800 733 368
+    </div>
+  </a>
 </div>
 
-<footer>RNS Technical Support • Knowledge Base • © 2026</footer>
-
-<script>
-// EDITABLE BANNER - WALANG CODE NEEDED!
-(function(){
-  var box=document.getElementById('latest-update-box');
-  var KEY='rns_banner_clean_final';
-  var data={name:"MALAPIT NA ANG 13TH MONTH!!!",message:"MALIGAYANG KAARAWAN",personPic:"",title:"Happy Birthday!"};
-  try{var s=localStorage.getItem(KEY);if(s){var d=JSON.parse(s);data.name=d.name||data.name;data.message=d.message||data.message;data.personPic=d.personPic||data.personPic;data.title=d.title||data.title;}}catch(e){}
-  function renderBanner(){
-    box.innerHTML=`
-      <div style="position:relative;width:calc(100% - 300px);margin:40px 20px 25px 260px;min-height:130px;background:rgba(255,255,255,0.08);border:1.5px dashed rgba(255,255,255,0.5);border-radius:20px;padding:30px 20px 22px;display:flex;justify-content:center;align-items:center;">
-        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#0f172a;padding:5px 18px;border-radius:99px;font-size:11px;letter-spacing:2px;font-weight:800;border:1px solid rgba(255,255,255,0.3);">📢 LATEST UPDATE</div>
-        <div style="flex:1;text-align:center;">
-          <div style="font-size:42px;font-weight:900;color:white;letter-spacing:1px;text-transform:uppercase;line-height:1.1">${data.name}</div>
-          <div style="font-size:14px;opacity:.7;margin-top:8px;color:#cbd5e1">${data.message}</div>
-        </div>
-        <div style="text-align:center;margin-left:20px;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:110px">
-          <div style="font-size:16px;font-weight:800;color:white;">${data.title}</div>
-          <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;border:3px solid white;box-shadow:0 4px 15px rgba(0,0,0,0.4);background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center">
-            ${data.personPic?`<img src="${data.personPic}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<div style=\\'font-size:40px\\'>🧡</div>'">`:`<div style="font-size:40px">🧡</div>`}
-          </div>
-        </div>
-      </div>`;
-  }
-  if(location.search.includes('admin=rns123')){
-    var btn=document.createElement('button');btn.textContent='✏️ EDIT BANNER';
-    btn.style='position:fixed;bottom:20px;right:20px;z-index:99999;padding:14px 20px;border-radius:99px;border:none;background:#2563eb;color:white;font-weight:700;cursor:pointer;';
-    btn.onclick=function(){
-      var n=prompt('Malaking TEXT gitna:',data.name);if(n===null)return;
-      var m=prompt('Maliit TEXT baba:',data.message);if(m===null)return;
-      var t=prompt('Title kanan:',data.title);if(t===null)return;
-      var p=prompt('Picture link https://:',data.personPic);if(p===null)return;
-      localStorage.setItem(KEY,JSON.stringify({name:n,message:m,title:t,personPic:p}));location.reload();
-    };document.body.appendChild(btn);
-  }
-  renderBanner();
-})();
-
-function ausTime(tz){return new Date().toLocaleTimeString('en-AU',{timeZone:tz,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true});}
-function updateAusClocks(){
-  var ids={sydney:'Australia/Sydney',melbourne:'Australia/Melbourne',canberra:'Australia/Sydney',brisbane:'Australia/Brisbane',adelaide:'Australia/Adelaide',darwin:'Australia/Darwin',perth:'Australia/Perth',hobart:'Australia/Hobart'};
-  for(var k in ids){var el=document.getElementById('clock-'+k);if(el)el.textContent=ausTime(ids[k]);}
-  document.getElementById('aus-date').textContent=new Date().toLocaleDateString('en-AU',{timeZone:'Australia/Sydney',weekday:'long',day:'numeric',month:'long',year:'numeric'});
-}
-updateAusClocks();setInterval(updateAusClocks,1000);
-
-const data=[{cat:'wifi',badge:'WIFI / INTERNET',b:'b1',img:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80',title:'Bakit Mabagal ang Wifi? 7 Mabilis na Ayos',desc:'Restart router, ilapit ang device, i-check kung ilan ang naka-connect.',time:'4 min',views:'9.1k'},{cat:'computer',badge:'COMPUTER',b:'b2',img:'https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80',title:'Mabagal ang Computer? Gawin Mo Ito',desc:'Tanggalin ang hindi ginagamit na apps, i-restart, at i-check ang storage.',time:'5 min',views:'7.8k'},{cat:'printer',badge:'PRINTER',b:'b3',img:'https://images.unsplash.com/photo-1588502945133-7d4e242d5d6b?w=800&q=80',title:'Ayaw Mag-Print? 5 Checks Bago Tumawag',desc:'May papel ba? May ink ba? Naka-on ba? Naka-connect ba?',time:'3 min',views:'6.2k'},{cat:'wifi',badge:'WIFI / INTERNET',b:'b1',img:'https://images.unsplash.com/photo-1606904825846-647eb07f5be2?w=800&q=80',title:'Walang Internet Pero May Wifi Signal?',desc:'I-restart mo router at modem ng sabay.',time:'4 min',views:'11.3k'},{cat:'pera',badge:'PERA / APP',b:'b4',img:'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80',title:'Paano Gamitin ang GCash ng Safe',desc:'Huwag i-share ang OTP kahit kanino.',time:'6 min',views:'18.2k'}];
-let cur='lahat';
-function render(){
-  const q=document.getElementById('q').value.toLowerCase();const g=document.getElementById('grid');g.innerHTML='';let f=0;
-  data.forEach(d=>{if((cur==='lahat'||d.cat===cur)&&(d.title.toLowerCase().includes(q)||d.desc.toLowerCase().includes(q))){f++;g.innerHTML+=`<div class="card" onclick="alert('${d.title}\\n\\n${d.desc}')"><img src="${d.img}"><div class="body"><span class="badge ${d.b}">${d.badge}</span><h3>${d.title}</h3><p>${d.desc}</p><div class="foot"><span>${d.time}</span><span>${d.views}</span></div></div></div>`;}});
-  document.getElementById('noResult').style.display=f===0?'block':'none';
-}
-function setCat(c,el){cur=c;document.querySelectorAll('.cat').forEach(x=>x.classList.remove('active'));el.classList.add('active');render();
-  var box=document.getElementById('sub-cat-box');var res=document.getElementById('sub-result-box');
-  if(c==='lahat'){box.style.display='flex';}else{box.style.display='none';res.style.display='none';}
-}
-render();
-
-(function(){
-  var nbnData={"FTTP":{title:"FTTP - Fiber to the Premises",desc:"Direct fiber hanggang bahay. Pinaka mabilis!",img:"https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600"},"FTTC":{title:"FTTC - Fiber to the Curb",desc:"Fiber hanggang curb, copper papuntang bahay.",img:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600"},"HFC":{title:"HFC - Hybrid Fiber Coaxial",desc:"Gamit dating Foxtel cable.",img:"https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600"},"FX":{title:"FX - Fixed Wireless",desc:"Wireless gamit antenna sa bubong.",img:"https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600"},"FTTN/B":{title:"FTTN/B - Fiber to Node/Building",desc:"Fiber hanggang node, copper papuntang bahay.",img:"https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600"}};
-  var box=document.getElementById('sub-cat-box');
-  box.innerHTML=Object.keys(nbnData).map(w=>`<button onclick="showNBN('${w}')" style="padding:10px 20px;border-radius:99px;border:2px solid #ff7f11;background:#000;color:#fff;font-weight:800;cursor:pointer;margin:4px;">${w}</button>`).join('');
-  box.style.display='flex';
-  window.showNBN=function(key){
-    var d=nbnData[key];var res=document.getElementById('sub-result-box');
-    document.querySelectorAll('#sub-cat-box button').forEach(b=>{b.style.background='#000';b.style.color='#fff';if(b.textContent===key){b.style.background='#ff7f11';b.style.color='#000';}});
-    res.style.display='block';res.innerHTML=`<h2 style="color:#ff7f11;margin-bottom:10px">${d.title}</h2><p style="color:#333;margin-bottom:15px">${d.desc}</p><img src="${d.img}" style="width:100%;max-height:300px;object-fit:cover;border-radius:12px;">`;res.scrollIntoView({behavior:'smooth'});
-  };
-})();
-</script>
 </body>
 </html>
