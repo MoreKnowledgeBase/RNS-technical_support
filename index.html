@@ -65,7 +65,28 @@ updateAUTimes();
 </script>
 </div>
 
-  
+  <!-- WRAPPER - left column, no overlap -->
+<div style="position:absolute; left:15px; top:80px; display:flex; flex-direction:column; gap:15px; z-index:10;">
+
+<!-- AU TIME -->
+<div style="background:rgba(15,31,58,0.95); color:white; padding:15px; border-radius:14px; width:260px; font-family:Arial; font-size:13px; border:1px solid #333;">
+  <div style="font-weight:bold; text-align:center; margin-bottom:10px;">AU AUSTRALIA TIME - LIVE <span style="width:10px; height:10px; background:#00ff88; border-radius:50%; display:inline-block; margin-left:5px;"></span></div>
+  <div id="au-time"></div>
+  <div style="margin-top:10px; font-size:11px; color:#aaa; text-align:center;" id="au-date"></div>
+</div>
+
+<!-- TEAM TOM - NO ABSOLUTE, nasa baba lang ng AU TIME -->
+<div id="team-tom-box" style="width:340px;">
+<div style="background:rgba(0,0,0,0.82); border:1px solid rgba(255,255,255,0.3); border-radius:14px; padding:14px; max-height:520px; overflow:auto;">
+<div style="font-size:13px; letter-spacing:2px; font-weight:900; text-align:center; margin-bottom:12px; color:#facc15;">TEAM TOM</div>
+<table style="width:100%; border-collapse:collapse; font-size:10px; color:white;">
+<thead><tr style="background:#2563eb;"><th style="padding:6px 3px;text-align:left;">Name</th><th>In</th><th>Out</th><th>Status</th><th>Sched</th><th>Leave</th></tr></thead>
+<tbody id="team-tom-body"></tbody>
+</table>
+</div>
+</div>
+
+</div>
 
 </body>
 </html>
