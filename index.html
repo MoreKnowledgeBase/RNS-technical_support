@@ -67,8 +67,88 @@
 .team-members-tooltip{display:none;position:absolute;left:105%;top:0;background:#111827;border:1px solid #374151;border-radius:10px;padding:10px 14px;min-width:160px;z-index:9999;}
 .team-row:hover .team-members-tooltip{display:block;}
 </style>
-<div id="team-leaders-box" style="position:absolute;left:15px;top:380px;width:240px;z-index:20;"><div style="background:rgba(0,0,0,0.55);border:1px solid rgba(255,255,255,0.25);border-radius:14px;padding:12px;"><div style="font-size:12px;letter-spacing:2px;font-weight:900;text-align:center;margin-bottom:10px;color:#facc15;">TEAM LEADERS</div><table style="width:100%;border-collapse:collapse;font-size:11px;color:white;"><thead><tr style="background:#2563eb;"><th style="padding:6px 3px;text-align:left;">Leader</th><th>Shift</th><th>Team</th><th>Cnt</th><th>Ext</th></tr></thead><tbody id="team-table-body"></tbody></table><div style="font-size:8px;opacity:.5;text-align:center;margin-top:6px;">Hover sa leader para makita members</div></div></div>
+
+
+  <div id="team-leaders-box" style="position:absolute;left:15px;top:380px;width:290px;z-index:20;">
+<div style="background:rgba(0,0,0,0.65);border:1px solid rgba(255,255,255,0.25);border-radius:14px;padding:12px;max-height:600px;overflow:auto;">
+<div style="font-size:12px;letter-spacing:2px;font-weight:900;text-align:center;margin-bottom:10px;color:#facc15;">TEAM LEADERS</div>
+<table style="width:100%;border-collapse:collapse;font-size:10px;color:white;">
+<thead><tr style="background:#2563eb;"><th style="padding:5px 2px;text-align:left;">Staff</th><th>IN</th><th>OUT</th><th>WFH/ONSITE</th><th>Restday</th></tr></thead>
+<tbody id="team-table-body"></tbody>
+</table>
+<div style="font-size:8px;opacity:.5;text-align:center;margin-top:6px;">20 rows - editable via EDIT TEAM</div>
+</div>
+</div>
 <script>
+(function(){
+  var KEY_TEAM='rns_team_v3_wfh';
+  var defaultTeams=[];
+  for(var i=0;i<20;i++){ defaultTeams.push({staff:"",inTime:"",outTime:"",wfh:"",status:""}); }
+  defaultTeams[0]={staff:"Tom",inTime:"6:00 AM",outTime:"4:00PM",wfh:"ONSITE",status:"Present"};
+  defaultTeams[1]={staff:"Dolf",inTime:"PM",outTime:"B",wfh:"WFH",status:"Present"};
+  defaultTeams[2]={staff:"Ruffy",inTime:"AM",outTime:"C",wfh:"ONSITE",status:"Restday"};
+  defaultTeams[3]={staff:"Marvin",inTime:"GY",outTime:"A",wfh:"WFH",status:"Present"};
+  defaultTeams[4]={staff:"Rosel",inTime:"PM",outTime:"B",wfh:"WFH",status:"Present"};
+  var teams=defaultTeams;
+  try{ var s=localStorage.getItem(KEY_TEAM); if(s) teams=JSON.parse(s); }catch(e){}
+  function render(){ 
+    var tbody=document.getElementById('team-table-body'); if(!tbody) return;
+    tbody.innerHTML = teams.map(t=>{
+      var wfhColor = t.wfh==="ONSITE" ? "#22c55e" : "#facc15";
+      var statColor = t.status==="Present" ? "#4ade80" : "#fb7185";
+      return `<tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+        <td style="padding:5px 2px;font-weight:700;color:#93c5fd;">${t.staff||"-"}</td>
+        <td style="padding:5px 1px;text-align:center;">${t.inTime||"-"}</td>
+        <td style="padding:5px 1px;text-align:center;">${t.outTime||"-"}</td>
+        <td style="padding:5px 1px;text-align:center;color:${wfhColor};font-weight:700;">${t.wfh||"-"}</td>
+        <td style="padding:5px 1px;text-align:center;color:${statColor};font-weight:700;">${t.status||"-"}</td>
+      </tr>`;
+    }).join(''); 
+  }
+  function openEditor(){
+    var overlay=document.createElement('div'); overlay.style='position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999999;display:flex;justify-content:center;align-items:center;padding:20px;overflow:auto;';
+    var box=document.createElement('div'); box.style='background:#1e293b;border:1px solid #334155;border-radius:16px;padding:20px;width:95%;max-width:900px;max-height:90vh;overflow:auto;';
+    var html=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;position:sticky;top:0;background:#1e293b;padding-bottom:10px;z-index:1;"><h3 style="margin:0;color:white;">👥 Edit 20 Staff - IN/OUT/WFH/Status</h3><button id="close-team-modal" style="background:#ef4444;color:white;border:none;padding:6px 12px;border-radius:8px;cursor:pointer;">X</button></div>
+    <div style="display:grid;grid-template-columns:1fr 80px 80px 100px 100px;gap:6px;margin-bottom:8px;padding:6px;background:#0f172a;border-radius:6px;font-size:10px;color:#facc15;font-weight:800;"><div>STAFF</div><div>IN</div><div>OUT</div><div>WFH/ONSITE</div><div>RESTDAY/PRESENT</div></div>`;
+    teams.forEach((t,idx)=>{ 
+      html+=`<div style="display:grid;grid-template-columns:1fr 80px 80px 100px 100px;gap:6px;margin-bottom:6px;">
+        <input id="staff-${idx}" value="${t.staff}" placeholder="Name" style="padding:6px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;font-size:11px;">
+        <input id="in-${idx}" value="${t.inTime}" placeholder="6:00 AM" style="padding:6px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;font-size:11px;">
+        <input id="out-${idx}" value="${t.outTime}" placeholder="4:00 PM" style="padding:6px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;font-size:11px;">
+        <select id="wfh-${idx}" style="padding:6px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;font-size:11px;"><option value="" ${t.wfh===""?"selected":""}>-</option><option value="WFH" ${t.wfh==="WFH"?"selected":""}>WFH</option><option value="ONSITE" ${t.wfh==="ONSITE"?"selected":""}>ONSITE</option></select>
+        <select id="status-${idx}" style="padding:6px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:white;font-size:11px;"><option value="" ${t.status===""?"selected":""}>-</option><option value="Present" ${t.status==="Present"?"selected":""}>Present</option><option value="Restday" ${t.status==="Restday"?"selected":""}>Restday</option></select>
+      </div>`; 
+    });
+    html+=`<button id="save-team" style="width:100%;padding:14px;background:#22c55e;color:black;font-weight:800;border:none;border-radius:10px;cursor:pointer;margin-top:15px;position:sticky;bottom:0;">💾 SAVE ALL 20 STAFF</button>`;
+    box.innerHTML=html; overlay.appendChild(box); document.body.appendChild(overlay);
+    document.getElementById('close-team-modal').onclick=()=>overlay.remove();
+    document.getElementById('save-team').onclick=()=>{ 
+      teams.forEach((t,idx)=>{ 
+        t.staff=document.getElementById(`staff-${idx}`).value; 
+        t.inTime=document.getElementById(`in-${idx}`).value; 
+        t.outTime=document.getElementById(`out-${idx}`).value; 
+        t.wfh=document.getElementById(`wfh-${idx}`).value; 
+        t.status=document.getElementById(`status-${idx}`).value; 
+      }); 
+      localStorage.setItem(KEY_TEAM, JSON.stringify(teams)); overlay.remove(); render(); alert('Saved 20 staff!'); 
+    };
+  }
+  if(location.search.includes('admin=rns123')){ var btn=document.createElement('button'); btn.textContent='👥 EDIT TEAM'; btn.style='position:fixed;bottom:20px;right:180px;z-index:99999;padding:14px 20px;border-radius:99px;border:none;background:#f59e0b;color:black;font-weight:700;cursor:pointer;'; btn.onclick=openEditor; document.body.appendChild(btn); }
+  render();
+})();
+</script>
+  
+  
+  
+  
+  
+  
+  
+  style="background:rgba(0,0,0,0.55);border:1px solid rgba(255,255,255,0.25);border-radius:14px;padding:12px;"><div style="font-size:12px;letter-spacing:2px;font-weight:900;text-align:center;margin-bottom:10px;color:#facc15;">TEAM LEADERS</div><table style="width:100%;border-collapse:collapse;font-size:11px;color:white;"><thead><tr style="background:#2563eb;"><th style="padding:6px 3px;text-align:left;">Leader</th><th>Shift</th><th>Team</th><th>Cnt</th><th>Ext</th></tr></thead><tbody id="team-table-body"></tbody></table><div style="font-size:8px;opacity:.5;text-align:center;margin-top:6px;">Hover sa leader para makita members</div></div></div>
+<script>
+
+
+  
 (function(){
   var KEY_TEAM='rns_team_v2';
   var defaultTeams=[
