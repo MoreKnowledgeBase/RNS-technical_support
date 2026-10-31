@@ -11,45 +11,24 @@
 <div id="latest-update-box"></div>
 <script>
 (function(){
-  var KEY='rns_latest_update';
-  var DEFAULTS={title:"Happy Birthday!", message:"Dito mo ilalagay yung bday greetings mo. I-edit mo lang ito.", icon:"🎂", enabled:true};
-  function getData(){
-    try{ var s=localStorage.getItem(KEY); return s?JSON.parse(s):DEFAULTS; }catch(e){ return DEFAULTS; }
-  }
-  function render(){
-    var data=getData();
-    var box=document.getElementById('latest-update-box');
-    if(!data.enabled){ box.innerHTML=''; return; }
-
-box.innerHTML='<div style="width:calc(100% - 280px);margin:15px 20px 15px 250px;min-height:180px;...'>
-  +'<div style="font-size:13px;letter-spacing:3px;...">📢 LATEST UPDATE</div>'
-  +'<div style="font-size:28px;...">'+data.icon+' 📢'+data.title+' 🎉</div>'
-  +'<div style="font-size:18px;...">'+data.message+'</div></div>';
-
-
-
-
-  }
-  window.updateRNSBanner=function(t,m,i){
-    var d=getData(); if(t)d.title=t; if(m)d.message=m; if(i)d.icon=i;
-    localStorage.setItem(KEY, JSON.stringify(d)); render();
-  }
-  // Admin mode ?admin=rns123
-  if(location.search.includes('admin=rns123')){
-    var btn=document.createElement('button');
-    btn.textContent='✏️ EDIT BIRTHDAY';
-    btn.style='position:fixed;bottom:20px;right:20px;z-index:9999;padding:12px 18px;border-radius:99px;border:none;background:#2563eb;color:white;font-weight:700;cursor:pointer;';
-    btn.onclick=function(){
-      var cur=getData();
-      var nt=prompt('Title:',cur.title); if(nt===null)return;
-      var nm=prompt('Message:',cur.message); if(nm===null)return;
-      var ni=prompt('Icon emoji:',cur.icon); if(ni===null)return;
-      localStorage.setItem(KEY, JSON.stringify({title:nt,message:nm,icon:ni,enabled:true}));
-      render(); alert('Saved! Refresh mo site mo para makita ng lahat.');
-    };
-    document.body.appendChild(btn);
-  }
-  render();
+  var box = document.getElementById('latest-update-box');
+  if(!box) return;
+  var title = "Happy Birthday!";
+  var message = "Dito mo ilalagay yung bday greetings mo. I-edit mo lang ito.";
+  var icon = "🎂";
+  try{
+    var saved = localStorage.getItem('rns_latest_update');
+    if(saved){ var d=JSON.parse(saved); title=d.title||title; message=d.message||message; icon=d.icon||icon; }
+  }catch(e){}
+  box.innerHTML = `
+    <div style="position:relative;width:calc(100% - 300px);margin:40px 20px 25px 260px;min-height:190px;background:rgba(255,255,255,0.12);border:2px dashed rgba(255,255,255,0.5);border-radius:20px;padding:35px 25px 25px;display:flex;justify-content:center;align-items:center;">
+      <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#1e293b;padding:5px 18px;border-radius:99px;font-size:12px;letter-spacing:3px;font-weight:800;border:1px solid rgba(255,255,255,0.3);">📢 LATEST UPDATE</div>
+      <div style="text-align:center;">
+        <div style="font-size:30px;font-weight:900;">${icon} ${title} 🎉</div>
+        <div style="font-size:17px;opacity:.9;margin-top:8px;">${message}</div>
+      </div>
+    </div>
+  `;
 })();
 </script>
 
