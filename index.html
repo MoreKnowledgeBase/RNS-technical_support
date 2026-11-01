@@ -223,7 +223,6 @@ updateAUTimes();
       </div>
     </div>
   </div>
-
 </div>
 
 <script>
@@ -231,25 +230,31 @@ var subMenuData = {
   'NBN': ['FTTP','FTTC','HFC','FW','FTTN/B'],
   'VoIP': ['No Dial Tone','VoIP Config & ATA','GDMS'],
   'Mobile': ['No Data','SIM Issue','APN','Roaming','VoLTE'],
-  'Modem': ['Netcomm Software Uprade'],
+  'Modem': ['Netcomm Software Upgrade'],
   'Provisioning': ['New Order','Activation','Transfer','Cancel','Track']
 };
 var contentData = {
   'NBN': { title: 'NBN - NATIONAL BROADBAND NETWORK', desc: 'Select FTTP, FTTC, HFC, FW, FTTN/B above!', pic: 'https://images.unsplash.com/photo-1603899123552-0b6a7a228a6c?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'SETUP DIAGRAM', d2: 'Wiring / Connection Guide', t3: 'TROUBLESHOOTING', d3: 'Steps to Fix' },
-  'FTTP': { title: 'FTTP', desc: 'Fibre to the Premises', pic: 'FTTP outside set up.webp', pic2: 'FTTP old ntd box set up.png', pic3: 'FTTP NBN Box V2.png', t2: 'FTTP INSTALL', d2: 'NBN Box + Connection', t3: 'FTTP CHECK', d3: 'Light Status Guide' },
-  'FTTC': { title: 'FTTC', desc: 'Fibre to the Curb', pic: 'FTTC outside set up.webp', pic2: 'FTTC Diagram.jpg', pic3: 'FTTC box.png', t2: 'FTTC SETUP', d2: 'NCD + Modem', t3: 'FTTC TROUBLESHOOT', d3: 'NTD Lights' },
-  'HFC': { title: 'HFC', desc: 'Hybrid Fibre Coaxial', pic: 'HFC Diagram.png', pic2: 'HFC set up.png', pic3: 'HFC lights.png', t2: 'HFC SETUP', d2: 'NBN Box Arris', t3: 'HFC TROUBLESHOOT', d3: 'Lights Check' },
-  'FW': { title: 'FW', desc: 'Fixed Wireless', pic: 'FW outside.webp', pic2: 'FW set up.png', pic3: 'FW lights.png', t2: 'FW SETUP', d2: 'Antenna + NTD', t3: 'FW Set Up', d3: 'Signal Check' },
-  'FTTN/B': { title: 'FTTN/B', desc: 'Fibre to the Node/Building', pic: 'FTTB Diagram.webp', pic2: 'FTTN Diagram.webp', pic3: 'FTTN Set up.png', t2: 'FTTN SETUP', d2: 'FTTN Diagram', t3: 'FTTN TROUBLESHOOT', d3: 'FTTN Set up' },
-
-    'No Dial Tone': { title: 'No Dial Tone', desc: 'Voip Wired', pic: 'Voip Wired.webp', pic2: 'Voip Wireless.webp', pic3: 'Voip Ata.jpg ', t2: 'VoIP SETUP', d2: 'ATA Config'},
-
+  'FTTP': { title: 'FTTP', desc: 'Fibre to the Premises', pic: 'FTTP-outside-set-up.webp', pic2: 'FTTP-old-ntd-box-set-up.png', pic3: 'FTTP-NBN-Box-V2.png', t2: 'FTTP INSTALL', d2: 'NBN Box + Connection', t3: 'FTTP CHECK', d3: 'Light Status Guide' },
+  'FTTC': { title: 'FTTC', desc: 'Fibre to the Curb', pic: 'FTTC-outside-set-up.webp', pic2: 'FTTC-Diagram.jpg', pic3: 'FTTC-box.png', t2: 'FTTC SETUP', d2: 'NCD + Modem', t3: 'FTTC TROUBLESHOOT', d3: 'NTD Lights' },
+  'HFC': { title: 'HFC', desc: 'Hybrid Fibre Coaxial', pic: 'HFC-Diagram.png', pic2: 'HFC-set-up.png', pic3: 'HFC-lights.png', t2: 'HFC SETUP', d2: 'NBN Box Arris', t3: 'HFC TROUBLESHOOT', d3: 'Lights Check' },
+  'FW': { title: 'FW', desc: 'Fixed Wireless', pic: 'FW-outside.webp', pic2: 'FW-set-up.png', pic3: 'FW-lights.png', t2: 'FW SETUP', d2: 'Antenna + NTD', t3: 'FW Set Up', d3: 'Signal Check' },
+  'FTTN/B': { title: 'FTTN/B', desc: 'Fibre to the Node/Building', pic: 'FTTB-Diagram.webp', pic2: 'FTTN-Diagram.webp', pic3: 'FTTN-Set-up.png', t2: 'FTTN SETUP', d2: 'FTTN Diagram', t3: 'FTTN TROUBLESHOOT', d3: 'FTTN Set up' },
+  'No Dial Tone': { title: 'No Dial Tone - VoIP Wired', desc: 'Modem Router PHONE 1 to Gray Telephone - Single Connection', pic: 'Voip-Wired.webp', pic2: 'Voip-Wireless.webp', pic3: 'Voip-Ata.webp', t2: 'VoIP WIRELESS', d2: 'Sample Wireless Handset Only', t3: 'VoIP ATA SETUP', d3: 'Grandstream HT801 - Picture for Reference Only' },
+  'VoIP Config & ATA': { title: 'VoIP Config & ATA', desc: 'ATA Setup - Modem LAN to ATA Internet (Blue) Port', pic: 'Voip-Ata.webp', pic2: 'Voip-Wired.webp', pic3: 'Voip-Wireless.webp', t2: 'ATA SETUP', d2: 'Phone PORT 1 Connection', t3: 'WIRED SETUP', d3: 'PHONE 1 to Gray Telephone' },
+  'GDMS': { title: 'GDMS - VoIP Provisioning', desc: 'Grandstream Device Management System', pic: 'Voip-Ata.webp', pic2: 'Voip-Wired.webp', pic3: 'Netcomm-VoIP-SIP-Combined-Clear.webp', t2: 'SIP CONFIG', d2: 'VoIP Basic & Advanced Setting', t3: 'SIP CREDENTIALS', d3: 'SIP Username / Password / Proxy' },
+  'No Data': { title: 'Mobile - No Data', desc: 'Mobile Data Troubleshooting', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'APN SETUP', d2: 'Access Point Name', t3: 'MOBILE FIX', d3: 'No Data Steps' },
+  'SIM Issue': { title: 'SIM Issue', desc: 'SIM Card Troubleshooting', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'SIM CHECK', d2: 'Insert / Remove SIM', t3: 'SIM FIX', d3: 'Steps' },
+  'APN': { title: 'APN', desc: 'APN Configuration', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'APN SETUP', d2: 'APN Values', t3: 'APN FIX', d3: 'Manual Config' },
+  'Roaming': { title: 'Roaming', desc: 'Roaming Troubleshooting', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'ROAMING SETUP', d2: 'Enable Roaming', t3: 'ROAMING FIX', d3: 'Steps' },
+  'VoLTE': { title: 'VoLTE', desc: 'VoLTE Troubleshooting', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'VoLTE SETUP', d2: 'Enable VoLTE', t3: 'VoLTE FIX', d3: 'Steps' },
   'Mobile': { title: 'MOBILE', desc: 'Select Mobile issue above!', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'MOBILE SETUP', d2: 'APN Config', t3: 'MOBILE FIX', d3: 'No Data' },
-  
-  
-  'Netcomm Software Upgrade': { title: 'Netcomm Software Upgrade', desc: 'Select Modem issue above!', pic: 'NetcommSoftwareupgrade.webp' },
-
-  
+  'Netcomm Software Upgrade': { title: 'Netcomm Software Upgrade', desc: 'Netcomm Modem Firmware Upgrade - 3-in-1 Guide (Connection + Download + Update)', pic: 'Netcomm-Upgrade-3in1-Combined.webp', pic2: 'Netcomm-Upgrade-3in1-Combined.webp', pic3: 'Netcomm-VoIP-SIP-Combined-Clear.webp', t2: 'FULL UPGRADE GUIDE', d2: 'Part 1: LAN/WiFi Login - Part 2: Download Extract - Part 3: Update Interface', t3: 'SIP VoIP CONFIG REFERENCE', d3: 'NF18ACV Voice SIP Basic + NF10WV Phone Line 1' },
+  'New Order': { title: 'New Order', desc: 'Provisioning New Order', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'ORDER PROCESS', d2: 'New NBN Order', t3: 'TRACK', d3: 'Order Tracker' },
+  'Activation': { title: 'Activation', desc: 'Service Activation', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'ACTIVATION', d2: 'Steps', t3: 'CHECK', d3: 'Activation Status' },
+  'Transfer': { title: 'Transfer', desc: 'Service Transfer', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'TRANSFER', d2: 'Transfer Process', t3: 'CHECK', d3: 'Transfer Status' },
+  'Cancel': { title: 'Cancel', desc: 'Cancellation Process', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'CANCEL', d2: 'Cancel Steps', t3: 'REFUND', d3: 'Refund Process' },
+  'Track': { title: 'Track', desc: 'Order Tracking', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'TRACK ORDER', d2: 'NBN Tracker', t3: 'STATUS', d3: 'Order Status' },
   'Provisioning': { title: 'PROVISIONING', desc: 'Select Provisioning above!', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'ORDER TRACK', d2: 'NBN Tracker', t3: 'ACTIVATION', d3: 'Steps' }
 };
 
@@ -274,17 +279,30 @@ function setCat(c,el){
     el.classList.add('active');
   }
   var d = contentData[c];
-  if(!d) return;
-  document.getElementById('main-pic').src = d.pic;
+  if(!d) {
+    console.log('No contentData for:', c);
+    return;
+  }
+  function setImg(id, src){
+    var img = document.getElementById(id);
+    if(img){
+      img.onerror = function(){
+        console.log('Failed to load:', src);
+        this.src = 'https://via.placeholder.com/900x600?text=Not+Found+'+encodeURIComponent(src);
+      };
+      img.src = src;
+    }
+  }
   document.getElementById('main-title').textContent = d.title;
   document.getElementById('main-desc').textContent = d.desc;
+  setImg('main-pic', d.pic);
   if(document.getElementById('main-pic2')){
-    document.getElementById('main-pic2').src = d.pic2 || d.pic;
+    setImg('main-pic2', d.pic2 || d.pic);
     document.getElementById('main-title2').textContent = d.t2 || d.title + ' - Setup';
     document.getElementById('main-desc2').textContent = d.d2 || d.desc;
   }
   if(document.getElementById('main-pic3')){
-    document.getElementById('main-pic3').src = d.pic3 || d.pic;
+    setImg('main-pic3', d.pic3 || d.pic);
     document.getElementById('main-title3').textContent = d.t3 || d.title + ' - Troubleshoot';
     document.getElementById('main-desc3').textContent = d.d3 || d.desc;
   }
@@ -296,5 +314,4 @@ window.addEventListener('load', function(){
 </script>
 
 </body>
-</html> ayaw padin
-ibang picture lumalabas
+</html>
