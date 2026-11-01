@@ -191,6 +191,91 @@ updateAUTimes();
 </script>
 
 <div class="center-wrapper">
+
+
+
+
+  <!-- SEARCH BOX NA NAKA-LINK KAY TANGERINE -->
+<div style="width:900px; max-width:90%; margin:0 auto 20px; background:#0f1f3a; padding:12px; border-radius:12px; border:1.5px solid #FF8A26; display:flex; gap:10px; position:relative; z-index:20;">
+  <input id="kb-search" type="text" placeholder="🔍 Search RNS + Tangerine (e.g. VoIP ATA, Netcomm Upgrade, NBN setup)..." 
+    style="flex:1; padding:12px 18px; border-radius:99px; border:1.5px solid #333; background:#0a0a0a; color:white; font-weight:700; font-size:13px; outline:none;"
+    onkeyup="searchKB(this.value)"
+    onkeypress="if(event.key==='Enter'){ searchTangerine(this.value); }"
+  >
+  <button onclick="searchTangerine(document.getElementById('kb-search').value)" style="padding:12px 20px; border-radius:99px; background:#FF8A26; color:#000; font-weight:900; border:none; cursor:pointer; white-space:nowrap;">🔍 Search Tangerine</button>
+</div>
+<div id="search-results" style="width:900px; max-width:90%; margin:0 auto 20px; display:none; position:relative; z-index:20;"></div>
+
+<script>
+function searchKB(q){
+  q = q.toLowerCase().trim();
+  var resultsDiv = document.getElementById('search-results');
+  if(!q){ resultsDiv.style.display='none'; return; }
+  var html = '';
+  var count = 0;
+  for(var key in contentData){
+    var d = contentData[key];
+    var hay = (key + ' ' + d.title + ' ' + d.desc).toLowerCase();
+    if(hay.includes(q)){
+      count++;
+      html += `<div onclick="setCat('${key.replace(/'/g,"\\'")}'); document.getElementById('search-results').style.display='none'; document.getElementById('kb-search').value=''; window.scrollTo(0,300);" style="background:white; padding:12px 18px; border-radius:12px; margin-bottom:8px; cursor:pointer; display:flex; gap:12px; align-items:center; text-align:left; border-left:4px solid #FF8A26;">
+        <img src="${d.pic}" style="width:60px; height:45px; object-fit:cover; border-radius:8px;">
+        <div><div style="font-weight:900; color:#0f172a; font-size:13px;">${d.title}</div><div style="color:#666; font-size:11px;">${key} - ${d.desc}</div></div>
+      </div>`;
+    }
+  }
+  if(count>0){
+    resultsDiv.innerHTML = `<div style="background:#0f1f3a; color:white; padding:10px 15px; border-radius:10px; font-weight:800; font-size:12px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center;"><span>Found ${count} local result(s) for "${q}"</span><span style="display:flex; gap:6px;"><button onclick="searchTangerine('${q.replace(/'/g,"\\'")}')" style="padding:6px 12px; border-radius:99px; background:#FF8A26; color:#000; border:none; font-weight:800; font-size:11px; cursor:pointer;">Also search Tangerine →</button><button onclick="document.getElementById('search-results').style.display='none'" style="padding:6px 10px; border-radius:99px; background:rgba(255,255,255,0.15); color:white; border:none; cursor:pointer;">X</button></span></div>` + html;
+    resultsDiv.style.display='block';
+  } else {
+    resultsDiv.innerHTML = `<div style="background:#0f1f3a; color:#aaa; padding:15px; border-radius:10px; text-align:center;">No local result for "${q}". <button onclick="searchTangerine('${q.replace(/'/g,"\\'")}')" style="margin-left:8px; padding:6px 12px; border-radius:99px; background:#FF8A26; color:#000; border:none; font-weight:800; cursor:pointer;">Search in Tangerine instead →</button></div>`;
+    resultsDiv.style.display='block';
+  }
+}
+
+function searchTangerine(q){
+  if(!q) return alert('Type something first!');
+  var resultsDiv = document.getElementById('search-results');
+  
+  // 3 OPTIONS TO SEARCH TANGERINE:
+  // Option 1: Open Tangerine site search in new tab (pinaka stable)
+  var tangerineSearchUrl = `https://www.tangerine.com.au/search?q=${encodeURIComponent(q)}`;
+  var tangerineHelpUrl = `https://www.tangerine.com.au/help/search?query=${encodeURIComponent(q)}`;
+  var googleSiteSearch = `https://www.google.com/search?q=site:tangerine.com.au+${encodeURIComponent(q)}`;
+  
+  resultsDiv.innerHTML = `
+    <div style="background:white; padding:18px; border-radius:12px; text-align:left; border:2px solid #FF8A26;">
+      <div style="font-weight:900; color:#0f172a; margin-bottom:12px; font-size:14px;">🔍 Searching Tangerine for "${q}"</div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <a href="${tangerineSearchUrl}" target="_blank" style="padding:12px 15px; background:#0f1f3a; color:white; border-radius:10px; text-decoration:none; font-weight:700; font-size:12px; display:flex; justify-content:space-between; align-items:center;">
+          <span>🟠 Search on Tangerine.com.au</span><span>→</span>
+        </a>
+        <a href="${tangerineHelpUrl}" target="_blank" style="padding:12px 15px; background:#FF8A26; color:#000; border-radius:10px; text-decoration:none; font-weight:800; font-size:12px; display:flex; justify-content:space-between; align-items:center;">
+          <span>📚 Search Tangerine Help Center</span><span>→</span>
+        </a>
+        <a href="${googleSiteSearch}" target="_blank" style="padding:12px 15px; background:white; color:#0f172a; border:1.5px solid #0f1f3a; border-radius:10px; text-decoration:none; font-weight:700; font-size:12px; display:flex; justify-content:space-between; align-items:center;">
+          <span>🔎 Google Site Search: tangerine.com.au</span><span>→</span>
+        </a>
+        <div style="margin-top:8px; padding:10px; background:#f5f5f5; border-radius:8px; font-size:11px; color:#666;">
+          <b>Tip:</b> Pag click mo ng link, bubukas sa new tab yung Tangerine results para kay "${q}". Kopyahin mo info, tapos pwede mo i-add sa knowledge base mo!
+        </div>
+      </div>
+      <div style="margin-top:12px; text-align:right;">
+        <button onclick="document.getElementById('search-results').style.display='none'" style="padding:6px 14px; border-radius:99px; background:#eee; border:none; cursor:pointer; font-weight:700; font-size:11px;">Close</button>
+      </div>
+    </div>
+  `;
+  resultsDiv.style.display='block';
+  
+  // OPTIONAL: Auto-open Tangerine search in new tab
+  // window.open(tangerineSearchUrl, '_blank');
+}
+</script>
+ <!-- SEARCH BOX NA NAKA-LINK KAY TANGERINE -->
+
+
+
+  
   <div id="middle-pills" style="background:#0f1f3a; padding:10px 20px; border-radius:12px; display:flex; gap:10px; border:1px solid #333; justify-content:center;">
     <a href="#" class="sub-pill active" onclick="setCat('FTTP',this);return false;">FTTP</a>
     <a href="#" class="sub-pill" onclick="setCat('FTTC',this);return false;">FTTC</a>
