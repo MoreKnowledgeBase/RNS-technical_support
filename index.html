@@ -5,119 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RNS Technical Support - Knowledge Base</title>
 <style>
-  body {
-    background: linear-gradient(to right, #0A1931, #2E5BFF);
-    margin: 0;
-    min-height: 100vh;
-    padding: 10px;
-    font-family: Arial, sans-serif;
-  }
-#static-menubar{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  height:42px;
-  background:#0a0a0a;
-  border-bottom:1px solid rgba(255,255,255,0.12);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 16px;
-  z-index:999999;
-  box-shadow:0 4px 20px rgba(0,0,0,0.4);
-}
-#static-menubar .left-phones{display:flex;gap:10px;align-items:center}
-#static-menubar .right-menu{display:flex;gap:8px;align-items:center}
-#static-menubar .pill{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-  height:28px;
-  padding:0 14px;
-  border-radius:99px;
-  font-weight:800;
-  font-size:12px;
-  text-decoration:none;
-  line-height:1;
-  border:1px solid transparent;
-  transition:.2s;
-  white-space:nowrap;
-  cursor:pointer;
-}
-#static-menubar .pill img{width:18px;height:18px;border-radius:50%;object-fit:cover}
-#static-menubar .pill-phone1{background:#FF8A26;color:white;border-color:#FF8A26}
-#static-menubar .pill-phone2{background:#FF8A26;color:white;border-color:#FF8A26}
-#static-menubar .pill-menu{background:rgba(255,255,255,0.12);color:white;border-color:rgba(255,255,255,0.15)}
-#static-menubar .pill-menu:hover{background:#ff7f11;color:#000;border-color:#ff7f11}
-#static-menubar .pill-menu.active{background:#ff7f11;color:#000;border-color:#ff7f11}
-body{padding-top:42px !important}
-#main-content-area, .extra-card{
-  width:900px;
-  max-width:90%;
-  margin:0 auto;
-  background:white;
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 10px 40px rgba(0,0,0,0.4);
-  text-align:center;
-}
-#main-content-area img, .extra-card img{
-  width:100%;
-  height:auto;
-  max-height:none;
-  object-fit:contain;
-  object-position:center;
-  display:block;
-  background:white;
-  margin:0;
-  padding:0;
-}
-.sub-pill{
-  background:#0a0a0a;
-  border:1.5px solid #FF8A26;
-  color:white;
-  padding:8px 18px;
-  border-radius:99px;
-  font-weight:800;
-  font-size:12px;
-  text-decoration:none;
-  cursor:pointer;
-  transition:.2s;
-  white-space:nowrap;
-}
-.sub-pill:hover{ background:#FF8A26; color:#000; }
-.sub-pill.active{ background:#FF8A26; color:#000; }
-.center-wrapper{
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  margin-top:250px;
-  gap:20px;
-  padding-bottom:50px;
-}
-.extra-pics{
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-  width:100%;
-  align-items:center;
-}
+  body { background: linear-gradient(to right, #0A1931, #2E5BFF); margin:0; min-height:100vh; padding:10px; font-family:Arial,sans-serif; }
+  #static-menubar{position:fixed;top:0;left:0;right:0;height:42px;background:#0a0a0a;border-bottom:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:space-between;padding:0 16px;z-index:999999;box-shadow:0 4px 20px rgba(0,0,0,0.4);}
+  #static-menubar .left-phones{display:flex;gap:10px;align-items:center}
+  #static-menubar .right-menu{display:flex;gap:8px;align-items:center}
+  #static-menubar .pill{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:28px;padding:0 14px;border-radius:99px;font-weight:800;font-size:12px;text-decoration:none;line-height:1;border:1px solid transparent;transition:.2s;white-space:nowrap;cursor:pointer;}
+  #static-menubar .pill img{width:18px;height:18px;border-radius:50%;object-fit:cover}
+  #static-menubar .pill-phone1{background:#FF8A26;color:white;border-color:#FF8A26}
+  #static-menubar .pill-phone2{background:#FF8A26;color:white;border-color:#FF8A26}
+  #static-menubar .pill-menu{background:rgba(255,255,255,0.12);color:white;border-color:rgba(255,255,255,0.15)}
+  #static-menubar .pill-menu:hover{background:#ff7f11;color:#000;border-color:#ff7f11}
+  #static-menubar .pill-menu.active{background:#ff7f11;color:#000;border-color:#ff7f11}
+  body{padding-top:42px !important}
+  #main-content-area, .extra-card{width:900px;max-width:90%;margin:0 auto;background:white;border-radius:20px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.4);text-align:center;}
+  #main-content-area img, .extra-card img{width:100%;height:auto;max-height:none;object-fit:contain;object-position:center;display:block;background:white;margin:0;padding:0;}
+  .sub-pill{background:#0a0a0a;border:1.5px solid #FF8A26;color:white;padding:8px 18px;border-radius:99px;font-weight:800;font-size:12px;text-decoration:none;cursor:pointer;transition:.2s;white-space:nowrap;}
+  .sub-pill:hover{ background:#FF8A26; color:#000; }
+  .sub-pill.active{ background:#FF8A26; color:#000; }
+  .center-wrapper{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-top:250px;gap:20px;padding-bottom:50px;}
+  .extra-pics{display:flex;flex-direction:column;gap:20px;width:100%;align-items:center;}
 </style>
 </head>
 <body>
-
 <nav id="static-menubar">
   <div class="left-phones">
-    <a href="https://www.tangerine.com.au/" class="pill pill-phone1">
-      <img src="peely-speedy-max.png"> 1800 211 112
-    </a>
-    <a href="https://more.com.au/" class="pill pill-phone2">
-      <img src="download.webp"> 1800 733 368
-    </a>
+    <a href="https://www.tangerine.com.au/" class="pill pill-phone1"><img src="peely-speedy-max.png"> 1800 211 112</a>
+    <a href="https://more.com.au/" class="pill pill-phone2"><img src="download.webp"> 1800 733 368</a>
   </div>
   <div class="right-menu">
     <a href="#" class="pill pill-menu active" onclick="setCat('NBN',this);return false;">NBN</a>
@@ -127,64 +40,30 @@ body{padding-top:42px !important}
     <a href="#" class="pill pill-menu" onclick="setCat('Provisioning',this);return false;">Provisioning</a>
   </div>
 </nav>
-
 <div style="background:#0f1f3a; color:white; padding:15px; border-radius:15px; width:260px; font-family:Arial; font-size:13px; border:1px solid #333; position:absolute; top:80px; left:15px; z-index:10;">
-  <div style="font-weight:bold; text-align:center; margin-bottom:10px;">
-    AU AUSTRALIA TIME - LIVE <span style="width:10px; height:10px; background:#00ff88; border-radius:50%; display:inline-block; margin-left:5px;"></span>
-  </div>
+  <div style="font-weight:bold; text-align:center; margin-bottom:10px;">AU AUSTRALIA TIME - LIVE <span style="width:10px; height:10px; background:#00ff88; border-radius:50%; display:inline-block; margin-left:5px;"></span></div>
   <div id="au-time"></div>
   <div style="margin-top:10px; font-size:11px; color:#aaa; text-align:center;" id="au-date"></div>
 </div>
-
 <script>
 function updateAUTimes(){
-  const cities = [
-    {name:"Sydney", tz:"Australia/Sydney"},
-    {name:"Melbourne", tz:"Australia/Melbourne"},
-    {name:"Canberra", tz:"Australia/Canberra"},
-    {name:"Brisbane", tz:"Australia/Brisbane"},
-    {name:"Adelaide", tz:"Australia/Adelaide"},
-    {name:"Darwin", tz:"Australia/Darwin"},
-    {name:"Perth", tz:"Australia/Perth"},
-    {name:"Hobart", tz:"Australia/Hobart"}
-  ];
+  const cities = [{name:"Sydney", tz:"Australia/Sydney"},{name:"Melbourne", tz:"Australia/Melbourne"},{name:"Canberra", tz:"Australia/Canberra"},{name:"Brisbane", tz:"Australia/Brisbane"},{name:"Adelaide", tz:"Australia/Adelaide"},{name:"Darwin", tz:"Australia/Darwin"},{name:"Perth", tz:"Australia/Perth"},{name:"Hobart", tz:"Australia/Hobart"}];
   let html = "";
-  cities.forEach(c=>{
-    const time = new Date().toLocaleTimeString("en-AU", {timeZone:c.tz, hour:"2-digit", minute:"2-digit", second:"2-digit", hour12:true});
-    html += `<div style="display:flex; justify-content:space-between; margin:4px 0;"><span>${c.name}:</span> <span style="color:#ffcc00; font-weight:bold;">${time}</span></div>`;
-  });
+  cities.forEach(c=>{ const time = new Date().toLocaleTimeString("en-AU", {timeZone:c.tz, hour:"2-digit", minute:"2-digit", second:"2-digit", hour12:true}); html += `<div style="display:flex; justify-content:space-between; margin:4px 0;"><span>${c.name}:</span> <span style="color:#ffcc00; font-weight:bold;">${time}</span></div>`; });
   document.getElementById("au-time").innerHTML = html;
   document.getElementById("au-date").innerHTML = new Date().toLocaleDateString("en-AU", {weekday:"long", day:"numeric", month:"long", year:"numeric"});
 }
-setInterval(updateAUTimes,1000);
-updateAUTimes();
+setInterval(updateAUTimes,1000); updateAUTimes();
 </script>
-
 <div id="latest-update-box"></div>
-
 <script>
 (function(){
-  var box=document.getElementById('latest-update-box');
-  if(!box) return;
+  var box=document.getElementById('latest-update-box'); if(!box) return;
   var KEY='rns_banner_red_circle_final';
   var data={name:"MALAPIT NA ANG 13TH MONTH!!!",small:"MALIGAYANG KAARAWAN",title:"Happy Birthday!",pic:""};
   try{var s=localStorage.getItem(KEY);if(s){var d=JSON.parse(s);data.name=d.name||data.name;data.small=d.small||data.small;data.title=d.title||data.title;data.pic=d.pic||data.pic;}}catch(e){}
   function renderBanner(){
-    box.innerHTML=`
-      <div style="position:absolute;top:80px;left:350px;right:20px;min-height:130px;background:rgba(255,255,255,0.08);border:1.5px dashed rgba(255,255,255,0.5);border-radius:20px;padding:30px 20px 22px;display:flex;justify-content:center;align-items:center;z-index:15;">
-        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#0f172a;padding:5px 18px;border-radius:99px;font-size:11px;letter-spacing:2px;font-weight:800;border:1px solid rgba(255,255,255,0.3);color:white;white-space:nowrap">📢 LATEST UPDATE</div>
-        <div style="flex:1;text-align:center;">
-          <div style="font-size:42px;font-weight:900;color:white;letter-spacing:1px;text-transform:uppercase;line-height:1.1;">${data.name}</div>
-          <div style="font-size:14px;opacity:.7;margin-top:8px;color:#cbd5e1;">${data.small}</div>
-        </div>
-        <div style="text-align:center;margin-left:25px;display:flex;flex-direction:column;align-items:center;gap:10px;min-width:120px">
-          <div style="font-size:15px;font-weight:800;color:white;">${data.title}</div>
-          <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;border:3px solid white;box-shadow:0 4px 20px rgba(0,0,0,0.4);background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center">
-            ${data.pic ? `<img src="${data.pic}" style="width:100%;height:100%;object-fit:cover;">` : `<div style="font-size:42px">🧡</div>`}
-          </div>
-        </div>
-      </div>
-    `;
+    box.innerHTML=`<div style="position:absolute;top:80px;left:350px;right:20px;min-height:130px;background:rgba(255,255,255,0.08);border:1.5px dashed rgba(255,255,255,0.5);border-radius:20px;padding:30px 20px 22px;display:flex;justify-content:center;align-items:center;z-index:15;"><div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#0f172a;padding:5px 18px;border-radius:99px;font-size:11px;letter-spacing:2px;font-weight:800;border:1px solid rgba(255,255,255,0.3);color:white;white-space:nowrap">📢 LATEST UPDATE</div><div style="flex:1;text-align:center;"><div style="font-size:42px;font-weight:900;color:white;letter-spacing:1px;text-transform:uppercase;line-height:1.1;">${data.name}</div><div style="font-size:14px;opacity:.7;margin-top:8px;color:#cbd5e1;">${data.small}</div></div><div style="text-align:center;margin-left:25px;display:flex;flex-direction:column;align-items:center;gap:10px;min-width:120px"><div style="font-size:15px;font-weight:800;color:white;">${data.title}</div><div style="width:80px;height:80px;border-radius:50%;overflow:hidden;border:3px solid white;box-shadow:0 4px 20px rgba(0,0,0,0.4);background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center">${data.pic ? `<img src="${data.pic}" style="width:100%;height:100%;object-fit:cover;">` : `<div style="font-size:42px">🧡</div>`}</div></div></div>`;
   }
   renderBanner();
 })();
@@ -192,10 +71,7 @@ updateAUTimes();
 
 <div class="center-wrapper">
 
-
-
-
-  <!-- SEARCH BOX NA NAKA-LINK KAY TANGERINE -->
+<!-- SEARCH BOX NA NAKA-LINK KAY TANGERINE -->
 <div style="width:900px; max-width:90%; margin:0 auto 20px; background:#0f1f3a; padding:12px; border-radius:12px; border:1.5px solid #FF8A26; display:flex; gap:10px; position:relative; z-index:20;">
   <input id="kb-search" type="text" placeholder="🔍 Search RNS + Tangerine (e.g. VoIP ATA, Netcomm Upgrade, NBN setup)..." 
     style="flex:1; padding:12px 18px; border-radius:99px; border:1.5px solid #333; background:#0a0a0a; color:white; font-weight:700; font-size:13px; outline:none;"
@@ -206,76 +82,6 @@ updateAUTimes();
 </div>
 <div id="search-results" style="width:900px; max-width:90%; margin:0 auto 20px; display:none; position:relative; z-index:20;"></div>
 
-<script>
-function searchKB(q){
-  q = q.toLowerCase().trim();
-  var resultsDiv = document.getElementById('search-results');
-  if(!q){ resultsDiv.style.display='none'; return; }
-  var html = '';
-  var count = 0;
-  for(var key in contentData){
-    var d = contentData[key];
-    var hay = (key + ' ' + d.title + ' ' + d.desc).toLowerCase();
-    if(hay.includes(q)){
-      count++;
-      html += `<div onclick="setCat('${key.replace(/'/g,"\\'")}'); document.getElementById('search-results').style.display='none'; document.getElementById('kb-search').value=''; window.scrollTo(0,300);" style="background:white; padding:12px 18px; border-radius:12px; margin-bottom:8px; cursor:pointer; display:flex; gap:12px; align-items:center; text-align:left; border-left:4px solid #FF8A26;">
-        <img src="${d.pic}" style="width:60px; height:45px; object-fit:cover; border-radius:8px;">
-        <div><div style="font-weight:900; color:#0f172a; font-size:13px;">${d.title}</div><div style="color:#666; font-size:11px;">${key} - ${d.desc}</div></div>
-      </div>`;
-    }
-  }
-  if(count>0){
-    resultsDiv.innerHTML = `<div style="background:#0f1f3a; color:white; padding:10px 15px; border-radius:10px; font-weight:800; font-size:12px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center;"><span>Found ${count} local result(s) for "${q}"</span><span style="display:flex; gap:6px;"><button onclick="searchTangerine('${q.replace(/'/g,"\\'")}')" style="padding:6px 12px; border-radius:99px; background:#FF8A26; color:#000; border:none; font-weight:800; font-size:11px; cursor:pointer;">Also search Tangerine →</button><button onclick="document.getElementById('search-results').style.display='none'" style="padding:6px 10px; border-radius:99px; background:rgba(255,255,255,0.15); color:white; border:none; cursor:pointer;">X</button></span></div>` + html;
-    resultsDiv.style.display='block';
-  } else {
-    resultsDiv.innerHTML = `<div style="background:#0f1f3a; color:#aaa; padding:15px; border-radius:10px; text-align:center;">No local result for "${q}". <button onclick="searchTangerine('${q.replace(/'/g,"\\'")}')" style="margin-left:8px; padding:6px 12px; border-radius:99px; background:#FF8A26; color:#000; border:none; font-weight:800; cursor:pointer;">Search in Tangerine instead →</button></div>`;
-    resultsDiv.style.display='block';
-  }
-}
-
-function searchTangerine(q){
-  if(!q) return alert('Type something first!');
-  var resultsDiv = document.getElementById('search-results');
-  
-  // 3 OPTIONS TO SEARCH TANGERINE:
-  // Option 1: Open Tangerine site search in new tab (pinaka stable)
-  var tangerineSearchUrl = `https://www.tangerine.com.au/search?q=${encodeURIComponent(q)}`;
-  var tangerineHelpUrl = `https://www.tangerine.com.au/help/search?query=${encodeURIComponent(q)}`;
-  var googleSiteSearch = `https://www.google.com/search?q=site:tangerine.com.au+${encodeURIComponent(q)}`;
-  
-  resultsDiv.innerHTML = `
-    <div style="background:white; padding:18px; border-radius:12px; text-align:left; border:2px solid #FF8A26;">
-      <div style="font-weight:900; color:#0f172a; margin-bottom:12px; font-size:14px;">🔍 Searching Tangerine for "${q}"</div>
-      <div style="display:flex; flex-direction:column; gap:8px;">
-        <a href="${tangerineSearchUrl}" target="_blank" style="padding:12px 15px; background:#0f1f3a; color:white; border-radius:10px; text-decoration:none; font-weight:700; font-size:12px; display:flex; justify-content:space-between; align-items:center;">
-          <span>🟠 Search on Tangerine.com.au</span><span>→</span>
-        </a>
-        <a href="${tangerineHelpUrl}" target="_blank" style="padding:12px 15px; background:#FF8A26; color:#000; border-radius:10px; text-decoration:none; font-weight:800; font-size:12px; display:flex; justify-content:space-between; align-items:center;">
-          <span>📚 Search Tangerine Help Center</span><span>→</span>
-        </a>
-        <a href="${googleSiteSearch}" target="_blank" style="padding:12px 15px; background:white; color:#0f172a; border:1.5px solid #0f1f3a; border-radius:10px; text-decoration:none; font-weight:700; font-size:12px; display:flex; justify-content:space-between; align-items:center;">
-          <span>🔎 Google Site Search: tangerine.com.au</span><span>→</span>
-        </a>
-        <div style="margin-top:8px; padding:10px; background:#f5f5f5; border-radius:8px; font-size:11px; color:#666;">
-          <b>Tip:</b> Pag click mo ng link, bubukas sa new tab yung Tangerine results para kay "${q}". Kopyahin mo info, tapos pwede mo i-add sa knowledge base mo!
-        </div>
-      </div>
-      <div style="margin-top:12px; text-align:right;">
-        <button onclick="document.getElementById('search-results').style.display='none'" style="padding:6px 14px; border-radius:99px; background:#eee; border:none; cursor:pointer; font-weight:700; font-size:11px;">Close</button>
-      </div>
-    </div>
-  `;
-  resultsDiv.style.display='block';
-  
-  // OPTIONAL: Auto-open Tangerine search in new tab
-  // window.open(tangerineSearchUrl, '_blank');
-}
-</script>
- <!-- SEARCH BOX NA NAKA-LINK KAY TANGERINE -->
-
-
-
-  
   <div id="middle-pills" style="background:#0f1f3a; padding:10px 20px; border-radius:12px; display:flex; gap:10px; border:1px solid #333; justify-content:center;">
     <a href="#" class="sub-pill active" onclick="setCat('FTTP',this);return false;">FTTP</a>
     <a href="#" class="sub-pill" onclick="setCat('FTTC',this);return false;">FTTC</a>
@@ -334,10 +140,7 @@ var contentData = {
   'Roaming': { title: 'Roaming', desc: 'Roaming Troubleshooting', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'ROAMING SETUP', d2: 'Enable Roaming', t3: 'ROAMING FIX', d3: 'Steps' },
   'VoLTE': { title: 'VoLTE', desc: 'VoLTE Troubleshooting', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'VoLTE SETUP', d2: 'Enable VoLTE', t3: 'VoLTE FIX', d3: 'Steps' },
   'Mobile': { title: 'MOBILE', desc: 'Select Mobile issue above!', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'MOBILE SETUP', d2: 'APN Config', t3: 'MOBILE FIX', d3: 'No Data' },
-  
-'Netcomm Software Upgrade': { title: 'Netcomm Software Upgrade', desc: 'Netcomm Modem Firmware Upgrade - 3-in-1 Guide (Connection + Download + Update)', pic: 'Netcomm-Upgrade-3in1-Combined.webp', pic2: 'Netcomm-Upgrade-3in1-Combined.webp', pic3: 'Netcomm-VoIP-SIP-Combined-Clear.webp', t2: 'FULL UPGRADE GUIDE', d2: 'Part 1: LAN/WiFi Login - Part 2: Download Extract - Part 3: Update Interface', t3: 'SIP VoIP CONFIG REFERENCE', d3: 'NF18ACV Voice SIP Basic + NF10WV Phone Line 1' },
-
-  
+  'Netcomm Software Upgrade': { title: 'Netcomm Software Upgrade', desc: 'Netcomm Modem Firmware Upgrade - 3-in-1 Guide', pic: 'Netcomm-Upgrade-3in1-Combined.webp' },
   'New Order': { title: 'New Order', desc: 'Provisioning New Order', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'ORDER PROCESS', d2: 'New NBN Order', t3: 'TRACK', d3: 'Order Tracker' },
   'Activation': { title: 'Activation', desc: 'Service Activation', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'ACTIVATION', d2: 'Steps', t3: 'CHECK', d3: 'Activation Status' },
   'Transfer': { title: 'Transfer', desc: 'Service Transfer', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'TRANSFER', d2: 'Transfer Process', t3: 'CHECK', d3: 'Transfer Status' },
@@ -345,6 +148,38 @@ var contentData = {
   'Track': { title: 'Track', desc: 'Order Tracking', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'TRACK ORDER', d2: 'NBN Tracker', t3: 'STATUS', d3: 'Order Status' },
   'Provisioning': { title: 'PROVISIONING', desc: 'Select Provisioning above!', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'ORDER TRACK', d2: 'NBN Tracker', t3: 'ACTIVATION', d3: 'Steps' }
 };
+
+function searchKB(q){
+  q = q.toLowerCase().trim();
+  var resultsDiv = document.getElementById('search-results');
+  if(!q){ resultsDiv.style.display='none'; return; }
+  var html = ''; var count = 0;
+  for(var key in contentData){
+    var d = contentData[key];
+    var hay = (key + ' ' + d.title + ' ' + d.desc).toLowerCase();
+    if(hay.includes(q)){
+      count++;
+      html += '<div onclick="setCat(\'' + key.replace(/'/g,"\\'") + '\'); document.getElementById(\'search-results\').style.display=\'none\'; document.getElementById(\'kb-search\').value=\'\'; window.scrollTo(0,300);" style="background:white; padding:12px 18px; border-radius:12px; margin-bottom:8px; cursor:pointer; display:flex; gap:12px; align-items:center; text-align:left; border-left:4px solid #FF8A26;"><img src="' + d.pic + '" style="width:60px; height:45px; object-fit:cover; border-radius:8px;"><div><div style="font-weight:900; color:#0f172a; font-size:13px;">' + d.title + '</div><div style="color:#666; font-size:11px;">' + key + ' - ' + d.desc + '</div></div></div>';
+    }
+  }
+  if(count>0){
+    resultsDiv.innerHTML = '<div style="background:#0f1f3a; color:white; padding:10px 15px; border-radius:10px; font-weight:800; font-size:12px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center;"><span>Found ' + count + ' local result(s) for \'' + q + '\'</span><span style="display:flex; gap:6px;"><button onclick="searchTangerine(\'' + q.replace(/'/g,"\\'") + '\')" style="padding:6px 12px; border-radius:99px; background:#FF8A26; color:#000; border:none; font-weight:800; font-size:11px; cursor:pointer;">Also search Tangerine →</button><button onclick="document.getElementById(\'search-results\').style.display=\'none\'" style="padding:6px 10px; border-radius:99px; background:rgba(255,255,255,0.15); color:white; border:none; cursor:pointer;">X</button></span></div>' + html;
+    resultsDiv.style.display='block';
+  } else {
+    resultsDiv.innerHTML = '<div style="background:#0f1f3a; color:#aaa; padding:15px; border-radius:10px; text-align:center;">No local result for \'' + q + '\'. <button onclick="searchTangerine(\'' + q.replace(/'/g,"\\'") + '\')" style="margin-left:8px; padding:6px 12px; border-radius:99px; background:#FF8A26; color:#000; border:none; font-weight:800; cursor:pointer;">Search in Tangerine instead →</button></div>';
+    resultsDiv.style.display='block';
+  }
+}
+
+function searchTangerine(q){
+  if(!q) return alert('Type something first!');
+  var resultsDiv = document.getElementById('search-results');
+  var tangerineSearchUrl = 'https://www.tangerine.com.au/search?q=' + encodeURIComponent(q);
+  var tangerineHelpUrl = 'https://www.tangerine.com.au/help/search?query=' + encodeURIComponent(q);
+  var googleSiteSearch = 'https://www.google.com/search?q=site:tangerine.com.au+' + encodeURIComponent(q);
+  resultsDiv.innerHTML = '<div style="background:white; padding:18px; border-radius:12px; text-align:left; border:2px solid #FF8A26;"><div style="font-weight:900; color:#0f172a; margin-bottom:12px; font-size:14px;">🔍 Searching Tangerine for \'' + q + '\'</div><div style="display:flex; flex-direction:column; gap:8px;"><a href="' + tangerineSearchUrl + '" target="_blank" style="padding:12px 15px; background:#0f1f3a; color:white; border-radius:10px; text-decoration:none; font-weight:700; font-size:12px; display:flex; justify-content:space-between; align-items:center;"><span>🟠 Search on Tangerine.com.au</span><span>→</span></a><a href="' + tangerineHelpUrl + '" target="_blank" style="padding:12px 15px; background:#FF8A26; color:#000; border-radius:10px; text-decoration:none; font-weight:800; font-size:12px; display:flex; justify-content:space-between; align-items:center;"><span>📚 Search Tangerine Help Center</span><span>→</span></a><a href="' + googleSiteSearch + '" target="_blank" style="padding:12px 15px; background:white; color:#0f172a; border:1.5px solid #0f1f3a; border-radius:10px; text-decoration:none; font-weight:700; font-size:12px; display:flex; justify-content:space-between; align-items:center;"><span>🔎 Google Site Search: tangerine.com.au</span><span>→</span></a><div style="margin-top:8px; padding:10px; background:#f5f5f5; border-radius:8px; font-size:11px; color:#666;"><b>Tip:</b> Pag click mo ng link, bubukas sa new tab yung Tangerine results para kay \'' + q + '\'. Kopyahin mo info, tapos pwede mo i-add sa knowledge base mo!</div></div><div style="margin-top:12px; text-align:right;"><button onclick="document.getElementById(\'search-results\').style.display=\'none\'" style="padding:6px 14px; border-radius:99px; background:#eee; border:none; cursor:pointer; font-weight:700; font-size:11px;">Close</button></div></div>';
+  resultsDiv.style.display='block';
+}
 
 function setCat(c,el){
   if(el && el.classList.contains('pill-menu')){
@@ -367,17 +202,11 @@ function setCat(c,el){
     el.classList.add('active');
   }
   var d = contentData[c];
-  if(!d) {
-    console.log('No contentData for:', c);
-    return;
-  }
+  if(!d) { console.log('No contentData for:', c); return; }
   function setImg(id, src){
     var img = document.getElementById(id);
     if(img){
-      img.onerror = function(){
-        console.log('Failed to load:', src);
-        this.src = 'https://via.placeholder.com/900x600?text=Not+Found+'+encodeURIComponent(src);
-      };
+      img.onerror = function(){ console.log('Failed to load:', src); this.src = 'https://via.placeholder.com/900x600?text=Not+Found+'+encodeURIComponent(src); };
       img.src = src;
     }
   }
@@ -400,6 +229,5 @@ window.addEventListener('load', function(){
   if(nbnBtn) setCat('NBN', nbnBtn);
 });
 </script>
-
 </body>
 </html>
