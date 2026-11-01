@@ -142,39 +142,3 @@ function updateAUTimes(){
     {name:"Sydney", tz:"Australia/Sydney"},
     {name:"Melbourne", tz:"Australia/Melbourne"},
     {name:"Canberra", tz:"Australia/Canberra"},
-    {name:"Brisbane", tz:"Australia/Brisbane"},
-    {name:"Adelaide", tz:"Australia/Adelaide"},
-    {name:"Darwin", tz:"Australia/Darwin"},
-    {name:"Perth", tz:"Australia/Perth"},
-    {name:"Hobart", tz:"Australia/Hobart"}
-  ];
-  let html = "";
-  cities.forEach(c=>{
-    const time = new Date().toLocaleTimeString("en-AU", {timeZone:c.tz, hour:"2-digit", minute:"2-digit", second:"2-digit", hour12:true});
-    html += `<div style="display:flex; justify-content:space-between; margin:4px 0;"><span>${c.name}:</span> <span style="color:#ffcc00; font-weight:bold;">${time}</span></div>`;
-  });
-  document.getElementById("au-time").innerHTML = html;
-  document.getElementById("au-date").innerHTML = new Date().toLocaleDateString("en-AU", {weekday:"long", day:"numeric", month:"long", year:"numeric"});
-}
-setInterval(updateAUTimes,1000);
-updateAUTimes();
-</script>
-
-<div id="latest-update-box"></div>
-
-<script>
-(function(){
-  var box=document.getElementById('latest-update-box');
-  if(!box) return;
-  var KEY='rns_banner_red_circle_final';
-  var data={name:"MALAPIT NA ANG 13TH MONTH!!!",small:"MALIGAYANG KAARAWAN",title:"Happy Birthday!",pic:""};
-  try{var s=localStorage.getItem(KEY);if(s){var d=JSON.parse(s);data.name=d.name||data.name;data.small=d.small||data.small;data.title=d.title||data.title;data.pic=d.pic||data.pic;}}catch(e){}
-  function renderBanner(){
-    box.innerHTML=`
-      <div style="position:absolute;top:80px;left:350px;right:20px;min-height:130px;background:rgba(255,255,255,0.08);border:1.5px dashed rgba(255,255,255,0.5);border-radius:20px;padding:30px 20px 22px;display:flex;justify-content:center;align-items:center;z-index:15;">
-        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#0f172a;padding:5px 18px;border-radius:99px;font-size:11px;letter-spacing:2px;font-weight:800;border:1px solid rgba(255,255,255,0.3);color:white;white-space:nowrap">📢 LATEST UPDATE</div>
-        <div style="flex:1;text-align:center;">
-          <div style="font-size:42px;font-weight:900;color:white;letter-spacing:1px;text-transform:uppercase;line-height:1.1;">${data.name}</div>
-          <div style="font-size:14px;opacity:.7;margin-top:8px;color:#cbd5e1;">${data.small}</div>
-        </div>
-        <div style="
