@@ -53,7 +53,7 @@
 #static-menubar .pill-menu:hover{background:#ff7f11;color:#000;border-color:#ff7f11}
 #static-menubar .pill-menu.active{background:#ff7f11;color:#000;border-color:#ff7f11}
 body{padding-top:42px !important}
-#main-content-area{
+#main-content-area, .extra-card{
   width:900px;
   max-width:90%;
   margin:0 auto;
@@ -63,7 +63,7 @@ body{padding-top:42px !important}
   box-shadow:0 10px 40px rgba(0,0,0,0.4);
   text-align:center;
 }
-#main-content-area img{
+#main-content-area img, .extra-card img{
   width:100%;
   height:550px;
   object-fit:cover;
@@ -96,6 +96,14 @@ body{padding-top:42px !important}
   justify-content:center;
   margin-top:250px;
   gap:20px;
+  padding-bottom:50px;
+}
+.extra-pics{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  width:100%;
+  align-items:center;
 }
 </style>
 </head>
@@ -112,145 +120,4 @@ body{padding-top:42px !important}
   </div>
   <div class="right-menu">
     <a href="#" class="pill pill-menu active" onclick="setCat('NBN',this);return false;">NBN</a>
-    <a href="#" class="pill pill-menu" onclick="setCat('VoIP',this);return false;">VoIP</a>
-    <a href="#" class="pill pill-menu" onclick="setCat('Mobile',this);return false;">Mobile</a>
-    <a href="#" class="pill pill-menu" onclick="setCat('Modem',this);return false;">Modem</a>
-    <a href="#" class="pill pill-menu" onclick="setCat('Provisioning',this);return false;">Provisioning</a>
-  </div>
-</nav>
-
-<div style="background:#0f1f3a; color:white; padding:15px; border-radius:15px; width:260px; font-family:Arial; font-size:13px; border:1px solid #333; position:absolute; top:80px; left:15px; z-index:10;">
-  <div style="font-weight:bold; text-align:center; margin-bottom:10px;">
-    AU AUSTRALIA TIME - LIVE <span style="width:10px; height:10px; background:#00ff88; border-radius:50%; display:inline-block; margin-left:5px;"></span>
-  </div>
-  <div id="au-time"></div>
-  <div style="margin-top:10px; font-size:11px; color:#aaa; text-align:center;" id="au-date"></div>
-</div>
-
-<script>
-function updateAUTimes(){
-  const cities = [
-    {name:"Sydney", tz:"Australia/Sydney"},
-    {name:"Melbourne", tz:"Australia/Melbourne"},
-    {name:"Canberra", tz:"Australia/Canberra"},
-    {name:"Brisbane", tz:"Australia/Brisbane"},
-    {name:"Adelaide", tz:"Australia/Adelaide"},
-    {name:"Darwin", tz:"Australia/Darwin"},
-    {name:"Perth", tz:"Australia/Perth"},
-    {name:"Hobart", tz:"Australia/Hobart"}
-  ];
-  let html = "";
-  cities.forEach(c=>{
-    const time = new Date().toLocaleTimeString("en-AU", {timeZone:c.tz, hour:"2-digit", minute:"2-digit", second:"2-digit", hour12:true});
-    html += `<div style="display:flex; justify-content:space-between; margin:4px 0;"><span>${c.name}:</span> <span style="color:#ffcc00; font-weight:bold;">${time}</span></div>`;
-  });
-  document.getElementById("au-time").innerHTML = html;
-  document.getElementById("au-date").innerHTML = new Date().toLocaleDateString("en-AU", {weekday:"long", day:"numeric", month:"long", year:"numeric"});
-}
-setInterval(updateAUTimes,1000);
-updateAUTimes();
-</script>
-
-<div id="latest-update-box"></div>
-
-<script>
-(function(){
-  var box=document.getElementById('latest-update-box');
-  if(!box) return;
-  var KEY='rns_banner_red_circle_final';
-  var data={name:"MALAPIT NA ANG 13TH MONTH!!!",small:"MALIGAYANG KAARAWAN",title:"Happy Birthday!",pic:""};
-  try{var s=localStorage.getItem(KEY);if(s){var d=JSON.parse(s);data.name=d.name||data.name;data.small=d.small||data.small;data.title=d.title||data.title;data.pic=d.pic||data.pic;}}catch(e){}
-  function renderBanner(){
-    box.innerHTML=`
-      <div style="position:absolute;top:80px;left:350px;right:20px;min-height:130px;background:rgba(255,255,255,0.08);border:1.5px dashed rgba(255,255,255,0.5);border-radius:20px;padding:30px 20px 22px;display:flex;justify-content:center;align-items:center;z-index:15;">
-        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#0f172a;padding:5px 18px;border-radius:99px;font-size:11px;letter-spacing:2px;font-weight:800;border:1px solid rgba(255,255,255,0.3);color:white;white-space:nowrap">📢 LATEST UPDATE</div>
-        <div style="flex:1;text-align:center;">
-          <div style="font-size:42px;font-weight:900;color:white;letter-spacing:1px;text-transform:uppercase;line-height:1.1;">${data.name}</div>
-          <div style="font-size:14px;opacity:.7;margin-top:8px;color:#cbd5e1;">${data.small}</div>
-        </div>
-        <div style="text-align:center;margin-left:25px;display:flex;flex-direction:column;align-items:center;gap:10px;min-width:120px">
-          <div style="font-size:15px;font-weight:800;color:white;">${data.title}</div>
-          <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;border:3px solid white;box-shadow:0 4px 20px rgba(0,0,0,0.4);background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center">
-            ${data.pic ? `<img src="${data.pic}" style="width:100%;height:100%;object-fit:cover;">` : `<div style="font-size:42px">🧡</div>`}
-          </div>
-        </div>
-      </div>
-    `;
-  }
-  renderBanner();
-})();
-</script>
-
-<div class="center-wrapper">
-  <div id="middle-pills" style="background:#0f1f3a; padding:10px 20px; border-radius:12px; display:flex; gap:10px; border:1px solid #333; justify-content:center;">
-    <a href="#" class="sub-pill active" onclick="setCat('FTTP',this);return false;">FTTP</a>
-    <a href="#" class="sub-pill" onclick="setCat('FTTC',this);return false;">FTTC</a>
-    <a href="#" class="sub-pill" onclick="setCat('HFC',this);return false;">HFC</a>
-    <a href="#" class="sub-pill" onclick="setCat('FX',this);return false;">FX</a>
-    <a href="#" class="sub-pill" onclick="setCat('FTTN/B',this);return false;">FTTN/B</a>
-  </div>
-
-  <div id="main-content-area">
-    <img id="main-pic" src="peely-speedy-max.png">
-    <div style="padding:15px;text-align:center;background:white;">
-      <h2 id="main-title" style="color:#0f172a;font-size:14px;font-weight:900;margin:0;text-align:center;">NBN - NATIONAL BROADBAND NETWORK 22222</h2>
-      <p id="main-desc" style="color:#666;margin-top:8px;font-size:12px;text-align:center;">Click mo yung NBN, VoIP, Mobile, Modem, Provisioning sa taas</p>
-    </div>
-  </div>
-</div>
-
-<script>
-var subMenuData = {
-  'NBN': ['FTTP','FTTC','HFC','FX','FTTN/B'],
-  'VoIP': ['No Dial Tone','One Way','No Voice','VoIP Setup','ATA'],
-  'Mobile': ['No Data','SIM Issue','APN','Roaming','VoLTE'],
-  'Modem': ['Setup','No Internet','WiFi','Bridge','Reset'],
-  'Provisioning': ['New Order','Activation','Transfer','Cancel','Track']
-};
-var contentData = {
-  'NBN': { title: 'NBN - NATIONAL BROADBAND NETWORK 22222', desc: 'Select FTTP, FTTC, HFC, FX, FTTN/B above!', pic: 'peely-speedy-max.png' },
-  'FTTP': { title: 'FTTP', desc: 'Fibre to the Premises', pic: 'peely-speedy-max.png' },
-  'FTTP': { title: 'FTTP', desc: 'Fibre to the Premises', pic: 'FTTP outside set up.webp' },
-  'FTTC': { title: 'FTTC', desc: 'Fibre to the Curb', pic: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200' },
-  'HFC': { title: 'HFC', desc: 'Hybrid Fibre Coaxial', pic: 'HFC set up.png' },
-  'FX': { title: 'FX', desc: 'Fixed Wireless', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200' },
-  'FTTN/B': { title: 'FTTN/B', desc: 'Fibre to the Node/Building', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200' },
-  'VoIP': { title: 'VoIP', desc: 'Select VoIP issue above!', pic: 'https://images.unsplash.com/photo-1588502945133-7d4e242d5d6b?w=1200' },
-  'Mobile': { title: 'MOBILE', desc: 'Select Mobile issue above!', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200' },
-  'Modem': { title: 'MODEM', desc: 'Select Modem issue above!', pic: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200' },
-  'Provisioning': { title: 'PROVISIONING', desc: 'Select Provisioning above!', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200' }
-};
-function setCat(c,el){
-  if(el && el.classList.contains('pill-menu')){
-    document.querySelectorAll('.pill-menu').forEach(x=>x.classList.remove('active'));
-    el.classList.add('active');
-    var subs = subMenuData[c] || [];
-    var middle = document.getElementById('middle-pills');
-    middle.innerHTML = '';
-    subs.forEach(function(name, idx){
-      var btn = document.createElement('a');
-      btn.href='#';
-      btn.className='sub-pill' + (idx===0?' active':'');
-      btn.textContent=name;
-      btn.onclick=function(e){ e.preventDefault(); setCat(name, this); };
-      middle.appendChild(btn);
-    });
-    if(subs.length>0) c = subs[0];
-  } else if(el && el.classList.contains('sub-pill')){
-    document.querySelectorAll('.sub-pill').forEach(x=>x.classList.remove('active'));
-    el.classList.add('active');
-  }
-  var d = contentData[c];
-  if(!d) return;
-  document.getElementById('main-pic').src = d.pic;
-  document.getElementById('main-title').textContent = d.title;
-  document.getElementById('main-desc').textContent = d.desc;
-}
-window.addEventListener('load', function(){
-  var nbnBtn = document.querySelector('.pill-menu');
-  if(nbnBtn) setCat('NBN', nbnBtn);
-});
-</script>
-
-</body>
-</html>
+    <a href="#" class="pill pill-menu" onclick
