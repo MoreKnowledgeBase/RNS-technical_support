@@ -133,6 +133,37 @@ updateAUTimes();
 
 <div id="latest-update-box"></div>
 
+
+
+  <!-- FTTP PILLS - NASA GITNA NG BANNER AT PICTURE -->
+<div id="middle-pills" style="position:absolute; top:225px; left:50%; transform:translateX(-50%); display:flex; gap:10px; z-index:20;">
+  <a href="#" class="sub-pill active" onclick="setCat('FTTP',this);return false;">FTTP</a>
+  <a href="#" class="sub-pill" onclick="setCat('FTTC',this);return false;">FTTC</a>
+  <a href="#" class="sub-pill" onclick="setCat('HFC',this);return false;">HFC</a>
+  <a href="#" class="sub-pill" onclick="setCat('FX',this);return false;">FX</a>
+  <a href="#" class="sub-pill" onclick="setCat('FTTNB',this);return false;">FTTN/B</a>
+</div>
+
+<style>
+.sub-pill{
+  background:#0a0a0a;
+  border:1.5px solid #FF8A26;
+  color:white;
+  padding:8px 18px;
+  border-radius:99px;
+  font-weight:800;
+  font-size:12px;
+  text-decoration:none;
+  cursor:pointer;
+  transition:.2s;
+  white-space:nowrap;
+}
+.sub-pill:hover{ background:#FF8A26; color:#000; }
+.sub-pill.active{ background:#FF8A26; color:#000; border-color:#FF8A26; }
+</style>
+
+  
+
 <script>
 (function(){
   var box=document.getElementById('latest-update-box');
