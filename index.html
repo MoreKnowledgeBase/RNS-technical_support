@@ -8,7 +8,7 @@
   body { background: linear-gradient(to right, #0A1931, #2E5BFF); margin:0; min-height:100vh; padding:10px; font-family:Arial,sans-serif; }
   #static-menubar{position:fixed;top:0;left:0;right:0;height:42px;background:#0a0a0a;border-bottom:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:space-between;padding:0 16px;z-index:999999;box-shadow:0 4px 20px rgba(0,0,0,0.4);}
   #static-menubar .left-phones{display:flex;gap:10px;align-items:center}
-  #static-menubar .right-menu{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  #static-menubar .right-menu{display:flex;gap:8px;align-items:center}
   #static-menubar .pill{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:28px;padding:0 14px;border-radius:99px;font-weight:800;font-size:12px;text-decoration:none;line-height:1;border:1px solid transparent;transition:.2s;white-space:nowrap;cursor:pointer;}
   #static-menubar .pill img{width:18px;height:18px;border-radius:50%;object-fit:cover}
   #static-menubar .pill-phone1{background:#FF8A26;color:white;border-color:#FF8A26}
@@ -17,17 +17,13 @@
   #static-menubar .pill-menu:hover{background:#ff7f11;color:#000;border-color:#ff7f11}
   #static-menubar .pill-menu.active{background:#ff7f11;color:#000;border-color:#ff7f11}
   body{padding-top:42px !important}
-  #main-content-area{width:900px;max-width:90%;margin:0 auto;background:white;border-radius:20px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.4);text-align:center;}
-  #main-content-area img{width:100%;height:auto;object-fit:contain;display:block;background:white;margin:0;padding:0;}
+  #main-content-area, .extra-card{width:900px;max-width:90%;margin:0 auto;background:white;border-radius:20px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.4);text-align:center;}
+  #main-content-area img, .extra-card img{width:100%;height:auto;max-height:none;object-fit:contain;object-position:center;display:block;background:white;margin:0;padding:0;}
   .sub-pill{background:#0a0a0a;border:1.5px solid #FF8A26;color:white;padding:8px 18px;border-radius:99px;font-weight:800;font-size:12px;text-decoration:none;cursor:pointer;transition:.2s;white-space:nowrap;}
   .sub-pill:hover{ background:#FF8A26; color:#000; }
   .sub-pill.active{ background:#FF8A26; color:#000; }
   .center-wrapper{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-top:250px;gap:20px;padding-bottom:50px;}
   .extra-pics{display:flex;flex-direction:column;gap:20px;width:100%;align-items:center;}
-  .extra-card{width:900px;max-width:90%;background:white;border-radius:20px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.4);text-align:center;}
-  .extra-card img{width:100%;height:auto;object-fit:contain;display:block;background:white;}
-  #how-to-box{position:fixed;bottom:15px;right:15px;background:#0f1f3a;border:2px solid #FF8A26;color:white;padding:15px;border-radius:12px;width:280px;font-size:11px;z-index:9999;line-height:1.5;}
-  #how-to-box b{color:#FF8A26;}
 </style>
 </head>
 <body>
@@ -36,7 +32,13 @@
     <a href="https://www.tangerine.com.au/" class="pill pill-phone1"><img src="peely-speedy-max.png"> 1800 211 112</a>
     <a href="https://more.com.au/" class="pill pill-phone2"><img src="download.webp"> 1800 733 368</a>
   </div>
-  <div class="right-menu" id="top-pills-container"></div>
+  <div class="right-menu">
+    <a href="#" class="pill pill-menu active" onclick="setCat('NBN',this);return false;">NBN</a>
+    <a href="#" class="pill pill-menu" onclick="setCat('VoIP',this);return false;">VoIP</a>
+    <a href="#" class="pill pill-menu" onclick="setCat('Mobile',this);return false;">Mobile</a>
+    <a href="#" class="pill pill-menu" onclick="setCat('Modem',this);return false;">Modem</a>
+    <a href="#" class="pill pill-menu" onclick="setCat('Provisioning',this);return false;">Provisioning</a>
+  </div>
 </nav>
 <div style="background:#0f1f3a; color:white; padding:15px; border-radius:15px; width:260px; font-family:Arial; font-size:13px; border:1px solid #333; position:absolute; top:80px; left:15px; z-index:10;">
   <div style="font-weight:bold; text-align:center; margin-bottom:10px;">AU AUSTRALIA TIME - LIVE <span style="width:10px; height:10px; background:#00ff88; border-radius:50%; display:inline-block; margin-left:5px;"></span></div>
@@ -66,213 +68,88 @@ setInterval(updateAUTimes,1000); updateAUTimes();
   renderBanner();
 })();
 </script>
-
 <div class="center-wrapper">
-<div style="width:900px; max-width:90%; margin:0 auto 20px; background:#0f1f3a; padding:12px; border-radius:12px; border:1.5px solid #FF8A26; display:flex; gap:10px;">
-  <input id="kb-search" type="text" placeholder="🔍 Search (e.g. FTTP, VoIP ATA, Netcomm)..." style="flex:1; padding:12px 18px; border-radius:99px; border:1.5px solid #333; background:#0a0a0a; color:white; font-weight:700; font-size:13px; outline:none;" onkeyup="searchKB(this.value)">
-  <button onclick="searchTangerineViaGoogle(document.getElementById('kb-search').value)" style="padding:12px 20px; border-radius:99px; background:#FF8A26; color:#000; font-weight:900; border:none; cursor:pointer;">🔍 Google Tangerine</button>
-</div>
-<div id="search-results" style="width:900px; max-width:90%; margin:0 auto 20px; display:none;"></div>
-  <div id="middle-pills" style="background:#0f1f3a; padding:10px 20px; border-radius:12px; display:flex; gap:10px; border:1px solid #333; justify-content:center; flex-wrap:wrap;"></div>
-  <div id="all-images-container" style="width:100%; display:flex; flex-direction:column; gap:20px; align-items:center;"></div>
-</div>
-
-<div id="how-to-box">
-  <div style="font-weight:900; font-size:13px; margin-bottom:8px; text-align:center;">📝 PAANO MAG EDIT - SUPER DALI!</div>
-  <b>1. TOP button:</b> Sa baba hanapin KB_CONFIG → Add "BAGONG CAT": { ... }<br><br>
-  <b>2. SUB button:</b> Sa loob ng "NBN": { Add "BAGONG SUB": { title, desc, images: [...] } }<br><br>
-  <b>3. Photo:</b> Upload sa GitHub → lagay name sa images: []<br><br>
-  <b>4. Kulang photo?</b> Sa images: ["a.webp", "b.webp"] → auto 2 pics! 1 lang = 1 lang lalabas!<br><br>
-  <button onclick="this.parentElement.style.display='none'" style="width:100%; padding:6px; border-radius:99px; background:#FF8A26; border:none; font-weight:800; cursor:pointer;">Got it! Hide this</button>
-</div>
-
-<script>
-// ⭐⭐⭐ ISANG LUGAR LANG GAGALAWIN MO - DITO LANG! ⭐⭐⭐
-const KB_CONFIG = {
-  "NBN": {
-    "FTTP": { title: "FTTP", desc: "Fibre to the Premises", images: ["FTTP-outside-set-up.webp", "FTTP-old-ntd-box-set-up.png", "FTTP-NBN-Box-V2.png"] },
-    "FTTC": { title: "FTTC", desc: "Fibre to the Curb", images: ["FTTC-outside-set-up.webp", "FTTC-Diagram.jpg", "FTTC-box.png"] },
-    "HFC": { title: "HFC", desc: "Hybrid Fibre Coaxial", images: ["HFC-Diagram.png", "HFC-set-up.png", "HFC-lights.png"] },
-    "FW": { title: "FW", desc: "Fixed Wireless", images: ["FW-outside.webp", "FW-set-up.png", "FW-lights.png"] },
-    "FTTN/B": { title: "FTTN/B", desc: "Fibre to the Node / Building", images: ["FTTB-Diagram.webp", "FTTN-Diagram.webp", "FTTN-Set-up.png"] }
-  },
-  "VoIP": {
-    "No Dial Tone": { title: "No Dial Tone - VoIP Wired", desc: "Modem Router PHONE 1 to Gray Telephone", images: ["Voip-Wired.webp", "Voip-Wireless.webp", "Voip-Ata.jpg"] },
-    "VoIP Config & ATA": { title: "VoIP Config & ATA", desc: "ATA Setup - Modem LAN to ATA Internet (Blue) Port", images: ["Voip-Ata.webp", "Voip-Wired.webp", "Voip-Wireless.webp"] },
-    "GDMS": { title: "GDMS - VoIP Provisioning", desc: "Grandstream Device Management System", images: ["Voip-Ata.webp", "Netcomm-VoIP-SIP-Combined-Clear.webp"] }
-  },
-  "Mobile": {
-    "No Data": { title: "Mobile - No Data", desc: "Mobile Data Troubleshooting", images: ["https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200"] },
-    "SIM Issue": { title: "SIM Issue", desc: "SIM Card Troubleshooting", images: ["https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200"] },
-    "APN": { title: "APN", desc: "APN Configuration", images: ["https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200"] }
-  },
-  "Modem": {
-    "Netcomm Software Upgrade": { title: "Netcomm Software Upgrade", desc: "Netcomm Modem Firmware Upgrade - 3-in-1 Guide (Connection + Download + Update)", images: ["Netcomm-Upgrade-3in1-Combined.webp"] }
-  },
-  "Provisioning": {
-    "New Order": { title: "New Order", desc: "Provisioning New Order", images: ["https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200"] },
-    "Activation": { title: "Activation", desc: "Service Activation", images: ["https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200"] }
-  }
-};
-// HANGGANG DITO LANG! WALA KA NANG GAGALAWIN SA BABA!
-
-let currentTop = null;
-function renderTopPills(){
-  const container = document.getElementById('top-pills-container');
-  container.innerHTML = '';
-  Object.keys(KB_CONFIG).forEach((topName, idx) => {
-    const a = document.createElement('a');
-    a.href = '#';
-    a.className = 'pill pill-menu' + (idx===0 ? ' active' : '');
-    a.textContent = topName;
-    a.onclick = (e) => { e.preventDefault(); setTop(topName, a); };
-    container.appendChild(a);
-    if(idx===0) currentTop = topName;
-  });
-}
-function setTop(topName, el){
-  currentTop = topName;
-  document.querySelectorAll('.pill-menu').forEach(x=>x.classList.remove('active'));
-  if(el) el.classList.add('active');
-  const subs = Object.keys(KB_CONFIG[topName] || {});
-  const middle = document.getElementById('middle-pills');
-  middle.innerHTML = '';
-  subs.forEach((subName, idx) => {
-    const btn = document.createElement('a');
-    btn.href = '#';
-    btn.className = 'sub-pill' + (idx===0 ? ' active' : '');
-    btn.textContent = subName;
-    btn.onclick = (e) => { e.preventDefault(); setSub(subName, btn); };
-    middle.appendChild(btn);
-  });
-  if(subs.length>0) setSub(subs[0], middle.firstChild);
-}
-function setSub(subName, el){
-  document.querySelectorAll('.sub-pill').forEach(x=>x.classList.remove('active'));
-  if(el) el.classList.add('active');
-  const data = KB_CONFIG[currentTop]?.[subName];
-  if(!data) return;
-  const container = document.getElementById('all-images-container');
-  container.innerHTML = '';
-  data.images.forEach((imgSrc, idx) => {
-    const card = document.createElement('div');
-    card.className = 'extra-card';
-    card.style.width = '900px';
-    card.style.maxWidth = '90%';
-    const isFirst = idx===0;
-    const title = isFirst ? data.title : data.title + ' - Image ' + (idx+1);
-    const desc = isFirst ? data.desc : 'Additional guide image';
-    card.innerHTML = `<img src="${imgSrc}" onerror="this.src='https://via.placeholder.com/900x600?text=Not+Found+${encodeURIComponent(imgSrc)}'"><div style="padding:15px;text-align:center;background:white;"><h2 style="color:#0f172a;font-size:14px;font-weight:900;margin:0;">${title}</h2><p style="color:#666;margin-top:8px;font-size:12px;">${desc}</p></div>`;
-    container.appendChild(card);
-  });
-}
-function searchKB(q){
-  q = (q||'').toLowerCase().trim();
-  var resultsDiv = document.getElementById('search-results');
-  if(!q){ resultsDiv.style.display='none'; return; }
-  var html = ''; var count = 0;
-  for(var top in KB_CONFIG){
-    for(var sub in KB_CONFIG[top]){
-      var d = KB_CONFIG[top][sub];
-      var hay = (top + ' ' + sub + ' ' + d.title + ' ' + d.desc).toLowerCase();
-      if(hay.includes(q)){
-        count++;
-        html += `<div onclick="setTop('${top.replace(/'/g,"\\'")}'); setTimeout(()=>{ document.querySelectorAll('.sub-pill').forEach(b=>{ if(b.textContent==='${sub.replace(/'/g,"\\'")}'){ b.click(); } }); document.getElementById('search-results').style.display='none'; document.getElementById('kb-search').value=''; window.scrollTo(0,300); },100);" style="background:white; padding:12px 18px; border-radius:12px; margin-bottom:8px; cursor:pointer; display:flex; gap:12px; align-items:center; text-align:left; border-left:4px solid #FF8A26;"><img src="${d.images[0]}" style="width:60px; height:45px; object-fit:cover; border-radius:8px;"><div><div style="font-weight:900; color:#0f172a; font-size:13px;">${d.title}</div><div style="color:#666; font-size:11px;">${top} > ${sub} - ${d.desc}</div></div></div>`;
-      }
-    }
-  }
-  if(count>0){
-    resultsDiv.innerHTML = `<div style="background:#0f1f3a; color:white; padding:10px 15px; border-radius:10px; font-weight:800; font-size:12px; margin-bottom:10px;">Found ${count} result(s) for '${q}'</div>` + html;
-    resultsDiv.style.display='block';
-  } else {
-    resultsDiv.innerHTML = `<div style="background:#0f1f3a; color:#aaa; padding:15px; border-radius:10px; text-align:center;">No result for '${q}'. <button onclick="searchTangerineViaGoogle('${q.replace(/'/g,"\\'")}')" style="margin-left:8px; padding:6px 12px; border-radius:99px; background:#FF8A26; color:#000; border:none; font-weight:800; cursor:pointer;">Google Tangerine →</button></div>`;
-    resultsDiv.style.display='block';
-  }
-}
-const GOOGLE_API_KEY = "PUT_YOUR_GOOGLE_API_KEY_HERE";
-const GOOGLE_CX = "PUT_YOUR_SEARCH_ENGINE_ID_HERE";
-async function searchTangerineViaGoogle(q){
-  if(!q) return alert('Type something first!');
-  var resultsDiv = document.getElementById('search-results');
-  var tangerineSearchUrl = 'https://www.tangerine.com.au/search?q=' + encodeURIComponent(q);
-  var googleSiteSearch = 'https://www.google.com/search?q=site:tangerine.com.au+' + encodeURIComponent(q);
-  var hasKeys = GOOGLE_API_KEY && GOOGLE_API_KEY !== "PUT_YOUR_GOOGLE_API_KEY_HERE" && GOOGLE_CX && GOOGLE_CX !== "PUT_YOUR_SEARCH_ENGINE_ID_HERE";
-  if(!hasKeys){
-    resultsDiv.innerHTML = '<div style="background:white; padding:18px; border-radius:12px; text-align:left; border:2px solid #4285F4;"><div style="font-weight:900; color:#0f172a; margin-bottom:12px;">🔍 Google Search for Tangerine - \'' + q + '\'</div><div style="display:flex; flex-direction:column; gap:8px;"><a href="' + googleSiteSearch + '" target="_blank" style="padding:12px 15px; background:#4285F4; color:white; border-radius:10px; text-decoration:none; font-weight:800; display:flex; justify-content:space-between;"><span>🔎 Google: site:tangerine.com.au ' + q + '</span><span>→</span></a><a href="' + tangerineSearchUrl + '" target="_blank" style="padding:12px 15px; background:#0f1f3a; color:white; border-radius:10px; text-decoration:none; font-weight:700; display:flex; justify-content:space-between;"><span>🟠 Search on Tangerine.com.au</span><span>→</span></a></div><div style="margin-top:12px; text-align:right;"><button onclick="document.getElementById(\'search-results\').style.display=\'none\'" style="padding:6px 14px; border-radius:99px; background:#eee; border:none; cursor:pointer; font-weight:700;">Close</button></div></div>';
-    resultsDiv.style.display='block';
-    return;
-  }
-  resultsDiv.innerHTML = '<div style="background:#0f1f3a; color:#ffcc00; padding:15px; border-radius:10px; text-align:center;">🔍 Searching Google API...</div>';
-  resultsDiv.style.display='block';
-  try {
-    var url = 'https://www.googleapis.com/customsearch/v1?key=' + GOOGLE_API_KEY + '&cx=' + GOOGLE_CX + '&q=' + encodeURIComponent(q + ' site:tangerine.com.au');
-    var res = await fetch(url);
-    var data = await res.json();
-    if(data.error) throw new Error(data.error.message);
-    if(!data.items || data.items.length==0){
-      resultsDiv.innerHTML = '<div style="background:white; padding:15px; border-radius:12px;">No Google results for \'' + q + '\'. <br><br><a href="' + googleSiteSearch + '" target="_blank" style="color:#4285F4; font-weight:700;">Try Google Site Search Instead →</a></div>';
-      return;
-    }
-    var html = '<div style="background:#0f1f3a; color:white; padding:10px 15px; border-radius:10px; font-weight:800; margin-bottom:10px;">Found ' + data.items.length + ' Google results for \'' + q + '\' on Tangerine ✅ LIVE DATA!</div>';
-    data.items.forEach(function(item){
-      html += '<div style="background:white; padding:12px 15px; border-radius:12px; margin-bottom:8px; text-align:left; border-left:4px solid #4285F4;"><a href="' + item.link + '" target="_blank" style="font-weight:900; color:#0f172a; font-size:13px; text-decoration:none;">' + item.title + '</a><div style="color:#006621; font-size:11px; margin:4px 0;">' + item.displayLink + '</div><div style="color:#666; font-size:11px;">' + item.snippet + '</div><a href="' + item.link + '" target="_blank" style="display:inline-block; margin-top:6px; padding:4px 10px; background:#4285F4; color:white; border-radius:99px; font-size:10px; text-decoration:none; font-weight:700;">Open →</a></div>';
-    });
-    resultsDiv.innerHTML = html;
-  } catch(e){
-    resultsDiv.innerHTML = '<div style="background:white; padding:15px; border-radius:12px; color:red;">Google API Error: ' + e.message + '<br><br><a href="' + googleSiteSearch + '" target="_blank" style="color:#4285F4; font-weight:700;">Fallback: Open Google Site Search →</a></div>';
-  }
-}
-window.addEventListener('load', () => {
-  renderTopPills();
-  const firstTop = Object.keys(KB_CONFIG)[0];
-  if(firstTop) setTop(firstTop, document.querySelector('.pill-menu'));
-});
-</script>
-
-<button id="edit-banner-btn" style="position:fixed; top:60px; right:15px; z-index:999999; background:#FF8A26; color:#000; border:none; padding:10px 18px; border-radius:99px; font-weight:900; font-size:12px; cursor:pointer; box-shadow:0 4px 20px rgba(0,0,0,0.4);">✏️ EDIT BANNER</button>
-<div id="edit-modal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.7); z-index:1000000; align-items:center; justify-content:center;">
-  <div style="background:white; padding:25px; border-radius:16px; width:400px; max-width:90%; color:#0f172a;">
-    <h3 style="margin:0 0 15px; font-weight:900;">Edit Latest Update Banner</h3>
-    <label style="font-size:11px; font-weight:800;">Main Title</label>
-    <input id="edit-name" type="text" style="width:100%; padding:10px; border-radius:8px; border:1.5px solid #333; margin:5px 0 12px; font-weight:700;">
-    <label style="font-size:11px; font-weight:800;">Small Text</label>
-    <input id="edit-small" type="text" style="width:100%; padding:10px; border-radius:8px; border:1.5px solid #333; margin:5px 0 12px;">
-    <label style="font-size:11px; font-weight:800;">Birthday Title</label>
-    <input id="edit-title" type="text" style="width:100%; padding:10px; border-radius:8px; border:1.5px solid #333; margin:5px 0 12px;">
-    <label style="font-size:11px; font-weight:800;">Picture URL</label>
-    <input id="edit-pic" type="text" style="width:100%; padding:10px; border-radius:8px; border:1.5px solid #333; margin:5px 0 15px;" placeholder="Leave blank for 🧡">
-    <div style="display:flex; gap:10px; justify-content:flex-end;">
-      <button onclick="document.getElementById('edit-modal').style.display='none'" style="padding:8px 16px; border-radius:99px; border:1.5px solid #333; background:white; font-weight:700; cursor:pointer;">Cancel</button>
-      <button onclick="saveBanner()" style="padding:8px 16px; border-radius:99px; background:#FF8A26; color:#000; border:none; font-weight:900; cursor:pointer;">Save</button>
+  <div id="middle-pills" style="background:#0f1f3a; padding:10px 20px; border-radius:12px; display:flex; gap:10px; border:1px solid #333; justify-content:center;">
+    <a href="#" class="sub-pill active" onclick="setCat('FTTP',this);return false;">FTTP</a>
+    <a href="#" class="sub-pill" onclick="setCat('FTTC',this);return false;">FTTC</a>
+    <a href="#" class="sub-pill" onclick="setCat('HFC',this);return false;">HFC</a>
+    <a href="#" class="sub-pill" onclick="setCat('FW',this);return false;">FW</a>
+    <a href="#" class="sub-pill" onclick="setCat('FTTN/B',this);return false;">FTTN/B</a>
+  </div>
+  <div id="main-content-area">
+    <img id="main-pic" src="peely-speedy-max.png">
+    <div style="padding:15px;text-align:center;background:white;">
+      <h2 id="main-title" style="color:#0f172a;font-size:14px;font-weight:900;margin:0;text-align:center;">NBN - NATIONAL BROADBAND NETWORK</h2>
+      <p id="main-desc" style="color:#666;margin-top:8px;font-size:12px;text-align:center;">Fibre to the Premises</p>
     </div>
+  </div>
+  <div class="extra-pics">
+    <div class="extra-card"><img id="main-pic2" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200"><div style="padding:15px;text-align:center;background:white;"><h2 id="main-title2" style="color:#0f172a;font-size:14px;font-weight:900;margin:0;">SETUP DIAGRAM</h2><p id="main-desc2" style="color:#666;margin-top:8px;font-size:12px;">Wiring / Connection Guide</p></div></div>
+    <div class="extra-card"><img id="main-pic3" src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200"><div style="padding:15px;text-align:center;background:white;"><h2 id="main-title3" style="color:#0f172a;font-size:14px;font-weight:900;margin:0;">TROUBLESHOOTING</h2><p id="main-desc3" style="color:#666;margin-top:8px;font-size:12px;">Steps to Fix</p></div></div>
   </div>
 </div>
 <script>
-const BANNER_KEY = 'rns_banner_red_circle_final';
-document.getElementById('edit-banner-btn').onclick = () => {
-  try{
-    const s = localStorage.getItem(BANNER_KEY);
-    if(s){
-      const d = JSON.parse(s);
-      document.getElementById('edit-name').value = d.name||'';
-      document.getElementById('edit-small').value = d.small||'';
-      document.getElementById('edit-title').value = d.title||'';
-      document.getElementById('edit-pic').value = d.pic||'';
-    }
-  }catch(e){}
-  document.getElementById('edit-modal').style.display='flex';
+var subMenuData = {
+  'NBN': ['FTTP','FTTC','HFC','FW','FTTN/B'],
+  'VoIP': ['No Dial Tone','VoIP Config & ATA','GDMS'],
+  'Mobile': ['No Data','SIM Issue','APN','Roaming','VoLTE'],
+  'Modem': ['Netcomm Software Upgrade'],
+  'Provisioning': ['New Order','Activation','Transfer','Cancel','Track']
 };
-function saveBanner(){
-  const data = {
-    name: document.getElementById('edit-name').value || 'MALAPIT NA ANG 13TH MONTH!!!',
-    small: document.getElementById('edit-small').value || 'MALIGAYANG KAARAWAN',
-    title: document.getElementById('edit-title').value || 'Happy Birthday!',
-    pic: document.getElementById('edit-pic').value || ''
-  };
-  localStorage.setItem(BANNER_KEY, JSON.stringify(data));
-  document.getElementById('edit-modal').style.display='none';
-  location.reload();
+var contentData = {
+  'NBN': { title: 'NBN - NATIONAL BROADBAND NETWORK', desc: 'Select FTTP, FTTC, HFC, FW, FTTN/B above!', pic: 'https://images.unsplash.com/photo-1603899123552-0b6a7a228a6c?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'SETUP DIAGRAM', d2: 'Wiring / Connection Guide', t3: 'TROUBLESHOOTING', d3: 'Steps to Fix' },
+  'FTTP': { title: 'FTTP', desc: 'Fibre to the Premises', pic: 'FTTP-outside-set-up.webp', pic2: 'FTTP-old-ntd-box-set-up.png', pic3: 'FTTP-NBN-Box-V2.png', t2: 'FTTP INSTALL', d2: 'NBN Box + Connection', t3: 'FTTP CHECK', d3: 'Light Status Guide' },
+  'FTTC': { title: 'FTTC', desc: 'Fibre to the Curb', pic: 'FTTC-outside-set-up.webp', pic2: 'FTTC-Diagram.jpg', pic3: 'FTTC-box.png', t2: 'FTTC SETUP', d2: 'NCD + Modem', t3: 'FTTC TROUBLESHOOT', d3: 'NTD Lights' },
+  'HFC': { title: 'HFC', desc: 'Hybrid Fibre Coaxial', pic: 'HFC-Diagram.png', pic2: 'HFC-set-up.png', pic3: 'HFC-lights.png', t2: 'HFC SETUP', d2: 'NBN Box Arris', t3: 'HFC TROUBLESHOOT', d3: 'Lights Check' },
+  'FW': { title: 'FW', desc: 'Fixed Wireless', pic: 'FW-outside.webp', pic2: 'FW-set-up.png', pic3: 'FW-lights.png', t2: 'FW SETUP', d2: 'Antenna + NTD', t3: 'FW Set Up', d3: 'Signal Check' },
+  'FTTN/B': { title: 'FTTN/B', desc: 'Fibre to the Node/Building', pic: 'FTTB-Diagram.webp', pic2: 'FTTN-Diagram.webp', pic3: 'FTTN-Set-up.png', t2: 'FTTN SETUP', d2: 'FTTN Diagram', t3: 'FTTN TROUBLESHOOT', d3: 'FTTN Set up' },
+  'No Dial Tone': { title: 'No Dial Tone - VoIP Wired', desc: 'Modem Router PHONE 1 to Gray Telephone - Single Connection', pic: 'Voip-Wired.webp', pic2: 'Voip-Wireless.webp', pic3: 'Voip-Ata.webp', t2: 'VoIP WIRELESS', d2: 'Sample Wireless Handset Only', t3: 'VoIP ATA SETUP', d3: 'Grandstream HT801 - Picture for Reference Only' },
+  'VoIP Config & ATA': { title: 'VoIP Config & ATA', desc: 'ATA Setup - Modem LAN to ATA Internet (Blue) Port', pic: 'Voip-Ata.webp', pic2: 'Voip-Wired.webp', pic3: 'Voip-Wireless.webp', t2: 'ATA SETUP', d2: 'Phone PORT 1 Connection', t3: 'WIRED SETUP', d3: 'PHONE 1 to Gray Telephone' },
+  'GDMS': { title: 'GDMS - VoIP Provisioning', desc: 'Grandstream Device Management System', pic: 'Voip-Ata.webp', pic2: 'Voip-Wired.webp', pic3: 'Netcomm-VoIP-SIP-Combined-Clear.webp', t2: 'SIP CONFIG', d2: 'VoIP Basic & Advanced Setting', t3: 'SIP CREDENTIALS', d3: 'SIP Username / Password / Proxy' },
+  'Netcomm Software Upgrade': { title: 'Netcomm Software Upgrade', desc: 'Netcomm Modem Firmware Upgrade - 3-in-1 Guide', pic: 'Netcomm-Upgrade-3in1-Combined.webp', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'SOFTWARE UPGRADE', d2: 'Firmware Steps', t3: 'NETCOMM FIX', d3: 'Upgrade Guide' },
+  'Mobile': { title: 'MOBILE', desc: 'Select Mobile issue above!', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'MOBILE SETUP', d2: 'APN Config', t3: 'MOBILE FIX', d3: 'No Data' },
+  'Provisioning': { title: 'PROVISIONING', desc: 'Select Provisioning above!', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'ORDER TRACK', d2: 'NBN Tracker', t3: 'ACTIVATION', d3: 'Steps' }
+};
+function setCat(c,el){
+  if(el && el.classList.contains('pill-menu')){
+    document.querySelectorAll('.pill-menu').forEach(x=>x.classList.remove('active'));
+    el.classList.add('active');
+    var subs = subMenuData[c] || [];
+    var middle = document.getElementById('middle-pills');
+    middle.innerHTML = '';
+    subs.forEach(function(name, idx){
+      var btn = document.createElement('a');
+      btn.href='#';
+      btn.className='sub-pill' + (idx===0?' active':'');
+      btn.textContent=name;
+      btn.onclick=function(e){ e.preventDefault(); setCat(name, this); };
+      middle.appendChild(btn);
+    });
+    if(subs.length>0) c = subs[0];
+  } else if(el && el.classList.contains('sub-pill')){
+    document.querySelectorAll('.sub-pill').forEach(x=>x.classList.remove('active'));
+    el.classList.add('active');
+  }
+  var d = contentData[c];
+  if(!d) return;
+  function setImg(id, src){
+    var img = document.getElementById(id);
+    if(img){ img.onerror = function(){ this.src = 'https://via.placeholder.com/900x600?text=Not+Found+'+encodeURIComponent(src); }; img.src = src; }
+  }
+  document.getElementById('main-title').textContent = d.title;
+  document.getElementById('main-desc').textContent = d.desc;
+  setImg('main-pic', d.pic);
+  setImg('main-pic2', d.pic2 || d.pic);
+  document.getElementById('main-title2').textContent = d.t2 || d.title;
+  document.getElementById('main-desc2').textContent = d.d2 || d.desc;
+  setImg('main-pic3', d.pic3 || d.pic);
+  document.getElementById('main-title3').textContent = d.t3 || d.title;
+  document.getElementById('main-desc3').textContent = d.d3 || d.desc;
 }
+window.addEventListener('load', function(){
+  var nbnBtn = document.querySelector('.pill-menu');
+  if(nbnBtn) setCat('NBN', nbnBtn);
+});
 </script>
 </body>
 </html>
