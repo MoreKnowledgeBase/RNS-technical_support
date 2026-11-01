@@ -223,6 +223,7 @@ updateAUTimes();
       </div>
     </div>
   </div>
+
 </div>
 
 <script>
@@ -235,30 +236,16 @@ var subMenuData = {
 };
 var contentData = {
   'NBN': { title: 'NBN - NATIONAL BROADBAND NETWORK', desc: 'Select FTTP, FTTC, HFC, FW, FTTN/B above!', pic: 'https://images.unsplash.com/photo-1603899123552-0b6a7a228a6c?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'SETUP DIAGRAM', d2: 'Wiring / Connection Guide', t3: 'TROUBLESHOOTING', d3: 'Steps to Fix' },
-  'FTTP': { title: 'FTTP', desc: 'Fibre to the Premises', pic: 'FTTP-outside-set-up.webp', pic2: 'FTTP-old-ntd-box-set-up.png', pic3: 'FTTP-NBN-Box-V2.png', t2: 'FTTP INSTALL', d2: 'NBN Box + Connection', t3: 'FTTP CHECK', d3: 'Light Status Guide', fallbacks: ['FTTP%20outside%20set%20up.webp','FTTP%20old%20ntd%20box%20set%20up.png'] },
-  'FTTC': { title: 'FTTC', desc: 'Fibre to the Curb', pic: 'FTTC-outside-set-up.webp', pic2: 'FTTC-Diagram.jpg', pic3: 'FTTC-box.png', t2: 'FTTC SETUP', d2: 'NCD + Modem', t3: 'FTTC TROUBLESHOOT', d3: 'NTD Lights' },
-  'HFC': { title: 'HFC', desc: 'Hybrid Fibre Coaxial', pic: 'HFC-Diagram.png', pic2: 'HFC-set-up.png', pic3: 'HFC-lights.png', t2: 'HFC SETUP', d2: 'NBN Box Arris', t3: 'HFC TROUBLESHOOT', d3: 'Lights Check' },
-  'FW': { title: 'FW', desc: 'Fixed Wireless - Outdoor Antenna + WNTD', pic: 'FW-Diagram.png', pic2: 'FW-set-up.png', pic3: 'FW-lights.png', t2: 'FW SETUP', d2: 'Antenna + NTD', t3: 'FW Set Up', d3: 'Signal Check', fallbacks: ['FW%20outside.webp','FW%20set%20up.png','FW%20lights.png'] },
-  'FTTN/B': { title: 'FTTN/B', desc: 'Fibre to the Node/Building', pic: 'FTTB-Diagram.webp', pic2: 'FTTN-Diagram.webp', pic3: 'FTTN-Set-up.png', t2: 'FTTN SETUP', d2: 'FTTN Diagram', t3: 'FTTN TROUBLESHOOT', d3: 'FTTN Set up' },
+  'FTTP': { title: 'FTTP', desc: 'Fibre to the Premises', pic: 'FTTP outside set up.webp', pic2: 'FTTP old ntd box set up.png', pic3: 'FTTP NBN Box V2.png', t2: 'FTTP INSTALL', d2: 'NBN Box + Connection', t3: 'FTTP CHECK', d3: 'Light Status Guide' },
+  'FTTC': { title: 'FTTC', desc: 'Fibre to the Curb', pic: 'FTTC outside set up.webp', pic2: 'FTTC Diagram.jpg', pic3: 'FTTC box.png', t2: 'FTTC SETUP', d2: 'NCD + Modem', t3: 'FTTC TROUBLESHOOT', d3: 'NTD Lights' },
+  'HFC': { title: 'HFC', desc: 'Hybrid Fibre Coaxial', pic: 'HFC Diagram.png', pic2: 'HFC set up.png', pic3: 'HFC lights.png', t2: 'HFC SETUP', d2: 'NBN Box Arris', t3: 'HFC TROUBLESHOOT', d3: 'Lights Check' },
+  'FW': { title: 'FW', desc: 'Fixed Wireless', pic: 'FWoutside.webp', pic2: 'FW set up.png', pic3: 'FW lights.png', t2: 'FW SETUP', d2: 'Antenna + NTD', t3: 'FW Set Up', d3: 'Signal Check' },
+  'FTTN/B': { title: 'FTTN/B', desc: 'Fibre to the Node/Building', pic: 'FTTB Diagram.webp', pic2: 'FTTN Diagram.webp', pic3: 'FTTN Set up.png', t2: 'FTTN SETUP', d2: 'FTTN Diagram', t3: 'FTTN TROUBLESHOOT', d3: 'FTTN Set up' },
   'VoIP': { title: 'VoIP', desc: 'Select VoIP issue above!', pic: 'https://images.unsplash.com/photo-1588502945133-7d4e242d5d6b?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'VoIP SETUP', d2: 'ATA Config', t3: 'VoIP FIX', d3: 'No Dial Tone' },
   'Mobile': { title: 'MOBILE', desc: 'Select Mobile issue above!', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'MOBILE SETUP', d2: 'APN Config', t3: 'MOBILE FIX', d3: 'No Data' },
   'Modem': { title: 'MODEM', desc: 'Select Modem issue above!', pic: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1588502945133-7d4e242d5d6b?w=1200', t2: 'MODEM SETUP', d2: 'WiFi Config', t3: 'MODEM FIX', d3: 'No Internet' },
   'Provisioning': { title: 'PROVISIONING', desc: 'Select Provisioning above!', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'ORDER TRACK', d2: 'NBN Tracker', t3: 'ACTIVATION', d3: 'Steps' }
 };
-
-function setImg(id, src, fallbackSrc){
-  var img = document.getElementById(id);
-  if(!img) return;
-  img.onerror = function(){
-    if(fallbackSrc && this.src.indexOf(fallbackSrc) === -1){
-      console.log('Trying fallback: ' + fallbackSrc);
-      this.src = fallbackSrc;
-    } else {
-      console.log('Image not found: ' + src);
-    }
-  };
-  img.src = src;
-}
 
 function setCat(c,el){
   if(el && el.classList.contains('pill-menu')){
@@ -282,15 +269,19 @@ function setCat(c,el){
   }
   var d = contentData[c];
   if(!d) return;
-  setImg('main-pic', d.pic, d.fallbacks ? d.fallbacks[0] : null);
+  document.getElementById('main-pic').src = d.pic;
   document.getElementById('main-title').textContent = d.title;
   document.getElementById('main-desc').textContent = d.desc;
-  setImg('main-pic2', d.pic2 || d.pic, d.fallbacks ? d.fallbacks[1] : null);
-  document.getElementById('main-title2').textContent = d.t2 || d.title + ' - Setup';
-  document.getElementById('main-desc2').textContent = d.d2 || d.desc;
-  setImg('main-pic3', d.pic3 || d.pic, d.fallbacks ? d.fallbacks[2] : null);
-  document.getElementById('main-title3').textContent = d.t3 || d.title + ' - Troubleshoot';
-  document.getElementById('main-desc3').textContent = d.d3 || d.desc;
+  if(document.getElementById('main-pic2')){
+    document.getElementById('main-pic2').src = d.pic2 || d.pic;
+    document.getElementById('main-title2').textContent = d.t2 || d.title + ' - Setup';
+    document.getElementById('main-desc2').textContent = d.d2 || d.desc;
+  }
+  if(document.getElementById('main-pic3')){
+    document.getElementById('main-pic3').src = d.pic3 || d.pic;
+    document.getElementById('main-title3').textContent = d.t3 || d.title + ' - Troubleshoot';
+    document.getElementById('main-desc3').textContent = d.d3 || d.desc;
+  }
 }
 window.addEventListener('load', function(){
   var nbnBtn = document.querySelector('.pill-menu');
