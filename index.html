@@ -192,27 +192,7 @@ updateAUTimes();
     <p id="main-desc" style="color:#666;margin-top:8px;font-size:12px;">Click mo yung NBN, VoIP, Mobile, Modem, Provisioning sa taas</p>
   </div>
 </div>
-
-<script>
-var contentData = {
-  'NBN': { title: 'FTTP', desc: 'NBN guides, troubleshooting, at setup. Dito lalabas NBN picture!', pic: 'peely-speedy-max.png' },
-  'VoIP': { title: 'VoIP - VOICE OVER IP', desc: 'VoIP phone setup, walang dial tone, at call quality issues.', pic: 'https://images.unsplash.com/photo-1588502945133-7d4e242d5d6b?w=1200&q=80' },
-  'Mobile': { title: 'MOBILE SERVICES', desc: 'Mobile data, SIM setup, at mobile internet troubleshooting.', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200&q=80' },
-  'Modem': { title: 'MODEM SETUP GUIDE', desc: 'Modem setup, wifi password, at modem troubleshooting.', pic: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200&q=80' },
-  'Provisioning': { title: 'PROVISIONING GUIDE', desc: 'Provisioning ng NBN, activation, at order tracking.', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&q=80' }
-};
-
-function setCat(c,el){
-  document.querySelectorAll('.pill-menu').forEach(x=>x.classList.remove('active'));
-  if(el) el.classList.add('active');
-  var d = contentData[c];
-  if(!d) return;
-  document.getElementById('main-pic').src = d.pic;
-  document.getElementById('main-title').textContent = d.title;
-  document.getElementById('main-desc').textContent = d.desc;
-  document.getElementById('main-content-area').scrollIntoView({behavior:'smooth'});
-}
-</script>
+  <!-- GITNA - BANNER / FTTP BAR / PICTURE -->
 
 <div class="wrap">
   <div class="grid" id="grid"></div>
