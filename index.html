@@ -90,6 +90,12 @@ body{padding-top:42px !important}
       <img src="download.webp"> 1800 733 368
     </a>
   </div>
+
+
+
+
+
+  
   <div class="right-menu">
     <a href="#" class="pill pill-menu active" onclick="setCat('NBN',this);return false;">NBN</a>
     <a href="#" class="pill pill-menu" onclick="setCat('VoIP',this);return false;">VoIP</a>
@@ -131,7 +137,6 @@ setInterval(updateAUTimes,1000);
 updateAUTimes();
 </script>
 
-<div id="latest-update-box"></div>
 <div id="latest-update-box"></div>
 
 <script>
@@ -213,5 +218,34 @@ function setCat(c,el){
   <div class="grid" id="grid"></div>
 </div>
 
+
+  <!-- GITNA - BANNER / FTTP BAR / PICTURE -->
+<div id="middle-pills" style="position:absolute; top:300px; left:50%; transform:translateX(-50%); background:#0f1f3a; padding:10px 20px; border-radius:12px; display:flex; gap:10px; z-index:20; border:1px solid #333;">
+  <a href="#" class="sub-pill active" onclick="setCat('FTTP',this);return false;">FTTP</a>
+  <a href="#" class="sub-pill" onclick="setCat('FTTC',this);return false;">FTTC</a>
+  <a href="#" class="sub-pill" onclick="setCat('HFC',this);return false;">HFC</a>
+  <a href="#" class="sub-pill" onclick="setCat('FX',this);return false;">FX</a>
+  <a href="#" class="sub-pill" onclick="setCat('FTTN/B',this);return false;">FTTN/B</a>
+</div>
+
+<style>
+.sub-pill{
+  background:#0a0a0a;
+  border:1.5px solid #FF8A26;
+  color:white;
+  padding:8px 18px;
+  border-radius:99px;
+  font-weight:800;
+  font-size:12px;
+  text-decoration:none;
+  cursor:pointer;
+  transition:.2s;
+}
+.sub-pill:hover{ background:#FF8A26; color:#000; }
+.sub-pill.active{ background:#FF8A26; color:#000; }
+</style>
+
+
+  
 </body>
 </html>
