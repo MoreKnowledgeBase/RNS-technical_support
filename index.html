@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RNS Technical Support - Knowledge Base - Full Editable FIXED</title>
+<title>RNS Technical Support - Knowledge Base + 30 Agents Schedule</title>
 <style>
   body { background: linear-gradient(to right, #0A1931, #2E5BFF); margin:0; min-height:100vh; padding:10px; font-family:Arial,sans-serif; overflow-x:hidden; }
   #static-menubar{position:fixed;top:0;left:0;right:0;height:42px;background:#0a0a0a;border-bottom:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:space-between;padding:0 16px;z-index:999999;box-shadow:0 4px 20px rgba(0,0,0,0.4);flex-wrap:wrap;}
@@ -18,7 +18,7 @@
   #static-menubar .pill-menu.active{background:#ff7f11;color:#000;border-color:#ff7f11}
   body{padding-top:42px !important}
   #top-section{display:flex;gap:15px;padding:15px;flex-wrap:wrap;align-items:flex-start;justify-content:center;margin-top:10px;}
-  #au-time-box{background:#0f1f3a; color:white; padding:15px; border-radius:15px; width:260px; font-family:Arial; font-size:13px; border:1px solid #333; flex-shrink:0;}
+  #au-time-box{background:#0f1f3a; color:white; padding:15px; border-radius:15px; width:280px; font-family:Arial; font-size:13px; border:1px solid #333; flex-shrink:0;}
   #latest-update-box{flex:1; min-width:300px; max-width:800px;}
   #main-content-area, .extra-card{width:900px;max-width:90%;margin:0 auto;background:white;border-radius:20px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.4);text-align:center;position:relative}
   #main-content-area img, #main-content-area video, .extra-card img, .extra-card video{width:100%;height:auto;max-height:none;object-fit:contain;object-position:center;display:block;background:white;margin:0;padding:0;}
@@ -29,7 +29,7 @@
   .extra-pics{display:flex;flex-direction:column;gap:20px;width:100%;align-items:center;}
   #editToggle{position:fixed;bottom:18px;right:18px;z-index:999999;background:#FF8A26;color:#000;border:none;padding:14px 22px;border-radius:99px;font-weight:900;font-size:14px;cursor:pointer;box-shadow:0 6px 30px rgba(0,0,0,.5);display:none} 
   #adminLoginOverlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999999;display:none;align-items:center;justify-content:center} 
-  #adminLoginBox{background:#0f1f3a;border:2px solid #FF8A26;border-radius:16px;padding:24px;width:360px;max-width:90vw;color:#fff;text-align:center} 
+  #adminLoginBox{background:#0f1f3a;border:2px solid #FF8A26;border-radius:16px;padding:24px;width:380px;max-width:90vw;color:#fff;text-align:center} 
   #adminLoginBox input{width:100%;padding:12px;border-radius:10px;border:1px solid #333;background:#0a0a0a;color:#fff;margin:10px 0;font-size:14px;box-sizing:border-box} 
   #adminLoginBox button{padding:10px 18px;border-radius:99px;border:none;background:#FF8A26;color:#000;font-weight:900;cursor:pointer;margin:4px} 
   #adminLogout{position:fixed;bottom:18px;left:18px;z-index:999999;background:#111;border:1px solid #ff4444;color:#ff4444;padding:8px 14px;border-radius:99px;font-weight:800;font-size:11px;cursor:pointer;display:none}
@@ -40,35 +40,34 @@
   .editActions button{padding:6px 10px;border-radius:99px;border:none;background:rgba(0,0,0,.8);color:#fff;font-weight:800;font-size:11px;cursor:pointer}
   .editActions button.delete{background:#ff4444}
   .editActions button.upload{background:#00c853;color:#000}
-  #adminPanel{position:fixed;bottom:80px;right:18px;width:400px;max-width:92vw;max-height:75vh;overflow:auto;background:#0f1f3a;border:2px solid #FF8A26;border-radius:16px;color:#fff;padding:14px;z-index:999998;display:none}
+  #adminPanel{position:fixed;bottom:80px;right:18px;width:460px;max-width:92vw;max-height:80vh;overflow:auto;background:#0f1f3a;border:2px solid #FF8A26;border-radius:16px;color:#fff;padding:14px;z-index:999998;display:none}
   #adminPanel h3{margin:14px 0 6px;font-size:13px;color:#FF8A26;border-top:1px solid #333;padding-top:10px}
   #adminPanel h3:first-child{border-top:none;margin-top:0;padding-top:0}
-  #adminPanel input,#adminPanel textarea{width:100%;box-sizing:border-box;padding:8px;border-radius:8px;border:1px solid #333;background:#0a0a0a;color:#fff;margin:4px 0 8px;font-size:12px}
+  #adminPanel input,#adminPanel textarea, #adminPanel select{width:100%;box-sizing:border-box;padding:8px;border-radius:8px;border:1px solid #333;background:#0a0a0a;color:#fff;margin:4px 0 8px;font-size:12px}
   #adminPanel button{padding:7px 12px;border-radius:99px;border:none;background:#FF8A26;color:#000;font-weight:800;cursor:pointer;margin:3px;font-size:11px}
   #adminPanel label{font-size:11px;color:#aaa;display:block;margin-top:6px}
   .hiddenInput{display:none}
   .sub-edit-row{display:flex;gap:6px;margin-bottom:6px;align-items:center;}
   .sub-edit-row input{flex:1;margin:0!important;}
   .sub-edit-row button{flex-shrink:0;}
-  @media (max-width: 768px){
-    #static-menubar{height:auto;min-height:42px;padding:8px 10px;gap:8px;}
-    #static-menubar .left-phones{width:100%;justify-content:center;}
-    #static-menubar .right-menu{width:100%;justify-content:center;padding-bottom:4px;}
-    body{padding-top:86px !important;}
-    #top-section{flex-direction:column;align-items:center;padding:10px;}
-    #au-time-box{width:100%;max-width:95%;}
-    #latest-update-box{width:100%;max-width:95%;}
-    #latest-update-box .banner-inner{flex-direction:column!important;gap:15px!important;padding:20px 15px!important;min-height:auto!important;}
-    #latest-update-box .banner-inner .banner-title{font-size:26px!important;line-height:1.2!important;}
-    #main-content-area, .extra-card{width:100%;max-width:95%;}
-    .center-wrapper{margin-top:10px;padding-bottom:100px;}
-    #middle-pills{width:95%;box-sizing:border-box;}
-    #adminPanel{width:95vw;right:2.5vw;bottom:70px;max-height:60vh;}
-  }
-  @media (max-width: 480px){
-    #static-menubar .pill{font-size:10px;padding:0 10px;height:24px;}
-    #latest-update-box .banner-inner .banner-title{font-size:20px!important;}
-  }
+
+  /* TEAM SCHEDULE STYLES */
+  #team-dashboard{width:100%;max-width:95%;margin:20px auto;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.2);border-radius:16px;padding:15px;color:white;}
+  #agentLoginBtn{position:fixed;top:50px;right:15px;z-index:99999;background:#2563eb;color:white;border:none;padding:10px 18px;border-radius:99px;font-weight:800;font-size:13px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.4);display:flex;align-items:center;gap:6px;}
+  #agentLoginBtn.logged{ background:#22c55e; color:#000; }
+  .calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:10px;}
+  .cal-day{padding:8px 2px;border-radius:8px;background:#1e293b;border:1px solid #334155;text-align:center;font-size:11px;cursor:pointer;position:relative;min-height:58px;}
+  .cal-day.selected{background:#FF8A26;color:#000;border-color:#FF8A26;font-weight:800;}
+  .cal-day.today{border-color:#22c55e;box-shadow:0 0 0 2px rgba(34,197,94,0.3);}
+  .cal-day.has-sched::after{content:"•";position:absolute;bottom:2px;left:50%;transform:translateX(-50%);color:#22c55e;font-size:16px;}
+  .cal-day.restday{background:#7f1d1d;color:#fca5a5;}
+  .cal-day.present{background:#14532d;color:#86efac;}
+  .agent-row{padding:10px;border-radius:10px;background:rgba(255,255,255,0.06);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+  .status-badge{padding:4px 10px;border-radius:99px;font-size:11px;font-weight:800;}
+  .status-alipin{background:#22c55e;color:#000;}
+  .status-uwi{background:#334155;color:#94a3b8;}
+  .status-present{background:#14532d;color:#86efac;}
+  .status-restday{background:#7f1d1d;color:#fca5a5;}
 </style>
 </head>
 <body>
@@ -79,106 +78,169 @@
   </div>
   <div class="right-menu" id="top-cat-menu"></div>
 </nav>
+
+<button id="agentLoginBtn" onclick="openAgentLogin()">🔵 AGENT LOGIN</button>
+
 <div id="top-section">
   <div id="au-time-box">
     <div style="font-weight:bold; text-align:center; margin-bottom:10px;">AU AUSTRALIA TIME - LIVE <span style="width:10px; height:10px; background:#00ff88; border-radius:50%; display:inline-block; margin-left:5px;"></span></div>
     <div id="au-time"></div>
     <div style="margin-top:10px; font-size:11px; color:#aaa; text-align:center;" id="au-date"></div>
+    <div style="margin-top:15px;border-top:1px solid #333;padding-top:10px;">
+      <div style="font-size:11px;font-weight:900;color:#22c55e;text-align:center;margin-bottom:8px;">👥 AGENT STATUS TODAY</div>
+      <div id="agent-status-list" style="max-height:300px;overflow:auto;"></div>
+    </div>
   </div>
   <div id="latest-update-box"></div>
 </div>
+
+  <div style="text-align:center; margin-top:15px;">
+  <div id="middle-pills" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;"></div>
+</div>
+
 <div class="center-wrapper">
-  <div id="middle-pills" style="background:#0f1f3a; padding:10px 20px; border-radius:12px; display:flex; gap:10px; border:1px solid #333; justify-content:center; flex-wrap:wrap;"></div>
   <div id="main-content-area">
-    <div class="editActions"><button class="upload" onclick="triggerUpload('pic')">📁 Upload PC / Video</button><button class="delete" onclick="deletePhoto('pic')">🗑 Delete</button></div>
-    <span class="editBadge" onclick="editTitleDesc()">✏ Edit Text</span>
+    <span class="editBadge" onclick="editMainMedia()">✏️ EDIT</span>
+    <div class="editActions">
+      <button class="upload" onclick="uploadMainMedia('pic')">📤 UPLOAD PIC 1</button>
+      <button onclick="toggleHideMedia('pic')" id="btnHidePic">🙈 HIDE</button>
+      <button class="delete" onclick="deleteMainMedia('pic')">🗑️ DELETE</button>
+    </div>
     <div id="media-container-pic"></div>
-    <div style="padding:15px;text-align:center;background:white;">
-      <h2 id="main-title" style="color:#0f172a;font-size:14px;font-weight:900;margin:0;text-align:center;">NBN - NATIONAL BROADBAND NETWORK</h2>
-      <p id="main-desc" style="color:#666;margin-top:8px;font-size:12px;text-align:center;">Fibre to the Premises</p>
+    <div style="padding:15px;background:white;color:#0A1931;">
+      <h2 id="main-title" style="margin:0 0 10px;font-size:22px;font-weight:900;"></h2>
+      <p id="main-desc" style="margin:0;font-size:14px;color:#444;line-height:1.5;"></p>
     </div>
   </div>
   <div class="extra-pics">
     <div class="extra-card" id="card2">
-      <div class="editActions"><button class="upload" onclick="triggerUpload('pic2')">📁 Upload PC / Video</button><button class="delete" onclick="deletePhoto('pic2')">🗑 Delete / Hide</button></div>
-      <span class="editBadge">Card 2</span>
+      <span class="editBadge" onclick="editExtraMedia(2)">✏️ EDIT</span>
+      <div class="editActions">
+        <button class="upload" onclick="uploadMainMedia('pic2')">📤 UPLOAD PIC 2</button>
+        <button onclick="toggleHideMedia('pic2')" id="btnHidePic2">🙈 HIDE</button>
+        <button class="delete" onclick="deleteMainMedia('pic2')">🗑️ DELETE</button>
+      </div>
       <div id="media-container-pic2"></div>
-      <div style="padding:15px;text-align:center;background:white;">
-        <h2 id="main-title2" style="color:#0f172a;font-size:14px;font-weight:900;margin:0;">SETUP DIAGRAM</h2>
-        <p id="main-desc2" style="color:#666;margin-top:8px;font-size:12px;">Wiring / Connection Guide</p>
+      <div style="padding:15px;background:white;color:#0A1931;">
+        <h3 id="main-title2" style="margin:0 0 8px;font-size:18px;font-weight:900;"></h3>
+        <p id="main-desc2" style="margin:0;font-size:13px;color:#444;"></p>
       </div>
     </div>
     <div class="extra-card" id="card3">
-      <div class="editActions"><button class="upload" onclick="triggerUpload('pic3')">📁 Upload PC / Video</button><button class="delete" onclick="deletePhoto('pic3')">🗑 Delete / Hide</button></div>
-      <span class="editBadge">Card 3</span>
+      <span class="editBadge" onclick="editExtraMedia(3)">✏️ EDIT</span>
+      <div class="editActions">
+        <button class="upload" onclick="uploadMainMedia('pic3')">📤 UPLOAD PIC 3</button>
+        <button onclick="toggleHideMedia('pic3')" id="btnHidePic3">🙈 HIDE</button>
+        <button class="delete" onclick="deleteMainMedia('pic3')">🗑️ DELETE</button>
+      </div>
       <div id="media-container-pic3"></div>
-      <div style="padding:15px;text-align:center;background:white;">
-        <h2 id="main-title3" style="color:#0f172a;font-size:14px;font-weight:900;margin:0;">TROUBLESHOOTING</h2>
-        <p id="main-desc3" style="color:#666;margin-top:8px;font-size:12px;">Steps to Fix</p>
+      <div style="padding:15px;background:white;color:#0A1931;">
+        <h3 id="main-title3" style="margin:0 0 8px;font-size:18px;font-weight:900;"></h3>
+        <p id="main-desc3" style="margin:0;font-size:13px;color:#444;"></p>
       </div>
     </div>
   </div>
+
+  <div id="team-dashboard">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+      <h2 style="margin:0;color:#22c55e;">📅 TEAM SCHEDULE (30 AGENTS MAX)</h2>
+      <div style="display:flex;gap:6px;">
+        <button onclick="exportAgentsJSON()" style="background:#2563eb;color:white;border:none;padding:6px 14px;border-radius:99px;font-weight:800;cursor:pointer;font-size:11px;">💾 EXPORT</button>
+        <label style="background:#333;color:white;padding:6px 14px;border-radius:99px;font-weight:800;cursor:pointer;font-size:11px;">📥 IMPORT<input type="file" id="importAgentsFile" accept=".json" class="hiddenInput"></label>
+      </div>
+    </div>
+    <div id="team-calendar-controls" style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+      <label style="font-size:11px;">Month: <input type="month" id="teamMonthPicker" style="padding:4px 8px;border-radius:6px;border:1px solid #334155;background:#0a0a0a;color:white;"></label>
+      <button onclick="prevTeamMonth()" style="padding:4px 10px;border-radius:6px;background:#333;color:white;border:none;cursor:pointer;">◀️</button>
+      <button onclick="nextTeamMonth()" style="padding:4px 10px;border-radius:6px;background:#333;color:white;border:none;cursor:pointer;">▶️</button>
+      <span id="teamMonthLabel" style="font-weight:800;color:#FF8A26;"></span>
+    </div>
+    <div id="team-calendar" class="calendar-grid" style="margin-top:10px;"></div>
+    <div id="team-sched-list" style="margin-top:12px;"></div>
+  </div>
 </div>
+
+<input type="file" id="hiddenBannerPic" accept="image/*,video/*" class="hiddenInput">
+<input type="file" id="hiddenMainMedia" accept="image/*,video/*" class="hiddenInput">
+
+<div id="editToggle" onclick="toggleEditMode()">✏️ EDIT MODE</div>
+<button id="adminLogout" onclick="logoutAdmin()">🚪 LOGOUT ADMIN</button>
+
 <div id="adminLoginOverlay">
   <div id="adminLoginBox">
-    <div style="font-size:28px">🔒</div>
-    <h2 style="margin:10px 0;color:#FF8A26">RNS ADMIN LOGIN</h2>
-    <div style="font-size:12px;color:#aaa;margin-bottom:6px">Para lang sa authorized - ikaw lang kaibigan!</div>
-    <input id="adminPassInput" type="password" placeholder="Enter admin password">
-    <div style="display:flex;gap:8px;justify-content:center;margin-top:8px">
-      <button onclick="checkAdminPassword()">✅ Login</button>
-      <button onclick="closeAdminLogin()" style="background:#333;color:#fff">❌ Cancel</button>
+    <h2>🔒 ADMIN LOGIN</h2>
+    <p style="font-size:12px;color:#aaa;">Enter password to edit KB</p>
+    <input type="password" id="adminPass" placeholder="Password">
+    <div>
+      <button onclick="doAdminLogin()">LOGIN</button>
+      <button onclick="closeAdminLogin()" style="background:#333;color:white;">CANCEL</button>
     </div>
-    <div id="adminPassError" style="color:#ff4444;font-size:11px;margin-top:8px;display:none">Wrong password!</div>
-    <div style="font-size:10px;color:#666;margin-top:12px">Tip: Access via ?admin sa URL</div>
+    <div style="margin-top:10px;font-size:10px;color:#666;">Hint: rns2026 | Shortcut: Ctrl+Shift+E</div>
   </div>
 </div>
-<button id="adminLogout" onclick="adminLogout()">🔓 Logout Admin</button>
-<button id="editToggle">⚙ EDIT MODE OFF</button>
+
 <div id="adminPanel">
-  <h3>🛠 RNS NO-CODE EDITOR - FIXED VERSION</h3>
-  <div style="font-size:11px;color:#aaa;margin-bottom:8px">Hindi mo na kailangan mag-code! Upload photo + video galing PC!</div>
-  <h3>📢 BANNER EDIT - Responsive na!</h3>
-  <label>Main Title</label><input id="inBannerName" placeholder="MALAPIT NA ANG 13TH MONTH!!!">
-  <label>Small Text</label><input id="inBannerSmall" placeholder="MALIGAYANG KAARAWAN">
-  <label>Birthday Text</label><input id="inBannerTitle" placeholder="Happy Birthday!">
-  <label>Banner Photo - Upload from PC</label><input id="inBannerPicFile" type="file" accept="image/*,video/*">
-  <div style="display:flex;gap:6px"><button onclick="saveBanner()">💾 Save Banner</button><button onclick="deleteBannerPic()" style="background:#ff4444;color:#fff">🗑 Delete Pic</button></div>
-  <h3>🔘 SUB BUTTONS EDIT - No Code Needed!</h3>
-  <div style="font-size:10px;color:#aaa;margin-bottom:6px">Edit mo lahat ng sub buttons dito.</div>
-  <label>Select Category to Edit</label>
-  <select id="subCatSelector" onchange="renderSubButtonEditor()" style="width:100%;padding:8px;border-radius:8px;background:#0a0a0a;color:#fff;border:1px solid #333;margin-bottom:8px;"></select>
-  <div id="subButtonList"></div>
-  <div style="display:flex;gap:6px;margin-top:6px;">
-    <button onclick="addSubButton()">➕ Add Sub Button</button>
-    <button onclick="saveSubButtons()" style="background:#00c853;color:#000;">💾 Save Sub Buttons</button>
+  <div style="display:flex;justify-content:space-between;align-items:center;">
+    <h2 style="margin:0;font-size:16px;color:#FF8A26;">🛠️ ADMIN EDITOR</h2>
+    <button onclick="toggleAdminPanel()" style="background:#333;color:white;">X</button>
   </div>
-  <h3>🖼 PHOTO & VIDEO EDIT - Upload from PC</h3>
-  <div style="font-size:11px;color:#ffcc00" id="currentEditInfo"></div>
-  <label>Photo/Video 1 - Main</label><input id="uploadPic" type="file" accept="image/*,video/*">
-  <label>Photo/Video 2 - Second</label><input id="uploadPic2" type="file" accept="image/*,video/*">
-  <label>Photo/Video 3 - Third</label><input id="uploadPic3" type="file" accept="image/*,video/*">
-  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><button onclick="deletePhoto('pic2')">🗑 Delete Photo 2</button><button onclick="deletePhoto('pic3')">🗑 Delete Photo 3</button><button onclick="restorePhotos()">♻ Restore All</button></div>
-  <h3>✏ TEXT EDIT</h3>
-  <label>Main Title</label><input id="inMainTitle"><label>Main Desc</label><input id="inMainDesc">
-  <label>Title 2 & Desc 2</label><input id="inTitle2"><input id="inDesc2">
-  <label>Title 3 & Desc 3</label><input id="inTitle3"><input id="inDesc3">
-  <button onclick="saveTextEdits()">💾 Save Text</button>
-  <h3>💾 BACKUP</h3>
-  <button onclick="exportHTMLFile()">⬇ Export HTML</button><button onclick="exportJSONFile()">⬇ Export JSON</button>
-  <button onclick="document.getElementById('importJsonFile').click()">⬆ Import JSON</button>
-  <input id="importJsonFile" type="file" accept=".json" class="hiddenInput">
-  <button onclick="resetAll()" style="background:#ff4444;color:#fff;width:100%;margin-top:8px">⚠ RESET ALL</button>
+  <div style="font-size:11px;color:#aaa;margin:6px 0;" id="currentEditInfo"></div>
+  
+  <h3>🖼️ Banner</h3>
+  <label>Main Title</label><input id="inBannerName" oninput="updateBannerFromInputs()">
+  <label>Small Text</label><input id="inBannerSmall" oninput="updateBannerFromInputs()">
+  <label>Birthday Text</label><input id="inBannerTitle" oninput="updateBannerFromInputs()">
+  <button onclick="document.getElementById('hiddenBannerPic').click()">📤 UPLOAD BANNER PIC/VIDEO FROM PC</button>
+  <button onclick="removeBannerPic()" style="background:#ff4444;color:white;">🗑️ REMOVE PIC</button>
+
+  <h3>📝 Current Content Card</h3>
+  <label>Title</label><input id="inMainTitle" oninput="updateMainContentFromInputs()">
+  <label>Description</label><textarea id="inMainDesc" rows="3" oninput="updateMainContentFromInputs()"></textarea>
+  <label>Title 2</label><input id="inTitle2" oninput="updateMainContentFromInputs()">
+  <label>Desc 2</label><textarea id="inDesc2" rows="2" oninput="updateMainContentFromInputs()"></textarea>
+  <label>Title 3</label><input id="inTitle3" oninput="updateMainContentFromInputs()">
+  <label>Desc 3</label><textarea id="inDesc3" rows="2" oninput="updateMainContentFromInputs()"></textarea>
+  <button onclick="saveContentLS();renderContent(currentSub);alert('Saved!')">💾 SAVE CONTENT</button>
+
+  <h3>📂 Categories (Top Menu)</h3>
+  <div style="display:flex;gap:4px;"><input id="newCatName" placeholder="New Category Name"><button onclick="addNewCategory()">ADD</button></div>
+  <div id="catList" style="margin-top:6px;"></div>
+
+  <h3>🔘 Sub Buttons (Middle Pills) - Editable per Category</h3>
+  <label>Select Category to Edit Buttons</label><select id="subCatSelector" onchange="renderSubButtonEditor()"></select>
+  <div style="display:flex;gap:4px;margin-top:6px;"><input id="newSubName" placeholder="New Button Name"><button onclick="addNewSubButton()">ADD BUTTON</button></div>
+  <div id="subButtonList" style="margin-top:6px;"></div>
+
+  <h3>👥 AGENTS (MAX 30, NO DUPLICATE, DROPDOWN ONLY)</h3>
+  <div style="display:flex;gap:4px;"><input id="newAgentName" placeholder="Full Name e.g. Juan Dela Cruz" style="flex:1;"><button onclick="addAgent()">ADD AGENT</button></div>
+  <div style="font-size:10px;color:#aaa;margin-top:4px;">Username auto = name no space small letters (juandelacruz) | Default pass = same as username | Agents can change pass on login</div>
+  <div id="agentAdminList" style="margin-top:8px;max-height:300px;overflow:auto;"></div>
+
+  <h3>🏷️ LEAVE TYPES (Editable)</h3>
+  <div style="display:flex;gap:4px;"><input id="newLeaveType" placeholder="New Leave Type"><button onclick="addLeaveType()">ADD</button></div>
+  <div id="leaveTypeList" style="margin-top:6px;"></div>
+
+  <h3>💾 EXPORT HTML FOR GITHUB</h3>
+  <button onclick="exportHTML()" style="width:100%;background:#22c55e;color:#000;padding:12px;font-size:13px;">⬇️ EXPORT FINAL HTML (Upload to GitHub)</button>
 </div>
-<input id="quickUploadPic" type="file" accept="image/*,video/*" class="hiddenInput"><input id="quickUploadPic2" type="file" accept="image/*,video/*" class="hiddenInput"><input id="quickUploadPic3" type="file" accept="image/*,video/*" class="hiddenInput">
+
 <script>
-function updateAUTimes(){const cities=[{name:"Sydney",tz:"Australia/Sydney"},{name:"Melbourne",tz:"Australia/Melbourne"},{name:"Canberra",tz:"Australia/Canberra"},{name:"Brisbane",tz:"Australia/Brisbane"},{name:"Adelaide",tz:"Australia/Adelaide"},{name:"Darwin",tz:"Australia/Darwin"},{name:"Perth",tz:"Australia/Perth"},{name:"Hobart",tz:"Australia/Hobart"}];let html="";cities.forEach(c=>{const time=new Date().toLocaleTimeString("en-AU",{timeZone:c.tz,hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:true});html+=`<div style="display:flex; justify-content:space-between; margin:4px 0;"><span>${c.name}:</span> <span style="color:#ffcc00; font-weight:bold;">${time}</span></div>`;});document.getElementById("au-time").innerHTML=html;document.getElementById("au-date").innerHTML=new Date().toLocaleDateString("en-AU",{weekday:"long",day:"numeric",month:"long",year:"numeric"});}
-setInterval(updateAUTimes,1000);updateAUTimes();
-var DEFAULT_subMenuData={'NBN':['FTTP','FTTC','HFC','FW','FTTN/B'],'VoIP':['No Dial Tone','VoIP Config & ATA','GDMS'],'Mobile':['No Data','SIM Issue','APN','Roaming','VoLTE'],'Modem':['Netcomm Software Upgrade','TP-Link','D-Link','Other Modem'],'Provisioning':['New Order','Activation','Transfer','Cancel','Track']};
-var DEFAULT_contentData={'NBN':{title:'NBN - NATIONAL BROADBAND NETWORK',desc:'Select FTTP, FTTC, HFC, FW, FTTN/B above!',pic:'FTTP-outside-set-up.webp',pic2:'FTTP-old-ntd-box-set-up.png',pic3:'FTTP-NBN-Box-V2.png',t2:'FTTP INSTALL',d2:'NBN Box + Connection',t3:'FTTP CHECK',d3:'Light Status Guide'},'FTTP':{title:'FTTP - FIBRE TO THE PREMISES',desc:'Fibre to the Premises - Outside Setup',pic:'FTTP-outside-set-up.webp',pic2:'FTTP-old-ntd-box-set-up.png',pic3:'FTTP-NBN-Box-V2.png',t2:'FTTP OLD NTD',d2:'Old NTD Box Setup',t3:'FTTP NBN BOX V2',d3:'New NBN Box V2'},'FTTC':{title:'FTTC - FIBRE TO THE CURB',desc:'Fibre to the Curb',pic:'FTTC-outside-set-up.webp',pic2:'FTTC-Diagram.jpg',pic3:'FTTC-box.png',t2:'FTTC DIAGRAM',d2:'NCD + Modem',t3:'FTTC BOX',d3:'FTTC NCD Light Guide'},'HFC':{title:'HFC - HYBRID FIBRE COAXIAL',desc:'HFC Setup - Arris NBN Box',pic:'HFC-Diagram.png',pic2:'HFC-set-up.png',pic3:'HFC-lights.png',t2:'HFC SETUP',d2:'Arris + Modem Wiring',t3:'HFC LIGHTS',d3:'Check NBN Box Lights'},'FW':{title:'FW - FIXED WIRELESS',desc:'Fixed Wireless',pic:'FW-outside.webp',pic2:'FW-set-up.png',pic3:'FW-lights.png',t2:'FW SETUP',d2:'Antenna + NTD Inside',t3:'FW LIGHTS',d3:'Signal & NTD Lights'},'FTTN/B':{title:'FTTN/B - FIBRE TO THE NODE / BUILDING',desc:'FTTN/B Setup - Phone Socket to Modem',pic:'FTTB-Diagram.webp',pic2:'FTTN-Diagram.webp',pic3:'FTTN-Set-up.png',t2:'FTTN DIAGRAM',d2:'Socket → Filter → Modem',t3:'FTTN SETUP',d3:'Full Wiring Guide'},'No Dial Tone':{title:'No Dial Tone - VoIP Wired',desc:'Modem Router PHONE 1 to Gray Telephone - Single Connection. If internet working, do Basic TS.',pic:'Voip-Wired.webp',pic2:'Voip-Wireless.webp',pic3:'Voip-Ata.webp',t2:'VoIP WIRELESS',d2:'Sample Wireless Handset Only - Depends on Brand',t3:'VoIP ATA SETUP',d3:'Grandstream HT801 - Picture for Reference Only'},'VoIP Config & ATA':{title:'VoIP Config & ATA',desc:'ATA Setup - Modem LAN to ATA Internet (Blue) Port - Phone PORT 1 (Green) to Handset',pic:'Voip-Ata.webp',pic2:'Voip-Wired.webp',pic3:'Voip-Wireless.webp',t2:'ATA PHONE 1',d2:'Phone PORT 1 Connection - Green Highlight',t3:'WIRED SETUP',d3:'PHONE 1 to Gray Telephone - Single Connection'},'GDMS':{title:'GDMS - VoIP Provisioning',desc:'Grandstream Device Management System - SIP Provisioning',pic:'Voip-Ata.webp',pic2:'Netcomm-VoIP-SIP-Combined-Clear.webp',pic3:'Voip-Wired.webp',t2:'SIP CONFIG',d2:'VoIP Basic & Advanced Setting - 192.168.1.1',t3:'SIP CREDENTIALS',d3:'SIP Username / Password / Proxy - Registered?'},'Netcomm Software Upgrade':{title:'Netcomm Software Upgrade',desc:'Netcomm Modem Firmware Upgrade - Management > Update Firmware - Extract zip first! Do not power off! 3-5 mins',pic:'Netcomm-Upgrade-3in1-Combined.webp',pic2:'Netcomm-Upgrade-Steps.png',pic3:'Netcomm-Login.png',t2:'FIRMWARE UPDATE UI',d2:'Old UI: Management > Update Software | New UI: Advanced > Update Firmware',t3:'LOGIN & CONNECTION',d3:'LAN Connection - 192.168.20.1 or 192.168.1.1'}};
-const LS_BANNER='rns_banner_final_editable_v5';
-const LS_CONTENT='rns_content_final_editable_v5';
-const LS_SUBMENU='rns_submenu_editable_v1';
+const DEFAULT_subMenuData={"NBN":["FTTP","FTTC","FTTN","HFC","FW"],"VoIP":["Voip Wired","Voip Wireless","VoIP ATA","Netcomm VoIP SIP"],"Netcomm":["Netcomm Software Upgrade","Netcomm Bridge","Netcomm VoIP Settings"]};
+const DEFAULT_contentData={
+  "FTTP":{title:"FTTP Setup Guide",desc:"Fibre to the Premises installation outside setup.",pic:"FTTP-outside-set-up.webp",pic2:"FTTP-outside-set-up.webp",pic3:"FTTP-outside-set-up.webp",t2:"FTTP Inside",d2:"Inside setup details",t3:"FTTP Troubleshooting",d3:"Common issues"},
+  "FTTC":{title:"FTTC Setup",desc:"Fibre to the Curb outside setup guide.",pic:"FTTC-outside-set-up.webp",pic2:"FTTC-outside-set-up.webp",pic3:"FTTC-outside-set-up.webp",t2:"FTTC Inside",d2:"Inside guide",t3:"FTTC Issues",d3:"Troubleshoot"},
+  "FTTN":{title:"FTTN Setup",desc:"Fibre to the Node setup.",pic:"FTTC-outside-set-up.webp",pic2:"FTTP-outside-set-up.webp",t2:"FTTN Details",d2:"Node setup",t3:"FTTN Fix",d3:"Fix guide"},
+  "HFC":{title:"HFC Setup",desc:"Hybrid Fibre Coaxial setup.",pic:"FTTP-outside-set-up.webp",pic2:"FTTC-outside-set-up.webp",t2:"HFC Guide",d2:"Coaxial details",t3:"HFC Troubleshoot",d3:"Common HFC problems"},
+  "FW":{title:"FW - Fixed Wireless",desc:"Fixed Wireless outside setup.",pic:"FW-outside.webp",pic2:"FW-outside.webp",pic3:"FW-outside.webp",t2:"FW Antenna",d2:"Antenna alignment",t3:"FW Signal",d3:"Signal check"},
+  "Voip Wired":{title:"VoIP Wired Setup",desc:"Wired VoIP phone configuration.",pic:"Voip-Wired.webp",pic2:"Voip-Wired.webp",pic3:"Voip-Wired.webp",t2:"Wired Steps",d2:"Step by step",t3:"Wired Troubleshoot",d3:"Fixes"},
+  "Voip Wireless":{title:"VoIP Wireless Setup",desc:"Wireless VoIP configuration guide.",pic:"Voip-Wireless.webp",pic2:"Voip-Wireless.webp",pic3:"Voip-Wireless.webp",t2:"Wireless Steps",d2:"Wireless guide",t3:"Wireless Issues",d3:"Fix wireless VoIP"},
+  "VoIP ATA":{title:"VoIP ATA Setup",desc:"Analog Telephone Adapter setup for VoIP.",pic:"Voip-Ata.webp",pic2:"Voip-Ata.webp",pic3:"Voip-Ata.webp",t2:"ATA Config",d2:"ATA configuration",t3:"ATA Troubleshoot",d3:"ATA issues"},
+  "Netcomm VoIP SIP":{title:"Netcomm VoIP SIP Clear Guide",desc:"Combined clear SIP settings for Netcomm.",pic:"Netcomm-VoIP-SIP-Combined-Clear.webp",pic2:"Netcomm-VoIP-SIP-Combined-Clear.webp",pic3:"Netcomm-VoIP-SIP-Combined-Clear.webp",t2:"SIP User",d2:"SIP username setup",t3:"SIP Password",d3:"Password config"},
+  "Netcomm Software Upgrade":{title:"Netcomm Software Upgrade",desc:"Netcomm Modem Firmware Upgrade Guide - 3 in 1 combined steps.",pic:"Netcomm-Upgrade-3in1-Combined.webp",pic2:"Netcomm-Upgrade-3in1-Combined.webp",pic3:"Netcomm-Upgrade-3in1-Combined.webp",t2:"Step 1-2",d2:"First steps of upgrade",t3:"Step 3 Final",d3:"Finalize upgrade"},
+  "Netcomm Bridge":{title:"Netcomm Bridge Mode",desc:"How to set Netcomm to Bridge mode.",pic:"Netcomm-Upgrade-3in1-Combined.webp",pic2:"Netcomm-Upgrade-3in1-Combined.webp",t2:"Bridge Steps",d2:"Bridge configuration",t3:"Bridge Check",d3:"Verify bridge"},
+  "Netcomm VoIP Settings":{title:"Netcomm VoIP Settings Overview",desc:"Overview of VoIP settings on Netcomm modem.",pic:"Netcomm-VoIP-SIP-Combined-Clear.webp",pic2:"Voip-Wired.webp",t2:"Settings",d2:"All settings",t3:"Save",d3:"Save and reboot"}
+};
+const LS_BANNER='rns_banner_v1'; const LS_CONTENT='rns_content_v1'; const LS_SUBMENU='rns_submenu_editable_v1';
 let bannerData={name:"MALAPIT NA ANG 13TH MONTH!!!",small:"MALIGAYANG KAARAWAN",title:"Happy Birthday!",pic:""};
 let contentData={}; let subMenuData={};
 try{
@@ -190,7 +252,7 @@ let currentCat='NBN';let currentSub='FTTP';let editMode=false;
 function saveBannerLS(){localStorage.setItem(LS_BANNER,JSON.stringify(bannerData));}
 function saveContentLS(){localStorage.setItem(LS_CONTENT,JSON.stringify(contentData));}
 function saveSubMenuLS(){localStorage.setItem(LS_SUBMENU,JSON.stringify(subMenuData));}
-function isVideoSrc(src){ if(!src) return false; if(src.startsWith('data:video/')) return true; return /\.(mp4|mov|webm|avi|m4v)$/i.test(src.split('?')[0]); }
+function isVideoSrc(src){ if(!src) return false; if(src.startsWith('data:[STRIPPED])) return true; return /\.(mp4|mov|webm|avi|m4v)$/i.test(src.split('?')[0]); }
 function renderMedia(containerId, src){
   const container=document.getElementById(containerId); if(!container) return;
   if(!src || src==='HIDDEN'){ container.innerHTML=''; document.getElementById(containerId==='media-container-pic'?'main-content-area':(containerId==='media-container-pic2'?'card2':'card3')).style.display=src==='HIDDEN'?'none':''; return;}
@@ -198,7 +260,8 @@ function renderMedia(containerId, src){
   if(isVideoSrc(src)){ container.innerHTML=`<video src="${src}" controls autoplay muted loop playsinline style="width:100%;height:auto;display:block;background:#000;max-height:600px;object-fit:contain;"></video>`; }
   else { container.innerHTML=`<img src="${src}" style="width:100%;height:auto;display:block;background:white;" onerror="this.src='https://via.placeholder.com/900x600?text=Not+Found'">`; }
 }
-function renderBanner(){
+
+ function renderBanner(){
   var box=document.getElementById('latest-update-box');
   const bannerPicHtml=bannerData.pic ? (isVideoSrc(bannerData.pic) ? `<video src="${bannerData.pic}" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></video>` : `<img src="${bannerData.pic}" style="width:100%;height:100%;object-fit:cover;">`) : `<div style="font-size:42px">🧡</div>`;
   box.innerHTML=`<div class="banner-inner" style="min-height:130px;background:rgba(255,255,255,0.08);border:1.5px dashed ${editMode?'#FF8A26':'rgba(255,255,255,0.5)'};border-radius:20px;padding:30px 20px 22px;display:flex;justify-content:center;align-items:center;position:relative;flex-wrap:wrap;gap:10px;${editMode?'box-shadow:0 0 0 3px rgba(255,138,38,.3)':''}"><div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#0f172a;padding:5px 18px;border-radius:99px;font-size:11px;letter-spacing:2px;font-weight:800;border:1px solid rgba(255,255,255,0.3);color:white;white-space:nowrap">📢 LATEST UPDATE ${editMode?'- EDIT MODE':''}</div><div style="flex:1;text-align:center;min-width:200px;"><div class="banner-title" style="font-size:42px;font-weight:900;color:white;letter-spacing:1px;text-transform:uppercase;line-height:1.1;word-break:break-word;">${bannerData.name}</div><div style="font-size:14px;opacity:.7;margin-top:8px;color:#cbd5e1;">${bannerData.small}</div></div><div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;min-width:120px"><div style="font-size:15px;font-weight:800;color:white;word-break:break-word;">${bannerData.title}</div><div style="width:80px;height:80px;border-radius:50%;overflow:hidden;border:3px solid white;box-shadow:0 4px 20px rgba(0,0,0,0.4);background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;position:relative">${bannerPicHtml}</div></div></div>`;
@@ -230,66 +293,215 @@ function renderContent(c){
   document.getElementById('inMainTitle').value=d.title; document.getElementById('inMainDesc').value=d.desc;
   document.getElementById('inTitle2').value=d.t2||''; document.getElementById('inDesc2').value=d.d2||''; document.getElementById('inTitle3').value=d.t3||''; document.getElementById('inDesc3').value=d.d3||'';
 }
-function updateEditInfo(){ const el=document.getElementById('currentEditInfo'); if(el) el.innerHTML=`Editing: <b style="color:#fff">${currentSub||currentCat}</b> - Photo + Video supported!`; }
-function renderSubButtonEditor(){
-  const sel=document.getElementById('subCatSelector'); const cat=sel ? sel.value : currentCat; currentCat=cat;
-  const listDiv=document.getElementById('subButtonList'); if(!listDiv) return; listDiv.innerHTML='';
-  const subs=subMenuData[cat]||[]; subs.forEach((name,idx)=>{
-    const row=document.createElement('div'); row.className='sub-edit-row';
-    row.innerHTML=`<input type="text" value="${name.replace(/"/g,'&quot;')}" data-idx="${idx}" placeholder="Button name"><button onclick="moveSubButton(${idx},-1)" title="Up">⬆</button><button onclick="moveSubButton(${idx},1)" title="Down">⬇</button><button onclick="removeSubButton(${idx})" style="background:#ff4444;color:#fff;">🗑</button>`;
-    listDiv.appendChild(row);
+function updateEditInfo(){ const el=document.getElementById('currentEditInfo'); if(el) el.innerHTML=`Editing: <b style="color:#fff">${currentSub||currentCat}</b>`; }
+
+// ========== ADMIN LOGIC ==========
+const ADMIN_PASS='rns2026';
+let isAdmin=false;
+function checkAdminParam(){const p=new URLSearchParams(window.location.search); if(p.has('admin')){ document.getElementById('adminLoginOverlay').style.display='flex'; }}
+function doAdminLogin(){const v=document.getElementById('adminPass').value; if(v===ADMIN_PASS){isAdmin=true; localStorage.setItem('rns_isAdmin','1'); document.getElementById('adminLoginOverlay').style.display='none'; enableAdminMode(); alert('Admin logged in!');}else{alert('Wrong password!');}}
+function closeAdminLogin(){document.getElementById('adminLoginOverlay').style.display='none';}
+function logoutAdmin(){isAdmin=false; localStorage.removeItem('rns_isAdmin'); editMode=false; document.body.classList.remove('editMode'); document.getElementById('editToggle').style.display='none'; document.getElementById('adminPanel').style.display='none'; document.getElementById('adminLogout').style.display='none'; document.getElementById('agentLoginBtn').style.display='flex'; location.search='';}
+function enableAdminMode(){document.getElementById('editToggle').style.display='block'; document.getElementById('adminLogout').style.display='block'; document.getElementById('adminPanel').style.display='block'; editMode=true; document.body.classList.add('editMode'); renderBanner(); renderTopCats(); renderSubButtonEditor(); renderCatList(); renderAgentAdminList(); renderLeaveTypeList(); updateAUTime(); renderTeamCalendar(); renderTeamSchedList(); renderAgentStatusToday();}
+function toggleEditMode(){editMode=!editMode; document.body.classList.toggle('editMode',editMode); if(editMode){document.getElementById('adminPanel').style.display='block';}else{document.getElementById('adminPanel').style.display='none';} renderBanner();}
+function toggleAdminPanel(){const p=document.getElementById('adminPanel'); p.style.display=p.style.display==='none'?'block':'none';}
+
+// Banner edit
+function updateBannerFromInputs(){bannerData.name=document.getElementById('inBannerName').value; bannerData.small=document.getElementById('inBannerSmall').value; bannerData.title=document.getElementById('inBannerTitle').value; saveBannerLS(); renderBanner();}
+document.getElementById('hiddenBannerPic').addEventListener('change',function(e){const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=function(ev){bannerData.pic=ev.target.result; saveBannerLS(); renderBanner();}; r.readAsDataURL(f);});
+function removeBannerPic(){bannerData.pic=''; saveBannerLS(); renderBanner();}
+
+// Main content edit
+function updateMainContentFromInputs(){let k=currentSub||currentCat; if(!contentData[k]) contentData[k]={}; contentData[k].title=document.getElementById('inMainTitle').value; contentData[k].desc=document.getElementById('inMainDesc').value; contentData[k].t2=document.getElementById('inTitle2').value; contentData[k].d2=document.getElementById('inDesc2').value; contentData[k].t3=document.getElementById('inTitle3').value; contentData[k].d3=document.getElementById('inDesc3').value; saveContentLS(); renderContent(k);}
+let pendingUploadField=null;
+function uploadMainMedia(field){pendingUploadField=field; document.getElementById('hiddenMainMedia').click();}
+document.getElementById('hiddenMainMedia').addEventListener('change',function(e){const f=e.target.files[0]; if(!f||!pendingUploadField) return; const r=new FileReader(); r.onload=function(ev){let k=currentSub||currentCat; if(!contentData[k]) contentData[k]={}; if(pendingUploadField==='pic') contentData[k].pic=ev.target.result; if(pendingUploadField==='pic2') contentData[k].pic2=ev.target.result; if(pendingUploadField==='pic3') contentData[k].pic3=ev.target.result; saveContentLS(); renderContent(k); pendingUploadField=null;}; r.readAsDataURL(f);});
+function toggleHideMedia(field){let k=currentSub||currentCat; if(!contentData[k]) return; if(field==='pic'){contentData[k].pic=contentData[k].pic==='HIDDEN'?'': 'HIDDEN';} if(field==='pic2'){contentData[k].pic2=contentData[k].pic2==='HIDDEN'?'':'HIDDEN';} if(field==='pic3'){contentData[k].pic3=contentData[k].pic3==='HIDDEN'?'':'HIDDEN';} saveContentLS(); renderContent(k);}
+function deleteMainMedia(field){if(!confirm('Delete this media?')) return; let k=currentSub||currentCat; if(!contentData[k]) return; if(field==='pic') contentData[k].pic=''; if(field==='pic2') contentData[k].pic2=''; if(field==='pic3') contentData[k].pic3=''; saveContentLS(); renderContent(k);}
+function editMainMedia(){document.getElementById('adminPanel').scrollIntoView(); document.getElementById('inMainTitle').focus();}
+function editExtraMedia(n){document.getElementById('adminPanel').scrollIntoView(); if(n===2) document.getElementById('inTitle2').focus(); else document.getElementById('inTitle3').focus();}
+
+// Category edit
+function renderCatList(){const el=document.getElementById('catList'); if(!el) return; el.innerHTML=''; Object.keys(subMenuData).forEach(cat=>{ const row=document.createElement('div'); row.className='sub-edit-row'; row.innerHTML=`<input value="${cat}" onchange="renameCat('${cat}',this.value)"><button onclick="deleteCat('${cat}')" style="background:#ff4444;color:white;">🗑️</button>`; el.appendChild(row); });}
+function addNewCategory(){const inp=document.getElementById('newCatName'); const name=inp.value.trim(); if(!name) return alert('Enter name'); if(subMenuData[name]) return alert('Exists'); subMenuData[name]=[]; saveSubMenuLS(); renderTopCats(); renderCatList(); inp.value='';}
+function renameCat(oldN,newN){newN=newN.trim(); if(!newN||newN===oldN) return; if(subMenuData[newN]) return alert('Name exists'); subMenuData[newN]=subMenuData[oldN]; delete subMenuData[oldN]; saveSubMenuLS(); renderTopCats(); renderCatList();}
+function deleteCat(cat){if(!confirm('Delete category '+cat+'?')) return; delete subMenuData[cat]; saveSubMenuLS(); renderTopCats(); renderCatList();}
+
+// Sub buttons edit
+function renderSubButtonEditor(){const cat=document.getElementById('subCatSelector').value; const listEl=document.getElementById('subButtonList'); if(!listEl) return; listEl.innerHTML=''; const arr=subMenuData[cat]||[]; arr.forEach((name,idx)=>{ const row=document.createElement('div'); row.className='sub-edit-row'; row.innerHTML=`<input value="${name}" onchange="renameSub('${cat}',${idx},this.value)"><button onclick="moveSub('${cat}',${idx},-1)">⬆️</button><button onclick="moveSub('${cat}',${idx},1)">⬇️</button><button onclick="deleteSub('${cat}',${idx})" style="background:#ff4444;color:white;">🗑️</button>`; listEl.appendChild(row); });}
+function addNewSubButton(){const cat=document.getElementById('subCatSelector').value; const inp=document.getElementById('newSubName'); const name=inp.value.trim(); if(!name) return alert('Enter name'); if(!subMenuData[cat]) subMenuData[cat]=[]; if(subMenuData[cat].includes(name)) return alert('Button exists'); subMenuData[cat].push(name); if(!contentData[name]){contentData[name]={title:name,desc:"NO INFORMATION YET - Add content via admin.",pic:"NO-INFORMATION-YET.png",pic2:"NO-INFORMATION-YET.png",pic3:"NO-INFORMATION-YET.png",t2:"No info yet",d2:"Add details",t3:"No info yet",d3:"Add details"};} saveSubMenuLS(); saveContentLS(); renderSubButtonEditor(); renderTopCats(); setCat(cat,document.querySelector('#top-cat-menu .pill-menu.active')); inp.value='';}
+function renameSub(cat,idx,newName){newName=newName.trim(); if(!newName) return; const old=subMenuData[cat][idx]; if(contentData[old] && old!==newName){contentData[newName]=contentData[old]; delete contentData[old];} subMenuData[cat][idx]=newName; saveSubMenuLS(); saveContentLS(); renderSubButtonEditor(); renderTopCats();}
+function deleteSub(cat,idx){if(!confirm('Delete button?')) return; const name=subMenuData[cat][idx]; subMenuData[cat].splice(idx,1); saveSubMenuLS(); renderSubButtonEditor(); renderTopCats();}
+function moveSub(cat,idx,dir){const arr=subMenuData[cat]; const newIdx=idx+dir; if(newIdx<0||newIdx>=arr.length) return; const tmp=arr[idx]; arr[idx]=arr[newIdx]; arr[newIdx]=tmp; saveSubMenuLS(); renderSubButtonEditor(); renderTopCats();}
+
+// EXPORT
+function exportHTML(){
+  let html=document.documentElement.outerHTML;
+  html=html.replace(/<script>const DEFAULT_subMenuData[\s\S]*?<\/script>/, function(){
+    return `<script>const DEFAULT_subMenuData=${JSON.stringify(subMenuData)};\nconst DEFAULT_contentData=${JSON.stringify(contentData)};\n`;
   });
+  html=html.replace(/let bannerData=\{[^}]+\};/, `let bannerData=${JSON.stringify(bannerData)};`);
+  const blob=new Blob([html],{type:'text/html'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='index.html'; a.click();
 }
-function addSubButton(){ const sel=document.getElementById('subCatSelector'); const cat=sel.value; if(!subMenuData[cat]) subMenuData[cat]=[]; subMenuData[cat].push('New Button'); renderSubButtonEditor(); saveSubMenuLS(); renderTopCats(); setCat(cat, document.querySelector('#top-cat-menu .pill-menu.active')); }
-function removeSubButton(idx){ const sel=document.getElementById('subCatSelector'); const cat=sel.value; if(!confirm(`Delete "${subMenuData[cat][idx]}"?`)) return; subMenuData[cat].splice(idx,1); renderSubButtonEditor(); saveSubMenuLS(); renderTopCats(); setCat(cat, document.querySelector('#top-cat-menu .pill-menu.active')); }
-function moveSubButton(idx,dir){ const sel=document.getElementById('subCatSelector'); const cat=sel.value; const arr=subMenuData[cat]; const newIdx=idx+dir; if(newIdx<0||newIdx>=arr.length) return; [arr[idx],arr[newIdx]]=[arr[newIdx],arr[idx]]; renderSubButtonEditor(); saveSubMenuLS(); renderTopCats(); setCat(cat, document.querySelector('#top-cat-menu .pill-menu.active')); }
-function saveSubButtons(){
-  const sel=document.getElementById('subCatSelector'); const cat=sel.value; const inputs=document.querySelectorAll('#subButtonList input'); const newArr=[]; inputs.forEach(inp=>{if(inp.value.trim()) newArr.push(inp.value.trim());});
-  subMenuData[cat]=newArr; saveSubMenuLS(); renderTopCats(); setCat(cat, document.querySelector(`#top-cat-menu .pill-menu`));
-  const middle=document.getElementById('middle-pills'); middle.innerHTML=''; newArr.forEach((name,idx)=>{ var btn=document.createElement('a');btn.href='#';btn.className='sub-pill'+(idx===0?' active':'');btn.textContent=name; btn.onclick=function(e){e.preventDefault();setCat(name,this);};middle.appendChild(btn); });
-  if(newArr.length>0){currentSub=newArr[0];renderContent(newArr[0]);} alert("✅ Sub buttons saved!");
+
+// ========== AGENT / LEAVE / SCHEDULE LOGIC ==========
+let AGENTS=JSON.parse(localStorage.getItem('rns_agents_v2')||'[]');
+let LEAVE_TYPES=JSON.parse(localStorage.getItem('rns_leave_types_v2')||'["Present","Service Incentive Leave","Maternity Leave","Paternity Leave","Parental Leave for Solo Parents","Special Leave for Women","VAWC Leave","Sick Leave","Emergency Leave","Bereavement Leave","Restday","Work From Home","Onsite"]');
+let SCHEDULES=JSON.parse(localStorage.getItem('rns_sched_v2')||'{}');
+let AGENT_PASS=JSON.parse(localStorage.getItem('rns_agent_pass_v2')||'{}');
+function saveAgents(){localStorage.setItem('rns_agents_v2',JSON.stringify(AGENTS));}
+function saveLeave(){localStorage.setItem('rns_leave_types_v2',JSON.stringify(LEAVE_TYPES));}
+function saveSched(){localStorage.setItem('rns_sched_v2',JSON.stringify(SCHEDULES));}
+function saveAgentPass(){localStorage.setItem('rns_agent_pass_v2',JSON.stringify(AGENT_PASS));}
+function toUsername(name){return name.toLowerCase().replace(/\s+/g,'');}
+function addAgent(){const inp=document.getElementById('newAgentName'); const name=inp.value.trim(); if(!name) return alert('Enter full name'); if(AGENTS.length>=30) return alert('Max 30 agents'); const uname=toUsername(name); if(AGENTS.some(a=>toUsername(a)===uname)) return alert('Duplicate agent - dropdown only prevents error'); AGENTS.push(name); AGENT_PASS[uname]=uname; saveAgents(); saveAgentPass(); renderAgentAdminList(); inp.value=''; alert('Added: '+name+' | username: '+uname+' | pass: '+uname);}
+function renderAgentAdminList(){const el=document.getElementById('agentAdminList'); if(!el) return; el.innerHTML=''; AGENTS.forEach((name,i)=>{const uname=toUsername(name); const row=document.createElement('div'); row.className='agent-row'; row.innerHTML=`<span><b>${i+1}.</b> ${name} <span style="font-size:10px;color:#aaa">(${uname})</span></span><span style="display:flex;gap:4px;"><button onclick="resetAgentPass('${uname}')" style="background:#2563eb;color:white;">RESET PASS</button><button onclick="deleteAgent(${i})" style="background:#ff4444;color:white;">🗑️</button></span>`; el.appendChild(row);});}
+function deleteAgent(i){if(!confirm('Delete agent '+AGENTS[i]+'?')) return; const uname=toUsername(AGENTS[i]); delete AGENT_PASS[uname]; AGENTS.splice(i,1); saveAgents(); saveAgentPass(); renderAgentAdminList();}
+function resetAgentPass(uname){AGENT_PASS[uname]=uname; saveAgentPass(); alert('Pass reset to '+uname);}
+function addLeaveType(){const inp=document.getElementById('newLeaveType'); const v=inp.value.trim(); if(!v) return; if(LEAVE_TYPES.includes(v)) return alert('Exists'); LEAVE_TYPES.push(v); saveLeave(); renderLeaveTypeList(); inp.value='';}
+function renderLeaveTypeList(){const el=document.getElementById('leaveTypeList'); if(!el) return; el.innerHTML=''; LEAVE_TYPES.forEach((lt,i)=>{const row=document.createElement('div'); row.className='sub-edit-row'; row.innerHTML=`<input value="${lt}" onchange="renameLeave(${i},this.value)"><button onclick="deleteLeave(${i})" style="background:#ff4444;color:white;">🗑️</button>`; el.appendChild(row);});}
+function renameLeave(i,v){v=v.trim(); if(!v) return; LEAVE_TYPES[i]=v; saveLeave();}
+function deleteLeave(i){if(!confirm('Delete leave type?')) return; LEAVE_TYPES.splice(i,1); saveLeave(); renderLeaveTypeList();}
+function exportAgentsJSON(){const data={agents:AGENTS,pass:AGENT_PASS,leaves:LEAVE_TYPES,sched:SCHEDULES}; const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='rns-30-agents-backup.json'; a.click();}
+document.getElementById('importAgentsFile').addEventListener('change',function(e){const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=function(ev){try{const d=JSON.parse(ev.target.result); if(d.agents) AGENTS=d.agents; if(d.pass) AGENT_PASS=d.pass; if(d.leaves) LEAVE_TYPES=d.leaves; if(d.sched) SCHEDULES=d.sched; saveAgents(); saveAgentPass(); saveLeave(); saveSched(); renderAgentAdminList(); renderLeaveTypeList(); renderTeamSchedList(); alert('Imported!');}catch(err){alert('Invalid JSON');}}; r.readAsText(f);});
+
+// TEAM CALENDAR
+let teamViewDate=new Date();
+let selectedDateStr=null;
+function formatDateKey(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function parseTimeToMin(t){if(!t) return 0; const [h,m]=t.split(':').map(Number); return h*60+m;}
+function formatMilitaryTo12(t){if(!t) return ''; let [h,m]=t.split(':').map(Number); const ampm=h>=12?'pm':'am'; h=h%12; if(h===0) h=12; return h+':'+String(m).padStart(2,'0')+ampm;}
+function getStatusForNow(schedEntry){ if(!schedEntry) return null; const now=new Date(); const curMin=now.getHours()*60+now.getMinutes(); if(schedEntry.leave==='Restday'){return {text:'Restday',cls:'status-restday'};} if(schedEntry.leave!=='Present' && schedEntry.leave!=='Work From Home' && schedEntry.leave!=='Onsite'){return {text:schedEntry.leave,cls:'status-restday'};} if(schedEntry.leave==='Present'||schedEntry.leave==='Work From Home'||schedEntry.leave==='Onsite'){ const endMin=parseTimeToMin(schedEntry.end); if(curMin>endMin){return {text:'nakauwi na po',cls:'status-uwi'};} else {const startMin=parseTimeToMin(schedEntry.start); if(curMin>=startMin && curMin<=endMin) return {text:'alipin ng pera',cls:'status-alipin'}; else if(curMin<startMin) return {text:'Present',cls:'status-present'}; else return {text:'nakauwi na po',cls:'status-uwi'};}} return {text:schedEntry.leave,cls:'status-present'};}
+function prevTeamMonth(){teamViewDate.setMonth(teamViewDate.getMonth()-1); renderTeamCalendar();}
+function nextTeamMonth(){teamViewDate.setMonth(teamViewDate.getMonth()+1); renderTeamCalendar();}
+function renderTeamCalendar(){
+  const monthPicker=document.getElementById('teamMonthPicker'); if(monthPicker){monthPicker.value=teamViewDate.getFullYear()+'-'+String(teamViewDate.getMonth()+1).padStart(2,'0');}
+  const label=document.getElementById('teamMonthLabel'); if(label){label.textContent=teamViewDate.toLocaleString('default',{month:'long',year:'numeric'});}
+  const cal=document.getElementById('team-calendar'); if(!cal) return; cal.innerHTML='';
+  const y=teamViewDate.getFullYear(); const m=teamViewDate.getMonth();
+  const first=new Date(y,m,1); const last=new Date(y,m+1,0);
+  const startDay=first.getDay();
+  for(let i=0;i<startDay;i++){const d=document.createElement('div'); d.className='cal-day'; d.style.visibility='hidden'; cal.appendChild(d);}
+  for(let d=1; d<=last.getDate(); d++){
+    const dateObj=new Date(y,m,d);
+    const key=formatDateKey(dateObj);
+    const div=document.createElement('div'); div.className='cal-day';
+    if(formatDateKey(new Date())===key) div.classList.add('today');
+    if(selectedDateStr===key) div.classList.add('selected');
+    const hasAny=Object.keys(SCHEDULES).some(agent=>SCHEDULES[agent] && SCHEDULES[agent][key]);
+    if(hasAny) div.classList.add('has-sched');
+    const dayScheds=[]; AGENTS.forEach(agent=>{ if(SCHEDULES[agent] && SCHEDULES[agent][key]) dayScheds.push(SCHEDULES[agent][key]); });
+    let statusClass=''; if(dayScheds.some(s=>s.leave==='Restday')) statusClass=' restday'; else if(dayScheds.some(s=>s.leave==='Present')) statusClass=' present';
+    if(statusClass) div.className+=statusClass;
+    div.innerHTML=`<div style="font-weight:800;">${d}</div><div style="font-size:9px;margin-top:2px;">${dayScheds.length?dayScheds.length+' sched':''}</div>`;
+    div.onclick=()=>{selectedDateStr=key; renderTeamCalendar(); renderTeamSchedList();};
+    cal.appendChild(div);
+  }
 }
-function saveBanner(){bannerData.name=document.getElementById('inBannerName').value||bannerData.name;bannerData.small=document.getElementById('inBannerSmall').value||bannerData.small;bannerData.title=document.getElementById('inBannerTitle').value||bannerData.title;saveBannerLS();renderBanner();alert("✅ Banner saved!");}
-document.getElementById('inBannerPicFile').onchange=function(e){const f=e.target.files[0];if(!f)return;if(f.size>12*1024*1024){alert("Video too large! Max 12MB.");return;}const r=new FileReader();r.onload=ev=>{bannerData.pic=ev.target.result;saveBannerLS();renderBanner();alert("✅ Banner photo/video uploaded!");};r.readAsDataURL(f);};
-function deleteBannerPic(){if(!confirm("Delete banner photo?"))return;bannerData.pic="";saveBannerLS();renderBanner();}
-function handleFileUpload(file,key){
-  if(!file)return; if(file.size>15*1024*1024){alert("File too large! Max 15MB.");return;}
-  const reader=new FileReader(); reader.onload=function(ev){
-    const dataUrl=ev.target.result; const curKey=currentSub||currentCat;
-    if(!contentData[curKey])contentData[curKey]={...DEFAULT_contentData['FTTP']};
-    if(key==='pic')contentData[curKey].pic=dataUrl; if(key==='pic2')contentData[curKey].pic2=dataUrl; if(key==='pic3')contentData[curKey].pic3=dataUrl;
-    saveContentLS(); renderContent(curKey); alert("✅ Uploaded! - "+key);
-  }; reader.readAsDataURL(file);
+function renderTeamSchedList(){
+  const el=document.getElementById('team-sched-list'); if(!el) return;
+  if(!selectedDateStr){el.innerHTML='<div style="font-size:12px;color:#aaa;text-align:center;margin-top:10px;">Select a date from calendar to view/edit schedules</div>'; return;}
+  const dateObj=new Date(selectedDateStr); const pretty=dateObj.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+  let html=`<div style="margin-top:10px;background:rgba(255,255,255,0.06);padding:10px;border-radius:10px;"><div style="font-weight:900;color:#FF8A26;">📅 ${pretty} (${selectedDateStr})</div>`;
+  if(isAdmin){html+=`<div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;"><button onclick="applyToAllDaysInMonth()" style="background:#22c55e;color:#000;padding:6px 12px;border-radius:99px;border:none;font-weight:800;cursor:pointer;font-size:11px;">📆 APPLY THIS DAY TO ALL DAYS IN MONTH</button><button onclick="clearDaySched('${selectedDateStr}')" style="background:#ff4444;color:white;padding:6px 12px;border-radius:99px;border:none;font-weight:800;cursor:pointer;font-size:11px;">🗑️ CLEAR DAY</button></div>`;}
+  html+='</div>';
+  html+='<div style="margin-top:10px;">';
+  AGENTS.forEach(agentName=>{
+    const uname=toUsername(agentName);
+    const entry=(SCHEDULES[uname] && SCHEDULES[uname][selectedDateStr])||{start:'09:00',end:'18:00',leave:'Present',wfh:'Onsite'};
+    const canEdit=isAdmin || currentLoggedAgent===uname;
+    const statusInfo=getStatusForNow(entry);
+    html+=`<div class="agent-row"><div style="flex:1;min-width:140px;"><b>${agentName}</b><br><span style="font-size:10px;color:#aaa">${uname}</span> ${statusInfo?`<span class="status-badge ${statusInfo.cls}">${statusInfo.text}</span>`:''}</div>`;
+    if(canEdit){
+      html+=`<div style="display:flex;gap:4px;flex-wrap:wrap;align-items:center;">`;
+      html+=`<label style="font-size:10px;">Start<input type="time" value="${entry.start}" onchange="updateSched('${uname}','${selectedDateStr}','start',this.value)" style="width:90px;padding:4px;border-radius:6px;border:1px solid #334155;background:#0a0a0a;color:white;"></label>`;
+      html+=`<label style="font-size:10px;">End<input type="time" value="${entry.end}" onchange="updateSched('${uname}','${selectedDateStr}','end',this.value)" style="width:90px;padding:4px;border-radius:6px;border:1px solid #334155;background:#0a0a0a;color:white;"></label>`;
+      html+=`<select onchange="updateSched('${uname}','${selectedDateStr}','leave',this.value)" style="padding:4px;border-radius:6px;background:#0a0a0a;color:white;border:1px solid #334155;font-size:11px;">${LEAVE_TYPES.map(lt=>`<option value="${lt}" ${lt===entry.leave?'selected':''}>${lt}</option>`).join('')}</select>`;
+      html+=`<select onchange="updateSched('${uname}','${selectedDateStr}','wfh',this.value)" style="padding:4px;border-radius:6px;background:#0a0a0a;color:white;border:1px solid #334155;font-size:11px;"><option value="Onsite" ${entry.wfh==='Onsite'?'selected':''}>Onsite</option><option value="Work From Home" ${entry.wfh==='Work From Home'?'selected':''}>WFH</option></select>`;
+      html+=`</div>`;
+    } else {
+      html+=`<div style="font-size:11px;">${formatMilitaryTo12(entry.start)} - ${formatMilitaryTo12(entry.end)} | ${entry.leave} | ${entry.wfh}</div>`;
+    }
+    html+=`</div>`;
+  });
+  html+='</div>';
+  el.innerHTML=html;
 }
-document.getElementById('uploadPic').onchange=function(e){handleFileUpload(e.target.files[0],'pic');};
-document.getElementById('uploadPic2').onchange=function(e){handleFileUpload(e.target.files[0],'pic2');};
-document.getElementById('uploadPic3').onchange=function(e){handleFileUpload(e.target.files[0],'pic3');};
-function triggerUpload(key){const map={pic:'quickUploadPic',pic2:'quickUploadPic2',pic3:'quickUploadPic3'};document.getElementById(map[key]).click();}
-document.getElementById('quickUploadPic').onchange=function(e){handleFileUpload(e.target.files[0],'pic');};
-document.getElementById('quickUploadPic2').onchange=function(e){handleFileUpload(e.target.files[0],'pic2');};
-document.getElementById('quickUploadPic3').onchange=function(e){handleFileUpload(e.target.files[0],'pic3');};
-function deletePhoto(key){if(!confirm("Delete this photo/video?"))return;const curKey=currentSub||currentCat;if(!contentData[curKey])return;if(key==='pic'){contentData[curKey].pic='https://via.placeholder.com/900x600?text=No+Image+Upload+New';}if(key==='pic2'){contentData[curKey].pic2='HIDDEN';}if(key==='pic3'){contentData[curKey].pic3='HIDDEN';}saveContentLS();renderContent(curKey);}
-function restorePhotos(){const curKey=currentSub||currentCat;const def=DEFAULT_contentData[curKey]||DEFAULT_contentData['FTTP'];contentData[curKey]=JSON.parse(JSON.stringify(def));saveContentLS();renderContent(curKey);alert("Restored!");}
-function saveTextEdits(){const curKey=currentSub||currentCat;if(!contentData[curKey])return;contentData[curKey].title=document.getElementById('inMainTitle').value||contentData[curKey].title;contentData[curKey].desc=document.getElementById('inMainDesc').value||contentData[curKey].desc;contentData[curKey].t2=document.getElementById('inTitle2').value||contentData[curKey].t2;contentData[curKey].d2=document.getElementById('inDesc2').value||contentData[curKey].d2;contentData[curKey].t3=document.getElementById('inTitle3').value||contentData[curKey].t3;contentData[curKey].d3=document.getElementById('inDesc3').value||contentData[curKey].d3;saveContentLS();renderContent(curKey);alert("✅ Text saved!");}
-function editTitleDesc(){const curKey=currentSub||currentCat;const d=contentData[curKey];const newTitle=prompt("Edit Main Title:",d.title);if(newTitle!==null)d.title=newTitle;const newDesc=prompt("Edit Main Description:",d.desc);if(newDesc!==null)d.desc=newDesc;saveContentLS();renderContent(curKey);}
-const ADMIN_PASSWORD="rns2026";const LS_AUTH="rns_admin_auth_v5";
-function isAdminAuthenticated(){try{return localStorage.getItem(LS_AUTH)==="authenticated";}catch(e){return false;}}
-function setAdminAuthenticated(v){try{if(v)localStorage.setItem(LS_AUTH,"authenticated");else localStorage.removeItem(LS_AUTH);}catch(e){}}
-function showEditUI(){document.getElementById('editToggle').style.display='block';document.getElementById('adminLogout').style.display='block';}
-function hideEditUI(){document.getElementById('editToggle').style.display='none';document.getElementById('adminPanel').style.display='none';document.getElementById('adminLogout').style.display='none';document.body.classList.remove('editMode');editMode=false;}
-function openAdminLogin(){document.getElementById('adminLoginOverlay').style.display='flex';document.getElementById('adminPassInput').focus();}
-function closeAdminLogin(){document.getElementById('adminLoginOverlay').style.display='none';document.getElementById('adminPassError').style.display='none';document.getElementById('adminPassInput').value='';if(!isAdminAuthenticated()&&location.search.includes('admin')){history.replaceState(null,'',location.pathname);}}
-function checkAdminPassword(){const val=document.getElementById('adminPassInput').value;if(val===ADMIN_PASSWORD){setAdminAuthenticated(true);closeAdminLogin();showEditUI();alert("✅ Admin login success kaibigan!");}else{document.getElementById('adminPassError').style.display='block';}}
-function adminLogout(){if(!confirm("Logout admin?"))return;setAdminAuthenticated(false);hideEditUI();history.replaceState(null,'',location.pathname);alert("Logged out!");}
-document.getElementById('adminPassInput').addEventListener('keydown',function(e){if(e.key==='Enter')checkAdminPassword();});
-function checkAdminAccessOnLoad(){const urlParams=new URLSearchParams(location.search);if(urlParams.has('admin')){if(isAdminAuthenticated()){showEditUI();}else{openAdminLogin();}}else{if(isAdminAuthenticated()){showEditUI();}else{hideEditUI();}}}
-document.getElementById('editToggle').onclick=()=>{if(!isAdminAuthenticated()){alert("Hindi ka naka-admin login! Punta ka sa ?admin muna.");return;}editMode=!editMode;document.body.classList.toggle('editMode',editMode);document.getElementById('editToggle').textContent=editMode?"✅ EDIT MODE ON - Click to Exit":"⚙ EDIT MODE OFF";document.getElementById('adminPanel').style.display=editMode?"block":"none";renderBanner();renderContent(currentSub||currentCat);renderSubButtonEditor();};
-document.addEventListener('keydown',function(e){if(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==='e'){e.preventDefault();if(isAdminAuthenticated()){showEditUI();alert("Admin mode active na!");}else{openAdminLogin();}}});
-function exportHTMLFile(){const html=document.documentElement.outerHTML;const blob=new Blob([html],{type:"text/html"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="index.html";a.click();alert("✅ Na-export na!");}
-function exportJSONFile(){const all={banner:bannerData,content:contentData,submenu:subMenuData};const blob=new Blob([JSON.stringify(all,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="RNS-KB-Backup.json";a.click();}
-document.getElementById('importJsonFile').onchange=function(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{try{const j=JSON.parse(ev.target.result);if(j.banner){bannerData=j.banner;saveBannerLS();}if(j.content){contentData=j.content;saveContentLS();}if(j.submenu){subMenuData=j.submenu;saveSubMenuLS();}renderBanner();renderTopCats();renderContent(currentSub||currentCat);renderSubButtonEditor();alert("✅ Imported!");}catch(err){alert("Invalid JSON");}};r.readAsText(f);};
-function resetAll(){if(!confirm("RESET ALL?"))return;localStorage.removeItem(LS_BANNER);localStorage.removeItem(LS_CONTENT);localStorage.removeItem(LS_SUBMENU);bannerData={name:"MALAPIT NA ANG 13TH MONTH!!!",small:"MALIGAYANG KAARAWAN",title:"Happy Birthday!",pic:""};contentData=JSON.parse(JSON.stringify(DEFAULT_contentData));subMenuData=JSON.parse(JSON.stringify(DEFAULT_subMenuData));saveBannerLS();saveContentLS();saveSubMenuLS();renderBanner();renderTopCats();renderContent('FTTP');renderSubButtonEditor();alert("Reset done!");}
-window.addEventListener('load',function(){ checkAdminAccessOnLoad(); renderTopCats(); renderBanner(); setCat('NBN', null); var subs=subMenuData['NBN']||[]; var middle=document.getElementById('middle-pills'); middle.innerHTML=''; subs.forEach(function(name,idx){ var btn=document.createElement('a');btn.href='#';btn.className='sub-pill'+(idx===0?' active':'');btn.textContent=name; btn.onclick=function(e){e.preventDefault();setCat(name,this);};middle.appendChild(btn); }); currentSub=subs[0]||'FTTP'; renderContent(currentSub); updateEditInfo(); renderSubButtonEditor(); });
+function updateSched(uname,dateKey,field,val){
+  if(!SCHEDULES[uname]) SCHEDULES[uname]={};
+  if(!SCHEDULES[uname][dateKey]) SCHEDULES[uname][dateKey]={start:'09:00',end:'18:00',leave:'Present',wfh:'Onsite'};
+  SCHEDULES[uname][dateKey][field]=val;
+  saveSched(); renderTeamCalendar(); renderAgentStatusToday();
+}
+function applyToAllDaysInMonth(){
+  if(!selectedDateStr) return alert('Select a date first');
+  if(!confirm('Apply all schedules from '+selectedDateStr+' to ALL days in this month? This will overwrite existing schedules for that month.')) return;
+  const y=teamViewDate.getFullYear(); const m=teamViewDate.getMonth(); const last=new Date(y,m+1,0).getDate();
+  AGENTS.forEach(agentName=>{
+    const uname=toUsername(agentName);
+    const srcEntry=SCHEDULES[uname] && SCHEDULES[uname][selectedDateStr];
+    if(!srcEntry) return;
+    if(!SCHEDULES[uname]) SCHEDULES[uname]={};
+    for(let d=1; d<=last; d++){
+      const k=y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+      SCHEDULES[uname][k]={...srcEntry};
+    }
+  });
+  saveSched(); renderTeamCalendar(); renderTeamSchedList(); renderAgentStatusToday(); alert('Applied to all days in month!');
+}
+function clearDaySched(dateKey){if(!confirm('Clear all schedules for '+dateKey+'?')) return; AGENTS.forEach(name=>{const uname=toUsername(name); if(SCHEDULES[uname]) delete SCHEDULES[uname][dateKey];}); saveSched(); renderTeamCalendar(); renderTeamSchedList(); renderAgentStatusToday();}
+function renderAgentStatusToday(){
+  const el=document.getElementById('agent-status-list'); if(!el) return;
+  const todayKey=formatDateKey(new Date());
+  let html='';
+  AGENTS.forEach(name=>{
+    const uname=toUsername(name);
+    const entry=SCHEDULES[uname] && SCHEDULES[uname][todayKey];
+    if(!entry){html+=`<div class="agent-row" style="padding:6px;font-size:11px;"><span>${name}</span><span class="status-badge status-uwi">No sched</span></div>`; return;}
+    const st=getStatusForNow(entry);
+    html+=`<div class="agent-row" style="padding:6px;font-size:11px;"><div><b>${name}</b><br><span style="font-size:10px;">${formatMilitaryTo12(entry.start)}-${formatMilitaryTo12(entry.end)} ${entry.wfh}</span></div><span class="status-badge ${st.cls}">${st.text}</span></div>`;
+  });
+  if(!html) html='<div style="font-size:11px;color:#aaa;">No agents added yet. Admin add via EDIT MODE.</div>';
+  el.innerHTML=html;
+}
+
+// AU TIME
+function updateAUTime(){
+  const now=new Date();
+  const auTime=new Date(now.toLocaleString('en-US',{timeZone:'Australia/Sydney'}));
+  const timeStr=auTime.toLocaleTimeString('en-AU',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true});
+  const dateStr=auTime.toLocaleDateString('en-AU',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  document.getElementById('au-time').innerHTML=`<div style="font-size:28px;font-weight:900;text-align:center;letter-spacing:1px;">${timeStr}</div>`;
+  document.getElementById('au-date').textContent=dateStr;
+}
+setInterval(updateAUTime,1000);
+
+// AGENT LOGIN
+let currentLoggedAgent=null;
+function openAgentLogin(){
+  if(currentLoggedAgent){ if(confirm('Logout agent '+currentLoggedAgent+'?')){currentLoggedAgent=null; document.getElementById('agentLoginBtn').textContent='🔵 AGENT LOGIN'; document.getElementById('agentLoginBtn').classList.remove('logged'); localStorage.removeItem('rns_current_agent'); renderTeamSchedList();} return;}
+  const uname=prompt('Enter username (e.g. randolfseguban):'); if(!uname) return;
+  const pass=prompt('Enter password (default same as username):'); if(!pass) return;
+  const stored=AGENT_PASS[uname.toLowerCase()];
+  if(!stored){ alert('Agent not found! Ask admin to add you.'); return;}
+  if(pass!==stored){ alert('Wrong password!'); return;}
+  currentLoggedAgent=uname.toLowerCase();
+  localStorage.setItem('rns_current_agent',currentLoggedAgent);
+  document.getElementById('agentLoginBtn').textContent='🟢 '+currentLoggedAgent+' (LOGOUT)';
+  document.getElementById('agentLoginBtn').classList.add('logged');
+  renderTeamSchedList(); alert('Logged in as '+currentLoggedAgent);
+}
+document.getElementById('teamMonthPicker').addEventListener('change',function(e){const [yy,mm]=e.target.value.split('-').map(Number); teamViewDate=new Date(yy,mm-1,1); renderTeamCalendar();});
+
+// INIT
+checkAdminParam();
+const savedIsAdmin=localStorage.getItem('rns_isAdmin');
+if(savedIsAdmin==='1'){ isAdmin=true; enableAdminMode(); }
+const savedAgent=localStorage.getItem('rns_current_agent');
+if(savedAgent){ currentLoggedAgent=savedAgent; document.getElementById('agentLoginBtn').textContent='🟢 '+savedAgent+' (LOGOUT)'; document.getElementById('agentLoginBtn').classList.add('logged');}
+document.addEventListener('keydown',function(e){ if(e.ctrlKey && e.shiftKey && e.key.toLowerCase()==='e'){ e.preventDefault(); if(isAdmin){toggleEditMode();} else {document.getElementById('adminLoginOverlay').style.display='flex';}}});
+renderBanner(); renderTopCats(); setCat('NBN',null); renderTeamCalendar(); renderTeamSchedList(); renderAgentStatusToday(); updateAUTime(); renderAgentAdminList(); renderLeaveTypeList(); renderCatList();
 </script>
 </body>
-</html>
+</html>                                                                  
