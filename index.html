@@ -71,16 +71,6 @@ setInterval(updateAUTimes,1000); updateAUTimes();
 
 <div class="center-wrapper">
 
-<!-- SEARCH BOX NA NAKA-LINK KAY TANGERINE -->
-<div style="width:900px; max-width:90%; margin:0 auto 20px; background:#0f1f3a; padding:12px; border-radius:12px; border:1.5px solid #FF8A26; display:flex; gap:10px; position:relative; z-index:20;">
-  <input id="kb-search" type="text" placeholder="🔍 Search RNS + Tangerine (e.g. VoIP ATA, Netcomm Upgrade, NBN setup)..." 
-    style="flex:1; padding:12px 18px; border-radius:99px; border:1.5px solid #333; background:#0a0a0a; color:white; font-weight:700; font-size:13px; outline:none;"
-    onkeyup="searchKB(this.value)"
-    onkeypress="if(event.key==='Enter'){ searchTangerine(this.value); }"
-  >
-  <button onclick="searchTangerine(document.getElementById('kb-search').value)" style="padding:12px 20px; border-radius:99px; background:#FF8A26; color:#000; font-weight:900; border:none; cursor:pointer; white-space:nowrap;">🔍 Search Tangerine</button>
-</div>
-<div id="search-results" style="width:900px; max-width:90%; margin:0 auto 20px; display:none; position:relative; z-index:20;"></div>
 
   <div id="middle-pills" style="background:#0f1f3a; padding:10px 20px; border-radius:12px; display:flex; gap:10px; border:1px solid #333; justify-content:center;">
     <a href="#" class="sub-pill active" onclick="setCat('FTTP',this);return false;">FTTP</a>
