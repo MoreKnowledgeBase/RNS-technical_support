@@ -195,7 +195,7 @@ updateAUTimes();
     <a href="#" class="sub-pill active" onclick="setCat('FTTP',this);return false;">FTTP</a>
     <a href="#" class="sub-pill" onclick="setCat('FTTC',this);return false;">FTTC</a>
     <a href="#" class="sub-pill" onclick="setCat('HFC',this);return false;">HFC</a>
-    <a href="#" class="sub-pill" onclick="setCat('FX',this);return false;">FX</a>
+    <a href="#" class="sub-pill" onclick="setCat('FW',this);return false;">FW</a>
     <a href="#" class="sub-pill" onclick="setCat('FTTN/B',this);return false;">FTTN/B</a>
   </div>
 
@@ -228,18 +228,18 @@ updateAUTimes();
 
 <script>
 var subMenuData = {
-  'NBN': ['FTTP','FTTC','HFC','FX','FTTN/B'],
+  'NBN': ['FTTP','FTTC','HFC','FW','FTTN/B'],
   'VoIP': ['No Dial Tone','One Way','No Voice','VoIP Setup','ATA'],
   'Mobile': ['No Data','SIM Issue','APN','Roaming','VoLTE'],
   'Modem': ['Setup','No Internet','WiFi','Bridge','Reset'],
   'Provisioning': ['New Order','Activation','Transfer','Cancel','Track']
 };
 var contentData = {
-  'NBN': { title: 'NBN - NATIONAL BROADBAND NETWORK', desc: 'Select FTTP, FTTC, HFC, FX, FTTN/B above!', pic: 'https://images.unsplash.com/photo-1603899123552-0b6a7a228a6c?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'SETUP DIAGRAM', d2: 'Wiring / Connection Guide', t3: 'TROUBLESHOOTING', d3: 'Steps to Fix' },
+  'NBN': { title: 'NBN - NATIONAL BROADBAND NETWORK', desc: 'Select FTTP, FTTC, HFC, FW, FTTN/B above!', pic: 'https://images.unsplash.com/photo-1603899123552-0b6a7a228a6c?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'SETUP DIAGRAM', d2: 'Wiring / Connection Guide', t3: 'TROUBLESHOOTING', d3: 'Steps to Fix' },
   'FTTP': { title: 'FTTP', desc: 'Fibre to the Premises', pic: 'FTTP outside set up.webp', pic2: 'FTTP old ntd box set up.png', pic3: 'FTTP NBN Box V2.png', t2: 'FTTP INSTALL', d2: 'NBN Box + Connection', t3: 'FTTP CHECK', d3: 'Light Status Guide' },
     'FTTC': { title: 'FTTC', desc: 'Fibre to the Curb', pic: 'FTTC outside set up.webp', pic2: 'FTTC Diagram.jpg', pic3: 'FTTC box.png', t2: 'FTTC SETUP', d2: 'NCD + Modem', t3: 'FTTC TROUBLESHOOT', d3: 'NTD Lights' },
   'HFC': { title: 'HFC', desc: 'Hybrid Fibre Coaxial', pic: 'HFC Diagram.png', pic2: 'HFC set up.png', pic3: 'HFC lights.png', t2: 'HFC SETUP', d2: 'NBN Box Arris', t3: 'HFC TROUBLESHOOT', d3: ' Lights Check' },
-  'FX': { title: 'FX', desc: 'Fixed Wireless', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'FW SETUP', d2: 'Antenna + NTD', t3: 'FW TROUBLESHOOT', d3: 'Signal Check' },
+  'FW': { title: 'FW', desc: 'Fixed Wireless', pic: 'FW Diagrm.png', pic2: 'FW set up.png', pic3: 'FW lights.png', t2: 'FW SETUP', d2: 'Antenna + NTD', t3: 'FW Set Up', d3: 'Signal Check' },
   'FTTN/B': { title: 'FTTN/B', desc: 'Fibre to the Node/Building', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'FTTN SETUP', d2: 'Phone Socket', t3: 'FTTN TROUBLESHOOT', d3: 'Isolation Test' },
   'VoIP': { title: 'VoIP', desc: 'Select VoIP issue above!', pic: 'https://images.unsplash.com/photo-1588502945133-7d4e242d5d6b?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'VoIP SETUP', d2: 'ATA Config', t3: 'VoIP FIX', d3: 'No Dial Tone' },
   'Mobile': { title: 'MOBILE', desc: 'Select Mobile issue above!', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'MOBILE SETUP', d2: 'APN Config', t3: 'MOBILE FIX', d3: 'No Data' },
