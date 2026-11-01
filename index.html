@@ -52,30 +52,41 @@
 #static-menubar .pill-menu{background:rgba(255,255,255,0.12);color:white;border-color:rgba(255,255,255,0.15)}
 #static-menubar .pill-menu:hover{background:#ff7f11;color:#000;border-color:#ff7f11}
 #static-menubar .pill-menu.active{background:#ff7f11;color:#000;border-color:#ff7f11}
-#static-menubar .pill-time{background:#2563eb;color:white;border-color:#2563eb}
 body{padding-top:42px !important}
 #main-content-area{
-  width:calc(100% - 40px);
-  max-width:1100px;
-  margin:240px auto 20px;
+  width:900px;
+  max-width:90%;
+  margin:0 auto;
   background:white;
   border-radius:20px;
   overflow:hidden;
   box-shadow:0 10px 40px rgba(0,0,0,0.4);
-  min-height:450px;
+  text-align:center;
 }
-#main-content-area img{width:100%;max-height:500px;object-fit:cover;display:block;}
-.wrap{max-width:1100px;margin:20px auto 0;padding:20px 16px 40px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
-.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.2);cursor:pointer}
-.card img{width:100%;height:150px;object-fit:cover}
-.card .body{padding:16px}
-@media(max-width:800px){
-  #static-menubar{height:auto;flex-wrap:wrap;padding:8px 12px;gap:8px}
-  #static-menubar .pill{padding:6px 12px;font-size:11px;height:28px}
-  body{padding-top:88px !important}
-  #main-content-area{margin-top:320px}
-  .grid{grid-template-columns:1fr}
+#main-content-area img{width:100%;height:200px;object-fit:contain;display:block;background:white;padding:10px;margin:0 auto;}
+.sub-pill{
+  background:#0a0a0a;
+  border:1.5px solid #FF8A26;
+  color:white;
+  padding:8px 18px;
+  border-radius:99px;
+  font-weight:800;
+  font-size:12px;
+  text-decoration:none;
+  cursor:pointer;
+  transition:.2s;
+  white-space:nowrap;
+}
+.sub-pill:hover{ background:#FF8A26; color:#000; }
+.sub-pill.active{ background:#FF8A26; color:#000; }
+.center-wrapper{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  margin-top:250px;
+  gap:20px;
 }
 </style>
 </head>
@@ -90,12 +101,6 @@ body{padding-top:42px !important}
       <img src="download.webp"> 1800 733 368
     </a>
   </div>
-
-
-
-
-
-  
   <div class="right-menu">
     <a href="#" class="pill pill-menu active" onclick="setCat('NBN',this);return false;">NBN</a>
     <a href="#" class="pill pill-menu" onclick="setCat('VoIP',this);return false;">VoIP</a>
@@ -163,63 +168,82 @@ updateAUTimes();
       </div>
     `;
   }
-  if(location.search.includes('admin=rns123')){
-    var btn=document.createElement('button');
-    btn.textContent='✏ EDIT BANNER';
-    btn.style='position:fixed;bottom:20px;right:20px;z-index:999999;padding:14px 22px;border-radius:99px;border:none;background:#ff7f11;color:#000;font-weight:900;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.4);';
-    btn.onclick=function(){
-      var n=prompt('1. MALAKING TEXT SA GITNA:',data.name);if(n===null)return;
-      var sm=prompt('2. MALIIT NA TEXT SA BABA:',data.small);if(sm===null)return;
-      var t=prompt('3. TITLE SA KANAN:',data.title);if(t===null)return;
-      var p=prompt('4. PICTURE LINK https://:',data.pic);if(p===null)return;
-      localStorage.setItem(KEY,JSON.stringify({name:n,small:sm,title:t,pic:p}));location.reload();
-    };
-    document.body.appendChild(btn);
-  }
   renderBanner();
 })();
-
 </script>
 
+<!-- CENTER LAHAT - EXCEPT MENU BAR -->
+<div class="center-wrapper">
+  <!-- GITNA - FTTP BAR - CENTER -->
+  <div id="middle-pills" style="background:#0f1f3a; padding:10px 20px; border-radius:12px; display:flex; gap:10px; border:1px solid #333; justify-content:center;">
+    <a href="#" class="sub-pill active" onclick="setCat('FTTP',this);return false;">FTTP</a>
+    <a href="#" class="sub-pill" onclick="setCat('FTTC',this);return false;">FTTC</a>
+    <a href="#" class="sub-pill" onclick="setCat('HFC',this);return false;">HFC</a>
+    <a href="#" class="sub-pill" onclick="setCat('FX',this);return false;">FX</a>
+    <a href="#" class="sub-pill" onclick="setCat('FTTN/B',this);return false;">FTTN/B</a>
+  </div>
 
-  
-<!-- PULA NA BOX - DITO LALABAS PICTURE PAG CLICK NBN, VOIP, MOBILE -->
-
-
-  <!-- GITNA - BANNER / FTTP BAR / PICTURE -->
-
-<div class="wrap">
-  <div class="grid" id="grid"></div>
+  <!-- PICTURE - CENTER -->
+  <div id="main-content-area">
+    <img id="main-pic" src="peely-speedy-max.png">
+    <div style="padding:15px;text-align:center;background:white;">
+      <h2 id="main-title" style="color:#0f172a;font-size:14px;font-weight:900;margin:0;text-align:center;">NBN - NATIONAL BROADBAND NETWORK 22222</h2>
+      <p id="main-desc" style="color:#666;margin-top:8px;font-size:12px;text-align:center;">Click mo yung NBN, VoIP, Mobile, Modem, Provisioning sa taas</p>
+    </div>
+  </div>
 </div>
 
-
-  <!-- GITNA - BANNER / FTTP BAR / PICTURE -->
-<div id="middle-pills" style="position:absolute; top:300px; left:50%; transform:translateX(-50%); background:#0f1f3a; padding:10px 20px; border-radius:12px; display:flex; gap:10px; z-index:20; border:1px solid #333;">
-  <a href="#" class="sub-pill active" onclick="setCat('FTTP',this);return false;">FTTP</a>
-  <a href="#" class="sub-pill" onclick="setCat('FTTC',this);return false;">FTTC</a>
-  <a href="#" class="sub-pill" onclick="setCat('HFC',this);return false;">HFC</a>
-  <a href="#" class="sub-pill" onclick="setCat('FX',this);return false;">FX</a>
-  <a href="#" class="sub-pill" onclick="setCat('FTTN/B',this);return false;">FTTN/B</a>
-</div>
-
-<style>
-.sub-pill{
-  background:#0a0a0a;
-  border:1.5px solid #FF8A26;
-  color:white;
-  padding:8px 18px;
-  border-radius:99px;
-  font-weight:800;
-  font-size:12px;
-  text-decoration:none;
-  cursor:pointer;
-  transition:.2s;
+<script>
+var subMenuData = {
+  'NBN': ['FTTP','FTTC','HFC','FX','FTTN/B'],
+  'VoIP': ['No Dial Tone','One Way','No Voice','VoIP Setup','ATA'],
+  'Mobile': ['No Data','SIM Issue','APN','Roaming','VoLTE'],
+  'Modem': ['Setup','No Internet','WiFi','Bridge','Reset'],
+  'Provisioning': ['New Order','Activation','Transfer','Cancel','Track']
+};
+var contentData = {
+  'NBN': { title: 'NBN - NATIONAL BROADBAND NETWORK 22222', desc: 'Select FTTP, FTTC, HFC, FX, FTTN/B above!', pic: 'peely-speedy-max.png' },
+  'FTTP': { title: 'FTTP', desc: 'Fibre to the Premises', pic: 'peely-speedy-max.png' },
+  'FTTC': { title: 'FTTC', desc: 'Fibre to the Curb', pic: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800' },
+  'HFC': { title: 'HFC', desc: 'Hybrid Fibre Coaxial', pic: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800' },
+  'FX': { title: 'FX', desc: 'Fixed Wireless', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800' },
+  'FTTN/B': { title: 'FTTN/B', desc: 'Fibre to the Node/Building', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800' },
+  'VoIP': { title: 'VoIP', desc: 'Select VoIP issue above!', pic: 'https://images.unsplash.com/photo-1588502945133-7d4e242d5d6b?w=800' },
+  'Mobile': { title: 'MOBILE', desc: 'Select Mobile issue above!', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800' },
+  'Modem': { title: 'MODEM', desc: 'Select Modem issue above!', pic: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800' },
+  'Provisioning': { title: 'PROVISIONING', desc: 'Select Provisioning above!', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800' }
+};
+function setCat(c,el){
+  if(el && el.classList.contains('pill-menu')){
+    document.querySelectorAll('.pill-menu').forEach(x=>x.classList.remove('active'));
+    el.classList.add('active');
+    var subs = subMenuData[c] || [];
+    var middle = document.getElementById('middle-pills');
+    middle.innerHTML = '';
+    subs.forEach(function(name, idx){
+      var btn = document.createElement('a');
+      btn.href='#';
+      btn.className='sub-pill' + (idx===0?' active':'');
+      btn.textContent=name;
+      btn.onclick=function(e){ e.preventDefault(); setCat(name, this); };
+      middle.appendChild(btn);
+    });
+    if(subs.length>0) c = subs[0];
+  } else if(el && el.classList.contains('sub-pill')){
+    document.querySelectorAll('.sub-pill').forEach(x=>x.classList.remove('active'));
+    el.classList.add('active');
+  }
+  var d = contentData[c];
+  if(!d) return;
+  document.getElementById('main-pic').src = d.pic;
+  document.getElementById('main-title').textContent = d.title;
+  document.getElementById('main-desc').textContent = d.desc;
 }
-.sub-pill:hover{ background:#FF8A26; color:#000; }
-.sub-pill.active{ background:#FF8A26; color:#000; }
-</style>
+window.addEventListener('load', function(){
+  var nbnBtn = document.querySelector('.pill-menu');
+  if(nbnBtn) setCat('NBN', nbnBtn);
+});
+</script>
 
-
-  
 </body>
 </html>
