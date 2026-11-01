@@ -3,153 +3,248 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RNS Technical Support - Knowledge Base</title>
+<title>RNS No-Code Knowledge Base - Edit Everything Without Code</title>
 <style>
-  body { background: linear-gradient(to right, #0A1931, #2E5BFF); margin:0; min-height:100vh; padding:10px; font-family:Arial,sans-serif; }
-  #static-menubar{position:fixed;top:0;left:0;right:0;height:42px;background:#0a0a0a;border-bottom:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:space-between;padding:0 16px;z-index:999999;box-shadow:0 4px 20px rgba(0,0,0,0.4);}
-  #static-menubar .left-phones{display:flex;gap:10px;align-items:center}
-  #static-menubar .right-menu{display:flex;gap:8px;align-items:center}
-  #static-menubar .pill{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:28px;padding:0 14px;border-radius:99px;font-weight:800;font-size:12px;text-decoration:none;line-height:1;border:1px solid transparent;transition:.2s;white-space:nowrap;cursor:pointer;}
-  #static-menubar .pill img{width:18px;height:18px;border-radius:50%;object-fit:cover}
-  #static-menubar .pill-phone1{background:#FF8A26;color:white;border-color:#FF8A26}
-  #static-menubar .pill-phone2{background:#FF8A26;color:white;border-color:#FF8A26}
-  #static-menubar .pill-menu{background:rgba(255,255,255,0.12);color:white;border-color:rgba(255,255,255,0.15)}
-  #static-menubar .pill-menu:hover{background:#ff7f11;color:#000;border-color:#ff7f11}
-  #static-menubar .pill-menu.active{background:#ff7f11;color:#000;border-color:#ff7f11}
-  body{padding-top:42px !important}
-  #main-content-area, .extra-card{width:900px;max-width:90%;margin:0 auto;background:white;border-radius:20px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.4);text-align:center;}
-  #main-content-area img, .extra-card img{width:100%;height:auto;max-height:none;object-fit:contain;object-position:center;display:block;background:white;margin:0;padding:0;}
-  .sub-pill{background:#0a0a0a;border:1.5px solid #FF8A26;color:white;padding:8px 18px;border-radius:99px;font-weight:800;font-size:12px;text-decoration:none;cursor:pointer;transition:.2s;white-space:nowrap;}
-  .sub-pill:hover{ background:#FF8A26; color:#000; }
-  .sub-pill.active{ background:#FF8A26; color:#000; }
-  .center-wrapper{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-top:250px;gap:20px;padding-bottom:50px;}
-  .extra-pics{display:flex;flex-direction:column;gap:20px;width:100%;align-items:center;}
+  body{background:linear-gradient(to right,#0A1931,#2E5BFF);margin:0;min-height:100vh;padding:10px;font-family:Arial,sans-serif;padding-top:52px}
+  #topbar{position:fixed;top:0;left:0;right:0;height:52px;background:#0a0a0a;border-bottom:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:space-between;padding:0 12px;z-index:999999;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+  .pill{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:30px;padding:0 14px;border-radius:99px;font-weight:800;font-size:12px;text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap}
+  .pill-orange{background:#FF8A26;color:#fff;border-color:#FF8A26}
+  .pill-menu{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.15)}
+  .pill-menu.active,.pill-menu:hover{background:#FF8A26;color:#000;border-color:#FF8A26}
+  .sub-pill{background:#0a0a0a;border:1.5px solid #FF8A26;color:#fff;padding:8px 18px;border-radius:99px;font-weight:800;font-size:12px;cursor:pointer;white-space:nowrap}
+  .sub-pill.active,.sub-pill:hover{background:#FF8A26;color:#000}
+  .card{width:900px;max-width:90%;margin:0 auto;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.4);text-align:center;position:relative}
+  .card img,.card video{width:100%;height:auto;object-fit:contain;display:block;background:#fff}
+  .center{width:100%;display:flex;flex-direction:column;align-items:center;gap:18px;padding-bottom:80px;margin-top:260px}
+  #editToggle{position:fixed;bottom:18px;right:18px;z-index:999999;background:#FF8A26;color:#000;border:none;padding:14px 22px;border-radius:99px;font-weight:900;font-size:14px;cursor:pointer;box-shadow:0 6px 30px rgba(0,0,0,.5)}
+  .editBadge{position:absolute;top:8px;right:8px;background:#FF8A26;color:#000;font-weight:900;font-size:11px;padding:6px 10px;border-radius:99px;z-index:10;cursor:pointer}
+  .adminPanel{position:fixed;bottom:80px;right:18px;width:360px;max-width:92vw;max-height:75vh;overflow:auto;background:#0f1f3a;border:2px solid #FF8A26;border-radius:16px;color:#fff;padding:14px;z-index:999998;display:none}
+  .adminPanel h3{margin:6px 0 10px;font-size:13px;color:#FF8A26}
+  .adminPanel input,.adminPanel textarea{width:100%;box-sizing:border-box;padding:8px;border-radius:8px;border:1px solid #333;background:#0a0a0a;color:#fff;margin:4px 0 8px;font-size:12px}
+  .adminPanel button{padding:7px 12px;border-radius:99px;border:none;background:#FF8A26;color:#000;font-weight:800;cursor:pointer;margin:3px;font-size:11px}
+  .hidden{display:none!important}
 </style>
 </head>
 <body>
-<nav id="static-menubar">
-  <div class="left-phones">
-    <a href="https://www.tangerine.com.au/" class="pill pill-phone1"><img src="peely-speedy-max.png"> 1800 211 112</a>
-    <a href="https://more.com.au/" class="pill pill-phone2"><img src="download.webp"> 1800 733 368</a>
+<div id="topbar">
+  <div style="display:flex;gap:8px;align-items:center">
+    <span class="pill pill-orange">1800 211 112</span>
+    <span class="pill pill-orange">1800 733 368</span>
   </div>
-  <div class="right-menu">
-    <a href="#" class="pill pill-menu active" onclick="setCat('NBN',this);return false;">NBN</a>
-    <a href="#" class="pill pill-menu" onclick="setCat('VoIP',this);return false;">VoIP</a>
-    <a href="#" class="pill pill-menu" onclick="setCat('Mobile',this);return false;">Mobile</a>
-    <a href="#" class="pill pill-menu" onclick="setCat('Modem',this);return false;">Modem</a>
-    <a href="#" class="pill pill-menu" onclick="setCat('Provisioning',this);return false;">Provisioning</a>
-  </div>
-</nav>
-<div style="background:#0f1f3a; color:white; padding:15px; border-radius:15px; width:260px; font-family:Arial; font-size:13px; border:1px solid #333; position:absolute; top:80px; left:15px; z-index:10;">
-  <div style="font-weight:bold; text-align:center; margin-bottom:10px;">AU AUSTRALIA TIME - LIVE <span style="width:10px; height:10px; background:#00ff88; border-radius:50%; display:inline-block; margin-left:5px;"></span></div>
-  <div id="au-time"></div>
-  <div style="margin-top:10px; font-size:11px; color:#aaa; text-align:center;" id="au-date"></div>
+  <div id="topPills" style="display:flex;gap:8px;flex-wrap:wrap"></div>
 </div>
-<script>
-function updateAUTimes(){
-  const cities = [{name:"Sydney", tz:"Australia/Sydney"},{name:"Melbourne", tz:"Australia/Melbourne"},{name:"Canberra", tz:"Australia/Canberra"},{name:"Brisbane", tz:"Australia/Brisbane"},{name:"Adelaide", tz:"Australia/Adelaide"},{name:"Darwin", tz:"Australia/Darwin"},{name:"Perth", tz:"Australia/Perth"},{name:"Hobart", tz:"Australia/Hobart"}];
-  let html = "";
-  cities.forEach(c=>{ const time = new Date().toLocaleTimeString("en-AU", {timeZone:c.tz, hour:"2-digit", minute:"2-digit", second:"2-digit", hour12:true}); html += `<div style="display:flex; justify-content:space-between; margin:4px 0;"><span>${c.name}:</span> <span style="color:#ffcc00; font-weight:bold;">${time}</span></div>`; });
-  document.getElementById("au-time").innerHTML = html;
-  document.getElementById("au-date").innerHTML = new Date().toLocaleDateString("en-AU", {weekday:"long", day:"numeric", month:"long", year:"numeric"});
-}
-setInterval(updateAUTimes,1000); updateAUTimes();
-</script>
-<div id="latest-update-box"></div>
-<script>
-(function(){
-  var box=document.getElementById('latest-update-box'); if(!box) return;
-  var KEY='rns_banner_red_circle_final';
-  var data={name:"MALAPIT NA ANG 13TH MONTH!!!",small:"MALIGAYANG KAARAWAN",title:"Happy Birthday!",pic:""};
-  try{var s=localStorage.getItem(KEY);if(s){var d=JSON.parse(s);data.name=d.name||data.name;data.small=d.small||data.small;data.title=d.title||data.title;data.pic=d.pic||data.pic;}}catch(e){}
-  function renderBanner(){
-    box.innerHTML=`<div style="position:absolute;top:80px;left:350px;right:20px;min-height:130px;background:rgba(255,255,255,0.08);border:1.5px dashed rgba(255,255,255,0.5);border-radius:20px;padding:30px 20px 22px;display:flex;justify-content:center;align-items:center;z-index:15;"><div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#0f172a;padding:5px 18px;border-radius:99px;font-size:11px;letter-spacing:2px;font-weight:800;border:1px solid rgba(255,255,255,0.3);color:white;white-space:nowrap">📢 LATEST UPDATE</div><div style="flex:1;text-align:center;"><div style="font-size:42px;font-weight:900;color:white;letter-spacing:1px;text-transform:uppercase;line-height:1.1;">${data.name}</div><div style="font-size:14px;opacity:.7;margin-top:8px;color:#cbd5e1;">${data.small}</div></div><div style="text-align:center;margin-left:25px;display:flex;flex-direction:column;align-items:center;gap:10px;min-width:120px"><div style="font-size:15px;font-weight:800;color:white;">${data.title}</div><div style="width:80px;height:80px;border-radius:50%;overflow:hidden;border:3px solid white;box-shadow:0 4px 20px rgba(0,0,0,0.4);background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center">${data.pic ? `<img src="${data.pic}" style="width:100%;height:100%;object-fit:cover;">` : `<div style="font-size:42px">🧡</div>`}</div></div></div>`;
-  }
-  renderBanner();
-})();
-</script>
-<div class="center-wrapper">
-  <div id="middle-pills" style="background:#0f1f3a; padding:10px 20px; border-radius:12px; display:flex; gap:10px; border:1px solid #333; justify-content:center;">
-    <a href="#" class="sub-pill active" onclick="setCat('FTTP',this);return false;">FTTP</a>
-    <a href="#" class="sub-pill" onclick="setCat('FTTC',this);return false;">FTTC</a>
-    <a href="#" class="sub-pill" onclick="setCat('HFC',this);return false;">HFC</a>
-    <a href="#" class="sub-pill" onclick="setCat('FW',this);return false;">FW</a>
-    <a href="#" class="sub-pill" onclick="setCat('FTTN/B',this);return false;">FTTN/B</a>
+
+<div style="background:#0f1f3a;color:#fff;padding:15px;border-radius:15px;width:260px;font-size:13px;border:1px solid #333;position:absolute;top:80px;left:15px;z-index:10">
+  <div style="font-weight:bold;text-align:center;margin-bottom:8px">AU TIME - LIVE 🟢</div>
+  <div id="auTime"></div>
+  <div id="auDate" style="margin-top:8px;font-size:11px;color:#aaa;text-align:center"></div>
+</div>
+
+<div id="bannerBox" style="position:absolute;top:80px;left:350px;right:20px;min-height:130px;background:rgba(255,255,255,.08);border:1.5px dashed rgba(255,255,255,.5);border-radius:20px;padding:30px 20px 22px;display:flex;justify-content:center;align-items:center;z-index:15">
+  <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#0f172a;padding:5px 18px;border-radius:99px;font-size:11px;letter-spacing:2px;font-weight:800;border:1px solid rgba(255,255,255,.3)">📢 LATEST UPDATE</div>
+  <div style="flex:1;text-align:center">
+    <div id="bannerTitle" style="font-size:42px;font-weight:900;color:#fff;letter-spacing:1px;text-transform:uppercase;line-height:1.1">MALAPIT NA ANG 13TH MONTH!!!</div>
+    <div id="bannerSmall" style="font-size:14px;opacity:.7;margin-top:8px;color:#cbd5e1">MALIGAYANG KAARAWAN</div>
   </div>
-  <div id="main-content-area">
-    <img id="main-pic" src="peely-speedy-max.png">
-    <div style="padding:15px;text-align:center;background:white;">
-      <h2 id="main-title" style="color:#0f172a;font-size:14px;font-weight:900;margin:0;text-align:center;">NBN - NATIONAL BROADBAND NETWORK</h2>
-      <p id="main-desc" style="color:#666;margin-top:8px;font-size:12px;text-align:center;">Fibre to the Premises</p>
-    </div>
-  </div>
-  <div class="extra-pics">
-    <div class="extra-card"><img id="main-pic2" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200"><div style="padding:15px;text-align:center;background:white;"><h2 id="main-title2" style="color:#0f172a;font-size:14px;font-weight:900;margin:0;">SETUP DIAGRAM</h2><p id="main-desc2" style="color:#666;margin-top:8px;font-size:12px;">Wiring / Connection Guide</p></div></div>
-    <div class="extra-card"><img id="main-pic3" src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200"><div style="padding:15px;text-align:center;background:white;"><h2 id="main-title3" style="color:#0f172a;font-size:14px;font-weight:900;margin:0;">TROUBLESHOOTING</h2><p id="main-desc3" style="color:#666;margin-top:8px;font-size:12px;">Steps to Fix</p></div></div>
+  <div style="text-align:center;margin-left:25px;display:flex;flex-direction:column;align-items:center;gap:10px;min-width:120px">
+    <div id="bannerBday" style="font-size:15px;font-weight:800;color:#fff">Happy Birthday!</div>
+    <div id="bannerPicWrap" style="width:80px;height:80px;border-radius:50%;overflow:hidden;border:3px solid #fff;box-shadow:0 4px 20px rgba(0,0,0,.4);background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center"><div style="font-size:42px">🧡</div></div>
   </div>
 </div>
+
+<div class="center">
+  <div id="middlePills" style="background:#0f1f3a;padding:10px 20px;border-radius:12px;display:flex;gap:10px;border:1px solid #333;justify-content:center;flex-wrap:wrap"></div>
+  <div id="cardsContainer" style="width:100%;display:flex;flex-direction:column;gap:18px;align-items:center"></div>
+</div>
+
+<button id="editToggle">⚙️ EDIT MODE OFF</button>
+
+<div id="adminPanel" class="adminPanel">
+  <h3>🛠️ No-Code Editor - Lahat dito lang!</h3>
+  <div style="font-size:11px;color:#aaa;margin-bottom:10px">Walang code na gagalawin! Lahat dito - text, photo, video, buttons, banner!</div>
+  
+  <h3>📢 Banner Edit</h3>
+  <input id="inBannerTitle" placeholder="Main Title">
+  <input id="inBannerSmall" placeholder="Small Text">
+  <input id="inBannerBday" placeholder="Birthday Title">
+  <label style="font-size:11px">Upload Banner Photo</label>
+  <input id="inBannerPic" type="file" accept="image/*">
+  <button onclick="saveBanner()">Save Banner</button>
+
+  <h3>🔝 Top Buttons (NBN, VoIP...)</h3>
+  <div id="topEditList"></div>
+  <div style="display:flex;gap:6px"><input id="newTopName" placeholder="New top button e.g. 5G"><button onclick="addTop()">+ Add Top</button></div>
+
+  <h3>🔘 Middle Buttons (FTTP, No Dial Tone...)</h3>
+  <div id="midInfo" style="font-size:11px;color:#ffcc00;margin-bottom:6px"></div>
+  <div id="midEditList"></div>
+  <div style="display:flex;gap:6px"><input id="newMidName" placeholder="New sub button"><button onclick="addMid()">+ Add Sub</button></div>
+
+  <h3>🖼️ Cards - Photo / Video</h3>
+  <div id="cardsEditList"></div>
+  <button onclick="addCard()">+ Add New Card (Photo/Video)</button>
+
+  <h3>💾 Save / Load</h3>
+  <button onclick="exportJSON()">Export JSON</button>
+  <button onclick="document.getElementById('importFile').click()">Import JSON</button>
+  <input id="importFile" type="file" accept=".json" class="hidden">
+  <button onclick="exportHTML()">Export HTML for GitHub</button>
+  <button onclick="resetDefault()" style="background:#ff4444;color:#fff">Reset Default</button>
+</div>
+
 <script>
-var subMenuData = {
-  'NBN': ['FTTP','FTTC','HFC','FW','FTTN/B'],
-  'VoIP': ['No Dial Tone','VoIP Config & ATA','GDMS'],
-  'Mobile': ['No Data','SIM Issue','APN','Roaming','VoLTE'],
-  'Modem': ['Netcomm Software Upgrade'],
-  'Provisioning': ['New Order','Activation','Transfer','Cancel','Track']
-};
-var contentData = {
-  'NBN': { title: 'NBN - NATIONAL BROADBAND NETWORK', desc: 'Select FTTP, FTTC, HFC, FW, FTTN/B above!', pic: 'https://images.unsplash.com/photo-1603899123552-0b6a7a228a6c?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'SETUP DIAGRAM', d2: 'Wiring / Connection Guide', t3: 'TROUBLESHOOTING', d3: 'Steps to Fix' },
-  'FTTP': { title: 'FTTP', desc: 'Fibre to the Premises', pic: 'FTTP-outside-set-up.webp', pic2: 'FTTP-old-ntd-box-set-up.png', pic3: 'FTTP-NBN-Box-V2.png', t2: 'FTTP INSTALL', d2: 'NBN Box + Connection', t3: 'FTTP CHECK', d3: 'Light Status Guide' },
-  'FTTC': { title: 'FTTC', desc: 'Fibre to the Curb', pic: 'FTTC-outside-set-up.webp', pic2: 'FTTC-Diagram.jpg', pic3: 'FTTC-box.png', t2: 'FTTC SETUP', d2: 'NCD + Modem', t3: 'FTTC TROUBLESHOOT', d3: 'NTD Lights' },
-  'HFC': { title: 'HFC', desc: 'Hybrid Fibre Coaxial', pic: 'HFC-Diagram.png', pic2: 'HFC-set-up.png', pic3: 'HFC-lights.png', t2: 'HFC SETUP', d2: 'NBN Box Arris', t3: 'HFC TROUBLESHOOT', d3: 'Lights Check' },
-  'FW': { title: 'FW', desc: 'Fixed Wireless', pic: 'FW-outside.webp', pic2: 'FW-set-up.png', pic3: 'FW-lights.png', t2: 'FW SETUP', d2: 'Antenna + NTD', t3: 'FW Set Up', d3: 'Signal Check' },
-  'FTTN/B': { title: 'FTTN/B', desc: 'Fibre to the Node/Building', pic: 'FTTB-Diagram.webp', pic2: 'FTTN-Diagram.webp', pic3: 'FTTN-Set-up.png', t2: 'FTTN SETUP', d2: 'FTTN Diagram', t3: 'FTTN TROUBLESHOOT', d3: 'FTTN Set up' },
-  'No Dial Tone': { title: 'No Dial Tone - VoIP Wired', desc: 'Modem Router PHONE 1 to Gray Telephone - Single Connection', pic: 'Voip-Wired.webp', pic2: 'Voip-Wireless.webp', pic3: 'Voip-Ata.webp', t2: 'VoIP WIRELESS', d2: 'Sample Wireless Handset Only', t3: 'VoIP ATA SETUP', d3: 'Grandstream HT801 - Picture for Reference Only' },
-  'VoIP Config & ATA': { title: 'VoIP Config & ATA', desc: 'ATA Setup - Modem LAN to ATA Internet (Blue) Port', pic: 'Voip-Ata.webp', pic2: 'Voip-Wired.webp', pic3: 'Voip-Wireless.webp', t2: 'ATA SETUP', d2: 'Phone PORT 1 Connection', t3: 'WIRED SETUP', d3: 'PHONE 1 to Gray Telephone' },
-  'GDMS': { title: 'GDMS - VoIP Provisioning', desc: 'Grandstream Device Management System', pic: 'Voip-Ata.webp', pic2: 'Voip-Wired.webp', pic3: 'Netcomm-VoIP-SIP-Combined-Clear.webp', t2: 'SIP CONFIG', d2: 'VoIP Basic & Advanced Setting', t3: 'SIP CREDENTIALS', d3: 'SIP Username / Password / Proxy' },
-  'Netcomm Software Upgrade': { title: 'Netcomm Software Upgrade', desc: 'Netcomm Modem Firmware Upgrade - 3-in-1 Guide', pic: 'Netcomm-Upgrade-3in1-Combined.webp', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'SOFTWARE UPGRADE', d2: 'Firmware Steps', t3: 'NETCOMM FIX', d3: 'Upgrade Guide' },
-  'Mobile': { title: 'MOBILE', desc: 'Select Mobile issue above!', pic: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'MOBILE SETUP', d2: 'APN Config', t3: 'MOBILE FIX', d3: 'No Data' },
-  'Provisioning': { title: 'PROVISIONING', desc: 'Select Provisioning above!', pic: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200', pic2: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200', pic3: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200', t2: 'ORDER TRACK', d2: 'NBN Tracker', t3: 'ACTIVATION', d3: 'Steps' }
-};
-function setCat(c,el){
-  if(el && el.classList.contains('pill-menu')){
-    document.querySelectorAll('.pill-menu').forEach(x=>x.classList.remove('active'));
-    el.classList.add('active');
-    var subs = subMenuData[c] || [];
-    var middle = document.getElementById('middle-pills');
-    middle.innerHTML = '';
-    subs.forEach(function(name, idx){
-      var btn = document.createElement('a');
-      btn.href='#';
-      btn.className='sub-pill' + (idx===0?' active':'');
-      btn.textContent=name;
-      btn.onclick=function(e){ e.preventDefault(); setCat(name, this); };
-      middle.appendChild(btn);
-    });
-    if(subs.length>0) c = subs[0];
-  } else if(el && el.classList.contains('sub-pill')){
-    document.querySelectorAll('.sub-pill').forEach(x=>x.classList.remove('active'));
-    el.classList.add('active');
+const DEFAULT_DATA = {
+  banner:{title:"MALAPIT NA ANG 13TH MONTH!!!",small:"MALIGAYANG KAARAWAN",bday:"Happy Birthday!",pic:""},
+  categories:{
+    "NBN":{
+      "FTTP":{title:"FTTP",desc:"Fibre to the Premises",media:[{type:"image",src:"FTTP-outside-set-up.webp"}]},
+      "FTTC":{title:"FTTC",desc:"Fibre to the Curb",media:[{type:"image",src:"FTTC-outside-set-up.webp"}]},
+      "HFC":{title:"HFC",desc:"Hybrid Fibre Coaxial",media:[{type:"image",src:"HFC-Diagram.png"}]},
+      "FW":{title:"FW",desc:"Fixed Wireless",media:[{type:"image",src:"FW-outside.webp"}]},
+      "FTTN/B":{title:"FTTN/B",desc:"Fibre to Node",media:[{type:"image",src:"FTTB-Diagram.webp"}]}
+    },
+    "VoIP":{
+      "No Dial Tone":{title:"No Dial Tone - VoIP Wired",desc:"Modem PHONE 1 to Gray Telephone",media:[{type:"image",src:"Voip-Wired.webp"},{type:"image",src:"Voip-Wireless.webp"},{type:"image",src:"Voip-Ata.webp"}]},
+      "VoIP Config & ATA":{title:"VoIP Config & ATA",desc:"ATA Setup - Modem LAN to ATA Internet (Blue)",media:[{type:"image",src:"Voip-Ata.webp"}]},
+      "GDMS":{title:"GDMS - VoIP Provisioning",desc:"Grandstream Device Management",media:[{type:"image",src:"Voip-Ata.webp"}]}
+    },
+    "Modem":{
+      "Netcomm Software Upgrade":{title:"Netcomm Software Upgrade",desc:"Management > Update Firmware > Choose File > Update Software. Extract zip first! 2-5 mins, do not power off.",media:[{type:"image",src:"Netcomm-Upgrade-3in1-Combined.webp"}]}
+    }
   }
-  var d = contentData[c];
-  if(!d) return;
-  function setImg(id, src){
-    var img = document.getElementById(id);
-    if(img){ img.onerror = function(){ this.src = 'https://via.placeholder.com/900x600?text=Not+Found+'+encodeURIComponent(src); }; img.src = src; }
-  }
-  document.getElementById('main-title').textContent = d.title;
-  document.getElementById('main-desc').textContent = d.desc;
-  setImg('main-pic', d.pic);
-  setImg('main-pic2', d.pic2 || d.pic);
-  document.getElementById('main-title2').textContent = d.t2 || d.title;
-  document.getElementById('main-desc2').textContent = d.d2 || d.desc;
-  setImg('main-pic3', d.pic3 || d.pic);
-  document.getElementById('main-title3').textContent = d.t3 || d.title;
-  document.getElementById('main-desc3').textContent = d.d3 || d.desc;
+};
+const LS_KEY="rns_nocode_kb_v2_final";
+let DATA=JSON.parse(localStorage.getItem(LS_KEY)||"null")||JSON.parse(JSON.stringify(DEFAULT_DATA));
+let currentTop=Object.keys(DATA.categories)[0];
+let currentSub=Object.keys(DATA.categories[currentTop]||{})[0];
+let editMode=false;
+function saveLS(){localStorage.setItem(LS_KEY,JSON.stringify(DATA));}
+function updateTime(){
+  const cities=[{n:"Sydney",tz:"Australia/Sydney"},{n:"Melbourne",tz:"Australia/Melbourne"},{n:"Brisbane",tz:"Australia/Brisbane"},{n:"Perth",tz:"Australia/Perth"}];
+  let h=""; cities.forEach(c=>{ const t=new Date().toLocaleTimeString("en-AU",{timeZone:c.tz,hour:"2-digit",minute:"2-digit"}); h+=`<div style="display:flex;justify-content:space-between;margin:3px 0"><span>${c.n}:</span><span style="color:#ffcc00;font-weight:bold">${t}</span></div>`;});
+  document.getElementById("auTime").innerHTML=h;
+  document.getElementById("auDate").innerHTML=new Date().toLocaleDateString("en-AU",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
 }
-window.addEventListener('load', function(){
-  var nbnBtn = document.querySelector('.pill-menu');
-  if(nbnBtn) setCat('NBN', nbnBtn);
-});
+setInterval(updateTime,1000); updateTime();
+function renderAll(){
+  document.getElementById("bannerTitle").textContent=DATA.banner.title;
+  document.getElementById("bannerSmall").textContent=DATA.banner.small;
+  document.getElementById("bannerBday").textContent=DATA.banner.bday;
+  const wrap=document.getElementById("bannerPicWrap");
+  if(DATA.banner.pic){wrap.innerHTML=`<img src="${DATA.banner.pic}" style="width:100%;height:100%;object-fit:cover">`} else wrap.innerHTML=`<div style="font-size:42px">🧡</div>`;
+  const topDiv=document.getElementById("topPills"); topDiv.innerHTML="";
+  Object.keys(DATA.categories).forEach(k=>{
+    const a=document.createElement("a"); a.className="pill pill-menu"+(k===currentTop?" active":""); a.textContent=k;
+    a.onclick=()=>{currentTop=k; const subs=Object.keys(DATA.categories[k]||{}); currentSub=subs[0]; renderAll();};
+    topDiv.appendChild(a);
+  });
+  const midDiv=document.getElementById("middlePills"); midDiv.innerHTML="";
+  Object.keys(DATA.categories[currentTop]||{}).forEach(s=>{
+    const b=document.createElement("a"); b.className="sub-pill"+(s===currentSub?" active":""); b.textContent=s;
+    b.onclick=()=>{currentSub=s; renderAll();};
+    midDiv.appendChild(b);
+  });
+  const cont=document.getElementById("cardsContainer"); cont.innerHTML="";
+  const entry=DATA.categories[currentTop]?.[currentSub];
+  if(!entry){cont.innerHTML="<div style='color:#fff'>No content - add card in Edit Mode</div>"; return;}
+  (entry.media||[]).forEach((m,idx)=>{
+    const card=document.createElement("div"); card.className="card";
+    const mediaTag=m.type==="image"?`<img src="${m.src}" onerror="this.src='https://via.placeholder.com/900x600?text=${encodeURIComponent(m.src)}'">`:`<video src="${m.src}" controls></video>`;
+    const title=idx===0?entry.title:entry.title+" - Image "+(idx+1);
+    const desc=idx===0?entry.desc:"Additional guide";
+    card.innerHTML=`${mediaTag}<div style="padding:15px;background:#fff"><h2 style="margin:0;font-size:14px;font-weight:900;color:#0f172a">${title}</h2><p style="margin-top:8px;color:#666;font-size:12px">${desc}</p>${editMode?`<span class="editBadge" onclick="editCard(${idx})">✏️ Edit</span>`:``}</div>`;
+    cont.appendChild(card);
+  });
+  renderAdminLists();
+}
+function renderAdminLists(){
+  const tl=document.getElementById("topEditList"); tl.innerHTML=""; Object.keys(DATA.categories).forEach(k=>{
+    const d=document.createElement("div"); d.style="display:flex;gap:4px;margin:3px 0";
+    d.innerHTML=`<input value="${k}" onchange="renameTop('${k}',this.value)" style="flex:1"><button onclick="deleteTop('${k}')">X</button>`;
+    tl.appendChild(d);
+  });
+  document.getElementById("midInfo").textContent="Editing sub-buttons for: "+currentTop;
+  const ml=document.getElementById("midEditList"); ml.innerHTML="";
+  Object.keys(DATA.categories[currentTop]||{}).forEach(s=>{
+    const d=document.createElement("div"); d.style="display:flex;gap:4px;margin:3px 0";
+    d.innerHTML=`<input value="${s}" onchange="renameMid('${s}',this.value)" style="flex:1"><button onclick="deleteMid('${s}')">X</button>`;
+    ml.appendChild(d);
+  });
+  const cl=document.getElementById("cardsEditList"); cl.innerHTML="";
+  const ent=DATA.categories[currentTop]?.[currentSub];
+  (ent?.media||[]).forEach((m,i)=>{
+    const d=document.createElement("div"); d.style="border:1px solid #333;padding:6px;border-radius:8px;margin:4px 0;font-size:11px";
+    d.innerHTML=`#${i+1} ${m.type} - ${m.src.substring(0,40)}... <br><input type="file" accept="image/*,video/*" onchange="replaceMedia(${i},this)"><button onclick="removeMedia(${i})">Remove</button>`;
+    cl.appendChild(d);
+  });
+}
+document.getElementById("editToggle").onclick=()=>{
+  editMode=!editMode;
+  document.getElementById("editToggle").textContent=editMode?"✅ EDIT MODE ON - Click to Exit":"⚙️ EDIT MODE OFF";
+  document.getElementById("adminPanel").style.display=editMode?"block":"none";
+  renderAll();
+};
+document.getElementById("inBannerPic").onchange=function(e){
+  const f=e.target.files[0]; if(!f) return;
+  const r=new FileReader(); r.onload=ev=>{DATA.banner.pic=ev.target.result; saveLS(); renderAll();}; r.readAsDataURL(f);
+};
+function saveBanner(){
+  DATA.banner.title=document.getElementById("inBannerTitle").value||DATA.banner.title;
+  DATA.banner.small=document.getElementById("inBannerSmall").value||DATA.banner.small;
+  DATA.banner.bday=document.getElementById("inBannerBday").value||DATA.banner.bday;
+  saveLS(); renderAll(); alert("Banner saved!");
+}
+function addTop(){
+  const n=document.getElementById("newTopName").value.trim(); if(!n) return;
+  if(DATA.categories[n]){alert("Exists!"); return;} DATA.categories[n]={}; saveLS(); currentTop=n; currentSub=null; renderAll(); document.getElementById("newTopName").value="";
+}
+function deleteTop(k){ if(!confirm("Delete top "+k+"?")) return; delete DATA.categories[k]; saveLS(); currentTop=Object.keys(DATA.categories)[0]; currentSub=Object.keys(DATA.categories[currentTop]||{})[0]; renderAll();}
+function renameTop(oldN,newN){ if(!newN||oldN===newN) return; DATA.categories[newN]=DATA.categories[oldN]; delete DATA.categories[oldN]; if(currentTop===oldN) currentTop=newN; saveLS(); renderAll();}
+function addMid(){
+  const n=document.getElementById("newMidName").value.trim(); if(!n) return;
+  if(!DATA.categories[currentTop]) DATA.categories[currentTop]={};
+  if(DATA.categories[currentTop][n]){alert("Exists!"); return;}
+  DATA.categories[currentTop][n]={title:n,desc:"New guide - edit me",media:[{type:"image",src:"https://via.placeholder.com/900x600?text=New+Image"}]};
+  saveLS(); currentSub=n; renderAll(); document.getElementById("newMidName").value="";
+}
+function deleteMid(s){ if(!confirm("Delete "+s+"?")) return; delete DATA.categories[currentTop][s]; saveLS(); currentSub=Object.keys(DATA.categories[currentTop]||{})[0]; renderAll();}
+function renameMid(oldN,newN){ if(!newN||oldN===newN) return; DATA.categories[currentTop][newN]=DATA.categories[currentTop][oldN]; delete DATA.categories[currentTop][oldN]; if(currentSub===oldN) currentSub=newN; saveLS(); renderAll();}
+function addCard(){
+  const ent=DATA.categories[currentTop]?.[currentSub]; if(!ent){alert("Select sub first"); return;}
+  ent.media.push({type:"image",src:"https://via.placeholder.com/900x600?text=New+Photo"}); saveLS(); renderAll();
+}
+function removeMedia(i){ DATA.categories[currentTop][currentSub].media.splice(i,1); saveLS(); renderAll();}
+function replaceMedia(i,input){
+  const f=input.files[0]; if(!f) return;
+  const r=new FileReader(); r.onload=ev=>{
+    const isVid=f.type.startsWith("video/");
+    DATA.categories[currentTop][currentSub].media[i]={type:isVid?"video":"image",src:ev.target.result};
+    saveLS(); renderAll();
+  }; r.readAsDataURL(f);
+}
+function editCard(idx){
+  const ent=DATA.categories[currentTop][currentSub];
+  const newTitle=prompt("Edit title:",ent.title); if(newTitle!==null) ent.title=newTitle;
+  const newDesc=prompt("Edit description:",ent.desc); if(newDesc!==null) ent.desc=newDesc;
+  saveLS(); renderAll();
+}
+function exportJSON(){
+  const blob=new Blob([JSON.stringify(DATA,null,2)],{type:"application/json"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="RNS-KB-Backup.json"; a.click();
+}
+document.getElementById("importFile").onchange=function(e){
+  const f=e.target.files[0]; if(!f) return;
+  const r=new FileReader(); r.onload=ev=>{ try{ DATA=JSON.parse(ev.target.result); saveLS(); currentTop=Object.keys(DATA.categories)[0]; currentSub=Object.keys(DATA.categories[currentTop]||{})[0]; renderAll(); alert("Imported!"); }catch(err){alert("Invalid JSON");}}; r.readAsText(f);
+};
+function exportHTML(){
+  const html=document.documentElement.outerHTML;
+  const blob=new Blob([html],{type:"text/html"}); const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="index.html"; a.click();
+}
+function resetDefault(){ if(!confirm("Reset to default? All custom will be lost!")) return; localStorage.removeItem(LS_KEY); DATA=JSON.parse(JSON.stringify(DEFAULT_DATA)); currentTop=Object.keys(DATA.categories)[0]; currentSub=Object.keys(DATA.categories[currentTop]||{})[0]; saveLS(); renderAll();}
+renderAll();
+document.getElementById("inBannerTitle").value=DATA.banner.title;
+document.getElementById("inBannerSmall").value=DATA.banner.small;
+document.getElementById("inBannerBday").value=DATA.banner.bday;
 </script>
 </body>
 </html>
