@@ -66,38 +66,197 @@
 </style>
 </head>
 <body>
-<nav id="static-menubar"><div class="left-phones"><a href="#" class="pill pill-phone1">🔥 1800 211 112</a><a href="#" class="pill pill-phone2">📞 1800 733 368</a></div><div class="right-menu" id="top-cat-menu"></div></nav>
+<nav id="static-menubar">
+  <div class="left-phones">
+    <a href="#" class="pill pill-phone1">🔥 1800 211 112</a>
+    <a href="#" class="pill pill-phone2">📞 1800 733 368</a>
+  </div>
+  <div class="right-menu" id="top-cat-menu"></div>
+</nav>
 <button id="agentLoginBtn" onclick="openAgentLogin()">🔵 AGENT LOGIN</button>
-<div id="top-section"><div id="au-time-box"><div style="font-weight:bold; text-align:center; margin-bottom:10px;">AU AUSTRALIA TIME - LIVE <span style="width:10px; height:10px; background:#00ff88; border-radius:50%; display:inline-block; margin-left:5px;"></span></div><div id="au-time"></div><div style="margin-top:10px; font-size:11px; color:#aaa; text-align:center;" id="au-date"></div><div style="margin-top:15px;border-top:1px solid #333;padding-top:10px;"><div style="font-size:11px;font-weight:900;color:#22c55e;text-align:center;margin-bottom:8px;">👥 AGENT STATUS TODAY</div><div id="agent-status-list" style="max-height:320px;overflow:auto;"></div></div></div><div id="latest-update-box"></div></div>
-<div id="team-dashboard" style="display:none;"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;"><h3 style="margin:0;color:#facc15;">📅 TEAM SCHEDULE - 30 AGENTS (ADMIN)</h3><div style="display:flex;gap:6px;"><select id="teamMonthPicker" onchange="renderTeamCalendar()" style="padding:6px 10px;border-radius:8px;background:#0a0a0a;color:#fff;border:1px solid #333;"></select><button onclick="document.getElementById('team-dashboard').style.display='none'" style="background:#ff4444;color:white;border:none;padding:6px 12px;border-radius:8px;cursor:pointer;">Close</button></div></div><div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;align-items:center;"><label style="font-size:11px;color:#aaa;">Select Agent (dropdown):</label><select id="teamAgentDropdown" style="padding:8px;border-radius:8px;background:#0a0a0a;color:#fff;border:1px solid #FF8A26;min-width:200px;"></select><button onclick="openBulkApply()" style="background:#2563eb;color:white;border:none;padding:6px 12px;border-radius:99px;cursor:pointer;">📅 Apply to Month / Week</button></div><div id="teamCalendar" class="calendar-grid" style="margin-top:12px;"></div><div id="teamDayEditor" style="margin-top:15px;background:#1e293b;border-radius:12px;padding:12px;display:none;"></div></div>
-<div class="center-wrapper"><div id="middle-pills" style="background:#0f1f3a; padding:10px 20px; border-radius:12px; display:flex; gap:10px; border:1px solid #333; justify-content:center; flex-wrap:wrap;"></div><div id="main-content-area"><div class="editActions"><button class="upload" onclick="triggerUpload('pic')">📁 Upload PC / Video</button><button class="delete" onclick="deletePhoto('pic')">🗑 Delete</button></div><span class="editBadge" onclick="editTitleDesc()">✏ Edit Text</span><div id="media-container-pic"></div><div style="padding:15px;text-align:center;background:white;"><h2 id="main-title" style="color:#0f172a;font-size:14px;font-weight:900;margin:0;text-align:center;">NBN - NATIONAL BROADBAND NETWORK</h2><p id="main-desc" style="color:#666;margin-top:8px;font-size:12px;text-align:center;">Fibre to the Premises</p></div></div><div class="extra-pics"><div class="extra-card" id="card2"><div class="editActions"><button class="upload" onclick="triggerUpload('pic2')">📁 Upload PC / Video</button><button class="delete" onclick="deletePhoto('pic2')">🗑 Delete / Hide</button></div><span class="editBadge">Card 2</span><div id="media-container-pic2"></div><div style="padding:15px;text-align:center;background:white;"><h2 id="main-title2" style="color:#0f172a;font-size:14px;font-weight:900;margin:0;">SETUP DIAGRAM</h2><p id="main-desc2" style="color:#666;margin-top:8px;font-size:12px;">Wiring / Connection Guide</p></div></div><div class="extra-card" id="card3"><div class="editActions"><button class="upload" onclick="triggerUpload('pic3')">📁 Upload PC / Video</button><button class="delete" onclick="deletePhoto('pic3')">🗑 Delete / Hide</button></div><span class="editBadge">Card 3</span><div id="media-container-pic3"></div><div style="padding:15px;text-align:center;background:white;"><h2 id="main-title3" style="color:#0f172a;font-size:14px;font-weight:900;margin:0;">TROUBLESHOOTING</h2><p id="main-desc3" style="color:#666;margin-top:8px;font-size:12px;">Steps to Fix</p></div></div></div></div>
-<div id="adminLoginOverlay"><div id="adminLoginBox"><div style="font-size:28px">🔒</div><h2 style="margin:10px 0;color:#FF8A26">RNS ADMIN LOGIN</h2><input id="adminPassInput" type="password" placeholder="Enter admin password"><div style="display:flex;gap:8px;justify-content:center;margin-top:8px"><button onclick="checkAdminPassword()">✅ Login</button><button onclick="closeAdminLogin()" style="background:#333;color:#fff">❌ Cancel</button></div><div id="adminPassError" style="color:#ff4444;font-size:11px;margin-top:8px;display:none">Wrong password!</div></div></div>
-<div id="agentLoginOverlay" style="position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999999;display:none;align-items:center;justify-content:center;"><div style="background:#0f1f3a;border:2px solid #2563eb;border-radius:16px;padding:24px;width:400px;max-width:90vw;color:#fff;text-align:center"><h2 style="margin:10px 0;color:#2563eb">🔵 AGENT LOGIN</h2><div style="font-size:11px;color:#aaa;margin-bottom:10px;">Username = fullname no space lowercase<br>Example: randolfseguban / Password = same</div><select id="agentLoginSelect" style="width:100%;padding:12px;border-radius:10px;background:#0a0a0a;color:#fff;border:1px solid #333;margin:6px 0;"></select><input id="agentLoginUser" type="text" placeholder="Username (auto)" style="width:100%;padding:12px;border-radius:10px;border:1px solid #333;background:#0a0a0a;color:#fff;margin:6px 0;box-sizing:border-box"><input id="agentLoginPass" type="password" placeholder="Password" style="width:100%;padding:12px;border-radius:10px;border:1px solid #333;background:#0a0a0a;color:#fff;margin:6px 0;box-sizing:border-box"><div style="display:flex;gap:8px;justify-content:center;margin-top:10px"><button onclick="checkAgentLogin()" style="padding:10px 18px;border-radius:99px;border:none;background:#2563eb;color:white;font-weight:900;cursor:pointer;">✅ Login</button><button onclick="closeAgentLogin()" style="padding:10px 18px;border-radius:99px;border:none;background:#333;color:#fff;cursor:pointer;">❌ Cancel</button></div><div id="agentLoginError" style="color:#ff4444;font-size:11px;margin-top:8px;display:none">Agent not found!</div></div></div>
-<div id="agentDashboardOverlay" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999998;display:none;align-items:flex-start;justify-content:center;overflow:auto;padding:20px;"><div style="background:#0f1f3a;border:2px solid #2563eb;border-radius:16px;padding:18px;width:950px;max-width:95vw;color:#fff;margin-top:20px;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:10px;"><h3 style="margin:0;color:#2563eb;" id="agentDashTitle">👤 Agent Dashboard</h3><div style="display:flex;gap:6px;align-items:center;"><span id="agentDashInfo" style="font-size:11px;color:#aaa;"></span><button onclick="saveAgentSched()" style="background:#22c55e;color:#000;border:none;padding:8px 14px;border-radius:99px;font-weight:800;cursor:pointer;">💾 Save</button><button onclick="logoutAgent()" style="background:#ff4444;color:white;border:none;padding:8px 14px;border-radius:99px;font-weight:800;cursor:pointer;">🔓 Logout</button><button onclick="closeAgentDashboard()" style="background:#333;color:white;border:none;padding:8px 12px;border-radius:8px;cursor:pointer;">X</button></div></div><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px;"><select id="agentDashMonth" onchange="renderAgentCalendar()" style="padding:8px;border-radius:8px;background:#0a0a0a;color:#fff;border:1px solid #333;"></select><button onclick="openAgentBulk()" style="background:#2563eb;color:white;border:none;padding:6px 12px;border-radius:99px;cursor:pointer;font-size:11px;">📅 Apply to Week / Month</button><span style="font-size:10px;color:#facc15;">Military time 00:00-23:30 → display 1pm/1am</span></div><div id="agentCalendarGrid" class="calendar-grid"></div><div id="agentDayEditorBox" style="margin-top:15px;background:#1e293b;border-radius:12px;padding:12px;display:none;"></div><div id="agentBulkBox" style="margin-top:15px;background:#0a0a0a;border:1px solid #FF8A26;border-radius:12px;padding:12px;display:none;"></div></div></div>
-<button id="adminLogout" onclick="adminLogout()">🔓 Logout Admin</button><button id="editToggle">⚙ EDIT MODE OFF</button>
-<div id="adminPanel"><h3>🛠 RNS NO-CODE EDITOR + 30 AGENTS</h3><h3 style="color:#ff0000;">🔥 FIXED EXPORT - PARA MAKITA NG LAHAT ANG PHOTO!</h3><button onclick="exportForEveryone()" style="background:#ff0000;color:white;width:100%;padding:14px;font-size:14px;font-weight:900;margin-bottom:8px;border:2px solid yellow;border-radius:12px;cursor:pointer;">📤 EXPORT FOR EVERYONE - UPLOAD TO GITHUB</button><div style="font-size:10px;color:#ffcc00;margin-bottom:10px;">Click mo to pag tapos ka mag-upload ng photo! Naka-embed na lahat sa HTML, makikita na ng friends mo EMAPTA logo!</div><h3>👥 AGENT MANAGEMENT - ADMIN ONLY</h3><label>Add New Agent - Full Name</label><div style="display:flex;gap:6px;"><input id="newAgentName" placeholder="Complete Name" style="flex:1"><button onclick="addAgent()" style="background:#22c55e;color:#000;">➕ Add</button></div><div id="agentListAdmin" style="max-height:200px;overflow:auto;margin-top:8px;background:#0a0a0a;border-radius:8px;padding:8px;"></div><h3>📋 LEAVE TYPES</h3><div id="leaveTypesList" style="background:#0a0a0a;border-radius:8px;padding:8px;max-height:180px;overflow:auto;"></div><div style="display:flex;gap:6px;margin-top:6px;"><input id="newLeaveType" placeholder="New Leave Type" style="flex:1"><button onclick="addLeaveType()" style="background:#22c55e;color:#000;">➕ Add Leave</button></div><h3>📅 TEAM SCHEDULE (ADMIN VIEW)</h3><button onclick="toggleTeamDashboard()" style="background:#facc15;color:#000;width:100%;">👁 Show Team Schedule Board</button><h3>📢 BANNER EDIT</h3><label>Main Title</label><input id="inBannerName"><label>Small Text</label><input id="inBannerSmall"><label>Birthday Text</label><input id="inBannerTitle"><label>Banner Photo - Upload from PC</label><input id="inBannerPicFile" type="file" accept="image/*,video/*"><div style="display:flex;gap:6px"><button onclick="saveBanner()">💾 Save Banner</button><button onclick="deleteBannerPic()" style="background:#ff4444;color:#fff">🗑 Delete Pic</button></div><h3>🖼 PHOTO & VIDEO EDIT</h3><label>Photo/Video 1</label><input id="uploadPic" type="file" accept="image/*,video/*"><label>Photo/Video 2</label><input id="uploadPic2" type="file" accept="image/*,video/*"><label>Photo/Video 3</label><input id="uploadPic3" type="file" accept="image/*,video/*"><h3>✏ TEXT EDIT</h3><label>Main Title</label><input id="inMainTitle"><label>Main Desc</label><input id="inMainDesc"><label>Title 2 & Desc 2</label><input id="inTitle2"><input id="inDesc2"><label>Title 3 & Desc 3</label><input id="inTitle3"><input id="inDesc3"><button onclick="saveTextEdits()">💾 Save Text</button><h3>💾 BACKUP</h3><button onclick="exportForEveryone()" style="background:#ff0000;color:white;width:100%;padding:12px;font-weight:900;border:2px solid yellow;">📤 EXPORT FOR EVERYONE (FINAL)</button><button onclick="resetAll()" style="background:#ff4444;color:#fff;width:100%;margin-top:8px">⚠ RESET ALL</button><button onclick="if(confirm('Clear cache?')){localStorage.clear();location.reload();}" style="background:#333;color:white;width:100%;margin-top:8px">🧹 Clear Cache</button></div>
+<div id="top-section">
+  <div id="au-time-box">
+    <div style="font-weight:bold; text-align:center; margin-bottom:10px;">AU AUSTRALIA TIME - LIVE <span style="width:10px; height:10px; background:#00ff88; border-radius:50%; display:inline-block; margin-left:5px;"></span></div>
+    <div id="au-time"></div>
+    <div style="margin-top:10px; font-size:11px; color:#aaa; text-align:center;" id="au-date"></div>
+    <div style="margin-top:15px;border-top:1px solid #333;padding-top:10px;">
+      <div style="font-size:11px;font-weight:900;color:#22c55e;text-align:center;margin-bottom:8px;">👥 AGENT STATUS TODAY</div>
+      <div id="agent-status-list" style="max-height:320px;overflow:auto;"></div>
+    </div>
+  </div>
+  <div id="latest-update-box"></div>
+</div>
+<div id="team-dashboard" style="display:none;">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+    <h3 style="margin:0;color:#facc15;">📅 TEAM SCHEDULE - 30 AGENTS (ADMIN)</h3>
+    <div style="display:flex;gap:6px;">
+      <select id="teamMonthPicker" onchange="renderTeamCalendar()" style="padding:6px 10px;border-radius:8px;background:#0a0a0a;color:#fff;border:1px solid #333;"></select>
+      <button onclick="document.getElementById('team-dashboard').style.display='none'" style="background:#ff4444;color:white;border:none;padding:6px 12px;border-radius:8px;cursor:pointer;">Close</button>
+    </div>
+  </div>
+  <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;align-items:center;">
+    <label style="font-size:11px;color:#aaa;">Select Agent (dropdown):</label>
+    <select id="teamAgentDropdown" style="padding:8px;border-radius:8px;background:#0a0a0a;color:#fff;border:1px solid #FF8A26;min-width:200px;"></select>
+    <button onclick="openBulkApply()" style="background:#2563eb;color:white;border:none;padding:6px 12px;border-radius:99px;cursor:pointer;">📅 Apply to Month / Week</button>
+  </div>
+  <div id="teamCalendar" class="calendar-grid" style="margin-top:12px;"></div>
+  <div id="teamDayEditor" style="margin-top:15px;background:#1e293b;border-radius:12px;padding:12px;display:none;"></div>
+</div>
+<div class="center-wrapper">
+  <div id="middle-pills" style="background:#0f1f3a; padding:10px 20px; border-radius:12px; display:flex; gap:10px; border:1px solid #333; justify-content:center; flex-wrap:wrap;"></div>
+  <div id="main-content-area">
+    <div class="editActions"><button class="upload" onclick="triggerUpload('pic')">📁 Upload PC / Video</button><button class="delete" onclick="deletePhoto('pic')">🗑 Delete</button></div>
+    <span class="editBadge" onclick="editTitleDesc()">✏ Edit Text</span>
+    <div id="media-container-pic"></div>
+    <div style="padding:15px;text-align:center;background:white;">
+      <h2 id="main-title" style="color:#0f172a;font-size:14px;font-weight:900;margin:0;text-align:center;">NBN - NATIONAL BROADBAND NETWORK</h2>
+      <p id="main-desc" style="color:#666;margin-top:8px;font-size:12px;text-align:center;">Fibre to the Premises</p>
+    </div>
+  </div>
+  <div class="extra-pics">
+    <div class="extra-card" id="card2">
+      <div class="editActions"><button class="upload" onclick="triggerUpload('pic2')">📁 Upload PC / Video</button><button class="delete" onclick="deletePhoto('pic2')">🗑 Delete / Hide</button></div>
+      <span class="editBadge">Card 2</span>
+      <div id="media-container-pic2"></div>
+      <div style="padding:15px;text-align:center;background:white;">
+        <h2 id="main-title2" style="color:#0f172a;font-size:14px;font-weight:900;margin:0;">SETUP DIAGRAM</h2>
+        <p id="main-desc2" style="color:#666;margin-top:8px;font-size:12px;">Wiring / Connection Guide</p>
+      </div>
+    </div>
+    <div class="extra-card" id="card3">
+      <div class="editActions"><button class="upload" onclick="triggerUpload('pic3')">📁 Upload PC / Video</button><button class="delete" onclick="deletePhoto('pic3')">🗑 Delete / Hide</button></div>
+      <span class="editBadge">Card 3</span>
+      <div id="media-container-pic3"></div>
+      <div style="padding:15px;text-align:center;background:white;">
+        <h2 id="main-title3" style="color:#0f172a;font-size:14px;font-weight:900;margin:0;">TROUBLESHOOTING</h2>
+        <p id="main-desc3" style="color:#666;margin-top:8px;font-size:12px;">Steps to Fix</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="adminLoginOverlay">
+  <div id="adminLoginBox">
+    <div style="font-size:28px">🔒</div>
+    <h2 style="margin:10px 0;color:#FF8A26">RNS ADMIN LOGIN</h2>
+    <input id="adminPassInput" type="password" placeholder="Enter admin password">
+    <div style="display:flex;gap:8px;justify-content:center;margin-top:8px">
+      <button onclick="checkAdminPassword()">✅ Login</button>
+      <button onclick="closeAdminLogin()" style="background:#333;color:#fff">❌ Cancel</button>
+    </div>
+    <div id="adminPassError" style="color:#ff4444;font-size:11px;margin-top:8px;display:none">Wrong password!</div>
+  </div>
+</div>
+
+<!-- AGENT LOGIN -->
+<div id="agentLoginOverlay" style="position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999999;display:none;align-items:center;justify-content:center;">
+  <div style="background:#0f1f3a;border:2px solid #2563eb;border-radius:16px;padding:24px;width:400px;max-width:90vw;color:#fff;text-align:center">
+    <h2 style="margin:10px 0;color:#2563eb">🔵 AGENT LOGIN</h2>
+    <div style="font-size:11px;color:#aaa;margin-bottom:10px;">Username = fullname no space lowercase<br>Example: randolfseguban / Password = same</div>
+    <select id="agentLoginSelect" style="width:100%;padding:12px;border-radius:10px;background:#0a0a0a;color:#fff;border:1px solid #333;margin:6px 0;"></select>
+    <input id="agentLoginUser" type="text" placeholder="Username (auto)" style="width:100%;padding:12px;border-radius:10px;border:1px solid #333;background:#0a0a0a;color:#fff;margin:6px 0;box-sizing:border-box">
+    <input id="agentLoginPass" type="password" placeholder="Password" style="width:100%;padding:12px;border-radius:10px;border:1px solid #333;background:#0a0a0a;color:#fff;margin:6px 0;box-sizing:border-box">
+    <div style="display:flex;gap:8px;justify-content:center;margin-top:10px">
+      <button onclick="checkAgentLogin()" style="padding:10px 18px;border-radius:99px;border:none;background:#2563eb;color:white;font-weight:900;cursor:pointer;">✅ Login</button>
+      <button onclick="closeAgentLogin()" style="padding:10px 18px;border-radius:99px;border:none;background:#333;color:#fff;cursor:pointer;">❌ Cancel</button>
+    </div>
+    <div id="agentLoginError" style="color:#ff4444;font-size:11px;margin-top:8px;display:none">Agent not found! Check username/password</div>
+  </div>
+</div>
+
+<!-- AGENT DASHBOARD -->
+<div id="agentDashboardOverlay" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999998;display:none;align-items:flex-start;justify-content:center;overflow:auto;padding:20px;">
+  <div style="background:#0f1f3a;border:2px solid #2563eb;border-radius:16px;padding:18px;width:950px;max-width:95vw;color:#fff;margin-top:20px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:10px;">
+      <h3 style="margin:0;color:#2563eb;" id="agentDashTitle">👤 Agent Dashboard</h3>
+      <div style="display:flex;gap:6px;align-items:center;">
+        <span id="agentDashInfo" style="font-size:11px;color:#aaa;"></span>
+        <button onclick="saveAgentSched()" style="background:#22c55e;color:#000;border:none;padding:8px 14px;border-radius:99px;font-weight:800;cursor:pointer;">💾 Save</button>
+        <button onclick="logoutAgent()" style="background:#ff4444;color:white;border:none;padding:8px 14px;border-radius:99px;font-weight:800;cursor:pointer;">🔓 Logout</button>
+        <button onclick="closeAgentDashboard()" style="background:#333;color:white;border:none;padding:8px 12px;border-radius:8px;cursor:pointer;">X</button>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px;">
+      <select id="agentDashMonth" onchange="renderAgentCalendar()" style="padding:8px;border-radius:8px;background:#0a0a0a;color:#fff;border:1px solid #333;"></select>
+      <button onclick="openAgentBulk()" style="background:#2563eb;color:white;border:none;padding:6px 12px;border-radius:99px;cursor:pointer;font-size:11px;">📅 Apply to Week / Month</button>
+      <span style="font-size:10px;color:#facc15;">Military time 00:00-23:30 → display 1pm/1am</span>
+    </div>
+    <div id="agentCalendarGrid" class="calendar-grid"></div>
+    <div id="agentDayEditorBox" style="margin-top:15px;background:#1e293b;border-radius:12px;padding:12px;display:none;"></div>
+    <div id="agentBulkBox" style="margin-top:15px;background:#0a0a0a;border:1px solid #FF8A26;border-radius:12px;padding:12px;display:none;"></div>
+  </div>
+</div>
+
+<button id="adminLogout" onclick="adminLogout()">🔓 Logout Admin</button>
+<button id="editToggle">⚙ EDIT MODE OFF</button>
+<div id="adminPanel">
+  <h3>🛠 RNS NO-CODE EDITOR + 30 AGENTS</h3>
+  <h3 style="color:#ff0000;">🔥 FIXED EXPORT - PARA MAKITA NG LAHAT ANG PHOTO!</h3>
+  <button onclick="exportForEveryone()" style="background:#ff0000;color:white;width:100%;padding:14px;font-size:14px;font-weight:900;margin-bottom:8px;border:2px solid yellow;border-radius:12px;cursor:pointer;">📤 EXPORT FOR EVERYONE - UPLOAD TO GITHUB</button>
+  <div style="font-size:10px;color:#ffcc00;margin-bottom:10px;">Click mo to pag tapos ka mag-upload ng photo! Naka-embed na lahat sa HTML, makikita na ng friends mo EMAPTA logo!</div>
+  <h3>👥 AGENT MANAGEMENT - ADMIN ONLY</h3>
+  <label>Add New Agent - Full Name</label>
+  <div style="display:flex;gap:6px;">
+    <input id="newAgentName" placeholder="Complete Name" style="flex:1">
+    <button onclick="addAgent()" style="background:#22c55e;color:#000;">➕ Add</button>
+  </div>
+  <div id="agentListAdmin" style="max-height:200px;overflow:auto;margin-top:8px;background:#0a0a0a;border-radius:8px;padding:8px;"></div>
+  <h3>📋 LEAVE TYPES</h3>
+  <div id="leaveTypesList" style="background:#0a0a0a;border-radius:8px;padding:8px;max-height:180px;overflow:auto;"></div>
+  <div style="display:flex;gap:6px;margin-top:6px;">
+    <input id="newLeaveType" placeholder="New Leave Type" style="flex:1">
+    <button onclick="addLeaveType()" style="background:#22c55e;color:#000;">➕ Add Leave</button>
+  </div>
+  <h3>📅 TEAM SCHEDULE (ADMIN VIEW)</h3>
+  <button onclick="toggleTeamDashboard()" style="background:#facc15;color:#000;width:100%;">👁 Show Team Schedule Board</button>
+  <h3>📢 BANNER EDIT</h3>
+  <label>Main Title</label><input id="inBannerName">
+  <label>Small Text</label><input id="inBannerSmall">
+  <label>Birthday Text</label><input id="inBannerTitle">
+  <label>Banner Photo - Upload from PC</label><input id="inBannerPicFile" type="file" accept="image/*,video/*">
+  <div style="display:flex;gap:6px"><button onclick="saveBanner()">💾 Save Banner</button><button onclick="deleteBannerPic()" style="background:#ff4444;color:#fff">🗑 Delete Pic</button></div>
+  <h3>🖼 PHOTO & VIDEO EDIT</h3>
+  <label>Photo/Video 1</label><input id="uploadPic" type="file" accept="image/*,video/*">
+  <label>Photo/Video 2</label><input id="uploadPic2" type="file" accept="image/*,video/*">
+  <label>Photo/Video 3</label><input id="uploadPic3" type="file" accept="image/*,video/*">
+  <h3>✏ TEXT EDIT</h3>
+  <label>Main Title</label><input id="inMainTitle"><label>Main Desc</label><input id="inMainDesc">
+  <label>Title 2 & Desc 2</label><input id="inTitle2"><input id="inDesc2">
+  <label>Title 3 & Desc 3</label><input id="inTitle3"><input id="inDesc3">
+  <button onclick="saveTextEdits()">💾 Save Text</button>
+  <h3>💾 BACKUP</h3>
+  <button onclick="exportForEveryone()" style="background:#ff0000;color:white;width:100%;padding:12px;font-weight:900;border:2px solid yellow;">📤 EXPORT FOR EVERYONE (FINAL)</button>
+  <button onclick="resetAll()" style="background:#ff4444;color:#fff;width:100%;margin-top:8px">⚠ RESET ALL</button>
+  <button onclick="if(confirm('Clear cache?')){localStorage.clear();location.reload();}" style="background:#333;color:white;width:100%;margin-top:8px">🧹 Clear Cache</button>
+</div>
 <input id="quickUploadPic" type="file" accept="image/*,video/*" class="hiddenInput"><input id="quickUploadPic2" type="file" accept="image/*,video/*" class="hiddenInput"><input id="quickUploadPic3" type="file" accept="image/*,video/*" class="hiddenInput">
 <script>
+// AU TIME
 function updateAUTimes(){const cities=[{name:"Sydney",tz:"Australia/Sydney"},{name:"Melbourne",tz:"Australia/Melbourne"},{name:"Canberra",tz:"Australia/Canberra"},{name:"Brisbane",tz:"Australia/Brisbane"},{name:"Adelaide",tz:"Australia/Adelaide"},{name:"Darwin",tz:"Australia/Darwin"},{name:"Perth",tz:"Australia/Perth"},{name:"Hobart",tz:"Australia/Hobart"}];let html="";cities.forEach(c=>{const time=new Date().toLocaleTimeString("en-AU",{timeZone:c.tz,hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:true});html+=`<div style="display:flex; justify-content:space-between; margin:4px 0;"><span>${c.name}:</span> <span style="color:#ffcc00; font-weight:bold;">${time}</span></div>`;});document.getElementById("au-time").innerHTML=html;document.getElementById("au-date").innerHTML=new Date().toLocaleDateString("en-AU",{weekday:"long",day:"numeric",month:"long",year:"numeric"});}
 setInterval(updateAUTimes,1000);updateAUTimes();
+
 var DEFAULT_subMenuData={'NBN':['FTTP','FTTC','HFC','FW','FTTN/B'],'VoIP':['No Dial Tone','VoIP Config & ATA','GDMS'],'Mobile':['No Data','SIM Issue','APN','Roaming','VoLTE'],'Modem':['Netcomm Software Upgrade','TP-Link','D-Link','Other Modem'],'Provisioning':['New Order','Activation','Transfer','Cancel','Track']};
 var DEFAULT_contentData={'NBN':{title:'NBN - NATIONAL BROADBAND NETWORK',desc:'Select FTTP, FTTC, HFC, FW, FTTN/B above!',pic:'FTTP-outside-set-up.webp',pic2:'FTTP-old-ntd-box-set-up.png',pic3:'FTTP-NBN-Box-V2.png',t2:'FTTP INSTALL',d2:'NBN Box + Connection',t3:'FTTP CHECK',d3:'Light Status Guide'},'FTTP':{title:'FTTP - FIBRE TO THE PREMISES',desc:'Fibre to the Premises - Outside Setup',pic:'FTTP-outside-set-up.webp',pic2:'FTTP-old-ntd-box-set-up.png',pic3:'FTTP-NBN-Box-V2.png',t2:'FTTP OLD NTD',d2:'Old NTD Box Setup',t3:'FTTP NBN BOX V2',d3:'New NBN Box V2'}};
 const LS_BANNER='rns_banner_final_editable_v5';const LS_CONTENT='rns_content_final_editable_v5';const LS_SUBMENU='rns_submenu_editable_v1';const LS_AGENTS='rns_agents_30_v1';const LS_SCHED='rns_sched_30_v1';const LS_LEAVE='rns_leave_30_v1';const LS_AGENT_AUTH='rns_agent_auth_v1';const LS_AUTH="rns_admin_auth_v5";
+
 let bannerData={name:"MALAPIT NA ANG 13TH MONTH!!!",small:"MALIGAYANG KAARAWAN",title:"Happy Birthday!",pic:""};let contentData={};let subMenuData={};let agents=[];let schedules={};let leaveTypes=["Present","Service Incentive Leave","Maternity Leave","Paternity Leave","Parental Leave for Solo Parents","Special Leave for Women","Leave under VAWC","Sick Leave","Emergency Leave","Bereavement Leave"];
 try{const b=localStorage.getItem(LS_BANNER);if(b){bannerData={...bannerData,...JSON.parse(b)};}const c=localStorage.getItem(LS_CONTENT);if(c)contentData=JSON.parse(c);else contentData=JSON.parse(JSON.stringify(DEFAULT_contentData));const s=localStorage.getItem(LS_SUBMENU);if(s)subMenuData=JSON.parse(s);else subMenuData=JSON.parse(JSON.stringify(DEFAULT_subMenuData));const a=localStorage.getItem(LS_AGENTS);if(a)agents=JSON.parse(a);const sc=localStorage.getItem(LS_SCHED);if(sc)schedules=JSON.parse(sc);const l=localStorage.getItem(LS_LEAVE);if(l)leaveTypes=JSON.parse(l);}catch(e){contentData=JSON.parse(JSON.stringify(DEFAULT_contentData));subMenuData=JSON.parse(JSON.stringify(DEFAULT_subMenuData));}
+
 let currentCat='NBN';let currentSub='FTTP';let editMode=false;let currentLoggedAgent=null;let currentAgentMonth=new Date();let currentAdminMonth=new Date();let selectedAgentDay=null;
+
 function saveBannerLS(){localStorage.setItem(LS_BANNER,JSON.stringify(bannerData));}
 function saveContentLS(){localStorage.setItem(LS_CONTENT,JSON.stringify(contentData));}
 function saveSubMenuLS(){localStorage.setItem(LS_SUBMENU,JSON.stringify(subMenuData));}
 function saveAgents(){localStorage.setItem(LS_AGENTS,JSON.stringify(agents));}
 function saveSchedules(){localStorage.setItem(LS_SCHED,JSON.stringify(schedules));}
 function saveLeaveTypes(){localStorage.setItem(LS_LEAVE,JSON.stringify(leaveTypes));}
-function isVideoSrc(src){if(!src)return false;if(src.startsWith('data:[STRIPPED]))return true;return /\.(mp4|mov|webm)$/i.test(src.split('?')[0]);}
+
+function isVideoSrc(src){if(!src)return false;if(src.startsWith('data:video/'))return true;return /\.(mp4|mov|webm)$/i.test(src.split('?')[0]);}
 function renderMedia(id,src){const container=document.getElementById(id);if(!container)return;if(!src||src==='HIDDEN'){container.innerHTML='';return;}if(isVideoSrc(src)){container.innerHTML=`<video src="${src}" controls autoplay muted loop playsinline style="width:100%;display:block;background:#000;max-height:600px;"></video>`;}else{container.innerHTML=`<img src="${src}" style="width:100%;display:block;background:white;" onerror="this.src='https://via.placeholder.com/900x600?text=Not+Found'">`;}}
 function renderBanner(){var box=document.getElementById('latest-update-box');const picHtml=bannerData.pic?(isVideoSrc(bannerData.pic)?`<video src="${bannerData.pic}" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></video>`:`<img src="${bannerData.pic}" style="width:100%;height:100%;object-fit:cover;">`):`<div style="font-size:42px">🧡</div>`;box.innerHTML=`<div style="min-height:130px;background:rgba(255,255,255,0.08);border:1.5px dashed ${editMode?'#FF8A26':'rgba(255,255,255,0.5)'};border-radius:20px;padding:30px 20px 22px;display:flex;justify-content:center;align-items:center;position:relative;flex-wrap:wrap;gap:10px;"><div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#0f172a;padding:5px 18px;border-radius:99px;font-size:11px;letter-spacing:2px;font-weight:800;border:1px solid rgba(255,255,255,0.3);color:white;">📢 LATEST UPDATE</div><div style="flex:1;text-align:center;min-width:200px;"><div style="font-size:42px;font-weight:900;color:white;text-transform:uppercase;line-height:1.1;">${bannerData.name}</div><div style="font-size:14px;opacity:.7;margin-top:8px;color:#cbd5e1;">${bannerData.small}</div></div><div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;min-width:120px"><div style="font-size:15px;font-weight:800;color:white;">${bannerData.title}</div><div style="width:80px;height:80px;border-radius:50%;overflow:hidden;border:3px solid white;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;">${picHtml}</div></div></div>`;}
 function renderTopCats(){const topMenu=document.getElementById('top-cat-menu');topMenu.innerHTML='';Object.keys(subMenuData).forEach(cat=>{const a=document.createElement('a');a.href='#';a.className='pill pill-menu'+(cat===currentCat?' active':'');a.textContent=cat;a.onclick=function(e){e.preventDefault();setCat(cat,this);};topMenu.appendChild(a);});}
 function setCat(c,el){if(el&&el.classList.contains('pill-menu')){currentCat=c;renderTopCats();document.querySelectorAll('#top-cat-menu .pill-menu').forEach(x=>{if(x.textContent===c)x.classList.add('active');else x.classList.remove('active');});var subs=subMenuData[c]||[];var middle=document.getElementById('middle-pills');middle.innerHTML='';subs.forEach(function(name,idx){var btn=document.createElement('a');btn.href='#';btn.className='sub-pill'+(idx===0?' active':'');btn.textContent=name;btn.onclick=function(e){e.preventDefault();setCat(name,this);};middle.appendChild(btn);});if(subs.length>0){currentSub=subs[0];c=subs[0];}else{currentSub=c;}}else if(el&&el.classList.contains('sub-pill')){document.querySelectorAll('.sub-pill').forEach(x=>x.classList.remove('active'));el.classList.add('active');currentSub=c;}else{currentSub=c;}renderContent(c);}
 function renderContent(c){var d=contentData[c]||contentData[currentSub]||contentData['FTTP'];if(!d)return;document.getElementById('main-title').textContent=d.title;document.getElementById('main-desc').textContent=d.desc;renderMedia('media-container-pic',d.pic);renderMedia('media-container-pic2',d.pic2||d.pic);document.getElementById('main-title2').textContent=d.t2||d.title;document.getElementById('main-desc2').textContent=d.d2||d.desc;renderMedia('media-container-pic3',d.pic3||d.pic);document.getElementById('main-title3').textContent=d.t3||d.title;document.getElementById('main-desc3').textContent=d.d3||d.desc;}
+
 function saveBanner(){bannerData.name=document.getElementById('inBannerName').value||bannerData.name;bannerData.small=document.getElementById('inBannerSmall').value||bannerData.small;bannerData.title=document.getElementById('inBannerTitle').value||bannerData.title;saveBannerLS();renderBanner();alert("✅ Banner saved!");}
 document.getElementById('inBannerPicFile').onchange=function(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{bannerData.pic=ev.target.result;saveBannerLS();renderBanner();alert("✅ Banner uploaded!");};r.readAsDataURL(f);};
 function deleteBannerPic(){if(!confirm("Delete banner photo?"))return;bannerData.pic="";saveBannerLS();renderBanner();}
@@ -112,6 +271,8 @@ document.getElementById('quickUploadPic3').onchange=function(e){handleFileUpload
 function deletePhoto(key){if(!confirm("Delete?"))return;const curKey=currentSub||currentCat;if(!contentData[curKey])return;if(key==='pic'){contentData[curKey].pic='https://via.placeholder.com/900x600?text=No+Image';}if(key==='pic2'){contentData[curKey].pic2='HIDDEN';}if(key==='pic3'){contentData[curKey].pic3='HIDDEN';}saveContentLS();renderContent(curKey);}
 function saveTextEdits(){const curKey=currentSub||currentCat;if(!contentData[curKey])return;contentData[curKey].title=document.getElementById('inMainTitle').value||contentData[curKey].title;contentData[curKey].desc=document.getElementById('inMainDesc').value||contentData[curKey].desc;contentData[curKey].t2=document.getElementById('inTitle2').value||contentData[curKey].t2;contentData[curKey].d2=document.getElementById('inDesc2').value||contentData[curKey].d2;contentData[curKey].t3=document.getElementById('inTitle3').value||contentData[curKey].t3;contentData[curKey].d3=document.getElementById('inDesc3').value||contentData[curKey].d3;saveContentLS();renderContent(curKey);alert("✅ Text saved!");}
 function editTitleDesc(){const curKey=currentSub||currentCat;const d=contentData[curKey];const newTitle=prompt("Edit Main Title:",d.title);if(newTitle!==null)d.title=newTitle;const newDesc=prompt("Edit Main Description:",d.desc);if(newDesc!==null)d.desc=newDesc;saveContentLS();renderContent(curKey);}
+
+// ADMIN AUTH
 const ADMIN_PASSWORD="rns2026";
 function isAdminAuthenticated(){try{return localStorage.getItem(LS_AUTH)==="authenticated";}catch(e){return false;}}
 function setAdminAuthenticated(v){try{if(v)localStorage.setItem(LS_AUTH,"authenticated");else localStorage.removeItem(LS_AUTH);}catch(e){}}
@@ -122,21 +283,30 @@ function closeAdminLogin(){document.getElementById('adminLoginOverlay').style.di
 function checkAdminPassword(){const val=document.getElementById('adminPassInput').value;if(val===ADMIN_PASSWORD){setAdminAuthenticated(true);closeAdminLogin();showEditUI();alert("✅ Admin login success!");}else{document.getElementById('adminPassError').style.display='block';}}
 function adminLogout(){setAdminAuthenticated(false);hideEditUI();alert("Logged out!");}
 document.getElementById('editToggle').onclick=()=>{editMode=!editMode;document.body.classList.toggle('editMode',editMode);document.getElementById('editToggle').textContent=editMode?"✅ EDIT MODE ON":"⚙ EDIT MODE OFF";document.getElementById('adminPanel').style.display=editMode?"block":"none";renderBanner();renderContent(currentSub||currentCat);};
+
+// EXPORT FOR EVERYONE - FIXED
 function exportForEveryone(){
-  let html = document.documentElement.outerHTML;
-  html = html.replace(/<body[^>]*class="editMode"[^>]*>/i, '<body>');
-  html = html.replace(/<body class="editMode">/, '<body>');
-  html = html.replace(/id="adminPanel" style="display: block;"/g, 'id="adminPanel" style="display: none;"');
-  html = html.replace(/id="editToggle" style="display: block;"/g, 'id="editToggle" style="display: none;"');
-  html = html.replace(/id="adminLogout" style="display: block;"/g, 'id="adminLogout" style="display: none;"');
-  html = html.replace(/id="team-dashboard" style="display: block;"/g, 'id="team-dashboard" style="display: none;"');
-  html = html.replace(/id="agentDashboardOverlay" style="display: flex;/g, 'id="agentDashboardOverlay" style="display: none;');
   const exportData = {banner:bannerData,content:contentData,submenu:subMenuData,agents:agents,schedules:schedules,leaveTypes:leaveTypes};
-  const inject = `<script>const RNS_EXPORTED_DATA = ${JSON.stringify({banner:bannerData,content:contentData,submenu:subMenuData,agents:agents,schedules:schedules,leaveTypes:leaveTypes}).replace(/</g,'\\u003c')};try{localStorage.setItem('${LS_BANNER}', JSON.stringify(RNS_EXPORTED_DATA.banner));localStorage.setItem('${LS_CONTENT}', JSON.stringify(RNS_EXPORTED_DATA.content));localStorage.setItem('${LS_SUBMENU}', JSON.stringify(RNS_EXPORTED_DATA.submenu));localStorage.setItem('${LS_AGENTS}', JSON.stringify(RNS_EXPORTED_DATA.agents));localStorage.setItem('${LS_SCHED}', JSON.stringify(RNS_EXPORTED_DATA.schedules));localStorage.setItem('${LS_LEAVE}', JSON.stringify(RNS_EXPORTED_DATA.leaveTypes));}catch(e){}<\/script>`;
+  let html = document.documentElement.outerHTML;
+  const inject = `<script>
+const RNS_EXPORTED_DATA = ${JSON.stringify({banner:bannerData,content:contentData,submenu:subMenuData,agents:agents,schedules:schedules,leaveTypes:leaveTypes}).replace(/</g,'\u003c')};
+try{
+  localStorage.setItem('${LS_BANNER}', JSON.stringify(RNS_EXPORTED_DATA.banner));
+  localStorage.setItem('${LS_CONTENT}', JSON.stringify(RNS_EXPORTED_DATA.content));
+  localStorage.setItem('${LS_SUBMENU}', JSON.stringify(RNS_EXPORTED_DATA.submenu));
+  localStorage.setItem('${LS_AGENTS}', JSON.stringify(RNS_EXPORTED_DATA.agents));
+  localStorage.setItem('${LS_SCHED}', JSON.stringify(RNS_EXPORTED_DATA.schedules));
+  localStorage.setItem('${LS_LEAVE}', JSON.stringify(RNS_EXPORTED_DATA.leaveTypes));
+}catch(e){}
+<\/script>`;
   html = html.replace(/<body[^>]*>/i, (m)=> m + inject);
-  const blob = new Blob([html], {type:'text/html'});const a = document.createElement('a');a.href=URL.createObjectURL(blob);a.download='index.html';a.click();alert('✅ EXPORTED FOR EVERYONE! Upload this index.html to GitHub - Public will NOT see admin!');
+  const blob = new Blob([html], {type:'text/html'});
+  const a = document.createElement('a');a.href=URL.createObjectURL(blob);a.download='index.html';a.click();
+  alert('✅ EXPORTED FOR EVERYONE!\nUpload this index.html to GitHub');
 }
 function resetAll(){if(!confirm("RESET ALL?"))return;localStorage.clear();location.reload();}
+
+// AGENT FUNCTIONS
 function makeUsername(n){return n.toLowerCase().replace(/\s+/g,'');}
 function addAgent(){const inp=document.getElementById('newAgentName');let name=inp.value.trim();if(!name)return alert("Enter name");let uname=makeUsername(name);if(agents.some(a=>makeUsername(a.name)===uname)){alert("Duplicate!");return;}if(agents.length>=30)return alert("Max 30");agents.push({name,username:uname});saveAgents();renderAgentAdmin();renderAgentLoginOptions();inp.value='';alert("Added "+name+"\nUsername: "+uname+"\nPassword: "+uname);}
 function deleteAgent(i){if(!confirm("Delete?"))return;agents.splice(i,1);saveAgents();renderAgentAdmin();renderAgentLoginOptions();}
@@ -144,22 +314,50 @@ function renderAgentAdmin(){const div=document.getElementById('agentListAdmin');
 function renderLeaveTypes(){const div=document.getElementById('leaveTypesList');if(!div)return;div.innerHTML=leaveTypes.map((lt,i)=>`<div style="display:flex;justify-content:space-between;padding:4px;border-bottom:1px solid #222;font-size:11px"><span>${lt}</span>${lt!=='Present'?`<button onclick="leaveTypes.splice(${i},1);saveLeaveTypes();renderLeaveTypes();" style="background:#ff4444;color:white;padding:2px 6px">Del</button>`:''}</div>`).join('');}
 function addLeaveType(){const inp=document.getElementById('newLeaveType');let v=inp.value.trim();if(!v)return;if(leaveTypes.includes(v))return alert("Exists");leaveTypes.push(v);saveLeaveTypes();renderLeaveTypes();inp.value='';}
 function toggleTeamDashboard(){const db=document.getElementById('team-dashboard');db.style.display=db.style.display==='none'?'block':'none';if(db.style.display==='block'){populateTeamMonth();renderTeamCalendar();populateAgentDropdown();}}
+
+// TIME HELPERS
 function toMins(t){if(!t)return null;const [h,m]=t.split(':').map(Number);return h*60+m;}
 function format12h(t){if(!t)return '';let [h,m]=t.split(':').map(Number);let ampm=h>=12?'pm':'am';h=h%12;if(h===0)h=12;return h+(m!==0?':'+String(m).padStart(2,'0'):'')+ampm;}
 function getTodayKey(){return new Date().toISOString().slice(0,10);}
 function getAgentStatusForToday(uname){const key=getTodayKey();const day=schedules[key]&&schedules[key][uname];if(!day)return {text:'No Sched',cls:'status-uwi',present:false};if(day.status==='Restday'||day.leaveType==='Restday')return {text:'Restday',cls:'status-restday',present:false};if(day.leaveType&&day.leaveType!=='Present')return {text:day.leaveType,cls:'status-restday',present:false};const now=new Date();const curMins=now.getHours()*60+now.getMinutes();const endMins=toMins(day.end);const startMins=toMins(day.start);if(endMins!==null&&curMins> endMins){return {text:'nakauwi na po',cls:'status-uwi',present:true};}if(startMins!==null&&endMins!==null&&curMins>=startMins&&curMins<=endMins){return {text:'alipin ng pera',cls:'status-alipin',present:true};}return {text:'Present',cls:'status-present',present:true};}
 function renderAgentStatus(){const div=document.getElementById('agent-status-list');if(!div)return;if(!agents.length){div.innerHTML='<div style="font-size:10px;color:#aaa;text-align:center;padding:10px;">No agents yet - Add in Admin</div>';return;}div.innerHTML=agents.map(a=>{const st=getAgentStatusForToday(a.username);const day=schedules[getTodayKey()]&&schedules[getTodayKey()][a.username];const timeTxt=day?`${day.start?format12h(day.start):''}-${day.end?format12h(day.end):''} ${day.wfh||''}`:'';return `<div class="agent-row"><span><b style="font-size:11px">${a.name}</b><br><span style="font-size:9px;color:#aaa">${timeTxt||'No schedule'}</span></span><span class="status-badge ${st.cls}">${st.text}</span></div>`;}).join('');}
 setInterval(renderAgentStatus,60000);
+
+// ADMIN CALENDAR
 function populateTeamMonth(){const sel=document.getElementById('teamMonthPicker');if(!sel)return;sel.innerHTML='';const now=new Date();for(let i=-1;i<=2;i++){let d=new Date(now.getFullYear(),now.getMonth()+i,1);let label=d.toLocaleDateString('en-US',{month:'long',year:'numeric'});let val=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');let opt=document.createElement('option');opt.value=val;opt.textContent=label;if(i===0)opt.selected=true;sel.appendChild(opt);}currentAdminMonth=new Date();}
 function populateAgentDropdown(){const sel=document.getElementById('teamAgentDropdown');if(!sel)return;sel.innerHTML='<option value="">-- Select Agent --</option>';agents.forEach(a=>{let o=document.createElement('option');o.value=a.username;o.textContent=a.name;sel.appendChild(o);});}
 function renderTeamCalendar(){const picker=document.getElementById('teamMonthPicker');if(!picker)return;const [y,m]=picker.value.split('-').map(Number);const first=new Date(y,m-1,1);const last=new Date(y,m,0);const cal=document.getElementById('teamCalendar');cal.innerHTML='';const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];days.forEach(d=>{let h=document.createElement('div');h.textContent=d;h.style.cssText='text-align:center;font-size:10px;color:#facc15;font-weight:900;padding:4px';cal.appendChild(h);});for(let i=0;i<first.getDay();i++){let empty=document.createElement('div');cal.appendChild(empty);}for(let d=1;d<=last.getDate();d++){let dateKey=`${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;let div=document.createElement('div');div.className='cal-day';let isToday=dateKey===getTodayKey();if(isToday)div.classList.add('today');div.innerHTML=`<div style="font-weight:800">${d}</div><div id="admin-day-${dateKey}" style="font-size:9px;margin-top:2px"></div>`;div.onclick=()=>openTeamDayEditor(dateKey);cal.appendChild(div);}updateAdminDayCells();}
 function updateAdminDayCells(){Object.keys(schedules).forEach(dateKey=>{let cell=document.getElementById('admin-day-'+dateKey);if(!cell)return;let count=Object.keys(schedules[dateKey]||{}).length;if(count>0)cell.innerHTML=`<span style="color:#22c55e">${count} agents</span>`;});}
-function openTeamDayEditor(dateKey){const sel=document.getElementById('teamAgentDropdown');if(!sel.value)return alert('Select agent first from dropdown!');selectedAgentDay=dateKey;const uname=sel.value;const dayData=schedules[dateKey]&&schedules[dateKey][uname]?schedules[dateKey][uname]:{start:'09:00',end:'18:00',status:'Present',leaveType:'Present',wfh:'WFH'};const editor=document.getElementById('teamDayEditor');editor.style.display='block';editor.innerHTML=`<h4 style="margin:0 0 8px;color:#facc15;">${dateKey} - ${agents.find(a=>a.username===uname)?.name||uname}</h4><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><label>Start (00:00-23:30)<input id="adminStart" type="time" value="${dayData.start||'09:00'}" step="1800" style="width:100%"></label><label>End (00:00-23:30)<input id="adminEnd" type="time" value="${dayData.end||'18:00'}" step="1800" style="width:100%"></label><label>Status<select id="adminStatus" style="width:100%"><option ${dayData.status==='Present'?'selected':''}>Present</option><option ${dayData.status==='Restday'?'selected':''}>Restday</option></select></label><label>Leave Type<select id="adminLeave" style="width:100%">${leaveTypes.map(lt=>`<option ${dayData.leaveType===lt?'selected':''}>${lt}</option>`).join('')}</select></label><label>WFH/Onsite<select id="adminWfh" style="width:100%"><option ${dayData.wfh==='WFH'?'selected':''}>WFH</option><option ${dayData.wfh==='Onsite'?'selected':''}>Onsite</option></select></label></div><div style="margin-top:10px;display:flex;gap:6px;"><button onclick="saveTeamDay()" style="background:#22c55e;color:#000">💾 Save</button><button onclick="document.getElementById('teamDayEditor').style.display='none'" style="background:#333;color:#fff">Close</button><button onclick="deleteTeamDay()" style="background:#ff4444;color:#fff">Delete</button></div><div style="font-size:10px;color:#aaa;margin-top:6px;">Display: ${format12h(dayData.start)} - ${format12h(dayData.end)}</div>`;}
+function openTeamDayEditor(dateKey){const sel=document.getElementById('teamAgentDropdown');if(!sel.value)return alert('Select agent first from dropdown!');selectedAgentDay=dateKey;const uname=sel.value;const dayData=schedules[dateKey]&&schedules[dateKey][uname]?schedules[dateKey][uname]:{start:'09:00',end:'18:00',status:'Present',leaveType:'Present',wfh:'WFH'};const editor=document.getElementById('teamDayEditor');editor.style.display='block';editor.innerHTML=`
+<h4 style="margin:0 0 8px;color:#facc15;">${dateKey} - ${agents.find(a=>a.username===uname)?.name||uname}</h4>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+<label>Start (00:00-23:30)<input id="adminStart" type="time" value="${dayData.start||'09:00'}" step="1800" style="width:100%"></label>
+<label>End (00:00-23:30)<input id="adminEnd" type="time" value="${dayData.end||'18:00'}" step="1800" style="width:100%"></label>
+<label>Status<select id="adminStatus" style="width:100%"><option ${dayData.status==='Present'?'selected':''}>Present</option><option ${dayData.status==='Restday'?'selected':''}>Restday</option></select></label>
+<label>Leave Type<select id="adminLeave" style="width:100%">${leaveTypes.map(lt=>`<option ${dayData.leaveType===lt?'selected':''}>${lt}</option>`).join('')}</select></label>
+<label>WFH/Onsite<select id="adminWfh" style="width:100%"><option ${dayData.wfh==='WFH'?'selected':''}>WFH</option><option ${dayData.wfh==='Onsite'?'selected':''}>Onsite</option></select></label>
+</div>
+<div style="margin-top:10px;display:flex;gap:6px;"><button onclick="saveTeamDay()" style="background:#22c55e;color:#000">💾 Save</button><button onclick="document.getElementById('teamDayEditor').style.display='none'" style="background:#333;color:#fff">Close</button><button onclick="deleteTeamDay()" style="background:#ff4444;color:#fff">Delete</button></div>
+<div style="font-size:10px;color:#aaa;margin-top:6px;">Display: ${format12h(dayData.start)} - ${format12h(dayData.end)}</div>
+`;}
 function saveTeamDay(){if(!selectedAgentDay)return;const uname=document.getElementById('teamAgentDropdown').value;const start=document.getElementById('adminStart').value;const end=document.getElementById('adminEnd').value;const status=document.getElementById('adminStatus').value;const leaveType=document.getElementById('adminLeave').value;const wfh=document.getElementById('adminWfh').value;if(!schedules[selectedAgentDay])schedules[selectedAgentDay]={};schedules[selectedAgentDay][uname]={start,end,status,leaveType,wfh};saveSchedules();renderTeamCalendar();renderAgentStatus();alert('Saved '+selectedAgentDay+' for '+uname+' ('+format12h(start)+' - '+format12h(end)+')');}
 function deleteTeamDay(){if(!selectedAgentDay)return;const uname=document.getElementById('teamAgentDropdown').value;if(schedules[selectedAgentDay]&&schedules[selectedAgentDay][uname]){delete schedules[selectedAgentDay][uname];if(Object.keys(schedules[selectedAgentDay]).length===0)delete schedules[selectedAgentDay];}saveSchedules();renderTeamCalendar();renderAgentStatus();document.getElementById('teamDayEditor').style.display='none';}
-function openBulkApply(){const uname=document.getElementById('teamAgentDropdown').value;if(!uname)return alert('Select agent first!');const picker=document.getElementById('teamMonthPicker');const [y,m]=picker.value.split('-').map(Number);const editor=document.getElementById('teamDayEditor');editor.style.display='block';editor.innerHTML=`<h4 style="color:#facc15;margin:0 0 8px;">📅 Bulk Apply - ${agents.find(a=>a.username===uname)?.name}</h4><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><label>Start<input id="bulkStart" type="time" value="09:00" step="1800"></label><label>End<input id="bulkEnd" type="time" value="18:00" step="1800"></label><label>Status<select id="bulkStatus"><option>Present</option><option>Restday</option></select></label><label>Leave<select id="bulkLeave">${leaveTypes.map(lt=>`<option>${lt}</option>`).join('')}</select></label><label>WFH<select id="bulkWfh"><option>WFH</option><option>Onsite</option></select></label><label>Apply To<select id="bulkMode"><option value="month">All days in month (${y}-${String(m).padStart(2,'0')})</option><option value="weekdays">Weekdays only</option><option value="weekends">Weekends only</option><option value="monfri">Mon-Fri</option></select></label></div><div style="margin-top:10px;display:flex;gap:6px;"><button onclick="doBulkApply()" style="background:#2563eb;color:#fff">✅ Apply to All</button><button onclick="document.getElementById('teamDayEditor').style.display='none'" style="background:#333;color:#fff">Cancel</button></div>`;}
+function openBulkApply(){const uname=document.getElementById('teamAgentDropdown').value;if(!uname)return alert('Select agent first!');const picker=document.getElementById('teamMonthPicker');const [y,m]=picker.value.split('-').map(Number);const editor=document.getElementById('teamDayEditor');editor.style.display='block';editor.innerHTML=`
+<h4 style="color:#facc15;margin:0 0 8px;">📅 Bulk Apply - ${agents.find(a=>a.username===uname)?.name}</h4>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+<label>Start<input id="bulkStart" type="time" value="09:00" step="1800"></label>
+<label>End<input id="bulkEnd" type="time" value="18:00" step="1800"></label>
+<label>Status<select id="bulkStatus"><option>Present</option><option>Restday</option></select></label>
+<label>Leave<select id="bulkLeave">${leaveTypes.map(lt=>`<option>${lt}</option>`).join('')}</select></label>
+<label>WFH<select id="bulkWfh"><option>WFH</option><option>Onsite</option></select></label>
+<label>Apply To<select id="bulkMode"><option value="month">All days in month (${y}-${String(m).padStart(2,'0')})</option><option value="weekdays">Weekdays only</option><option value="weekends">Weekends only</option><option value="monfri">Mon-Fri</option></select></label>
+</div>
+<div style="margin-top:10px;display:flex;gap:6px;"><button onclick="doBulkApply()" style="background:#2563eb;color:#fff">✅ Apply to All</button><button onclick="document.getElementById('teamDayEditor').style.display='none'" style="background:#333;color:#fff">Cancel</button></div>
+`;}
 function doBulkApply(){const uname=document.getElementById('teamAgentDropdown').value;const picker=document.getElementById('teamMonthPicker');const [y,m]=picker.value.split('-').map(Number);const start=document.getElementById('bulkStart').value;const end=document.getElementById('bulkEnd').value;const status=document.getElementById('bulkStatus').value;const leaveType=document.getElementById('bulkLeave').value;const wfh=document.getElementById('bulkWfh').value;const mode=document.getElementById('bulkMode').value;const last=new Date(y,m,0).getDate();let count=0;for(let d=1;d<=last;d++){let dt=new Date(y,m-1,d);let dow=dt.getDay();let include=true;if(mode==='weekdays')include=dow>=1&&dow<=5;else if(mode==='weekends')include=dow===0||dow===6;else if(mode==='monfri')include=dow>=1&&dow<=5;if(!include)continue;let key=`${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;if(!schedules[key])schedules[key]={};schedules[key][uname]={start,end,status,leaveType,wfh};count++;}saveSchedules();renderTeamCalendar();renderAgentStatus();alert(`Applied to ${count} days!`);}
-function renderAgentLoginOptions(){const sel=document.getElementById('agentLoginSelect');if(!sel)return;sel.innerHTML='<option value="">-- Select Agent (dropdown) --</option>';agents.forEach(a=>{let o=document.createElement('option');o.value=a.username;o.textContent=a.name+' ('+a.username+')';sel.appendChild(o);});sel.onchange=()=>{document.getElementById('agentLoginUser').value=sel.value;document.getElementById('agentLoginPass').value='';};}
+
+// AGENT LOGIN - FIXED
+function renderAgentLoginOptions(){const sel=document.getElementById('agentLoginSelect');const sel2=document.getElementById('agentLoginUser');if(!sel)return;sel.innerHTML='<option value="">-- Select Agent (dropdown) --</option>';agents.forEach(a=>{let o=document.createElement('option');o.value=a.username;o.textContent=a.name+' ('+a.username+')';sel.appendChild(o);});sel.onchange=()=>{document.getElementById('agentLoginUser').value=sel.value;document.getElementById('agentLoginPass').value='';};}
 function openAgentLogin(){renderAgentLoginOptions();document.getElementById('agentLoginOverlay').style.display='flex';document.getElementById('agentLoginError').style.display='none';}
 function closeAgentLogin(){document.getElementById('agentLoginOverlay').style.display='none';}
 function checkAgentLogin(){const user=document.getElementById('agentLoginUser').value.trim().toLowerCase();const pass=document.getElementById('agentLoginPass').value.trim().toLowerCase();if(!user||!pass){document.getElementById('agentLoginError').textContent='Enter username & password';document.getElementById('agentLoginError').style.display='block';return;}const found=agents.find(a=>a.username===user);if(!found){document.getElementById('agentLoginError').textContent='Agent not found! Username = fullname no space lowercase';document.getElementById('agentLoginError').style.display='block';return;}if(pass!==found.username){document.getElementById('agentLoginError').textContent='Wrong password! Password = same as username';document.getElementById('agentLoginError').style.display='block';return;}currentLoggedAgent=found;localStorage.setItem(LS_AGENT_AUTH,JSON.stringify(found));closeAgentLogin();openAgentDashboard();document.getElementById('agentLoginBtn').textContent='🟢 '+found.name;document.getElementById('agentLoginBtn').classList.add('logged');}
@@ -168,13 +366,41 @@ function closeAgentDashboard(){document.getElementById('agentDashboardOverlay').
 function logoutAgent(){if(!confirm('Logout?'))return;currentLoggedAgent=null;localStorage.removeItem(LS_AGENT_AUTH);document.getElementById('agentDashboardOverlay').style.display='none';document.getElementById('agentLoginBtn').textContent='🔵 AGENT LOGIN';document.getElementById('agentLoginBtn').classList.remove('logged');}
 function populateAgentMonths(){const sel=document.getElementById('agentDashMonth');sel.innerHTML='';const now=new Date();for(let i=-1;i<=2;i++){let d=new Date(now.getFullYear(),now.getMonth()+i,1);let label=d.toLocaleDateString('en-US',{month:'long',year:'numeric'});let val=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');let opt=document.createElement('option');opt.value=val;opt.textContent=label;if(i===0)opt.selected=true;sel.appendChild(opt);}currentAgentMonth=new Date();}
 function renderAgentCalendar(){const picker=document.getElementById('agentDashMonth');if(!picker.value)return;const [y,m]=picker.value.split('-').map(Number);const first=new Date(y,m-1,1);const last=new Date(y,m,0);const grid=document.getElementById('agentCalendarGrid');grid.innerHTML='';const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];days.forEach(d=>{let h=document.createElement('div');h.textContent=d;h.style.cssText='text-align:center;font-size:10px;color:#facc15;font-weight:900;padding:4px';grid.appendChild(h);});for(let i=0;i<first.getDay();i++){grid.appendChild(document.createElement('div'));}for(let d=1;d<=last.getDate();d++){let key=`${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;let div=document.createElement('div');div.className='cal-day';if(key===getTodayKey())div.classList.add('today');let sched=schedules[key]&&schedules[key][currentLoggedAgent.username];if(sched){div.classList.add('has-sched');if(sched.status==='Restday'||sched.leaveType==='Restday'||(sched.leaveType&&sched.leaveType!=='Present'))div.classList.add('restday');else div.classList.add('present');}div.innerHTML=`<div style="font-weight:800">${d}</div><div style="font-size:8px;margin-top:2px">${sched?format12h(sched.start)+'-'+format12h(sched.end):''}<br>${sched?sched.wfh:''}<br><span style="font-size:7px">${sched?sched.leaveType:''}</span></div>`;div.onclick=()=>openAgentDayEditor(key);grid.appendChild(div);}}
-function openAgentDayEditor(dateKey){const uname=currentLoggedAgent.username;const dayData=schedules[dateKey]&&schedules[dateKey][uname]?schedules[dateKey][uname]:{start:'09:00',end:'18:00',status:'Present',leaveType:'Present',wfh:'WFH'};const box=document.getElementById('agentDayEditorBox');box.style.display='block';box.innerHTML=`<h4 style="margin:0 0 8px;color:#2563eb;">${dateKey} - ${currentLoggedAgent.name}</h4><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><label>Start (00:00-23:30)<input id="agentStart" type="time" value="${dayData.start||'09:00'}" step="1800"></label><label>End<input id="agentEnd" type="time" value="${dayData.end||'18:00'}" step="1800"></label><label>Status<select id="agentStatusSel"><option ${dayData.status==='Present'?'selected':''}>Present</option><option ${dayData.status==='Restday'?'selected':''}>Restday</option></select></label><label>Leave<select id="agentLeaveSel">${leaveTypes.map(lt=>`<option ${dayData.leaveType===lt?'selected':''}>${lt}</option>`).join('')}</select></label><label>WFH<select id="agentWfhSel"><option ${dayData.wfh==='WFH'?'selected':''}>WFH</option><option ${dayData.wfh==='Onsite'?'selected':''}>Onsite</option></select></label></div><div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap;"><button onclick="saveAgentDay('${dateKey}')" style="background:#22c55e;color:#000;padding:8px 14px;border-radius:99px;border:none;font-weight:800;cursor:pointer;">💾 Save This Day</button><button onclick="deleteAgentDay('${dateKey}')" style="background:#ff4444;color:#fff;padding:8px 12px;border-radius:99px;border:none;cursor:pointer;">🗑 Delete</button><button onclick="document.getElementById('agentDayEditorBox').style.display='none'" style="background:#333;color:#fff;padding:8px 12px;border-radius:99px;border:none;cursor:pointer;">Close</button></div><div style="font-size:10px;color:#facc15;margin-top:6px;">Preview: ${format12h(dayData.start)} - ${format12h(dayData.end)} → ${dayData.status==='Restday'?'Restday':'Present'} | ${dayData.wfh}<br>Today status: alipin ng pera / nakauwi na po</div>`;}
+function openAgentDayEditor(dateKey){const uname=currentLoggedAgent.username;const dayData=schedules[dateKey]&&schedules[dateKey][uname]?schedules[dateKey][uname]:{start:'09:00',end:'18:00',status:'Present',leaveType:'Present',wfh:'WFH'};const box=document.getElementById('agentDayEditorBox');box.style.display='block';box.innerHTML=`
+<h4 style="margin:0 0 8px;color:#2563eb;">${dateKey} - ${currentLoggedAgent.name}</h4>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+<label>Start (00:00-23:30)<input id="agentStart" type="time" value="${dayData.start||'09:00'}" step="1800"></label>
+<label>End<input id="agentEnd" type="time" value="${dayData.end||'18:00'}" step="1800"></label>
+<label>Status<select id="agentStatusSel"><option ${dayData.status==='Present'?'selected':''}>Present</option><option ${dayData.status==='Restday'?'selected':''}>Restday</option></select></label>
+<label>Leave<select id="agentLeaveSel">${leaveTypes.map(lt=>`<option ${dayData.leaveType===lt?'selected':''}>${lt}</option>`).join('')}</select></label>
+<label>WFH<select id="agentWfhSel"><option ${dayData.wfh==='WFH'?'selected':''}>WFH</option><option ${dayData.wfh==='Onsite'?'selected':''}>Onsite</option></select></label>
+</div>
+<div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap;">
+<button onclick="saveAgentDay('${dateKey}')" style="background:#22c55e;color:#000;padding:8px 14px;border-radius:99px;border:none;font-weight:800;cursor:pointer;">💾 Save This Day</button>
+<button onclick="deleteAgentDay('${dateKey}')" style="background:#ff4444;color:#fff;padding:8px 12px;border-radius:99px;border:none;cursor:pointer;">🗑 Delete</button>
+<button onclick="document.getElementById('agentDayEditorBox').style.display='none'" style="background:#333;color:#fff;padding:8px 12px;border-radius:99px;border:none;cursor:pointer;">Close</button>
+</div>
+<div style="font-size:10px;color:#facc15;margin-top:6px;">Preview: ${format12h(dayData.start)} - ${format12h(dayData.end)} → ${dayData.status==='Restday'?'Restday':'Present'} | ${dayData.wfh}<br>Today status logic: alipin ng pera (within shift) / nakauwi na po (after shift)</div>
+`; }
 function saveAgentDay(dateKey){const uname=currentLoggedAgent.username;const start=document.getElementById('agentStart').value;const end=document.getElementById('agentEnd').value;const status=document.getElementById('agentStatusSel').value;const leaveType=document.getElementById('agentLeaveSel').value;const wfh=document.getElementById('agentWfhSel').value;if(!schedules[dateKey])schedules[dateKey]={};schedules[dateKey][uname]={start,end,status,leaveType,wfh};saveSchedules();renderAgentCalendar();renderAgentStatus();alert('Saved '+dateKey+' → '+format12h(start)+' - '+format12h(end));}
 function deleteAgentDay(dateKey){const uname=currentLoggedAgent.username;if(schedules[dateKey]&&schedules[dateKey][uname]){delete schedules[dateKey][uname];if(Object.keys(schedules[dateKey]).length===0)delete schedules[dateKey];}saveSchedules();renderAgentCalendar();renderAgentStatus();document.getElementById('agentDayEditorBox').style.display='none';}
 function saveAgentSched(){saveSchedules();renderAgentStatus();alert('✅ All schedules saved!');}
-function openAgentBulk(){const picker=document.getElementById('agentDashMonth');const [y,m]=picker.value.split('-').map(Number);const box=document.getElementById('agentBulkBox');box.style.display='block';box.innerHTML=`<h4 style="color:#facc15;margin:0 0 8px;">📅 Bulk Apply - ${currentLoggedAgent.name} - ${y}-${String(m).padStart(2,'0')}</h4><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><label>Start<input id="bulkAStart" type="time" value="09:00" step="1800"></label><label>End<input id="bulkAEnd" type="time" value="18:00" step="1800"></label><label>Status<select id="bulkAStatus"><option>Present</option><option>Restday</option></select></label><label>Leave<select id="bulkALeave">${leaveTypes.map(lt=>`<option>${lt}</option>`).join('')}</select></label><label>WFH<select id="bulkAWfh"><option>WFH</option><option>Onsite</option></select></label><label>Mode<select id="bulkAMode"><option value="month">All days in month</option><option value="weekdays">Weekdays</option><option value="weekends">Weekends</option><option value="monfri">Mon-Fri</option></select></label></div><div style="margin-top:10px;display:flex;gap:6px;"><button onclick="doAgentBulk()" style="background:#2563eb;color:#fff;padding:8px 14px;border-radius:99px;border:none;font-weight:800;cursor:pointer;">✅ Apply</button><button onclick="document.getElementById('agentBulkBox').style.display='none'" style="background:#333;color:#fff;padding:8px 12px;border-radius:99px;border:none;">Cancel</button></div>`;}
+function openAgentBulk(){const picker=document.getElementById('agentDashMonth');const [y,m]=picker.value.split('-').map(Number);const box=document.getElementById('agentBulkBox');box.style.display='block';box.innerHTML=`
+<h4 style="color:#facc15;margin:0 0 8px;">📅 Bulk Apply - ${currentLoggedAgent.name} - ${y}-${String(m).padStart(2,'0')}</h4>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+<label>Start<input id="bulkAStart" type="time" value="09:00" step="1800"></label>
+<label>End<input id="bulkAEnd" type="time" value="18:00" step="1800"></label>
+<label>Status<select id="bulkAStatus"><option>Present</option><option>Restday</option></select></label>
+<label>Leave<select id="bulkALeave">${leaveTypes.map(lt=>`<option>${lt}</option>`).join('')}</select></label>
+<label>WFH<select id="bulkAWfh"><option>WFH</option><option>Onsite</option></select></label>
+<label>Mode<select id="bulkAMode"><option value="month">All days in month</option><option value="weekdays">Weekdays</option><option value="weekends">Weekends</option><option value="monfri">Mon-Fri</option></select></label>
+</div>
+<div style="margin-top:10px;display:flex;gap:6px;"><button onclick="doAgentBulk()" style="background:#2563eb;color:#fff;padding:8px 14px;border-radius:99px;border:none;font-weight:800;cursor:pointer;">✅ Apply</button><button onclick="document.getElementById('agentBulkBox').style.display='none'" style="background:#333;color:#fff;padding:8px 12px;border-radius:99px;border:none;">Cancel</button></div>
+`;}
 function doAgentBulk(){const picker=document.getElementById('agentDashMonth');const [y,m]=picker.value.split('-').map(Number);const start=document.getElementById('bulkAStart').value;const end=document.getElementById('bulkAEnd').value;const status=document.getElementById('bulkAStatus').value;const leaveType=document.getElementById('bulkALeave').value;const wfh=document.getElementById('bulkAWfh').value;const mode=document.getElementById('bulkAMode').value;const last=new Date(y,m,0).getDate();let cnt=0;for(let d=1;d<=last;d++){let dt=new Date(y,m-1,d);let dow=dt.getDay();let inc=true;if(mode==='weekdays')inc=dow>=1&&dow<=5;else if(mode==='weekends')inc=dow===0||dow===6;else if(mode==='monfri')inc=dow>=1&&dow<=5;if(!inc)continue;let key=`${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;if(!schedules[key])schedules[key]={};schedules[key][currentLoggedAgent.username]={start,end,status,leaveType,wfh};cnt++;}saveSchedules();renderAgentCalendar();renderAgentStatus();document.getElementById('agentBulkBox').style.display='none';alert(`Applied to ${cnt} days - ${format12h(start)} to ${format12h(end)}`);}
+
 function checkAdminAccessOnLoad(){const p=new URLSearchParams(location.search);if(p.has('admin')){if(isAdminAuthenticated()){showEditUI();}else{openAdminLogin();}}else{if(isAdminAuthenticated())showEditUI();}}
+// Auto login agent if saved
 try{const saved=localStorage.getItem(LS_AGENT_AUTH);if(saved){currentLoggedAgent=JSON.parse(saved);if(currentLoggedAgent&&agents.some(a=>a.username===currentLoggedAgent.username)){document.getElementById('agentLoginBtn').textContent='🟢 '+currentLoggedAgent.name;document.getElementById('agentLoginBtn').classList.add('logged');}}}catch(e){}
 window.addEventListener('load',function(){checkAdminAccessOnLoad();renderTopCats();renderBanner();var subs=subMenuData['NBN']||[];var middle=document.getElementById('middle-pills');middle.innerHTML='';subs.forEach(function(name,idx){var btn=document.createElement('a');btn.href='#';btn.className='sub-pill'+(idx===0?' active':'');btn.textContent=name;btn.onclick=function(e){e.preventDefault();setCat(name,this);};middle.appendChild(btn);});currentSub=subs[0]||'FTTP';renderContent(currentSub);renderAgentAdmin();renderLeaveTypes();renderAgentStatus();renderAgentLoginOptions();populateTeamMonth();populateAgentDropdown();});
 </script>
